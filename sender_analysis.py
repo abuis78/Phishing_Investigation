@@ -332,8 +332,6 @@ def convert_tag_list_into_string(action=None, success=None, container=None, resu
 
     phantom.save_run_data(key="convert_tag_list_into_string:tag_str_list", value=json.dumps(convert_tag_list_into_string__tag_str_list))
 
-    artifact_update_12(container=container)
-
     return
 
 
@@ -488,7 +486,7 @@ def filter_sender_email_address(action=None, success=None, container=None, resul
     matched_artifacts_1, matched_results_1 = phantom.condition(
         container=container,
         conditions=[
-            ["artifact:*.name", "==", "Sender email address"]
+            ["Sender email address", "in", "artifact:*.name"]
         ],
         name="filter_sender_email_address:condition_1",
         scope="all")

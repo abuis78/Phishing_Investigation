@@ -66,13 +66,6 @@
                     "targetPort": "32_in"
                 },
                 {
-                    "id": "port_38_to_port_31",
-                    "sourceNode": "38",
-                    "sourcePort": "38_out",
-                    "targetNode": "31",
-                    "targetPort": "31_in"
-                },
-                {
                     "id": "port_32_to_port_40",
                     "sourceNode": "32",
                     "sourcePort": "32_out",
@@ -175,7 +168,7 @@
                     "targetPort": "2_in"
                 }
             ],
-            "hash": "f3fc42a11862b82cc3cb0be4e3d9ee988efa9268",
+            "hash": "5dc23763f801fce1bf90c2459cc46180f0b6f1a0",
             "nodes": {
                 "0": {
                     "data": {
@@ -1103,9 +1096,9 @@
                                 "comparisons": [
                                     {
                                         "conditionIndex": 0,
-                                        "op": "==",
-                                        "param": "artifact:*.name",
-                                        "value": "Sender email address"
+                                        "op": "in",
+                                        "param": "Sender email address",
+                                        "value": "artifact:*.name"
                                     }
                                 ],
                                 "conditionIndex": 0,
@@ -1120,7 +1113,7 @@
                     "errors": {},
                     "id": "46",
                     "type": "filter",
-                    "x": -40,
+                    "x": -20,
                     "y": 1600
                 },
                 "47": {
@@ -1261,8 +1254,8 @@
                     "errors": {},
                     "id": "47",
                     "type": "utility",
-                    "x": -80.00000000000001,
-                    "y": 2524.5
+                    "x": -80,
+                    "y": 2540
                 },
                 "48": {
                     "data": {
@@ -1307,7 +1300,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T15:21:09.339427+00:00",
+    "create_time": "2022-03-01T16:29:34.636432+00:00",
     "draft_mode": false,
     "labels": [
         "*"
