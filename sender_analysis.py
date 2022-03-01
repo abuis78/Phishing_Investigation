@@ -392,7 +392,8 @@ def search_vor_company_keywords_in_email(action=None, success=None, container=No
     import re
     
     matches = []
-    misses = []    
+    misses = []  
+    matches_keyword_list = []
     
     success, message, c_keywoards = phantom.get_list(list_name=input_parameter_0)
     # phantom.debug('phantom.get_list results: success: {}, message: {}, execs: {}'.format(success, message, c_keywoards))
@@ -406,6 +407,7 @@ def search_vor_company_keywords_in_email(action=None, success=None, container=No
         for x in ergebnis:
             if ergebnis != -1:
                 matches.append({"match": x})
+                matches_keyword_list.append = item
             else:
                 misses.append({"miss": x})
                 
@@ -414,6 +416,7 @@ def search_vor_company_keywords_in_email(action=None, success=None, container=No
     
     phantom.debug(match_count)
     phantom.debug(miss_count)
+    phantom.debug(matches_keyword_list)
 
     search_vor_company_keywords_in_email__match_count = match_count
     search_vor_company_keywords_in_email__miss_count = miss_count
