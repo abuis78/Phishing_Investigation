@@ -163,17 +163,18 @@ def finde_email_in_vip_list_callback(action=None, success=None, container=None, 
 def debug_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("debug_2() called")
 
-    finde_email_in_vip_list_result_data = phantom.collect2(container=container, datapath=["finde_email_in_vip_list:action_result.summary.found_matches","finde_email_in_vip_list:action_result.status","finde_email_in_vip_list:action_result.parameter.context.artifact_id"], action_results=results)
+    finde_email_in_vip_list_result_data = phantom.collect2(container=container, datapath=["finde_email_in_vip_list:action_result.summary.found_matches","finde_email_in_vip_list:action_result.status","finde_email_in_vip_list:action_result.parameter.exact_match","finde_email_in_vip_list:action_result.parameter.context.artifact_id"], action_results=results)
 
     finde_email_in_vip_list_summary_found_matches = [item[0] for item in finde_email_in_vip_list_result_data]
     finde_email_in_vip_list_result_item_1 = [item[1] for item in finde_email_in_vip_list_result_data]
+    finde_email_in_vip_list_parameter_exact_match = [item[2] for item in finde_email_in_vip_list_result_data]
 
     parameters = []
 
     parameters.append({
         "input_1": finde_email_in_vip_list_summary_found_matches,
         "input_2": finde_email_in_vip_list_result_item_1,
-        "input_3": None,
+        "input_3": finde_email_in_vip_list_parameter_exact_match,
         "input_4": None,
         "input_5": None,
         "input_6": None,
