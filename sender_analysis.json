@@ -121,21 +121,21 @@
                             "index": 0
                         }
                     ],
-                    "id": "port_30_to_port_34",
+                    "id": "port_30_to_port_38",
                     "sourceNode": "30",
                     "sourcePort": "30_out",
-                    "targetNode": "34",
-                    "targetPort": "34_in"
+                    "targetNode": "38",
+                    "targetPort": "38_in"
                 },
                 {
-                    "id": "port_34_to_port_31",
-                    "sourceNode": "34",
-                    "sourcePort": "34_out",
+                    "id": "port_38_to_port_31",
+                    "sourceNode": "38",
+                    "sourcePort": "38_out",
                     "targetNode": "31",
                     "targetPort": "31_in"
                 }
             ],
-            "hash": "293213e34a5b781be6e1c74c57516b737bd24ceb",
+            "hash": "7b70e8a5931c246b737358c1142e0189af0a3ea9",
             "nodes": {
                 "0": {
                     "data": {
@@ -149,8 +149,8 @@
                     "errors": {},
                     "id": "0",
                     "type": "start",
-                    "x": 980,
-                    "y": 419.9999999999999
+                    "x": 110,
+                    "y": 0
                 },
                 "1": {
                     "data": {
@@ -166,8 +166,8 @@
                     "id": "1",
                     "type": "end",
                     "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
-                    "x": 1400,
-                    "y": 1380
+                    "x": 410,
+                    "y": 0
                 },
                 "10": {
                     "data": {
@@ -309,8 +309,8 @@
                     "errors": {},
                     "id": "10",
                     "type": "utility",
-                    "x": 740,
-                    "y": 1300
+                    "x": 0,
+                    "y": 836
                 },
                 "13": {
                     "data": {
@@ -356,8 +356,8 @@
                     "errors": {},
                     "id": "13",
                     "type": "decision",
-                    "x": 1040,
-                    "y": 940
+                    "x": 170,
+                    "y": 476
                 },
                 "15": {
                     "data": {
@@ -388,8 +388,8 @@
                     "errors": {},
                     "id": "15",
                     "type": "filter",
-                    "x": 800,
-                    "y": 1100
+                    "x": 60,
+                    "y": 656
                 },
                 "2": {
                     "data": {
@@ -439,8 +439,8 @@
                     "errors": {},
                     "id": "2",
                     "type": "utility",
-                    "x": 960,
-                    "y": 620
+                    "x": 90,
+                    "y": 148
                 },
                 "23": {
                     "data": {
@@ -503,8 +503,8 @@
                     "errors": {},
                     "id": "23",
                     "type": "utility",
-                    "x": 960,
-                    "y": 780
+                    "x": 90,
+                    "y": 312
                 },
                 "24": {
                     "data": {
@@ -543,8 +543,8 @@
                     "errors": {},
                     "id": "24",
                     "type": "utility",
-                    "x": 960,
-                    "y": 1460
+                    "x": 90,
+                    "y": 1000
                 },
                 "25": {
                     "data": {
@@ -569,8 +569,8 @@
                     "id": "25",
                     "type": "code",
                     "userCode": "\n    # Write your custom code here...\n    import re\n    phantom.debug(container_artifact_cef_item_0)\n    phantom.debug(extract_email_from_emailheaders_data___domain)\n    domain_regex = r'(((?!-))(xn--)?[a-z0-9][a-z0-9-_]{0,61}[a-z0-9]{0,1}\\.(xn--)?([a-z0-9\\-]{1,61}|[a-z0-9-]{1,30}\\.[a-z]{2,}))'\n    for domain in re.findall(domain_regex, str(container_artifact_cef_item_0), re.IGNORECASE):\n        phantom.debug(domain[0])\n        dkim_domain = domain[0]\n        \n    if dkim_domain == extract_email_from_emailheaders_data___domain[0]:\n        phantom.debug('same Domain')\n        extract_domain_from_dkim_signature__dkim_domain_check_result = True\n        \n    else:\n        phantom.debug('not same Domainn')\n        extract_domain_from_dkim_signature__dkim_domain_check_result = False\n    \n",
-                    "x": 960,
-                    "y": 1760
+                    "x": 90,
+                    "y": 1148
                 },
                 "27": {
                     "data": {
@@ -618,8 +618,8 @@
                     "errors": {},
                     "id": "27",
                     "type": "decision",
-                    "x": 1040,
-                    "y": 1940
+                    "x": 170,
+                    "y": 1312
                 },
                 "30": {
                     "data": {
@@ -648,8 +648,8 @@
                     "errors": {},
                     "id": "30",
                     "type": "filter",
-                    "x": 840,
-                    "y": 2164.5
+                    "x": -60,
+                    "y": 1500
                 },
                 "31": {
                     "data": {
@@ -789,8 +789,8 @@
                     "errors": {},
                     "id": "31",
                     "type": "utility",
-                    "x": 780,
-                    "y": 2420
+                    "x": -100,
+                    "y": 1820
                 },
                 "32": {
                     "data": {
@@ -829,30 +829,33 @@
                     "errors": {},
                     "id": "32",
                     "type": "utility",
-                    "x": 960,
-                    "y": 2484.5
+                    "x": 90,
+                    "y": 1968
                 },
-                "34": {
+                "38": {
                     "data": {
                         "advanced": {
-                            "customName": "tags list",
+                            "customName": "convert tag list into string",
                             "customNameId": 0,
                             "join": []
                         },
-                        "functionId": 1,
-                        "functionName": "tags_list",
-                        "id": "34",
-                        "parameters": [
-                            "filtered-data:filter_4:condition_1:artifact:*.tags"
+                        "functionId": 2,
+                        "functionName": "convert_tag_list_into_string",
+                        "id": "38",
+                        "inputParameters": [
+                            "artifact:*.tags"
                         ],
-                        "template": "{0}, internal",
-                        "type": "format"
+                        "outputVariables": [
+                            "tag_str_list"
+                        ],
+                        "type": "code"
                     },
                     "errors": {},
-                    "id": "34",
-                    "type": "format",
-                    "x": 780,
-                    "y": 2324.5
+                    "id": "38",
+                    "type": "code",
+                    "userCode": "\n    # Write your custom code here...\n    convert_tag_list_into_string__tag_str_list = \"\".join(container_artifact_header_item_0)\n    phantom.debug(convert_tag_list_into_string__tag_str_list)\n\n",
+                    "x": -120.00000000000003,
+                    "y": 1644.5
                 }
             },
             "notes": ""
@@ -864,7 +867,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T13:25:28.249068+00:00",
+    "create_time": "2022-03-01T14:01:19.138734+00:00",
     "draft_mode": false,
     "labels": [
         "*"

@@ -261,7 +261,7 @@ def filter_4(action=None, success=None, container=None, results=None, handle=Non
 
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_1 or matched_results_1:
-        tags_list(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+        convert_tag_list_into_string(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
 
     return
 
@@ -339,27 +339,28 @@ def dkim_path(action=None, success=None, container=None, results=None, handle=No
     return
 
 
-def tags_list(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("tags_list() called")
+def convert_tag_list_into_string(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("convert_tag_list_into_string() called")
 
-    template = """{0}, internal"""
+    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.tags"])
 
-    # parameter list for template variable replacement
-    parameters = [
-        "filtered-data:filter_4:condition_1:artifact:*.tags"
-    ]
+    container_artifact_header_item_0 = [item[0] for item in container_artifact_data]
+
+    convert_tag_list_into_string__tag_str_list = None
 
     ################################################################################
     ## Custom Code Start
     ################################################################################
 
     # Write your custom code here...
+    convert_tag_list_into_string__tag_str_list = "".join(container_artifact_header_item_0)
+    phantom.debug(convert_tag_list_into_string__tag_str_list)
 
     ################################################################################
     ## Custom Code End
     ################################################################################
 
-    phantom.format(container=container, template=template, parameters=parameters, name="tags_list")
+    phantom.save_run_data(key="convert_tag_list_into_string:tag_str_list", value=json.dumps(convert_tag_list_into_string__tag_str_list))
 
     artifact_update_12(container=container)
 
