@@ -39,7 +39,7 @@ def extract_email_from_emailheaders(action=None, success=None, container=None, r
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/regex_extract_email", parameters=parameters, name="extract_email_from_emailheaders", callback=custom_list_value_in_strings_11)
+    phantom.custom_function(custom_function="Phishing_Investigation/regex_extract_email", parameters=parameters, name="extract_email_from_emailheaders", callback=find_listitem_1)
 
     return
 
@@ -72,15 +72,15 @@ def add_tag_vip_to_email_artifact(action=None, success=None, container=None, res
     # build parameters list for 'add_tag_vip_to_email_artifact' call
     for filtered_artifact_0_item_filter_email_artifact in filtered_artifact_0_data_filter_email_artifact:
         parameters.append({
-            "artifact_id": filtered_artifact_0_item_filter_email_artifact[0],
             "name": None,
+            "tags": "VIP",
             "label": None,
             "severity": None,
             "cef_field": None,
             "cef_value": None,
-            "cef_data_type": None,
-            "tags": "VIP",
             "input_json": None,
+            "artifact_id": filtered_artifact_0_item_filter_email_artifact[0],
+            "cef_data_type": None,
         })
 
     ################################################################################
@@ -202,6 +202,39 @@ def custom_list_value_in_strings_11(action=None, success=None, container=None, r
     ################################################################################
 
     phantom.custom_function(custom_function="Phishing_Investigation/custom_list_value_in_strings", parameters=parameters, name="custom_list_value_in_strings_11", callback=debug_8)
+
+    return
+
+
+def find_listitem_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("find_listitem_1() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    extract_email_from_emailheaders_data = phantom.collect2(container=container, datapath=["extract_email_from_emailheaders:custom_function_result.data.*.email_address"])
+
+    parameters = []
+
+    # build parameters list for 'find_listitem_1' call
+    for extract_email_from_emailheaders_data_item in extract_email_from_emailheaders_data:
+        if extract_email_from_emailheaders_data_item[0] is not None:
+            parameters.append({
+                "exact_match": True,
+                "list": "VIP",
+                "values": extract_email_from_emailheaders_data_item[0],
+            })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("find listitem", parameters=parameters, name="find_listitem_1", assets=["phantom"])
 
     return
 

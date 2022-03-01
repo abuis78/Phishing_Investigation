@@ -21,14 +21,14 @@
                     "targetPort": "12_in"
                 },
                 {
-                    "id": "port_2_to_port_18",
+                    "id": "port_2_to_port_19",
                     "sourceNode": "2",
                     "sourcePort": "2_out",
-                    "targetNode": "18",
-                    "targetPort": "18_in"
+                    "targetNode": "19",
+                    "targetPort": "19_in"
                 }
             ],
-            "hash": "96623a736800ee78e083484e24f91c814b1f6580",
+            "hash": "d5b27b373ba9e4572cb60edaf1e30aff2fb4eeda",
             "nodes": {
                 "0": {
                     "data": {
@@ -43,7 +43,7 @@
                     "id": "0",
                     "type": "start",
                     "x": 980,
-                    "y": 420
+                    "y": 419.9999999999999
                 },
                 "1": {
                     "data": {
@@ -492,8 +492,52 @@
                     "errors": {},
                     "id": "18",
                     "type": "utility",
-                    "x": 960,
-                    "y": 820
+                    "x": 940,
+                    "y": 880
+                },
+                "19": {
+                    "data": {
+                        "action": "find listitem",
+                        "actionType": "investigate",
+                        "advanced": {
+                            "join": []
+                        },
+                        "connector": "Phantom",
+                        "connectorConfigs": [
+                            "phantom"
+                        ],
+                        "connectorId": "deb82aa9-22cc-4675-9cf1-534b8d006eb7",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "find_listitem_1",
+                        "id": "19",
+                        "parameters": {
+                            "exact_match": true,
+                            "list": "VIP",
+                            "values": "extract_email_from_emailheaders:custom_function_result.data.*.email_address"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "list"
+                            },
+                            {
+                                "data_type": "string",
+                                "field": "values"
+                            },
+                            {
+                                "data_type": "boolean",
+                                "default": true,
+                                "field": "exact_match"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "19",
+                    "type": "action",
+                    "x": 980,
+                    "y": 804.5
                 },
                 "2": {
                     "data": {
@@ -589,7 +633,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T11:11:15.024464+00:00",
+    "create_time": "2022-03-01T12:11:00.368733+00:00",
     "draft_mode": false,
     "labels": [
         "*"
