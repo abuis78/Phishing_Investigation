@@ -206,7 +206,7 @@ def extract_domain_from_dkim_signature(action=None, success=None, container=None
         phantom.debug(domain[0])
         dkim_domain = domain[0]
         
-    if dkim_domain == extract_email_from_emailheaders_data___domain:
+    if dkim_domain == extract_email_from_emailheaders_data___domain[0]:
         phantom.debug('same Domain')
     else:
         phantom.debug('not same Domainn')
