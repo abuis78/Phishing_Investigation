@@ -26,11 +26,11 @@
                     "targetPort": "10_in"
                 },
                 {
-                    "id": "port_2_to_port_11",
+                    "id": "port_2_to_port_13",
                     "sourceNode": "2",
                     "sourcePort": "2_out",
-                    "targetNode": "11",
-                    "targetPort": "11_in"
+                    "targetNode": "13",
+                    "targetPort": "13_in"
                 },
                 {
                     "conditions": [
@@ -38,13 +38,14 @@
                             "index": 0
                         }
                     ],
-                    "id": "port_11_to_port_12",
-                    "sourceNode": "11",
-                    "sourcePort": "11_out",
+                    "id": "port_13_to_port_12",
+                    "sourceNode": "13",
+                    "sourcePort": "13_out",
                     "targetNode": "12",
                     "targetPort": "12_in"
                 }
             ],
+            "hash": "487ca1494f008a48fbeaac458905e2bc258b67fd",
             "nodes": {
                 "0": {
                     "data": {
@@ -221,38 +222,6 @@
                     "x": 960,
                     "y": 1180
                 },
-                "11": {
-                    "data": {
-                        "advanced": {
-                            "customName": "VIP check",
-                            "customNameId": 0,
-                            "join": []
-                        },
-                        "conditions": [
-                            {
-                                "comparisons": [
-                                    {
-                                        "conditionIndex": 0,
-                                        "op": "in",
-                                        "param": "extract_email_from_emailheaders:custom_function_result.data.*.email_address",
-                                        "value": "custom_list:VIP"
-                                    }
-                                ],
-                                "conditionIndex": 0,
-                                "logic": "and"
-                            }
-                        ],
-                        "functionId": 2,
-                        "functionName": "vip_check",
-                        "id": "11",
-                        "type": "filter"
-                    },
-                    "errors": {},
-                    "id": "11",
-                    "type": "filter",
-                    "x": 1020,
-                    "y": 824.5
-                },
                 "12": {
                     "data": {
                         "advanced": {
@@ -416,8 +385,40 @@
                     "errors": {},
                     "id": "12",
                     "type": "utility",
-                    "x": 1270,
-                    "y": 984.5
+                    "x": 760,
+                    "y": 1000
+                },
+                "13": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "in",
+                                        "param": "extract_email_from_emailheaders:custom_function_result.data.*.email_address",
+                                        "value": "custom_list:VIP"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "display": "If",
+                                "logic": "and",
+                                "type": "if"
+                            }
+                        ],
+                        "functionId": 2,
+                        "functionName": "decision_2",
+                        "id": "13",
+                        "type": "decision"
+                    },
+                    "errors": {},
+                    "id": "13",
+                    "type": "decision",
+                    "x": 1060,
+                    "y": 820
                 },
                 "2": {
                     "data": {
@@ -513,7 +514,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T09:56:03.427647+00:00",
+    "create_time": "2022-03-01T09:56:57.635680+00:00",
     "draft_mode": false,
     "labels": [
         "*"
