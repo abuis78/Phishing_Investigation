@@ -24,7 +24,7 @@ def custom_list_value_in_strings(custom_list=None, comparison_strings=None, **kw
     misses = []
 
     # Loop through each comparison string
-    phantom.debug(comparison_strings)
+    phantom.debug('comparison_strings: {}'.format(comparison_strings))
     for comparison_string in comparison_strings:
 
         # Loop through the custom list to see if any list value is found in the comparison string
