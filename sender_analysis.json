@@ -21,14 +21,14 @@
                     "targetPort": "12_in"
                 },
                 {
-                    "id": "port_2_to_port_18",
+                    "id": "port_2_to_port_13",
                     "sourceNode": "2",
                     "sourcePort": "2_out",
-                    "targetNode": "18",
-                    "targetPort": "18_in"
+                    "targetNode": "13",
+                    "targetPort": "13_in"
                 }
             ],
-            "hash": "ad3f5fe97184e1691fa8f93dfdd5bcf8fc215ab9",
+            "hash": "abf92eb63e88fe2a2250ebe0fbc017c24e5ce335",
             "nodes": {
                 "0": {
                     "data": {
@@ -382,7 +382,7 @@
                                     {
                                         "conditionIndex": 0,
                                         "op": "in",
-                                        "param": "format_1:formatted_data",
+                                        "param": "extract_email_from_emailheaders:custom_function_result.data.*.email_address",
                                         "value": "custom_list:VIP"
                                     }
                                 ],
@@ -400,8 +400,8 @@
                     "errors": {},
                     "id": "13",
                     "type": "decision",
-                    "x": 1360,
-                    "y": 1120
+                    "x": 920,
+                    "y": 780
                 },
                 "15": {
                     "data": {
@@ -589,7 +589,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T11:05:50.465829+00:00",
+    "create_time": "2022-03-01T11:06:52.320534+00:00",
     "draft_mode": false,
     "labels": [
         "*"
