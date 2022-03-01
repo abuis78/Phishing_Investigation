@@ -71,26 +71,14 @@
                     "targetPort": "24_in"
                 },
                 {
-                    "id": "port_24_to_port_26",
+                    "id": "port_24_to_port_25",
                     "sourceNode": "24",
                     "sourcePort": "24_out",
-                    "targetNode": "26",
-                    "targetPort": "26_in"
-                },
-                {
-                    "conditions": [
-                        {
-                            "index": 0
-                        }
-                    ],
-                    "id": "port_26_to_port_25",
-                    "sourceNode": "26",
-                    "sourcePort": "26_out",
                     "targetNode": "25",
                     "targetPort": "25_in"
                 }
             ],
-            "hash": "bfd89a2f52f39970f1a7e435da048850a294e215",
+            "hash": "1b61c36e89103e7450c329b5a16aaf6a0443aa47",
             "nodes": {
                 "0": {
                     "data": {
@@ -524,38 +512,6 @@
                     "userCode": "\n    # Write your custom code here...\n    import re\n    \n    domain_regex = r'((?!-))(xn--)?[a-z0-9][a-z0-9-_]{0,61}[a-z0-9]{0,1}\\.(xn--)?([a-z0-9\\-]{1,61}|[a-z0-9-]{1,30}\\.[a-z]{2,})'\n    dkim_domain = re.findall(domain_regex, container_artifact_cef_item_0, re.IGNORECASE)\n    phantom.debug(dkim_domain)\n",
                     "x": 960,
                     "y": 1760
-                },
-                "26": {
-                    "data": {
-                        "advanced": {
-                            "customName": "get Email Artifact ",
-                            "customNameId": 0,
-                            "join": []
-                        },
-                        "conditions": [
-                            {
-                                "comparisons": [
-                                    {
-                                        "conditionIndex": 0,
-                                        "op": "==",
-                                        "param": "artifact:*.name",
-                                        "value": "Email Artifact "
-                                    }
-                                ],
-                                "conditionIndex": 0,
-                                "logic": "and"
-                            }
-                        ],
-                        "functionId": 2,
-                        "functionName": "get_email_artifact",
-                        "id": "26",
-                        "type": "filter"
-                    },
-                    "errors": {},
-                    "id": "26",
-                    "type": "filter",
-                    "x": 1020,
-                    "y": 1584.5
                 }
             },
             "notes": ""
@@ -567,7 +523,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T13:09:51.471162+00:00",
+    "create_time": "2022-03-01T13:10:45.299041+00:00",
     "draft_mode": false,
     "labels": [
         "*"

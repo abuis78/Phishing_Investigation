@@ -179,7 +179,7 @@ def vip_path(action=None, success=None, container=None, results=None, handle=Non
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/noop", parameters=parameters, name="vip_path", callback=get_email_artifact)
+    phantom.custom_function(custom_function="Phishing_Investigation/noop", parameters=parameters, name="vip_path", callback=extract_domain_from_dkim_signature)
 
     return
 
@@ -206,24 +206,6 @@ def extract_domain_from_dkim_signature(action=None, success=None, container=None
     ################################################################################
     ## Custom Code End
     ################################################################################
-
-    return
-
-
-def get_email_artifact(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("get_email_artifact() called")
-
-    # collect filtered artifact ids and results for 'if' condition 1
-    matched_artifacts_1, matched_results_1 = phantom.condition(
-        container=container,
-        conditions=[
-            ["artifact:*.name", "==", "Email Artifact "]
-        ],
-        name="get_email_artifact:condition_1")
-
-    # call connected blocks if filtered artifacts or results
-    if matched_artifacts_1 or matched_results_1:
-        extract_domain_from_dkim_signature(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
 
     return
 
