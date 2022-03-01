@@ -39,7 +39,7 @@ def extract_email_from_emailheaders(action=None, success=None, container=None, r
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/regex_extract_email", parameters=parameters, name="extract_email_from_emailheaders", callback=matching_email_with_list)
+    phantom.custom_function(custom_function="Phishing_Investigation/regex_extract_email", parameters=parameters, name="extract_email_from_emailheaders", callback=format_email_in_str)
 
     return
 
@@ -47,12 +47,12 @@ def extract_email_from_emailheaders(action=None, success=None, container=None, r
 def add_tag_vip_to_email_artifact(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("add_tag_vip_to_email_artifact() called")
 
-    filtered_artifact_0_data_get_email_artifact_id = phantom.collect2(container=container, datapath=["filtered-data:get_email_artifact_id:condition_1:artifact:*.id","filtered-data:get_email_artifact_id:condition_1:artifact:*.id"])
+    create_email_artefact__result = phantom.collect2(container=container, datapath=["create_email_artefact:custom_function_result.data.artifact_id"])
 
     parameters = []
 
     # build parameters list for 'add_tag_vip_to_email_artifact' call
-    for filtered_artifact_0_item_get_email_artifact_id in filtered_artifact_0_data_get_email_artifact_id:
+    for create_email_artefact__result_item in create_email_artefact__result:
         parameters.append({
             "name": None,
             "tags": "VIP",
@@ -61,7 +61,7 @@ def add_tag_vip_to_email_artifact(action=None, success=None, container=None, res
             "cef_field": None,
             "cef_value": None,
             "input_json": None,
-            "artifact_id": filtered_artifact_0_item_get_email_artifact_id[0],
+            "artifact_id": create_email_artefact__result_item[0],
             "cef_data_type": None,
         })
 
@@ -92,29 +92,11 @@ def decision_2(action=None, success=None, container=None, results=None, handle=N
 
     # call connected blocks if condition 1 matched
     if found_match_1:
-        get_email_artifact_id(action=action, success=success, container=container, results=results, handle=handle)
+        add_tag_vip_to_email_artifact(action=action, success=success, container=container, results=results, handle=handle)
         return
 
     # check for 'else' condition 2
     join_vip_path(action=action, success=success, container=container, results=results, handle=handle)
-
-    return
-
-
-def get_email_artifact_id(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("get_email_artifact_id() called")
-
-    # collect filtered artifact ids and results for 'if' condition 1
-    matched_artifacts_1, matched_results_1 = phantom.condition(
-        container=container,
-        conditions=[
-            ["artifact:*.name", "==", "Email Artifact"]
-        ],
-        name="get_email_artifact_id:condition_1")
-
-    # call connected blocks if filtered artifacts or results
-    if matched_artifacts_1 or matched_results_1:
-        add_tag_vip_to_email_artifact(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
 
     return
 
@@ -239,29 +221,11 @@ def dkim_check(action=None, success=None, container=None, results=None, handle=N
 
     # call connected blocks if condition 1 matched
     if found_match_1:
-        filter_4(action=action, success=success, container=container, results=results, handle=handle)
         return
 
     # check for 'else' condition 2
     join_dkim_path(action=action, success=success, container=container, results=results, handle=handle)
-
-    return
-
-
-def filter_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("filter_4() called")
-
-    # collect filtered artifact ids and results for 'if' condition 1
-    matched_artifacts_1, matched_results_1 = phantom.condition(
-        container=container,
-        conditions=[
-            ["artifact:*.name", "==", "Email Artifact"]
-        ],
-        name="filter_4:condition_1")
-
-    # call connected blocks if filtered artifacts or results
-    if matched_artifacts_1 or matched_results_1:
-        convert_tag_list_into_string(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+    filter_sender_email_address(action=action, success=success, container=container, results=results, handle=handle)
 
     return
 
@@ -429,6 +393,144 @@ def search_vor_company_keywords_in_email(action=None, success=None, container=No
     phantom.save_run_data(key="search_vor_company_keywords_in_email:match_count", value=json.dumps(search_vor_company_keywords_in_email__match_count))
     phantom.save_run_data(key="search_vor_company_keywords_in_email:miss_count", value=json.dumps(search_vor_company_keywords_in_email__miss_count))
     phantom.save_run_data(key="search_vor_company_keywords_in_email:matches_keyword_list", value=json.dumps(search_vor_company_keywords_in_email__matches_keyword_list))
+
+    decision_3(container=container)
+
+    return
+
+
+def decision_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("decision_3() called")
+
+    # check for 'if' condition 1
+    found_match_1 = phantom.decision(
+        container=container,
+        conditions=[
+            ["search_vor_company_keywords_in_email:custom_function:match_count", ">", 0]
+        ])
+
+    # call connected blocks if condition 1 matched
+    if found_match_1:
+        artifact_update_19(action=action, success=success, container=container, results=results, handle=handle)
+        return
+
+    return
+
+
+def create_email_artefact(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("create_email_artefact() called")
+
+    id_value = container.get("id", None)
+    format_email_in_str = phantom.get_format_data(name="format_email_in_str")
+
+    parameters = []
+
+    parameters.append({
+        "container": id_value,
+        "name": "Sender email address",
+        "label": None,
+        "severity": "low",
+        "cef_field": "from",
+        "cef_value": format_email_in_str,
+        "cef_data_type": None,
+        "tags": None,
+        "run_automation": None,
+        "input_json": None,
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="Phishing_Investigation/artifact_create", parameters=parameters, name="create_email_artefact", callback=matching_email_with_list)
+
+    return
+
+
+def format_email_in_str(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("format_email_in_str() called")
+
+    template = """{0}"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "extract_email_from_emailheaders:custom_function_result.data.*.email_address"
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_email_in_str")
+
+    create_email_artefact(container=container)
+
+    return
+
+
+def filter_sender_email_address(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("filter_sender_email_address() called")
+
+    # collect filtered artifact ids and results for 'if' condition 1
+    matched_artifacts_1, matched_results_1 = phantom.condition(
+        container=container,
+        conditions=[
+            ["artifact:*.name", "==", "Sender email address"]
+        ],
+        name="filter_sender_email_address:condition_1")
+
+    # call connected blocks if filtered artifacts or results
+    if matched_artifacts_1 or matched_results_1:
+        convert_tag_list_into_string(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+
+    return
+
+
+def artifact_update_19(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("artifact_update_19() called")
+
+    create_email_artefact__result = phantom.collect2(container=container, datapath=["create_email_artefact:custom_function_result.data.artifact_id"])
+    search_vor_company_keywords_in_email__matches_keyword_list = json.loads(phantom.get_run_data(key="search_vor_company_keywords_in_email:matches_keyword_list"))
+
+    parameters = []
+
+    # build parameters list for 'artifact_update_19' call
+    for create_email_artefact__result_item in create_email_artefact__result:
+        parameters.append({
+            "artifact_id": create_email_artefact__result_item[0],
+            "name": None,
+            "label": None,
+            "severity": None,
+            "cef_field": "matches_keyword_list",
+            "cef_value": search_vor_company_keywords_in_email__matches_keyword_list,
+            "cef_data_type": None,
+            "tags": None,
+            "input_json": None,
+        })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="Phishing_Investigation/artifact_update", parameters=parameters, name="artifact_update_19")
 
     return
 
