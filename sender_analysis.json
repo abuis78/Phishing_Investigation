@@ -28,7 +28,7 @@
                     "targetPort": "18_in"
                 }
             ],
-            "hash": "623bc9ad9a9b5731cb7864b95ede2bbcc020b43b",
+            "hash": "96623a736800ee78e083484e24f91c814b1f6580",
             "nodes": {
                 "0": {
                     "data": {
@@ -357,7 +357,7 @@
                                 "input_2": "custom_list_value_in_strings_11:custom_function_result.data.miss_count",
                                 "input_3": "custom_list_value_in_strings_11:custom_function_result.data.matches.*.match",
                                 "input_4": "custom_list_value_in_strings_11:custom_function_result.data.misses.*.miss",
-                                "input_5": null,
+                                "input_5": "extract_email_from_emailheaders:custom_function_result.data.*.email_address",
                                 "input_6": null,
                                 "input_7": null,
                                 "input_8": null,
@@ -589,7 +589,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T11:10:44.829663+00:00",
+    "create_time": "2022-03-01T11:11:15.024464+00:00",
     "draft_mode": false,
     "labels": [
         "*"
