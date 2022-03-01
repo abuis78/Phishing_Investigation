@@ -45,7 +45,7 @@
                     "targetPort": "12_in"
                 }
             ],
-            "hash": "487ca1494f008a48fbeaac458905e2bc258b67fd",
+            "hash": "e88c9dbab16632fafc9c17e1a922bc49de31f656",
             "nodes": {
                 "0": {
                     "data": {
@@ -369,10 +369,10 @@
                         "utilityType": "custom_function",
                         "values": {
                             "debug": {
-                                "input_1": "filtered-data:vip_check:condition_1:extract_email_from_emailheaders:custom_function_result.message",
+                                "input_1": "",
                                 "input_10": null,
-                                "input_2": "filtered-data:vip_check:condition_1:extract_email_from_emailheaders:custom_function_result.success",
-                                "input_3": "filtered-data:vip_check:condition_1:extract_email_from_emailheaders:custom_function_result.data",
+                                "input_2": "",
+                                "input_3": "",
                                 "input_4": "extract_email_from_emailheaders:custom_function_result.data.*.email_address",
                                 "input_5": null,
                                 "input_6": null,
@@ -514,7 +514,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T09:56:57.635680+00:00",
+    "create_time": "2022-03-01T09:57:18.305436+00:00",
     "draft_mode": false,
     "labels": [
         "*"
