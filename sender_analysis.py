@@ -261,7 +261,7 @@ def filter_4(action=None, success=None, container=None, results=None, handle=Non
 
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_1 or matched_results_1:
-        artifact_update_12(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+        tags_list(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
 
     return
 
@@ -270,6 +270,7 @@ def artifact_update_12(action=None, success=None, container=None, results=None, 
     phantom.debug("artifact_update_12() called")
 
     filtered_artifact_0_data_filter_4 = phantom.collect2(container=container, datapath=["filtered-data:filter_4:condition_1:artifact:*.id","filtered-data:filter_4:condition_1:artifact:*.id"])
+    tags_list = phantom.get_format_data(name="tags_list")
 
     parameters = []
 
@@ -283,7 +284,7 @@ def artifact_update_12(action=None, success=None, container=None, results=None, 
             "cef_field": None,
             "cef_value": None,
             "cef_data_type": None,
-            "tags": "internal",
+            "tags": tags_list,
             "input_json": None,
         })
 
@@ -334,6 +335,33 @@ def dkim_path(action=None, success=None, container=None, results=None, handle=No
     ################################################################################
 
     phantom.custom_function(custom_function="Phishing_Investigation/noop", parameters=parameters, name="dkim_path")
+
+    return
+
+
+def tags_list(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("tags_list() called")
+
+    template = """{0}, internal"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "filtered-data:filter_4:condition_1:artifact:*.tags"
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="tags_list")
+
+    artifact_update_12(container=container)
 
     return
 

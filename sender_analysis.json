@@ -99,18 +99,6 @@
                 {
                     "conditions": [
                         {
-                            "index": 0
-                        }
-                    ],
-                    "id": "port_30_to_port_31",
-                    "sourceNode": "30",
-                    "sourcePort": "30_out",
-                    "targetNode": "31",
-                    "targetPort": "31_in"
-                },
-                {
-                    "conditions": [
-                        {
                             "index": 1
                         }
                     ],
@@ -126,9 +114,28 @@
                     "sourcePort": "31_out",
                     "targetNode": "32",
                     "targetPort": "32_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_30_to_port_34",
+                    "sourceNode": "30",
+                    "sourcePort": "30_out",
+                    "targetNode": "34",
+                    "targetPort": "34_in"
+                },
+                {
+                    "id": "port_34_to_port_31",
+                    "sourceNode": "34",
+                    "sourcePort": "34_out",
+                    "targetNode": "31",
+                    "targetPort": "31_in"
                 }
             ],
-            "hash": "312c93b063315c658febaa78b624fa7e3ee03c91",
+            "hash": "293213e34a5b781be6e1c74c57516b737bd24ceb",
             "nodes": {
                 "0": {
                     "data": {
@@ -775,7 +782,7 @@
                                 "label": null,
                                 "name": null,
                                 "severity": null,
-                                "tags": "internal"
+                                "tags": "tags_list:formatted_data"
                             }
                         }
                     },
@@ -783,7 +790,7 @@
                     "id": "31",
                     "type": "utility",
                     "x": 780,
-                    "y": 2324.5
+                    "y": 2420
                 },
                 "32": {
                     "data": {
@@ -824,6 +831,28 @@
                     "type": "utility",
                     "x": 960,
                     "y": 2484.5
+                },
+                "34": {
+                    "data": {
+                        "advanced": {
+                            "customName": "tags list",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "tags_list",
+                        "id": "34",
+                        "parameters": [
+                            "filtered-data:filter_4:condition_1:artifact:*.tags"
+                        ],
+                        "template": "{0}, internal",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "34",
+                    "type": "format",
+                    "x": 780,
+                    "y": 2324.5
                 }
             },
             "notes": ""
@@ -835,7 +864,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T13:23:28.757364+00:00",
+    "create_time": "2022-03-01T13:25:28.249068+00:00",
     "draft_mode": false,
     "labels": [
         "*"
