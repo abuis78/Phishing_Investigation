@@ -35,7 +35,7 @@
                     "targetPort": "18_in"
                 }
             ],
-            "hash": "cbbddae3ec4faa1a5898f3e15360aec525f8b80a",
+            "hash": "9cda9c642e5f92f8c79e632f031e80d1d1a9a308",
             "nodes": {
                 "0": {
                     "data": {
@@ -359,9 +359,9 @@
                         "utilityType": "custom_function",
                         "values": {
                             "debug": {
-                                "input_1": "custom_list_value_in_strings_11:custom_function_result.data.matches.*.match",
+                                "input_1": "custom_list_value_in_strings_11:custom_function_result.data.match_count",
                                 "input_10": null,
-                                "input_2": "custom_list_value_in_strings_11:custom_function_result.data.misses.*.miss",
+                                "input_2": "custom_list_value_in_strings_11:custom_function_result.data.miss_count",
                                 "input_3": "",
                                 "input_4": "extract_email_from_emailheaders:custom_function_result.data.*.email_address",
                                 "input_5": null,
@@ -616,7 +616,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T10:39:10.544960+00:00",
+    "create_time": "2022-03-01T10:40:02.975824+00:00",
     "draft_mode": false,
     "labels": [
         "*"
