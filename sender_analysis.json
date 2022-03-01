@@ -21,14 +21,14 @@
                     "targetPort": "12_in"
                 },
                 {
-                    "id": "port_2_to_port_13",
+                    "id": "port_2_to_port_18",
                     "sourceNode": "2",
                     "sourcePort": "2_out",
-                    "targetNode": "13",
-                    "targetPort": "13_in"
+                    "targetNode": "18",
+                    "targetPort": "18_in"
                 }
             ],
-            "hash": "abf92eb63e88fe2a2250ebe0fbc017c24e5ce335",
+            "hash": "f57675da8e0389dbe8af601b2c7bdd60c6fc6bb1",
             "nodes": {
                 "0": {
                     "data": {
@@ -369,7 +369,7 @@
                     "id": "12",
                     "type": "utility",
                     "x": 960,
-                    "y": 1140
+                    "y": 1020
                 },
                 "13": {
                     "data": {
@@ -400,8 +400,8 @@
                     "errors": {},
                     "id": "13",
                     "type": "decision",
-                    "x": 920,
-                    "y": 780
+                    "x": 1540,
+                    "y": 820
                 },
                 "15": {
                     "data": {
@@ -484,7 +484,7 @@
                         "utilityType": "custom_function",
                         "values": {
                             "custom_list_value_in_strings": {
-                                "comparison_strings": "icloud",
+                                "comparison_strings": "extract_email_from_emailheaders:custom_function_result.data.*.email_address",
                                 "custom_list": "VIP"
                             }
                         }
@@ -493,7 +493,7 @@
                     "id": "18",
                     "type": "utility",
                     "x": 960,
-                    "y": 960
+                    "y": 820
                 },
                 "2": {
                     "data": {
@@ -589,7 +589,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T11:06:52.320534+00:00",
+    "create_time": "2022-03-01T11:09:22.866127+00:00",
     "draft_mode": false,
     "labels": [
         "*"
