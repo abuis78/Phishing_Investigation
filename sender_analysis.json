@@ -135,7 +135,7 @@
                     "targetPort": "38_in"
                 }
             ],
-            "hash": "dda496d96956347dbbed05b216af5e63ff5e2534",
+            "hash": "a85b8e2a167940bb6c2a4a4a236433538d129236",
             "nodes": {
                 "0": {
                     "data": {
@@ -853,7 +853,7 @@
                     "errors": {},
                     "id": "38",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    phantom.debug('TAG Liste {}'.format(container_artifact_header_item_0))\n    lat_list = [item for sublist in container_artifact_header_item_0 for item in sublist]\n    phantom.debug(lat_list)\n    convert_tag_list_into_string__tag_str_list = ','.join(container_artifact_header_item_0)\n    phantom.debug('STRING {}'.format(convert_tag_list_into_string__tag_str_list))\n\n",
+                    "userCode": "\n    # Write your custom code here...\n\n    lat_list = [item for sublist in container_artifact_header_item_0 for item in sublist]\n    phantom.debug(lat_list)\n    \n    convert_tag_list_into_string__tag_str_list = ','.join(lat_list)\n    phantom.debug('STRING {}'.format(convert_tag_list_into_string__tag_str_list))\n\n",
                     "x": -120,
                     "y": 1740
                 },
@@ -887,7 +887,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T14:12:02.044067+00:00",
+    "create_time": "2022-03-01T14:12:47.348132+00:00",
     "draft_mode": false,
     "labels": [
         "*"
