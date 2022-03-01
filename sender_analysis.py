@@ -397,8 +397,8 @@ def search_vor_company_keywords_in_email(action=None, success=None, container=No
     
     for item in keywoard_list:
         phantom.debug(item)
-        phantom.debug(extract_email_from_emailheaders_data___email_address)
-        ergebnis = re.findall(item, extract_email_from_emailheaders_data___email_address, re.IGNORECASE)
+        phantom.debug(extract_email_from_emailheaders_data___email_address[0])
+        ergebnis = re.findall(item, extract_email_from_emailheaders_data___email_address[0], re.IGNORECASE)
         phantom.debug(ergebnis)
 
     ################################################################################
