@@ -59,7 +59,7 @@
                     "targetPort": "20_in"
                 }
             ],
-            "hash": "0854e506ecb511de947e2f48517df8818a4e5572",
+            "hash": "81523525b2bf4582cf1e951071b48a0c4b269a4a",
             "nodes": {
                 "0": {
                     "data": {
@@ -246,8 +246,8 @@
                                 "comparisons": [
                                     {
                                         "conditionIndex": 0,
-                                        "op": ">=",
-                                        "param": "matching_email_with_list:custom_function_result.data.matches.*.match",
+                                        "op": ">",
+                                        "param": "matching_email_with_list:custom_function_result.data.match_count",
                                         "value": "0"
                                     }
                                 ],
@@ -592,7 +592,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T12:43:11.407991+00:00",
+    "create_time": "2022-03-01T12:43:47.004220+00:00",
     "draft_mode": false,
     "labels": [
         "*"

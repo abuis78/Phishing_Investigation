@@ -87,7 +87,7 @@ def decision_2(action=None, success=None, container=None, results=None, handle=N
     found_match_1 = phantom.decision(
         container=container,
         conditions=[
-            ["matching_email_with_list:custom_function_result.data.matches.*.match", ">=", 0]
+            ["matching_email_with_list:custom_function_result.data.match_count", ">", 0]
         ])
 
     # call connected blocks if condition 1 matched
