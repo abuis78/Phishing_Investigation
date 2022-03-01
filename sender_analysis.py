@@ -217,7 +217,8 @@ def dkim_check(action=None, success=None, container=None, results=None, handle=N
         container=container,
         conditions=[
             ["extract_domain_from_dkim_signature:custom_function:dkim_domain_check_result", "==", True]
-        ])
+        ],
+        scope="all")
 
     # call connected blocks if condition 1 matched
     if found_match_1:
@@ -233,7 +234,7 @@ def dkim_check(action=None, success=None, container=None, results=None, handle=N
 def artifact_update_12(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("artifact_update_12() called")
 
-    filtered_artifact_0_data_filter_4 = phantom.collect2(container=container, datapath=["filtered-data:filter_4:condition_1:artifact:*.id","filtered-data:filter_4:condition_1:artifact:*.id"])
+    filtered_artifact_0_data_filter_4 = phantom.collect2(container=container, datapath=["filtered-data:filter_4:condition_1:artifact:*.id","filtered-data:filter_4:condition_1:artifact:*.id"], scope="all")
     convert_tag_list_into_string__tag_str_list = json.loads(phantom.get_run_data(key="convert_tag_list_into_string:tag_str_list"))
 
     parameters = []
@@ -306,7 +307,7 @@ def dkim_path(action=None, success=None, container=None, results=None, handle=No
 def convert_tag_list_into_string(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("convert_tag_list_into_string() called")
 
-    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.tags"])
+    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.tags"], scope="all")
 
     container_artifact_header_item_0 = [item[0] for item in container_artifact_data]
 
