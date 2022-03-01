@@ -50,9 +50,16 @@
                     "sourcePort": "23_out",
                     "targetNode": "13",
                     "targetPort": "13_in"
+                },
+                {
+                    "id": "port_23_to_port_20",
+                    "sourceNode": "23",
+                    "sourcePort": "23_out",
+                    "targetNode": "20",
+                    "targetPort": "20_in"
                 }
             ],
-            "hash": "69e9a8589271e848cd817f4aec878da282d17e37",
+            "hash": "0854e506ecb511de947e2f48517df8818a4e5572",
             "nodes": {
                 "0": {
                     "data": {
@@ -492,11 +499,11 @@
                         "utilityType": "custom_function",
                         "values": {
                             "debug": {
-                                "input_1": "finde_email_in_vip_list:action_result.summary.found_matches",
+                                "input_1": "matching_email_with_list:custom_function_result.data.matches.*.match",
                                 "input_10": null,
-                                "input_2": "finde_email_in_vip_list:action_result.status",
-                                "input_3": "finde_email_in_vip_list:action_result.parameter.exact_match",
-                                "input_4": "finde_email_in_vip_list:action_result.summary",
+                                "input_2": "matching_email_with_list:custom_function_result.data.misses.*.miss",
+                                "input_3": "matching_email_with_list:custom_function_result.data.match_count",
+                                "input_4": "matching_email_with_list:custom_function_result.data.miss_count",
                                 "input_5": null,
                                 "input_6": null,
                                 "input_7": null,
@@ -585,7 +592,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T12:42:17.684951+00:00",
+    "create_time": "2022-03-01T12:43:11.407991+00:00",
     "draft_mode": false,
     "labels": [
         "*"

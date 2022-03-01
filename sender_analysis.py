@@ -119,20 +119,22 @@ def get_email_artifact_id(action=None, success=None, container=None, results=Non
 def debug_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("debug_2() called")
 
-    finde_email_in_vip_list_result_data = phantom.collect2(container=container, datapath=["finde_email_in_vip_list:action_result.summary.found_matches","finde_email_in_vip_list:action_result.status","finde_email_in_vip_list:action_result.parameter.exact_match","finde_email_in_vip_list:action_result.summary","finde_email_in_vip_list:action_result.parameter.context.artifact_id"], action_results=results)
+    matching_email_with_list_data_matches = phantom.collect2(container=container, datapath=["matching_email_with_list:custom_function_result.data.matches.*.match"])
+    matching_email_with_list_data_misses = phantom.collect2(container=container, datapath=["matching_email_with_list:custom_function_result.data.misses.*.miss"])
+    matching_email_with_list__result = phantom.collect2(container=container, datapath=["matching_email_with_list:custom_function_result.data.match_count","matching_email_with_list:custom_function_result.data.miss_count"])
 
-    finde_email_in_vip_list_summary_found_matches = [item[0] for item in finde_email_in_vip_list_result_data]
-    finde_email_in_vip_list_result_item_1 = [item[1] for item in finde_email_in_vip_list_result_data]
-    finde_email_in_vip_list_parameter_exact_match = [item[2] for item in finde_email_in_vip_list_result_data]
-    finde_email_in_vip_list_result_item_3 = [item[3] for item in finde_email_in_vip_list_result_data]
+    matching_email_with_list_data_matches___match = [item[0] for item in matching_email_with_list_data_matches]
+    matching_email_with_list_data_misses___miss = [item[0] for item in matching_email_with_list_data_misses]
+    matching_email_with_list_data_match_count = [item[0] for item in matching_email_with_list__result]
+    matching_email_with_list_data_miss_count = [item[1] for item in matching_email_with_list__result]
 
     parameters = []
 
     parameters.append({
-        "input_1": finde_email_in_vip_list_summary_found_matches,
-        "input_2": finde_email_in_vip_list_result_item_1,
-        "input_3": finde_email_in_vip_list_parameter_exact_match,
-        "input_4": finde_email_in_vip_list_result_item_3,
+        "input_1": matching_email_with_list_data_matches___match,
+        "input_2": matching_email_with_list_data_misses___miss,
+        "input_3": matching_email_with_list_data_match_count,
+        "input_4": matching_email_with_list_data_miss_count,
         "input_5": None,
         "input_6": None,
         "input_7": None,
@@ -180,7 +182,18 @@ def matching_email_with_list(action=None, success=None, container=None, results=
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/custom_list_value_in_strings", parameters=parameters, name="matching_email_with_list", callback=decision_2)
+    phantom.custom_function(custom_function="Phishing_Investigation/custom_list_value_in_strings", parameters=parameters, name="matching_email_with_list", callback=matching_email_with_list_callback)
+
+    return
+
+
+def matching_email_with_list_callback(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("matching_email_with_list_callback() called")
+
+    
+    decision_2(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
+    debug_2(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
+
 
     return
 
