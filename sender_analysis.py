@@ -101,25 +101,18 @@ def add_tag_vip_to_email_artifact(action=None, success=None, container=None, res
 def debug_8(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("debug_8() called")
 
-    custom_list_value_in_strings_11__result = phantom.collect2(container=container, datapath=["custom_list_value_in_strings_11:custom_function_result.data.match_count","custom_list_value_in_strings_11:custom_function_result.data.miss_count"])
-    custom_list_value_in_strings_11_data_matches = phantom.collect2(container=container, datapath=["custom_list_value_in_strings_11:custom_function_result.data.matches.*.match"])
-    custom_list_value_in_strings_11_data_misses = phantom.collect2(container=container, datapath=["custom_list_value_in_strings_11:custom_function_result.data.misses.*.miss"])
-    extract_email_from_emailheaders_data = phantom.collect2(container=container, datapath=["extract_email_from_emailheaders:custom_function_result.data.*.email_address"])
+    find_listitem_1_result_data = phantom.collect2(container=container, datapath=["find_listitem_1:action_result.parameter.exact_match","find_listitem_1:action_result.parameter.context.artifact_id"], action_results=results)
 
-    custom_list_value_in_strings_11_data_match_count = [item[0] for item in custom_list_value_in_strings_11__result]
-    custom_list_value_in_strings_11_data_miss_count = [item[1] for item in custom_list_value_in_strings_11__result]
-    custom_list_value_in_strings_11_data_matches___match = [item[0] for item in custom_list_value_in_strings_11_data_matches]
-    custom_list_value_in_strings_11_data_misses___miss = [item[0] for item in custom_list_value_in_strings_11_data_misses]
-    extract_email_from_emailheaders_data___email_address = [item[0] for item in extract_email_from_emailheaders_data]
+    find_listitem_1_parameter_exact_match = [item[0] for item in find_listitem_1_result_data]
 
     parameters = []
 
     parameters.append({
-        "input_1": custom_list_value_in_strings_11_data_match_count,
-        "input_2": custom_list_value_in_strings_11_data_miss_count,
-        "input_3": custom_list_value_in_strings_11_data_matches___match,
-        "input_4": custom_list_value_in_strings_11_data_misses___miss,
-        "input_5": extract_email_from_emailheaders_data___email_address,
+        "input_1": find_listitem_1_parameter_exact_match,
+        "input_2": None,
+        "input_3": None,
+        "input_4": None,
+        "input_5": None,
         "input_6": None,
         "input_7": None,
         "input_8": None,
@@ -201,7 +194,7 @@ def custom_list_value_in_strings_11(action=None, success=None, container=None, r
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/custom_list_value_in_strings", parameters=parameters, name="custom_list_value_in_strings_11", callback=debug_8)
+    phantom.custom_function(custom_function="Phishing_Investigation/custom_list_value_in_strings", parameters=parameters, name="custom_list_value_in_strings_11")
 
     return
 
@@ -234,7 +227,7 @@ def find_listitem_1(action=None, success=None, container=None, results=None, han
     ## Custom Code End
     ################################################################################
 
-    phantom.act("find listitem", parameters=parameters, name="find_listitem_1", assets=["phantom"])
+    phantom.act("find listitem", parameters=parameters, name="find_listitem_1", assets=["phantom"], callback=debug_8)
 
     return
 
