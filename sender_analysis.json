@@ -135,7 +135,7 @@
                     "targetPort": "38_in"
                 }
             ],
-            "hash": "f7f9228700ca7e5a9a818a0625919b66bd868d1d",
+            "hash": "4328aa6fcc7987ae9d36b32ded6bd6ae1c95d3c5",
             "nodes": {
                 "0": {
                     "data": {
@@ -853,7 +853,7 @@
                     "errors": {},
                     "id": "38",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n\n    lat_list = [item for sublist in container_artifact_header_item_0 for item in sublist]\n    phantom.debug(lat_list)\n    \n    tag_list = ','.join(lat_list)\n    \n    convert_tag_list_into_string__tag_str_list += 'internal'\n\n",
+                    "userCode": "\n    # Write your custom code here...\n\n    lat_list = [item for sublist in container_artifact_header_item_0 for item in sublist]\n    phantom.debug(lat_list)\n    \n    tag_list = ','.join(lat_list)\n    \n    convert_tag_list_into_string__tag_str_list += ', internal'\n\n",
                     "x": -120,
                     "y": 1740
                 },
@@ -887,7 +887,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T14:15:10.886130+00:00",
+    "create_time": "2022-03-01T14:15:21.020916+00:00",
     "draft_mode": false,
     "labels": [
         "*"
