@@ -30,6 +30,7 @@ def custom_list_value_in_strings(custom_list=None, comparison_strings=None, **kw
         # Loop through the custom list to see if any list value is found in the comparison string
         for row in this_list:
             for cell in row:
+                phantom.debug(cell)
                 if comparison_string.find(cell) != -1:
                     matches.append({"match": cell})
                 else:
