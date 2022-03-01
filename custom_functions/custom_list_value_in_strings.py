@@ -31,6 +31,8 @@ def custom_list_value_in_strings(custom_list=None, comparison_strings=None, **kw
         for row in this_list:
             for cell in row:
                 phantom.debug('Cell: {}'.format(cell))
+                lala = comparison_string.find(cell)
+                phantom.debug('Match: {}'.format(lala))
                 if comparison_string.find(cell) != -1:
                     matches.append({"match": cell})
                 else:
