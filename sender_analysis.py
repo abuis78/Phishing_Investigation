@@ -102,10 +102,12 @@ def debug_8(action=None, success=None, container=None, results=None, handle=None
     phantom.debug("debug_8() called")
 
     custom_list_value_in_strings_11__result = phantom.collect2(container=container, datapath=["custom_list_value_in_strings_11:custom_function_result.data.match_count","custom_list_value_in_strings_11:custom_function_result.data.miss_count"])
+    custom_list_value_in_strings_11_data_matches = phantom.collect2(container=container, datapath=["custom_list_value_in_strings_11:custom_function_result.data.matches.*.match"])
     extract_email_from_emailheaders_data = phantom.collect2(container=container, datapath=["extract_email_from_emailheaders:custom_function_result.data.*.email_address"])
 
     custom_list_value_in_strings_11_data_match_count = [item[0] for item in custom_list_value_in_strings_11__result]
     custom_list_value_in_strings_11_data_miss_count = [item[1] for item in custom_list_value_in_strings_11__result]
+    custom_list_value_in_strings_11_data_matches___match = [item[0] for item in custom_list_value_in_strings_11_data_matches]
     extract_email_from_emailheaders_data___email_address = [item[0] for item in extract_email_from_emailheaders_data]
 
     parameters = []
@@ -113,7 +115,7 @@ def debug_8(action=None, success=None, container=None, results=None, handle=None
     parameters.append({
         "input_1": custom_list_value_in_strings_11_data_match_count,
         "input_2": custom_list_value_in_strings_11_data_miss_count,
-        "input_3": None,
+        "input_3": custom_list_value_in_strings_11_data_matches___match,
         "input_4": extract_email_from_emailheaders_data___email_address,
         "input_5": None,
         "input_6": None,
