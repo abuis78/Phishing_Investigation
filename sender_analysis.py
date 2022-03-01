@@ -176,13 +176,13 @@ def filter_3(action=None, success=None, container=None, results=None, handle=Non
 def custom_list_value_in_strings_11(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("custom_list_value_in_strings_11() called")
 
-    format_2 = phantom.get_format_data(name="format_2")
+    format_2__as_list = phantom.get_format_data(name="format_2__as_list")
 
     parameters = []
 
     parameters.append({
         "custom_list": "VIP",
-        "comparison_strings": format_2,
+        "comparison_strings": format_2__as_list,
     })
 
     ################################################################################
@@ -203,7 +203,7 @@ def custom_list_value_in_strings_11(action=None, success=None, container=None, r
 def format_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("format_2() called")
 
-    template = """{0}"""
+    template = """%%\n{0}\n%%"""
 
     # parameter list for template variable replacement
     parameters = [
