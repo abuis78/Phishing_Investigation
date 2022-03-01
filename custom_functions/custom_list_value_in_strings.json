@@ -1,5 +1,5 @@
 {
-    "create_time": "2022-03-01T11:31:10.909466+00:00",
+    "create_time": "2022-03-01T11:32:33.110252+00:00",
     "custom_function_id": "cadb863eee6b0e8298b39bea7eb7087d79842e68",
     "description": "Iterates through all items of a custom list to see if any list value (i.e. \"sample.com\") exists in the input you are comparing it to (i.e \"findme.sample.com\"). Returns a list of matches, a list of misses, a count of matches, and a count of misses.",
     "draft_mode": false,
