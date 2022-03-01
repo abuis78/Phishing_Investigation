@@ -52,14 +52,14 @@
                     "targetPort": "20_in"
                 },
                 {
-                    "id": "port_2_to_port_21",
+                    "id": "port_2_to_port_22",
                     "sourceNode": "2",
                     "sourcePort": "2_out",
-                    "targetNode": "21",
-                    "targetPort": "21_in"
+                    "targetNode": "22",
+                    "targetPort": "22_in"
                 }
             ],
-            "hash": "b2dba658a22ea68f16bbf6ad75f065ee45f6499d",
+            "hash": "8d9dd2d435dc4089b1f62723f4c88a30a07ebb82",
             "nodes": {
                 "0": {
                     "data": {
@@ -563,7 +563,7 @@
                     "x": 1280,
                     "y": 1044.5
                 },
-                "21": {
+                "22": {
                     "data": {
                         "advanced": {
                             "join": []
@@ -573,9 +573,9 @@
                             "name": "custom_list_value_in_strings",
                             "repoName": "Phishing_Investigation"
                         },
-                        "functionId": 3,
-                        "functionName": "custom_list_value_in_strings_3",
-                        "id": "21",
+                        "functionId": 4,
+                        "functionName": "custom_list_value_in_strings_4",
+                        "id": "22",
                         "selectMore": false,
                         "type": "utility",
                         "utilities": {
@@ -599,7 +599,7 @@
                                             "*"
                                         ],
                                         "description": "String to use for comparison.",
-                                        "inputType": "list",
+                                        "inputType": "item",
                                         "label": "comparison_strings",
                                         "name": "comparison_strings",
                                         "placeholder": "comparison_strings",
@@ -620,10 +620,10 @@
                         }
                     },
                     "errors": {},
-                    "id": "21",
+                    "id": "22",
                     "type": "utility",
                     "x": 960,
-                    "y": 784.5
+                    "y": 764.5
                 }
             },
             "notes": ""
@@ -635,7 +635,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T12:21:58.603646+00:00",
+    "create_time": "2022-03-01T12:29:03.409706+00:00",
     "draft_mode": false,
     "labels": [
         "*"
