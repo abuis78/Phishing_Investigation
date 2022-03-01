@@ -45,7 +45,7 @@
                     "targetPort": "12_in"
                 }
             ],
-            "hash": "5c11c016ec404c3940b0ab186910e472e1b0c32e",
+            "hash": "a4579fb4566ee59ecfe37e39e298c33bf6f754b5",
             "nodes": {
                 "0": {
                     "data": {
@@ -405,7 +405,7 @@
                                 "input_10": null,
                                 "input_2": "filtered-data:vip_check:condition_1:extract_email_from_emailheaders:custom_function_result.success",
                                 "input_3": "filtered-data:vip_check:condition_1:extract_email_from_emailheaders:custom_function_result.data",
-                                "input_4": null,
+                                "input_4": "extract_email_from_emailheaders:custom_function_result.data.*.email_address",
                                 "input_5": null,
                                 "input_6": null,
                                 "input_7": null,
@@ -514,7 +514,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T09:55:32.795911+00:00",
+    "create_time": "2022-03-01T09:56:03.427647+00:00",
     "draft_mode": false,
     "labels": [
         "*"

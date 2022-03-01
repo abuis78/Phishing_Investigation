@@ -120,10 +120,12 @@ def debug_8(action=None, success=None, container=None, results=None, handle=None
     phantom.debug("debug_8() called")
 
     filtered_cf_result_0 = phantom.collect2(container=container, datapath=["filtered-data:vip_check:condition_1:extract_email_from_emailheaders:custom_function_result.message","filtered-data:vip_check:condition_1:extract_email_from_emailheaders:custom_function_result.success","filtered-data:vip_check:condition_1:extract_email_from_emailheaders:custom_function_result.data"])
+    extract_email_from_emailheaders_data = phantom.collect2(container=container, datapath=["extract_email_from_emailheaders:custom_function_result.data.*.email_address"])
 
     filtered_cf_result_0_message = [item[0] for item in filtered_cf_result_0]
     filtered_cf_result_0_success = [item[1] for item in filtered_cf_result_0]
     filtered_cf_result_0_data = [item[2] for item in filtered_cf_result_0]
+    extract_email_from_emailheaders_data___email_address = [item[0] for item in extract_email_from_emailheaders_data]
 
     parameters = []
 
@@ -131,7 +133,7 @@ def debug_8(action=None, success=None, container=None, results=None, handle=None
         "input_1": filtered_cf_result_0_message,
         "input_2": filtered_cf_result_0_success,
         "input_3": filtered_cf_result_0_data,
-        "input_4": None,
+        "input_4": extract_email_from_emailheaders_data___email_address,
         "input_5": None,
         "input_6": None,
         "input_7": None,
