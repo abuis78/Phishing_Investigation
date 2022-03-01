@@ -59,7 +59,7 @@
                     "targetPort": "20_in"
                 }
             ],
-            "hash": "d623fc3303ac6676094d9f3bdb83007c43200d19",
+            "hash": "02b2dca938c241a8c7618b7d5b51fd3ae18fd41d",
             "nodes": {
                 "0": {
                     "data": {
@@ -319,7 +319,7 @@
                         "functionName": "finde_email_in_vip_list",
                         "id": "19",
                         "parameters": {
-                            "exact_match": true,
+                            "exact_match": false,
                             "list": "VIP",
                             "values": "extract_email_from_emailheaders:custom_function_result.data.*.email_address"
                         },
@@ -573,7 +573,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T12:16:47.003363+00:00",
+    "create_time": "2022-03-01T12:18:24.255746+00:00",
     "draft_mode": false,
     "labels": [
         "*"

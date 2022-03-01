@@ -129,7 +129,7 @@ def finde_email_in_vip_list(action=None, success=None, container=None, results=N
     for extract_email_from_emailheaders_data_item in extract_email_from_emailheaders_data:
         if extract_email_from_emailheaders_data_item[0] is not None:
             parameters.append({
-                "exact_match": True,
+                "exact_match": False,
                 "list": "VIP",
                 "values": extract_email_from_emailheaders_data_item[0],
             })
