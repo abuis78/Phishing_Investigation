@@ -35,7 +35,7 @@
                     "targetPort": "18_in"
                 }
             ],
-            "hash": "626b5b367c2a60645be174e5aa5c77bcc5f2d84f",
+            "hash": "2c9880b649562372bf2972d6d7215adfb63fb136",
             "nodes": {
                 "0": {
                     "data": {
@@ -492,7 +492,7 @@
                         "values": {
                             "custom_list_value_in_strings": {
                                 "comparison_strings": "format_2:formatted_data.*",
-                                "custom_list": "VIP"
+                                "custom_list": "vip"
                             }
                         }
                     },
@@ -616,7 +616,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T10:47:22.816605+00:00",
+    "create_time": "2022-03-01T10:49:18.729936+00:00",
     "draft_mode": false,
     "labels": [
         "*"
