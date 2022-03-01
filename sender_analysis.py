@@ -375,6 +375,10 @@ def convert_tag_list_into_string(action=None, success=None, container=None, resu
 def search_vor_company_keywords_in_email(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("search_vor_company_keywords_in_email() called")
 
+    extract_email_from_emailheaders_data = phantom.collect2(container=container, datapath=["extract_email_from_emailheaders:custom_function_result.data.*.email_address"])
+
+    extract_email_from_emailheaders_data___email_address = [item[0] for item in extract_email_from_emailheaders_data]
+
     input_parameter_0 = "Company_Keywords"
 
     search_vor_company_keywords_in_email__result = None
@@ -384,13 +388,16 @@ def search_vor_company_keywords_in_email(action=None, success=None, container=No
     ################################################################################
 
     # Write your custom code here...
+    import re
     success, message, c_keywoards = phantom.get_list(list_name=input_parameter_0)
     phantom.debug('phantom.get_list results: success: {}, message: {}, execs: {}'.format(success, message, c_keywoards))
     keywoard_list = [item for sublist in c_keywoards for item in sublist]
     
     phantom.debug(keywoard_list)
     
-    
+    for item in keywoard_list:
+        ergebnis = re.findall(item, extract_email_from_emailheaders_data___email_address, re.IGNORECASE)
+        phantom.debug(ergebnis)
 
     ################################################################################
     ## Custom Code End
