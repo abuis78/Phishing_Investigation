@@ -75,7 +75,7 @@ def add_tag_vip_to_email_artifact(action=None, success=None, container=None, res
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/artifact_update", parameters=parameters, name="add_tag_vip_to_email_artifact")
+    phantom.custom_function(custom_function="Phishing_Investigation/artifact_update", parameters=parameters, name="add_tag_vip_to_email_artifact", callback=join_vip_path)
 
     return
 
@@ -95,6 +95,9 @@ def decision_2(action=None, success=None, container=None, results=None, handle=N
         get_email_artifact_id(action=action, success=success, container=container, results=results, handle=handle)
         return
 
+    # check for 'else' condition 2
+    join_vip_path(action=action, success=success, container=container, results=results, handle=handle)
+
     return
 
 
@@ -112,48 +115,6 @@ def get_email_artifact_id(action=None, success=None, container=None, results=Non
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_1 or matched_results_1:
         add_tag_vip_to_email_artifact(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
-
-    return
-
-
-def debug_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("debug_2() called")
-
-    matching_email_with_list_data_matches = phantom.collect2(container=container, datapath=["matching_email_with_list:custom_function_result.data.matches.*.match"])
-    matching_email_with_list_data_misses = phantom.collect2(container=container, datapath=["matching_email_with_list:custom_function_result.data.misses.*.miss"])
-    matching_email_with_list__result = phantom.collect2(container=container, datapath=["matching_email_with_list:custom_function_result.data.match_count","matching_email_with_list:custom_function_result.data.miss_count"])
-
-    matching_email_with_list_data_matches___match = [item[0] for item in matching_email_with_list_data_matches]
-    matching_email_with_list_data_misses___miss = [item[0] for item in matching_email_with_list_data_misses]
-    matching_email_with_list_data_match_count = [item[0] for item in matching_email_with_list__result]
-    matching_email_with_list_data_miss_count = [item[1] for item in matching_email_with_list__result]
-
-    parameters = []
-
-    parameters.append({
-        "input_1": matching_email_with_list_data_matches___match,
-        "input_2": matching_email_with_list_data_misses___miss,
-        "input_3": matching_email_with_list_data_match_count,
-        "input_4": matching_email_with_list_data_miss_count,
-        "input_5": None,
-        "input_6": None,
-        "input_7": None,
-        "input_8": None,
-        "input_9": None,
-        "input_10": None,
-    })
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_2")
 
     return
 
@@ -182,18 +143,87 @@ def matching_email_with_list(action=None, success=None, container=None, results=
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/custom_list_value_in_strings", parameters=parameters, name="matching_email_with_list", callback=matching_email_with_list_callback)
+    phantom.custom_function(custom_function="Phishing_Investigation/custom_list_value_in_strings", parameters=parameters, name="matching_email_with_list", callback=decision_2)
 
     return
 
 
-def matching_email_with_list_callback(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("matching_email_with_list_callback() called")
+def join_vip_path(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("join_vip_path() called")
 
+    # if the joined function has already been called, do nothing
+    if phantom.get_run_data(key="join_vip_path_called"):
+        return
+
+    # save the state that the joined function has now been called
+    phantom.save_run_data(key="join_vip_path_called", value="vip_path")
+
+    # call connected block "vip_path"
+    vip_path(container=container, handle=handle)
+
+    return
+
+
+def vip_path(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("vip_path() called")
+
+    parameters = [{}]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="Phishing_Investigation/noop", parameters=parameters, name="vip_path", callback=get_email_artifact)
+
+    return
+
+
+def extract_domain_from_dkim_signature(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("extract_domain_from_dkim_signature() called")
+
+    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.emailHeaders.DKIM-Signature"])
+    extract_email_from_emailheaders_data = phantom.collect2(container=container, datapath=["extract_email_from_emailheaders:custom_function_result.data.*.domain"])
+
+    container_artifact_cef_item_0 = [item[0] for item in container_artifact_data]
+    extract_email_from_emailheaders_data___domain = [item[0] for item in extract_email_from_emailheaders_data]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+    import re
     
-    decision_2(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
-    debug_2(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
+    domain_regex = r'((?!-))(xn--)?[a-z0-9][a-z0-9-_]{0,61}[a-z0-9]{0,1}\.(xn--)?([a-z0-9\-]{1,61}|[a-z0-9-]{1,30}\.[a-z]{2,})'
+    dkim_domain = re.findall(domain_regex, container_artifact_cef_item_0, re.IGNORECASE)
+    phantom.debug(dkim_domain)
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
 
+    return
+
+
+def get_email_artifact(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("get_email_artifact() called")
+
+    # collect filtered artifact ids and results for 'if' condition 1
+    matched_artifacts_1, matched_results_1 = phantom.condition(
+        container=container,
+        conditions=[
+            ["artifact:*.name", "==", "Email Artifact "]
+        ],
+        name="get_email_artifact:condition_1")
+
+    # call connected blocks if filtered artifacts or results
+    if matched_artifacts_1 or matched_results_1:
+        extract_domain_from_dkim_signature(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
 
     return
 
