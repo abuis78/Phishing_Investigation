@@ -39,7 +39,7 @@ def extract_email_from_emailheaders(action=None, success=None, container=None, r
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/regex_extract_email", parameters=parameters, name="extract_email_from_emailheaders", callback=join_custom_list_value_in_strings_5)
+    phantom.custom_function(custom_function="Phishing_Investigation/regex_extract_email", parameters=parameters, name="extract_email_from_emailheaders", callback=custom_list_value_in_strings_5)
 
     return
 
@@ -75,7 +75,7 @@ def add_tag_vip_to_email_artifact(action=None, success=None, container=None, res
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/artifact_update", parameters=parameters, name="add_tag_vip_to_email_artifact", callback=join_custom_list_value_in_strings_5)
+    phantom.custom_function(custom_function="Phishing_Investigation/artifact_update", parameters=parameters, name="add_tag_vip_to_email_artifact")
 
     return
 
@@ -196,16 +196,6 @@ def debug_2(action=None, success=None, container=None, results=None, handle=None
     ################################################################################
 
     phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_2")
-
-    return
-
-
-def join_custom_list_value_in_strings_5(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("join_custom_list_value_in_strings_5() called")
-
-    if phantom.completed(custom_function_names=["extract_email_from_emailheaders", "add_tag_vip_to_email_artifact"]):
-        # call connected block "custom_list_value_in_strings_5"
-        custom_list_value_in_strings_5(container=container, handle=handle)
 
     return
 
