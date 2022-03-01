@@ -38,7 +38,9 @@ def custom_list_value_in_strings(custom_list=None, comparison_strings=None, **kw
                     matches.append({"match": cell})
                 else:
                     misses.append({"miss": cell})
-
+                phantom.debug("-------------")       
+            phantom.debug("-------------")
+        phantom.debug("-------------")
     # Prepare the outputs
     match_count = len(matches)
     miss_count = len(misses)
