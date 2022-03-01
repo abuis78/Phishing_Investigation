@@ -307,9 +307,9 @@ def dkim_path(action=None, success=None, container=None, results=None, handle=No
 def convert_tag_list_into_string(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("convert_tag_list_into_string() called")
 
-    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.tags"], scope="all")
+    filtered_artifact_0_data_filter_sender_email_address = phantom.collect2(container=container, datapath=["filtered-data:filter_sender_email_address:condition_1:artifact:*.tags"], scope="all")
 
-    container_artifact_header_item_0 = [item[0] for item in container_artifact_data]
+    filtered_artifact_0__tags = [item[0] for item in filtered_artifact_0_data_filter_sender_email_address]
 
     convert_tag_list_into_string__tag_str_list = None
 
@@ -319,7 +319,7 @@ def convert_tag_list_into_string(action=None, success=None, container=None, resu
 
     # Write your custom code here...
 
-    lat_list = [item for sublist in container_artifact_header_item_0 for item in sublist]
+    lat_list = [item for sublist in filtered_artifact_0__tags for item in sublist]
     phantom.debug(lat_list)
     
     tag_list = ','.join(lat_list)
@@ -331,6 +331,8 @@ def convert_tag_list_into_string(action=None, success=None, container=None, resu
     ################################################################################
 
     phantom.save_run_data(key="convert_tag_list_into_string:tag_str_list", value=json.dumps(convert_tag_list_into_string__tag_str_list))
+
+    artifact_update_12(container=container)
 
     return
 

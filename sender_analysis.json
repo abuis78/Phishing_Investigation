@@ -166,9 +166,16 @@
                     "sourcePort": "48_out",
                     "targetNode": "2",
                     "targetPort": "2_in"
+                },
+                {
+                    "id": "port_38_to_port_31",
+                    "sourceNode": "38",
+                    "sourcePort": "38_out",
+                    "targetNode": "31",
+                    "targetPort": "31_in"
                 }
             ],
-            "hash": "5dc23763f801fce1bf90c2459cc46180f0b6f1a0",
+            "hash": "be52bf30557a6b4cf226913f6dfc3cf7b468ea40",
             "nodes": {
                 "0": {
                     "data": {
@@ -818,7 +825,7 @@
                         "functionName": "convert_tag_list_into_string",
                         "id": "38",
                         "inputParameters": [
-                            "artifact:*.tags"
+                            "filtered-data:filter_sender_email_address:condition_1:artifact:*.tags"
                         ],
                         "outputVariables": [
                             "tag_str_list"
@@ -828,7 +835,7 @@
                     "errors": {},
                     "id": "38",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n\n    lat_list = [item for sublist in container_artifact_header_item_0 for item in sublist]\n    phantom.debug(lat_list)\n    \n    tag_list = ','.join(lat_list)\n    \n    convert_tag_list_into_string__tag_str_list = tag_list + ', internal'\n\n",
+                    "userCode": "\n    # Write your custom code here...\n\n    lat_list = [item for sublist in filtered_artifact_0__tags for item in sublist]\n    phantom.debug(lat_list)\n    \n    tag_list = ','.join(lat_list)\n    \n    convert_tag_list_into_string__tag_str_list = tag_list + ', internal'\n\n",
                     "x": -80,
                     "y": 1740
                 },
@@ -1300,7 +1307,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T16:29:34.636432+00:00",
+    "create_time": "2022-03-01T16:30:50.938678+00:00",
     "draft_mode": false,
     "labels": [
         "*"
