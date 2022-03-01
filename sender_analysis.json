@@ -14,13 +14,6 @@
                     "targetPort": "2_in"
                 },
                 {
-                    "id": "port_19_to_port_13",
-                    "sourceNode": "19",
-                    "sourcePort": "19_out",
-                    "targetNode": "13",
-                    "targetPort": "13_in"
-                },
-                {
                     "conditions": [
                         {
                             "index": 0
@@ -45,21 +38,21 @@
                     "targetPort": "10_in"
                 },
                 {
-                    "id": "port_19_to_port_20",
-                    "sourceNode": "19",
-                    "sourcePort": "19_out",
-                    "targetNode": "20",
-                    "targetPort": "20_in"
-                },
-                {
                     "id": "port_2_to_port_23",
                     "sourceNode": "2",
                     "sourcePort": "2_out",
                     "targetNode": "23",
                     "targetPort": "23_in"
+                },
+                {
+                    "id": "port_23_to_port_13",
+                    "sourceNode": "23",
+                    "sourcePort": "23_out",
+                    "targetNode": "13",
+                    "targetPort": "13_in"
                 }
             ],
-            "hash": "c383d0c9eb98a7acf31162fc8ae3b16eab7719c9",
+            "hash": "baeba4b8ddf995a9dfa70b2687f2eaf7189741e7",
             "nodes": {
                 "0": {
                     "data": {
@@ -247,11 +240,12 @@
                                     {
                                         "conditionIndex": 0,
                                         "op": ">",
-                                        "param": "finde_email_in_vip_list:action_result.summary.found_matches",
+                                        "param": "matching_email_with_list:custom_function_result.data.matches.*.match",
                                         "value": "0"
                                     }
                                 ],
                                 "conditionIndex": 0,
+                                "customName": "match email groesser 0",
                                 "display": "If",
                                 "logic": "and",
                                 "type": "if"
@@ -299,52 +293,6 @@
                     "type": "filter",
                     "x": 800,
                     "y": 1100
-                },
-                "19": {
-                    "data": {
-                        "action": "find listitem",
-                        "actionType": "investigate",
-                        "advanced": {
-                            "customName": "finde email in VIP list",
-                            "customNameId": 0,
-                            "join": []
-                        },
-                        "connector": "Phantom",
-                        "connectorConfigs": [
-                            "phantom"
-                        ],
-                        "connectorId": "deb82aa9-22cc-4675-9cf1-534b8d006eb7",
-                        "connectorVersion": "v1",
-                        "functionId": 1,
-                        "functionName": "finde_email_in_vip_list",
-                        "id": "19",
-                        "parameters": {
-                            "exact_match": false,
-                            "list": "VIP",
-                            "values": "extract_email_from_emailheaders:custom_function_result.data.*.email_address"
-                        },
-                        "requiredParameters": [
-                            {
-                                "data_type": "string",
-                                "field": "list"
-                            },
-                            {
-                                "data_type": "string",
-                                "field": "values"
-                            },
-                            {
-                                "data_type": "boolean",
-                                "default": true,
-                                "field": "exact_match"
-                            }
-                        ],
-                        "type": "action"
-                    },
-                    "errors": {},
-                    "id": "19",
-                    "type": "action",
-                    "x": 1240,
-                    "y": 820
                 },
                 "2": {
                     "data": {
@@ -566,6 +514,8 @@
                 "23": {
                     "data": {
                         "advanced": {
+                            "customName": "matching email with list",
+                            "customNameId": 0,
                             "join": []
                         },
                         "customFunction": {
@@ -574,7 +524,7 @@
                             "repoName": "Phishing_Investigation"
                         },
                         "functionId": 5,
-                        "functionName": "custom_list_value_in_strings_5",
+                        "functionName": "matching_email_with_list",
                         "id": "23",
                         "selectMore": false,
                         "type": "utility",
@@ -622,8 +572,8 @@
                     "errors": {},
                     "id": "23",
                     "type": "utility",
-                    "x": 800,
-                    "y": 840
+                    "x": 960,
+                    "y": 780
                 }
             },
             "notes": ""
@@ -635,7 +585,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T12:35:45.202355+00:00",
+    "create_time": "2022-03-01T12:41:39.695830+00:00",
     "draft_mode": false,
     "labels": [
         "*"
