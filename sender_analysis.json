@@ -26,21 +26,21 @@
                     "targetPort": "10_in"
                 },
                 {
-                    "id": "port_2_to_port_13",
+                    "id": "port_2_to_port_14",
                     "sourceNode": "2",
                     "sourcePort": "2_out",
-                    "targetNode": "13",
-                    "targetPort": "13_in"
+                    "targetNode": "14",
+                    "targetPort": "14_in"
                 },
                 {
-                    "id": "port_2_to_port_12",
-                    "sourceNode": "2",
-                    "sourcePort": "2_out",
-                    "targetNode": "12",
-                    "targetPort": "12_in"
+                    "id": "port_14_to_port_13",
+                    "sourceNode": "14",
+                    "sourcePort": "14_out",
+                    "targetNode": "13",
+                    "targetPort": "13_in"
                 }
             ],
-            "hash": "97661a231c671a9703c3e099206e9776e25987aa",
+            "hash": "916bf0818432a08b6cce33cc28997f133076ec19",
             "nodes": {
                 "0": {
                     "data": {
@@ -214,8 +214,8 @@
                     "errors": {},
                     "id": "10",
                     "type": "utility",
-                    "x": 960,
-                    "y": 1180
+                    "x": 940,
+                    "y": 1480
                 },
                 "12": {
                     "data": {
@@ -394,7 +394,7 @@
                                     {
                                         "conditionIndex": 0,
                                         "op": "in",
-                                        "param": "extract_email_from_emailheaders:custom_function_result.data.*.email_address",
+                                        "param": "format_1:formatted_data",
                                         "value": "custom_list:VIP"
                                     }
                                 ],
@@ -412,8 +412,28 @@
                     "errors": {},
                     "id": "13",
                     "type": "decision",
-                    "x": 1400,
-                    "y": 860
+                    "x": 1040,
+                    "y": 1040
+                },
+                "14": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "format_1",
+                        "id": "14",
+                        "parameters": [
+                            "extract_email_from_emailheaders:custom_function_result.data.*.email_address"
+                        ],
+                        "template": "{0}",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "14",
+                    "type": "format",
+                    "x": 960,
+                    "y": 840
                 },
                 "2": {
                     "data": {
@@ -497,7 +517,7 @@
                     "id": "9",
                     "type": "filter",
                     "x": 1020,
-                    "y": 1020
+                    "y": 1340
                 }
             },
             "notes": ""
@@ -509,7 +529,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T09:57:59.691449+00:00",
+    "create_time": "2022-03-01T10:33:58.780139+00:00",
     "draft_mode": false,
     "labels": [
         "*"
