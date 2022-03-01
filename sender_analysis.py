@@ -176,15 +176,11 @@ def filter_3(action=None, success=None, container=None, results=None, handle=Non
 def custom_list_value_in_strings_11(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("custom_list_value_in_strings_11() called")
 
-    extract_email_from_emailheaders_data = phantom.collect2(container=container, datapath=["extract_email_from_emailheaders:custom_function_result.data.*.email_address"])
-
-    extract_email_from_emailheaders_data___email_address = [item[0] for item in extract_email_from_emailheaders_data]
-
     parameters = []
 
     parameters.append({
         "custom_list": "VIP",
-        "comparison_strings": extract_email_from_emailheaders_data___email_address,
+        "comparison_strings": "icloud",
     })
 
     ################################################################################
