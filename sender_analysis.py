@@ -404,9 +404,9 @@ def search_vor_company_keywords_in_email(action=None, success=None, container=No
         phantom.debug(len(ergebnis))
         for element in ergebnis:
             if ergebnis != -1:
-                matches.append({"match": item})
+                matches.append({"match": element})
             else:
-                misses.append({"miss": item})
+                misses.append({"miss": element})
     
     match_count = len(matches)
     miss_count = len(misses)
