@@ -111,7 +111,46 @@ def vip_check(action=None, success=None, container=None, results=None, handle=No
 
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_1 or matched_results_1:
-        pass
+        debug_8(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+
+    return
+
+
+def debug_8(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("debug_8() called")
+
+    filtered_cf_result_0 = phantom.collect2(container=container, datapath=["filtered-data:vip_check:condition_1:extract_email_from_emailheaders:custom_function_result.message","filtered-data:vip_check:condition_1:extract_email_from_emailheaders:custom_function_result.success","filtered-data:vip_check:condition_1:extract_email_from_emailheaders:custom_function_result.data"])
+
+    filtered_cf_result_0_message = [item[0] for item in filtered_cf_result_0]
+    filtered_cf_result_0_success = [item[1] for item in filtered_cf_result_0]
+    filtered_cf_result_0_data = [item[2] for item in filtered_cf_result_0]
+
+    parameters = []
+
+    parameters.append({
+        "input_1": filtered_cf_result_0_message,
+        "input_2": filtered_cf_result_0_success,
+        "input_3": filtered_cf_result_0_data,
+        "input_4": None,
+        "input_5": None,
+        "input_6": None,
+        "input_7": None,
+        "input_8": None,
+        "input_9": None,
+        "input_10": None,
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_8")
 
     return
 
