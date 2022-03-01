@@ -100,7 +100,23 @@ def add_comment_email_ist_not_in_vip_list(action=None, success=None, container=N
 
     phantom.comment(container=container, comment="email is NOT VIP list")
 
-    noop_4(container=container)
+    join_noop_4(container=container)
+
+    return
+
+
+def join_noop_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("join_noop_4() called")
+
+    # if the joined function has already been called, do nothing
+    if phantom.get_run_data(key="join_noop_4_called"):
+        return
+
+    # save the state that the joined function has now been called
+    phantom.save_run_data(key="join_noop_4_called", value="noop_4")
+
+    # call connected block "noop_4"
+    noop_4(container=container, handle=handle)
 
     return
 
@@ -138,19 +154,19 @@ def filter_email_artifact(action=None, success=None, container=None, results=Non
 
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_1 or matched_results_1:
-        artifact_update_7(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+        add_tag_vip_to_email_artifact(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
 
     return
 
 
-def artifact_update_7(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("artifact_update_7() called")
+def add_tag_vip_to_email_artifact(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("add_tag_vip_to_email_artifact() called")
 
     filtered_artifact_0_data_filter_email_artifact = phantom.collect2(container=container, datapath=["filtered-data:filter_email_artifact:condition_1:artifact:*.id","filtered-data:filter_email_artifact:condition_1:artifact:*.id"])
 
     parameters = []
 
-    # build parameters list for 'artifact_update_7' call
+    # build parameters list for 'add_tag_vip_to_email_artifact' call
     for filtered_artifact_0_item_filter_email_artifact in filtered_artifact_0_data_filter_email_artifact:
         parameters.append({
             "artifact_id": filtered_artifact_0_item_filter_email_artifact[0],
@@ -174,7 +190,7 @@ def artifact_update_7(action=None, success=None, container=None, results=None, h
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/artifact_update", parameters=parameters, name="artifact_update_7")
+    phantom.custom_function(custom_function="Phishing_Investigation/artifact_update", parameters=parameters, name="add_tag_vip_to_email_artifact", callback=join_noop_4)
 
     return
 

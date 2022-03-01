@@ -69,9 +69,16 @@
                     "sourcePort": "9_out",
                     "targetNode": "10",
                     "targetPort": "10_in"
+                },
+                {
+                    "id": "port_10_to_port_6",
+                    "sourceNode": "10",
+                    "sourcePort": "10_out",
+                    "targetNode": "6",
+                    "targetPort": "6_in"
                 }
             ],
-            "hash": "d1f477d81ea0afc19ada2bbe6f708f108f0473e0",
+            "hash": "ab83815d0f2e416f4193bf1aa18a1224a78f6e3c",
             "nodes": {
                 "0": {
                     "data": {
@@ -108,6 +115,8 @@
                 "10": {
                     "data": {
                         "advanced": {
+                            "customName": "ADD tag VIP to Email Artifact",
+                            "customNameId": 0,
                             "join": []
                         },
                         "customFunction": {
@@ -116,7 +125,7 @@
                             "repoName": "Phishing_Investigation"
                         },
                         "functionId": 7,
-                        "functionName": "artifact_update_7",
+                        "functionName": "add_tag_vip_to_email_artifact",
                         "id": "10",
                         "selectMore": false,
                         "type": "utility",
@@ -475,7 +484,11 @@
                 "6": {
                     "data": {
                         "advanced": {
-                            "join": []
+                            "join": [],
+                            "notRequiredJoins": [
+                                "extract_email_from_emailheaders",
+                                "add_tag_vip_to_email_artifact"
+                            ]
                         },
                         "customFunction": {
                             "draftMode": false,
@@ -503,8 +516,8 @@
                     "errors": {},
                     "id": "6",
                     "type": "utility",
-                    "x": 1000,
-                    "y": 1320
+                    "x": 980,
+                    "y": 1460
                 },
                 "9": {
                     "data": {
@@ -549,7 +562,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T09:43:45.844213+00:00",
+    "create_time": "2022-03-01T09:46:58.365624+00:00",
     "draft_mode": false,
     "labels": [
         "*"
