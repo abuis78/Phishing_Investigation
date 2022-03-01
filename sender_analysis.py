@@ -359,7 +359,7 @@ def convert_tag_list_into_string(action=None, success=None, container=None, resu
     
     tag_list = ','.join(lat_list)
     
-    convert_tag_list_into_string__tag_str_list += ', internal'
+    convert_tag_list_into_string__tag_str_list = tag_list + ', internal'
 
     ################################################################################
     ## Custom Code End
