@@ -270,7 +270,7 @@ def artifact_update_12(action=None, success=None, container=None, results=None, 
     phantom.debug("artifact_update_12() called")
 
     filtered_artifact_0_data_filter_4 = phantom.collect2(container=container, datapath=["filtered-data:filter_4:condition_1:artifact:*.id","filtered-data:filter_4:condition_1:artifact:*.id"])
-    tags_list = phantom.get_format_data(name="tags_list")
+    convert_tag_list_into_string__tag_str_list = json.loads(phantom.get_run_data(key="convert_tag_list_into_string:tag_str_list"))
 
     parameters = []
 
@@ -284,7 +284,7 @@ def artifact_update_12(action=None, success=None, container=None, results=None, 
             "cef_field": None,
             "cef_value": None,
             "cef_data_type": None,
-            "tags": tags_list,
+            "tags": convert_tag_list_into_string__tag_str_list,
             "input_json": None,
         })
 
@@ -353,7 +353,7 @@ def convert_tag_list_into_string(action=None, success=None, container=None, resu
     # Write your custom code here...
     phantom.debug(format_2)
     convert_tag_list_into_string__tag_str_list = "".join(format_2)
-    phantom.debug(convert_tag_list_into_string__tag_str_list)
+    phantom.debug('STRING {}'.format(convert_tag_list_into_string__tag_str_list))
 
     ################################################################################
     ## Custom Code End

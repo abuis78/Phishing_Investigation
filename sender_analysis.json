@@ -142,7 +142,7 @@
                     "targetPort": "38_in"
                 }
             ],
-            "hash": "f4d8a65d944c2ebc5c44c205a134e5ecbfb97a95",
+            "hash": "e9f2e820811e7dc6f5c27bd3fa28d9c0c64f07bc",
             "nodes": {
                 "0": {
                     "data": {
@@ -789,7 +789,7 @@
                                 "label": null,
                                 "name": null,
                                 "severity": null,
-                                "tags": "tags_list:formatted_data"
+                                "tags": "convert_tag_list_into_string:custom_function:tag_str_list"
                             }
                         }
                     },
@@ -860,7 +860,7 @@
                     "errors": {},
                     "id": "38",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(format_2)\n    convert_tag_list_into_string__tag_str_list = \"\".join(format_2)\n    phantom.debug(convert_tag_list_into_string__tag_str_list)\n\n",
+                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(format_2)\n    convert_tag_list_into_string__tag_str_list = \"\".join(format_2)\n    phantom.debug('STRING {}'.format(convert_tag_list_into_string__tag_str_list))\n\n",
                     "x": -120,
                     "y": 1740
                 },
@@ -894,7 +894,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T14:03:18.327364+00:00",
+    "create_time": "2022-03-01T14:04:56.491078+00:00",
     "draft_mode": false,
     "labels": [
         "*"
