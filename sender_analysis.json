@@ -163,7 +163,7 @@
                     "targetPort": "47_in"
                 }
             ],
-            "hash": "869d2e2249fe1c7294dfcdd9de7b2bf44b5a1c4a",
+            "hash": "3880e867d2d93997f8351a1dfefd58358053ed99",
             "nodes": {
                 "0": {
                     "data": {
@@ -594,6 +594,7 @@
                             {
                                 "comparisons": [
                                     {
+                                        "conditionIndex": 1,
                                         "op": "==",
                                         "param": "",
                                         "value": ""
@@ -1038,7 +1039,7 @@
                                 "cef_value": "format_email_in_str:formatted_data",
                                 "container": "container:id",
                                 "input_json": null,
-                                "label": null,
+                                "label": " artifact",
                                 "name": "Sender email address",
                                 "run_automation": null,
                                 "severity": "low",
@@ -1079,7 +1080,8 @@
                         "advanced": {
                             "customName": "filter Sender email address",
                             "customNameId": 0,
-                            "join": []
+                            "join": [],
+                            "scope": "all"
                         },
                         "conditions": [
                             {
@@ -1257,7 +1259,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T15:14:34.026504+00:00",
+    "create_time": "2022-03-01T15:16:24.530249+00:00",
     "draft_mode": false,
     "labels": [
         "*"

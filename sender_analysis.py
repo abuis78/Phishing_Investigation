@@ -428,7 +428,7 @@ def create_email_artefact(action=None, success=None, container=None, results=Non
     parameters.append({
         "container": id_value,
         "name": "Sender email address",
-        "label": None,
+        "label": " artifact",
         "severity": "low",
         "cef_field": "from",
         "cef_value": format_email_in_str,
@@ -489,7 +489,8 @@ def filter_sender_email_address(action=None, success=None, container=None, resul
         conditions=[
             ["artifact:*.name", "==", "Sender email address"]
         ],
-        name="filter_sender_email_address:condition_1")
+        name="filter_sender_email_address:condition_1",
+        scope="all")
 
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_1 or matched_results_1:
