@@ -11,22 +11,22 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'extract_email_from_emailheaders' block
-    extract_email_from_emailheaders(container=container)
+    # call 'filter_email_artifact' block
+    filter_email_artifact(container=container)
 
     return
 
 def extract_email_from_emailheaders(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("extract_email_from_emailheaders() called")
 
-    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.emailHeaders.From","artifact:*.id"])
+    filtered_artifact_0_data_filter_email_artifact = phantom.collect2(container=container, datapath=["filtered-data:filter_email_artifact:condition_1:artifact:*.cef.emailHeaders.From","filtered-data:filter_email_artifact:condition_1:artifact:*.id"])
 
     parameters = []
 
     # build parameters list for 'extract_email_from_emailheaders' call
-    for container_artifact_item in container_artifact_data:
+    for filtered_artifact_0_item_filter_email_artifact in filtered_artifact_0_data_filter_email_artifact:
         parameters.append({
-            "input_string": container_artifact_item[0],
+            "input_string": filtered_artifact_0_item_filter_email_artifact[0],
         })
 
     ################################################################################
@@ -532,6 +532,24 @@ def artifact_update_19(action=None, success=None, container=None, results=None, 
     ################################################################################
 
     phantom.custom_function(custom_function="Phishing_Investigation/artifact_update", parameters=parameters, name="artifact_update_19")
+
+    return
+
+
+def filter_email_artifact(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("filter_email_artifact() called")
+
+    # collect filtered artifact ids and results for 'if' condition 1
+    matched_artifacts_1, matched_results_1 = phantom.condition(
+        container=container,
+        conditions=[
+            ["artifact:*.name", "==", " Email Artifact"]
+        ],
+        name="filter_email_artifact:condition_1")
+
+    # call connected blocks if filtered artifacts or results
+    if matched_artifacts_1 or matched_results_1:
+        extract_email_from_emailheaders(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
 
     return
 

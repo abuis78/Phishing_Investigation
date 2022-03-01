@@ -7,13 +7,6 @@
             "description": "In this playbook the analysis of the sender takes place. It searches for specific keywords in the email body and subject, matches autohrized domains, and performs a VIP check. \nThe corrolation of the single elements defines a risk score for the sender.",
             "edges": [
                 {
-                    "id": "port_0_to_port_2",
-                    "sourceNode": "0",
-                    "sourcePort": "0_out",
-                    "targetNode": "2",
-                    "targetPort": "2_in"
-                },
-                {
                     "id": "port_23_to_port_13",
                     "sourceNode": "23",
                     "sourcePort": "23_out",
@@ -161,9 +154,28 @@
                     "sourcePort": "41_out",
                     "targetNode": "47",
                     "targetPort": "47_in"
+                },
+                {
+                    "id": "port_0_to_port_48",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "48",
+                    "targetPort": "48_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_48_to_port_2",
+                    "sourceNode": "48",
+                    "sourcePort": "48_out",
+                    "targetNode": "2",
+                    "targetPort": "2_in"
                 }
             ],
-            "hash": "3880e867d2d93997f8351a1dfefd58358053ed99",
+            "hash": "3d28b9ebe512a0ac9fae0316055253f5145059b3",
             "nodes": {
                 "0": {
                     "data": {
@@ -178,7 +190,7 @@
                     "id": "0",
                     "type": "start",
                     "x": 100,
-                    "y": -220
+                    "y": -340
                 },
                 "1": {
                     "data": {
@@ -428,7 +440,7 @@
                         "utilityType": "custom_function",
                         "values": {
                             "regex_extract_email": {
-                                "input_string": "artifact:*.cef.emailHeaders.From"
+                                "input_string": "filtered-data:filter_email_artifact:condition_1:artifact:*.cef.emailHeaders.From"
                             }
                         }
                     },
@@ -1248,6 +1260,39 @@
                     "type": "utility",
                     "x": -80.00000000000001,
                     "y": 2524.5
+                },
+                "48": {
+                    "data": {
+                        "advanced": {
+                            "customName": "filter  Email Artifact",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "==",
+                                        "param": "artifact:*.name",
+                                        "value": " Email Artifact"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "customName": " Email Artifact",
+                                "logic": "and"
+                            }
+                        ],
+                        "functionId": 7,
+                        "functionName": "filter_email_artifact",
+                        "id": "48",
+                        "type": "filter"
+                    },
+                    "errors": {},
+                    "id": "48",
+                    "type": "filter",
+                    "x": 140,
+                    "y": -195.5
                 }
             },
             "notes": ""
@@ -1259,7 +1304,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T15:16:24.530249+00:00",
+    "create_time": "2022-03-01T15:18:38.257233+00:00",
     "draft_mode": false,
     "labels": [
         "*"
