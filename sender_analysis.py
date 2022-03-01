@@ -353,6 +353,7 @@ def convert_tag_list_into_string(action=None, success=None, container=None, resu
     ################################################################################
 
     # Write your custom code here...
+    phantom.debug(container_artifact_header_item_0)
     convert_tag_list_into_string__tag_str_list = "".join(container_artifact_header_item_0)
     phantom.debug(convert_tag_list_into_string__tag_str_list)
 

@@ -135,7 +135,7 @@
                     "targetPort": "31_in"
                 }
             ],
-            "hash": "7b70e8a5931c246b737358c1142e0189af0a3ea9",
+            "hash": "1c9dc7514863996f438256aa3ed87cd8e7889176",
             "nodes": {
                 "0": {
                     "data": {
@@ -853,7 +853,7 @@
                     "errors": {},
                     "id": "38",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    convert_tag_list_into_string__tag_str_list = \"\".join(container_artifact_header_item_0)\n    phantom.debug(convert_tag_list_into_string__tag_str_list)\n\n",
+                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(container_artifact_header_item_0)\n    convert_tag_list_into_string__tag_str_list = \"\".join(container_artifact_header_item_0)\n    phantom.debug(convert_tag_list_into_string__tag_str_list)\n\n",
                     "x": -120.00000000000003,
                     "y": 1644.5
                 }
@@ -867,7 +867,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T14:01:19.138734+00:00",
+    "create_time": "2022-03-01T14:02:05.331390+00:00",
     "draft_mode": false,
     "labels": [
         "*"
