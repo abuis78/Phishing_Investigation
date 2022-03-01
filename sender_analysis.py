@@ -181,7 +181,7 @@ def custom_list_value_in_strings_11(action=None, success=None, container=None, r
     parameters = []
 
     parameters.append({
-        "custom_list": "vip",
+        "custom_list": "VIP",
         "comparison_strings": format_2__as_list,
     })
 
