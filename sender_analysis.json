@@ -28,7 +28,7 @@
                     "targetPort": "18_in"
                 }
             ],
-            "hash": "a24e52eeae2e05578e73e32783ca682ce7b9175b",
+            "hash": "61e17c4c6b4a4ce327e3115d82b6b1a46c3bdcbe",
             "nodes": {
                 "0": {
                     "data": {
@@ -484,7 +484,7 @@
                         "utilityType": "custom_function",
                         "values": {
                             "custom_list_value_in_strings": {
-                                "comparison_strings": "andreas.buis@icloud.com",
+                                "comparison_strings": "[andreas.buis@icloud.com]",
                                 "custom_list": "VIP"
                             }
                         }
@@ -589,7 +589,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T10:50:54.776406+00:00",
+    "create_time": "2022-03-01T10:51:13.384959+00:00",
     "draft_mode": false,
     "labels": [
         "*"

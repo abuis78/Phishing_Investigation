@@ -180,7 +180,7 @@ def custom_list_value_in_strings_11(action=None, success=None, container=None, r
 
     parameters.append({
         "custom_list": "VIP",
-        "comparison_strings": "andreas.buis@icloud.com",
+        "comparison_strings": "[andreas.buis@icloud.com]",
     })
 
     ################################################################################
