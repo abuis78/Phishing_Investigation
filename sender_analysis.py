@@ -200,6 +200,7 @@ def extract_domain_from_dkim_signature(action=None, success=None, container=None
     # Write your custom code here...
     import re
     phantom.debug(container_artifact_cef_item_0)
+    phantom.debug(extract_email_from_emailheaders_data___domain)
     domain_regex = r'(((?!-))(xn--)?[a-z0-9][a-z0-9-_]{0,61}[a-z0-9]{0,1}\.(xn--)?([a-z0-9\-]{1,61}|[a-z0-9-]{1,30}\.[a-z]{2,}))'
     for domain in re.findall(domain_regex, str(container_artifact_cef_item_0), re.IGNORECASE):
         phantom.debug(domain[0])
