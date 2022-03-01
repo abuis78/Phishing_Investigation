@@ -52,7 +52,7 @@
                     "targetPort": "13_in"
                 }
             ],
-            "hash": "baeba4b8ddf995a9dfa70b2687f2eaf7189741e7",
+            "hash": "69e9a8589271e848cd817f4aec878da282d17e37",
             "nodes": {
                 "0": {
                     "data": {
@@ -239,7 +239,7 @@
                                 "comparisons": [
                                     {
                                         "conditionIndex": 0,
-                                        "op": ">",
+                                        "op": ">=",
                                         "param": "matching_email_with_list:custom_function_result.data.matches.*.match",
                                         "value": "0"
                                     }
@@ -585,7 +585,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T12:41:39.695830+00:00",
+    "create_time": "2022-03-01T12:42:17.684951+00:00",
     "draft_mode": false,
     "labels": [
         "*"
