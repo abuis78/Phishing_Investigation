@@ -116,26 +116,33 @@
                     "targetPort": "32_in"
                 },
                 {
-                    "conditions": [
-                        {
-                            "index": 0
-                        }
-                    ],
-                    "id": "port_30_to_port_38",
-                    "sourceNode": "30",
-                    "sourcePort": "30_out",
-                    "targetNode": "38",
-                    "targetPort": "38_in"
-                },
-                {
                     "id": "port_38_to_port_31",
                     "sourceNode": "38",
                     "sourcePort": "38_out",
                     "targetNode": "31",
                     "targetPort": "31_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_30_to_port_39",
+                    "sourceNode": "30",
+                    "sourcePort": "30_out",
+                    "targetNode": "39",
+                    "targetPort": "39_in"
+                },
+                {
+                    "id": "port_39_to_port_38",
+                    "sourceNode": "39",
+                    "sourcePort": "39_out",
+                    "targetNode": "38",
+                    "targetPort": "38_in"
                 }
             ],
-            "hash": "1c9dc7514863996f438256aa3ed87cd8e7889176",
+            "hash": "f4d8a65d944c2ebc5c44c205a134e5ecbfb97a95",
             "nodes": {
                 "0": {
                     "data": {
@@ -789,8 +796,8 @@
                     "errors": {},
                     "id": "31",
                     "type": "utility",
-                    "x": -100,
-                    "y": 1820
+                    "x": -120,
+                    "y": 1860
                 },
                 "32": {
                     "data": {
@@ -843,7 +850,7 @@
                         "functionName": "convert_tag_list_into_string",
                         "id": "38",
                         "inputParameters": [
-                            "artifact:*.tags"
+                            "format_2:formatted_data"
                         ],
                         "outputVariables": [
                             "tag_str_list"
@@ -853,8 +860,28 @@
                     "errors": {},
                     "id": "38",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(container_artifact_header_item_0)\n    convert_tag_list_into_string__tag_str_list = \"\".join(container_artifact_header_item_0)\n    phantom.debug(convert_tag_list_into_string__tag_str_list)\n\n",
-                    "x": -120.00000000000003,
+                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(format_2)\n    convert_tag_list_into_string__tag_str_list = \"\".join(format_2)\n    phantom.debug(convert_tag_list_into_string__tag_str_list)\n\n",
+                    "x": -120,
+                    "y": 1740
+                },
+                "39": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 2,
+                        "functionName": "format_2",
+                        "id": "39",
+                        "parameters": [
+                            "artifact:*.tags"
+                        ],
+                        "template": "{0}",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "39",
+                    "type": "format",
+                    "x": -120.00000000000001,
                     "y": 1644.5
                 }
             },
@@ -867,7 +894,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T14:02:05.331390+00:00",
+    "create_time": "2022-03-01T14:03:18.327364+00:00",
     "draft_mode": false,
     "labels": [
         "*"
