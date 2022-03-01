@@ -14,13 +14,6 @@
                     "targetPort": "2_in"
                 },
                 {
-                    "id": "port_2_to_port_19",
-                    "sourceNode": "2",
-                    "sourcePort": "2_out",
-                    "targetNode": "19",
-                    "targetPort": "19_in"
-                },
-                {
                     "id": "port_19_to_port_13",
                     "sourceNode": "19",
                     "sourcePort": "19_out",
@@ -57,9 +50,16 @@
                     "sourcePort": "19_out",
                     "targetNode": "20",
                     "targetPort": "20_in"
+                },
+                {
+                    "id": "port_2_to_port_21",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
+                    "targetNode": "21",
+                    "targetPort": "21_in"
                 }
             ],
-            "hash": "02b2dca938c241a8c7618b7d5b51fd3ae18fd41d",
+            "hash": "b2dba658a22ea68f16bbf6ad75f065ee45f6499d",
             "nodes": {
                 "0": {
                     "data": {
@@ -343,7 +343,7 @@
                     "errors": {},
                     "id": "19",
                     "type": "action",
-                    "x": 960,
+                    "x": 1240,
                     "y": 820
                 },
                 "2": {
@@ -562,6 +562,68 @@
                     "type": "utility",
                     "x": 1280,
                     "y": 1044.5
+                },
+                "21": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "custom_list_value_in_strings",
+                            "repoName": "Phishing_Investigation"
+                        },
+                        "functionId": 3,
+                        "functionName": "custom_list_value_in_strings_3",
+                        "id": "21",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "custom_list_value_in_strings": {
+                                "description": "Iterates through all items of a custom list to see if any list value (i.e. \"sample.com\") exists in the input you are comparing it to (i.e \"findme.sample.com\"). Returns a list of matches, a list of misses, a count of matches, and a count of misses.",
+                                "fields": [
+                                    {
+                                        "dataTypes": [
+                                            ""
+                                        ],
+                                        "description": "Name of the custom list. Every string in this list will be compared to see if it is a substring of any of the comparison_strings",
+                                        "inputType": "item",
+                                        "label": "custom_list",
+                                        "name": "custom_list",
+                                        "placeholder": "custom_list_name",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [
+                                            "*"
+                                        ],
+                                        "description": "String to use for comparison.",
+                                        "inputType": "list",
+                                        "label": "comparison_strings",
+                                        "name": "comparison_strings",
+                                        "placeholder": "comparison_strings",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "custom_list_value_in_strings",
+                                "name": "custom_list_value_in_strings"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "custom_list_value_in_strings": {
+                                "comparison_strings": "extract_email_from_emailheaders:custom_function_result.data.*.email_address",
+                                "custom_list": "VIP"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "21",
+                    "type": "utility",
+                    "x": 960,
+                    "y": 784.5
                 }
             },
             "notes": ""
@@ -573,7 +635,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T12:18:24.255746+00:00",
+    "create_time": "2022-03-01T12:21:58.603646+00:00",
     "draft_mode": false,
     "labels": [
         "*"
