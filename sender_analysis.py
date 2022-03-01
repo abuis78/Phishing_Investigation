@@ -394,14 +394,14 @@ def search_vor_company_keywords_in_email(action=None, success=None, container=No
     misses = []    
     
     success, message, c_keywoards = phantom.get_list(list_name=input_parameter_0)
-    phantom.debug('phantom.get_list results: success: {}, message: {}, execs: {}'.format(success, message, c_keywoards))
+    # phantom.debug('phantom.get_list results: success: {}, message: {}, execs: {}'.format(success, message, c_keywoards))
     keywoard_list = [item for sublist in c_keywoards for item in sublist]
     
-    phantom.debug(keywoard_list)
+    # phantom.debug(keywoard_list)
     
     for item in keywoard_list:
         ergebnis = re.findall(item, extract_email_from_emailheaders_data___email_address[0], re.IGNORECASE)
-        phantom.debug(len(ergebnis))
+        # phantom.debug(len(ergebnis))
         
         if ergebnis != -1:
             matches.append({"match": item})
