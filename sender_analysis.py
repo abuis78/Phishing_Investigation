@@ -351,8 +351,8 @@ def convert_tag_list_into_string(action=None, success=None, container=None, resu
     ################################################################################
 
     # Write your custom code here...
-    phantom.debug(format_2)
-    convert_tag_list_into_string__tag_str_list = "".join(format_2)
+    phantom.debug('TAG Liste {}'.format(format_2))
+    convert_tag_list_into_string__tag_str_list = ','.join(format_2)
     phantom.debug('STRING {}'.format(convert_tag_list_into_string__tag_str_list))
 
     ################################################################################
