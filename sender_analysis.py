@@ -354,6 +354,8 @@ def convert_tag_list_into_string(action=None, success=None, container=None, resu
 
     # Write your custom code here...
     phantom.debug('TAG Liste {}'.format(container_artifact_header_item_0))
+    lat_list = [item for sublist in container_artifact_header_item_0 for item in sublist]
+    phantom.debug(lat_list)
     convert_tag_list_into_string__tag_str_list = ','.join(container_artifact_header_item_0)
     phantom.debug('STRING {}'.format(convert_tag_list_into_string__tag_str_list))
 
