@@ -128,21 +128,14 @@
                             "index": 0
                         }
                     ],
-                    "id": "port_30_to_port_39",
+                    "id": "port_30_to_port_38",
                     "sourceNode": "30",
                     "sourcePort": "30_out",
-                    "targetNode": "39",
-                    "targetPort": "39_in"
-                },
-                {
-                    "id": "port_39_to_port_38",
-                    "sourceNode": "39",
-                    "sourcePort": "39_out",
                     "targetNode": "38",
                     "targetPort": "38_in"
                 }
             ],
-            "hash": "1d5ecc2505a58ecfdc32802af4df184385ccd8ec",
+            "hash": "31ff1f3d17c9ce9d3e51371640acb8e597fe03a0",
             "nodes": {
                 "0": {
                     "data": {
@@ -656,7 +649,7 @@
                     "id": "30",
                     "type": "filter",
                     "x": -60,
-                    "y": 1500
+                    "y": 1520
                 },
                 "31": {
                     "data": {
@@ -850,7 +843,7 @@
                         "functionName": "convert_tag_list_into_string",
                         "id": "38",
                         "inputParameters": [
-                            "format_2:formatted_data"
+                            "artifact:*.tags"
                         ],
                         "outputVariables": [
                             "tag_str_list"
@@ -860,7 +853,7 @@
                     "errors": {},
                     "id": "38",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    phantom.debug('TAG Liste {}'.format(format_2))\n    convert_tag_list_into_string__tag_str_list = ','.join(format_2)\n    phantom.debug('STRING {}'.format(convert_tag_list_into_string__tag_str_list))\n\n",
+                    "userCode": "\n    # Write your custom code here...\n    phantom.debug('TAG Liste {}'.format(container_artifact_header_item_0))\n    convert_tag_list_into_string__tag_str_list = ','.join(container_artifact_header_item_0)\n    phantom.debug('STRING {}'.format(convert_tag_list_into_string__tag_str_list))\n\n",
                     "x": -120,
                     "y": 1740
                 },
@@ -881,8 +874,8 @@
                     "errors": {},
                     "id": "39",
                     "type": "format",
-                    "x": -120.00000000000001,
-                    "y": 1644.5
+                    "x": -320,
+                    "y": 1580
                 }
             },
             "notes": ""
@@ -894,7 +887,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T14:07:52.003990+00:00",
+    "create_time": "2022-03-01T14:10:41.957134+00:00",
     "draft_mode": false,
     "labels": [
         "*"

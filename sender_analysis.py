@@ -261,7 +261,7 @@ def filter_4(action=None, success=None, container=None, results=None, handle=Non
 
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_1 or matched_results_1:
-        format_2(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+        convert_tag_list_into_string(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
 
     return
 
@@ -342,7 +342,9 @@ def dkim_path(action=None, success=None, container=None, results=None, handle=No
 def convert_tag_list_into_string(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("convert_tag_list_into_string() called")
 
-    format_2 = phantom.get_format_data(name="format_2")
+    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.tags"])
+
+    container_artifact_header_item_0 = [item[0] for item in container_artifact_data]
 
     convert_tag_list_into_string__tag_str_list = None
 
@@ -351,8 +353,8 @@ def convert_tag_list_into_string(action=None, success=None, container=None, resu
     ################################################################################
 
     # Write your custom code here...
-    phantom.debug('TAG Liste {}'.format(format_2))
-    convert_tag_list_into_string__tag_str_list = ','.join(format_2)
+    phantom.debug('TAG Liste {}'.format(container_artifact_header_item_0))
+    convert_tag_list_into_string__tag_str_list = ','.join(container_artifact_header_item_0)
     phantom.debug('STRING {}'.format(convert_tag_list_into_string__tag_str_list))
 
     ################################################################################
@@ -387,8 +389,6 @@ def format_2(action=None, success=None, container=None, results=None, handle=Non
     ################################################################################
 
     phantom.format(container=container, template=template, parameters=parameters, name="format_2")
-
-    convert_tag_list_into_string(container=container)
 
     return
 
