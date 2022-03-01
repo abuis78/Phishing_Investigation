@@ -21,14 +21,38 @@
                     "targetPort": "19_in"
                 },
                 {
-                    "id": "port_19_to_port_12",
+                    "id": "port_19_to_port_13",
                     "sourceNode": "19",
                     "sourcePort": "19_out",
-                    "targetNode": "12",
-                    "targetPort": "12_in"
+                    "targetNode": "13",
+                    "targetPort": "13_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_13_to_port_15",
+                    "sourceNode": "13",
+                    "sourcePort": "13_out",
+                    "targetNode": "15",
+                    "targetPort": "15_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_15_to_port_10",
+                    "sourceNode": "15",
+                    "sourcePort": "15_out",
+                    "targetNode": "10",
+                    "targetPort": "10_in"
                 }
             ],
-            "hash": "576f8f963709748ba24e68dbc6c44e0fa06f70a3",
+            "hash": "54d1071c04c69ec68edecef9168b4e10e6594029",
             "nodes": {
                 "0": {
                     "data": {
@@ -187,7 +211,7 @@
                         "utilityType": "custom_function",
                         "values": {
                             "artifact_update": {
-                                "artifact_id": "filtered-data:filter_email_artifact:condition_1:artifact:*.id",
+                                "artifact_id": "filtered-data:get_email_artifact_id:condition_1:artifact:*.id",
                                 "cef_data_type": null,
                                 "cef_field": null,
                                 "cef_value": null,
@@ -202,174 +226,8 @@
                     "errors": {},
                     "id": "10",
                     "type": "utility",
-                    "x": 940,
-                    "y": 1480
-                },
-                "12": {
-                    "data": {
-                        "advanced": {
-                            "join": []
-                        },
-                        "customFunction": {
-                            "draftMode": false,
-                            "name": "debug",
-                            "repoName": "community"
-                        },
-                        "functionId": 8,
-                        "functionName": "debug_8",
-                        "id": "12",
-                        "selectMore": false,
-                        "type": "utility",
-                        "utilities": {
-                            "debug": {
-                                "description": "Print debug messages with the type and value of 0-10 different inputs. This is useful for checking the values of input data or the outputs of other playbook blocks.",
-                                "fields": [
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_1",
-                                        "name": "input_1",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_2",
-                                        "name": "input_2",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_3",
-                                        "name": "input_3",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_4",
-                                        "name": "input_4",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_5",
-                                        "name": "input_5",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_6",
-                                        "name": "input_6",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_7",
-                                        "name": "input_7",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_8",
-                                        "name": "input_8",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_9",
-                                        "name": "input_9",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_10",
-                                        "name": "input_10",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    }
-                                ],
-                                "label": "debug",
-                                "name": "debug"
-                            }
-                        },
-                        "utilityType": "custom_function",
-                        "values": {
-                            "debug": {
-                                "input_1": "find_listitem_1:action_result.parameter.exact_match",
-                                "input_10": null,
-                                "input_2": "",
-                                "input_3": "",
-                                "input_4": "",
-                                "input_5": "",
-                                "input_6": null,
-                                "input_7": null,
-                                "input_8": null,
-                                "input_9": null
-                            }
-                        }
-                    },
-                    "errors": {},
-                    "id": "12",
-                    "type": "utility",
-                    "x": 960,
-                    "y": 1020
+                    "x": 740,
+                    "y": 1300
                 },
                 "13": {
                     "data": {
@@ -381,9 +239,9 @@
                                 "comparisons": [
                                     {
                                         "conditionIndex": 0,
-                                        "op": "in",
-                                        "param": "extract_email_from_emailheaders:custom_function_result.data.*.email_address",
-                                        "value": "custom_list:VIP"
+                                        "op": ">",
+                                        "param": "finde_email_in_vip_list:action_result.summary.found_matches",
+                                        "value": "0"
                                     }
                                 ],
                                 "conditionIndex": 0,
@@ -400,12 +258,14 @@
                     "errors": {},
                     "id": "13",
                     "type": "decision",
-                    "x": 1540,
-                    "y": 820
+                    "x": 1040,
+                    "y": 940
                 },
                 "15": {
                     "data": {
                         "advanced": {
+                            "customName": "get  Email Artifact id",
+                            "customNameId": 0,
                             "join": []
                         },
                         "conditions": [
@@ -413,9 +273,9 @@
                                 "comparisons": [
                                     {
                                         "conditionIndex": 0,
-                                        "op": "in",
-                                        "param": "format_1:formatted_data",
-                                        "value": "custom_list:VIP"
+                                        "op": "==",
+                                        "param": "artifact:*.name",
+                                        "value": "Email Artifact"
                                     }
                                 ],
                                 "conditionIndex": 0,
@@ -423,83 +283,23 @@
                             }
                         ],
                         "functionId": 3,
-                        "functionName": "filter_3",
+                        "functionName": "get_email_artifact_id",
                         "id": "15",
                         "type": "filter"
                     },
                     "errors": {},
                     "id": "15",
                     "type": "filter",
-                    "x": 1700,
-                    "y": 1080
-                },
-                "18": {
-                    "data": {
-                        "advanced": {
-                            "join": []
-                        },
-                        "customFunction": {
-                            "draftMode": false,
-                            "name": "custom_list_value_in_strings",
-                            "repoName": "Phishing_Investigation"
-                        },
-                        "functionId": 11,
-                        "functionName": "custom_list_value_in_strings_11",
-                        "id": "18",
-                        "selectMore": false,
-                        "type": "utility",
-                        "utilities": {
-                            "custom_list_value_in_strings": {
-                                "description": "Iterates through all items of a custom list to see if any list value (i.e. \"sample.com\") exists in the input you are comparing it to (i.e \"findme.sample.com\"). Returns a list of matches, a list of misses, a count of matches, and a count of misses.",
-                                "fields": [
-                                    {
-                                        "dataTypes": [
-                                            ""
-                                        ],
-                                        "description": "Name of the custom list. Every string in this list will be compared to see if it is a substring of any of the comparison_strings",
-                                        "inputType": "item",
-                                        "label": "custom_list",
-                                        "name": "custom_list",
-                                        "placeholder": "custom_list_name",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "String to use for comparison.",
-                                        "inputType": "list",
-                                        "label": "comparison_strings",
-                                        "name": "comparison_strings",
-                                        "placeholder": "comparison_strings",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    }
-                                ],
-                                "label": "custom_list_value_in_strings",
-                                "name": "custom_list_value_in_strings"
-                            }
-                        },
-                        "utilityType": "custom_function",
-                        "values": {
-                            "custom_list_value_in_strings": {
-                                "comparison_strings": "extract_email_from_emailheaders:custom_function_result.data.*.email_address",
-                                "custom_list": "VIP"
-                            }
-                        }
-                    },
-                    "errors": {},
-                    "id": "18",
-                    "type": "utility",
-                    "x": 1140,
-                    "y": 900
+                    "x": 800,
+                    "y": 1100
                 },
                 "19": {
                     "data": {
                         "action": "find listitem",
                         "actionType": "investigate",
                         "advanced": {
+                            "customName": "finde email in VIP list",
+                            "customNameId": 0,
                             "join": []
                         },
                         "connector": "Phantom",
@@ -509,7 +309,7 @@
                         "connectorId": "deb82aa9-22cc-4675-9cf1-534b8d006eb7",
                         "connectorVersion": "v1",
                         "functionId": 1,
-                        "functionName": "find_listitem_1",
+                        "functionName": "finde_email_in_vip_list",
                         "id": "19",
                         "parameters": {
                             "exact_match": true,
@@ -536,8 +336,8 @@
                     "errors": {},
                     "id": "19",
                     "type": "action",
-                    "x": 980,
-                    "y": 804.5
+                    "x": 960,
+                    "y": 820
                 },
                 "2": {
                     "data": {
@@ -589,39 +389,6 @@
                     "type": "utility",
                     "x": 960,
                     "y": 620
-                },
-                "9": {
-                    "data": {
-                        "advanced": {
-                            "customName": "Filter  Email Artifact",
-                            "customNameId": 0,
-                            "join": []
-                        },
-                        "conditions": [
-                            {
-                                "comparisons": [
-                                    {
-                                        "conditionIndex": 0,
-                                        "op": "==",
-                                        "param": "artifact:*.name",
-                                        "value": "Email Artifact"
-                                    }
-                                ],
-                                "conditionIndex": 0,
-                                "customName": "Email Artifact",
-                                "logic": "and"
-                            }
-                        ],
-                        "functionId": 1,
-                        "functionName": "filter_email_artifact",
-                        "id": "9",
-                        "type": "filter"
-                    },
-                    "errors": {},
-                    "id": "9",
-                    "type": "filter",
-                    "x": 960,
-                    "y": 1280
                 }
             },
             "notes": ""
@@ -633,7 +400,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T12:11:42.866385+00:00",
+    "create_time": "2022-03-01T12:14:50.616858+00:00",
     "draft_mode": false,
     "labels": [
         "*"

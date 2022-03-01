@@ -39,25 +39,7 @@ def extract_email_from_emailheaders(action=None, success=None, container=None, r
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/regex_extract_email", parameters=parameters, name="extract_email_from_emailheaders", callback=find_listitem_1)
-
-    return
-
-
-def filter_email_artifact(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("filter_email_artifact() called")
-
-    # collect filtered artifact ids and results for 'if' condition 1
-    matched_artifacts_1, matched_results_1 = phantom.condition(
-        container=container,
-        conditions=[
-            ["artifact:*.name", "==", "Email Artifact"]
-        ],
-        name="filter_email_artifact:condition_1")
-
-    # call connected blocks if filtered artifacts or results
-    if matched_artifacts_1 or matched_results_1:
-        pass
+    phantom.custom_function(custom_function="Phishing_Investigation/regex_extract_email", parameters=parameters, name="extract_email_from_emailheaders", callback=finde_email_in_vip_list)
 
     return
 
@@ -65,12 +47,12 @@ def filter_email_artifact(action=None, success=None, container=None, results=Non
 def add_tag_vip_to_email_artifact(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("add_tag_vip_to_email_artifact() called")
 
-    filtered_artifact_0_data_filter_email_artifact = phantom.collect2(container=container, datapath=["filtered-data:filter_email_artifact:condition_1:artifact:*.id","filtered-data:filter_email_artifact:condition_1:artifact:*.id"])
+    filtered_artifact_0_data_get_email_artifact_id = phantom.collect2(container=container, datapath=["filtered-data:get_email_artifact_id:condition_1:artifact:*.id","filtered-data:get_email_artifact_id:condition_1:artifact:*.id"])
 
     parameters = []
 
     # build parameters list for 'add_tag_vip_to_email_artifact' call
-    for filtered_artifact_0_item_filter_email_artifact in filtered_artifact_0_data_filter_email_artifact:
+    for filtered_artifact_0_item_get_email_artifact_id in filtered_artifact_0_data_get_email_artifact_id:
         parameters.append({
             "name": None,
             "tags": "VIP",
@@ -79,7 +61,7 @@ def add_tag_vip_to_email_artifact(action=None, success=None, container=None, res
             "cef_field": None,
             "cef_value": None,
             "input_json": None,
-            "artifact_id": filtered_artifact_0_item_filter_email_artifact[0],
+            "artifact_id": filtered_artifact_0_item_get_email_artifact_id[0],
             "cef_data_type": None,
         })
 
@@ -98,43 +80,6 @@ def add_tag_vip_to_email_artifact(action=None, success=None, container=None, res
     return
 
 
-def debug_8(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("debug_8() called")
-
-    find_listitem_1_result_data = phantom.collect2(container=container, datapath=["find_listitem_1:action_result.parameter.exact_match","find_listitem_1:action_result.parameter.context.artifact_id"], action_results=results)
-
-    find_listitem_1_parameter_exact_match = [item[0] for item in find_listitem_1_result_data]
-
-    parameters = []
-
-    parameters.append({
-        "input_1": find_listitem_1_parameter_exact_match,
-        "input_2": None,
-        "input_3": None,
-        "input_4": None,
-        "input_5": None,
-        "input_6": None,
-        "input_7": None,
-        "input_8": None,
-        "input_9": None,
-        "input_10": None,
-    })
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_8")
-
-    return
-
-
 def decision_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("decision_2() called")
 
@@ -142,65 +87,37 @@ def decision_2(action=None, success=None, container=None, results=None, handle=N
     found_match_1 = phantom.decision(
         container=container,
         conditions=[
-            ["extract_email_from_emailheaders:custom_function_result.data.*.email_address", "in", "custom_list:VIP"]
+            ["finde_email_in_vip_list:action_result.summary.found_matches", ">", 0]
         ])
 
     # call connected blocks if condition 1 matched
     if found_match_1:
+        get_email_artifact_id(action=action, success=success, container=container, results=results, handle=handle)
         return
 
     return
 
 
-def filter_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("filter_3() called")
+def get_email_artifact_id(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("get_email_artifact_id() called")
 
     # collect filtered artifact ids and results for 'if' condition 1
     matched_artifacts_1, matched_results_1 = phantom.condition(
         container=container,
         conditions=[
-            ["format_1:formatted_data", "in", "custom_list:VIP"]
+            ["artifact:*.name", "==", "Email Artifact"]
         ],
-        name="filter_3:condition_1")
+        name="get_email_artifact_id:condition_1")
 
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_1 or matched_results_1:
-        pass
+        add_tag_vip_to_email_artifact(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
 
     return
 
 
-def custom_list_value_in_strings_11(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("custom_list_value_in_strings_11() called")
-
-    extract_email_from_emailheaders_data = phantom.collect2(container=container, datapath=["extract_email_from_emailheaders:custom_function_result.data.*.email_address"])
-
-    extract_email_from_emailheaders_data___email_address = [item[0] for item in extract_email_from_emailheaders_data]
-
-    parameters = []
-
-    parameters.append({
-        "custom_list": "VIP",
-        "comparison_strings": extract_email_from_emailheaders_data___email_address,
-    })
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.custom_function(custom_function="Phishing_Investigation/custom_list_value_in_strings", parameters=parameters, name="custom_list_value_in_strings_11")
-
-    return
-
-
-def find_listitem_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("find_listitem_1() called")
+def finde_email_in_vip_list(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("finde_email_in_vip_list() called")
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
@@ -208,7 +125,7 @@ def find_listitem_1(action=None, success=None, container=None, results=None, han
 
     parameters = []
 
-    # build parameters list for 'find_listitem_1' call
+    # build parameters list for 'finde_email_in_vip_list' call
     for extract_email_from_emailheaders_data_item in extract_email_from_emailheaders_data:
         if extract_email_from_emailheaders_data_item[0] is not None:
             parameters.append({
@@ -227,7 +144,7 @@ def find_listitem_1(action=None, success=None, container=None, results=None, han
     ## Custom Code End
     ################################################################################
 
-    phantom.act("find listitem", parameters=parameters, name="find_listitem_1", assets=["phantom"], callback=debug_8)
+    phantom.act("find listitem", parameters=parameters, name="finde_email_in_vip_list", assets=["phantom"], callback=decision_2)
 
     return
 
