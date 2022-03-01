@@ -239,7 +239,101 @@ def dkim_check(action=None, success=None, container=None, results=None, handle=N
 
     # call connected blocks if condition 1 matched
     if found_match_1:
+        filter_4(action=action, success=success, container=container, results=results, handle=handle)
         return
+
+    # check for 'else' condition 2
+    join_dkim_path(action=action, success=success, container=container, results=results, handle=handle)
+
+    return
+
+
+def filter_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("filter_4() called")
+
+    # collect filtered artifact ids and results for 'if' condition 1
+    matched_artifacts_1, matched_results_1 = phantom.condition(
+        container=container,
+        conditions=[
+            ["artifact:*.name", "==", "Email Artifact"]
+        ],
+        name="filter_4:condition_1")
+
+    # call connected blocks if filtered artifacts or results
+    if matched_artifacts_1 or matched_results_1:
+        artifact_update_12(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+
+    return
+
+
+def artifact_update_12(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("artifact_update_12() called")
+
+    filtered_artifact_0_data_filter_4 = phantom.collect2(container=container, datapath=["filtered-data:filter_4:condition_1:artifact:*.id","filtered-data:filter_4:condition_1:artifact:*.id"])
+
+    parameters = []
+
+    # build parameters list for 'artifact_update_12' call
+    for filtered_artifact_0_item_filter_4 in filtered_artifact_0_data_filter_4:
+        parameters.append({
+            "artifact_id": filtered_artifact_0_item_filter_4[0],
+            "name": None,
+            "label": None,
+            "severity": None,
+            "cef_field": None,
+            "cef_value": None,
+            "cef_data_type": None,
+            "tags": "internal",
+            "input_json": None,
+        })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="Phishing_Investigation/artifact_update", parameters=parameters, name="artifact_update_12", callback=join_dkim_path)
+
+    return
+
+
+def join_dkim_path(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("join_dkim_path() called")
+
+    # if the joined function has already been called, do nothing
+    if phantom.get_run_data(key="join_dkim_path_called"):
+        return
+
+    # save the state that the joined function has now been called
+    phantom.save_run_data(key="join_dkim_path_called", value="dkim_path")
+
+    # call connected block "dkim_path"
+    dkim_path(container=container, handle=handle)
+
+    return
+
+
+def dkim_path(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("dkim_path() called")
+
+    parameters = [{}]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="Phishing_Investigation/noop", parameters=parameters, name="dkim_path")
 
     return
 

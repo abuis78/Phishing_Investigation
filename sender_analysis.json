@@ -83,9 +83,52 @@
                     "sourcePort": "25_out",
                     "targetNode": "27",
                     "targetPort": "27_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_27_to_port_30",
+                    "sourceNode": "27",
+                    "sourcePort": "27_out",
+                    "targetNode": "30",
+                    "targetPort": "30_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_30_to_port_31",
+                    "sourceNode": "30",
+                    "sourcePort": "30_out",
+                    "targetNode": "31",
+                    "targetPort": "31_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 1
+                        }
+                    ],
+                    "id": "port_27_to_port_32",
+                    "sourceNode": "27",
+                    "sourcePort": "27_out",
+                    "targetNode": "32",
+                    "targetPort": "32_in"
+                },
+                {
+                    "id": "port_31_to_port_32",
+                    "sourceNode": "31",
+                    "sourcePort": "31_out",
+                    "targetNode": "32",
+                    "targetPort": "32_in"
                 }
             ],
-            "hash": "50b24daaf3f94a7d6356468a43ba3049d700f455",
+            "hash": "312c93b063315c658febaa78b624fa7e3ee03c91",
             "nodes": {
                 "0": {
                     "data": {
@@ -568,8 +611,219 @@
                     "errors": {},
                     "id": "27",
                     "type": "decision",
-                    "x": 1080,
+                    "x": 1040,
                     "y": 1940
+                },
+                "30": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "==",
+                                        "param": "artifact:*.name",
+                                        "value": "Email Artifact"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "logic": "and"
+                            }
+                        ],
+                        "functionId": 4,
+                        "functionName": "filter_4",
+                        "id": "30",
+                        "type": "filter"
+                    },
+                    "errors": {},
+                    "id": "30",
+                    "type": "filter",
+                    "x": 840,
+                    "y": 2164.5
+                },
+                "31": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "artifact_update",
+                            "repoName": "Phishing_Investigation"
+                        },
+                        "functionId": 12,
+                        "functionName": "artifact_update_12",
+                        "id": "31",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "artifact_update": {
+                                "description": "Update an artifact with the specified attributes. All parameters are optional, except that cef_field and cef_value must both be provided if one is provided.",
+                                "fields": [
+                                    {
+                                        "dataTypes": [
+                                            "phantom artifact id"
+                                        ],
+                                        "description": "ID of the artifact to update, which is required.",
+                                        "inputType": "item",
+                                        "label": "artifact_id",
+                                        "name": "artifact_id",
+                                        "placeholder": "1234",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "Change the name of the artifact.",
+                                        "inputType": "item",
+                                        "label": "name",
+                                        "name": "name",
+                                        "placeholder": "artifact",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "Change the label of the artifact.",
+                                        "inputType": "item",
+                                        "label": "label",
+                                        "name": "label",
+                                        "placeholder": "events",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [
+                                            ""
+                                        ],
+                                        "description": "Change the severity of the artifact. Typically this is either \"High\", \"Medium\", or \"Low\".",
+                                        "inputType": "item",
+                                        "label": "severity",
+                                        "name": "severity",
+                                        "placeholder": "Medium",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "The name of the CEF field to populate in the artifact, such as \"destinationAddress\" or \"sourceDnsDomain\". Required only if cef_value is provided.",
+                                        "inputType": "item",
+                                        "label": "cef_field",
+                                        "name": "cef_field",
+                                        "placeholder": "destinationAddress",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [
+                                            "*"
+                                        ],
+                                        "description": "The value of the CEF field to populate in the artifact, such as the IP address, domain name, or file hash. Required only if cef_field is provided.",
+                                        "inputType": "item",
+                                        "label": "cef_value",
+                                        "name": "cef_value",
+                                        "placeholder": "192.0.2.192",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "The CEF data type of the data in cef_value. For example, this could be \"ip\", \"hash\", or \"domain\". Optional, but only operational if cef_field is provided.",
+                                        "inputType": "item",
+                                        "label": "cef_data_type",
+                                        "name": "cef_data_type",
+                                        "placeholder": "ip",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "A comma-separated list of tags to apply to the artifact, which is optional.",
+                                        "inputType": "item",
+                                        "label": "tags",
+                                        "name": "tags",
+                                        "placeholder": "tag1, tag2, tag3",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "Optional parameter to modify any extra attributes of the artifact. Input_json will be merged with other inputs. In the event of a conflict, input_json will take precedence.",
+                                        "inputType": "item",
+                                        "label": "input_json",
+                                        "name": "input_json",
+                                        "placeholder": "{\"source_data_identifier\": \"1234\", \"data\": \"5678\"}",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "artifact_update",
+                                "name": "artifact_update"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "artifact_update": {
+                                "artifact_id": "filtered-data:filter_4:condition_1:artifact:*.id",
+                                "cef_data_type": null,
+                                "cef_field": null,
+                                "cef_value": null,
+                                "input_json": null,
+                                "label": null,
+                                "name": null,
+                                "severity": null,
+                                "tags": "internal"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "31",
+                    "type": "utility",
+                    "x": 780,
+                    "y": 2324.5
+                },
+                "32": {
+                    "data": {
+                        "advanced": {
+                            "customName": "DKIM path",
+                            "customNameId": 0,
+                            "join": [],
+                            "notRequiredJoins": [
+                                "vip_path",
+                                "artifact_update_12"
+                            ]
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "noop",
+                            "repoName": "Phishing_Investigation"
+                        },
+                        "functionId": 13,
+                        "functionName": "dkim_path",
+                        "id": "32",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "noop": {
+                                "description": "Do nothing and return nothing. Use this if you want to do something in a custom function setup section or leave a placeholder block in a playbook. This does not sleep or wait and will return as soon as possible.",
+                                "fields": [],
+                                "label": "noop",
+                                "name": "noop"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "noop": {}
+                        }
+                    },
+                    "errors": {},
+                    "id": "32",
+                    "type": "utility",
+                    "x": 960,
+                    "y": 2484.5
                 }
             },
             "notes": ""
@@ -581,7 +835,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T13:21:05.876427+00:00",
+    "create_time": "2022-03-01T13:23:28.757364+00:00",
     "draft_mode": false,
     "labels": [
         "*"
