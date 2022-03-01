@@ -407,7 +407,7 @@ def search_vor_company_keywords_in_email(action=None, success=None, container=No
         for x in ergebnis:
             if ergebnis != -1:
                 matches.append({"match": x})
-                matches_keyword_list.append = item
+                matches_keyword_list.append(item)
             else:
                 misses.append({"miss": x})
                 
