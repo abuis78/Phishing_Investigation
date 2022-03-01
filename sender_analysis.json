@@ -78,7 +78,7 @@
                     "targetPort": "25_in"
                 }
             ],
-            "hash": "668f7f6dd23507e77c3a6c98bfcf84fe9a5ce4bd",
+            "hash": "25b733d1572a07303cbff5acd8bdedaa6129d45e",
             "nodes": {
                 "0": {
                     "data": {
@@ -509,7 +509,7 @@
                     "errors": {},
                     "id": "25",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    import re\n    phantom.debug(container_artifact_cef_item_0)\n    domain_regex = r'((?!-))(xn--)?[a-z0-9][a-z0-9-_]{0,61}[a-z0-9]{0,1}\\.(xn--)?([a-z0-9\\-]{1,61}|[a-z0-9-]{1,30}\\.[a-z]{2,})'\n    dkim_domain = re.findall(domain_regex, str(container_artifact_cef_item_0), re.IGNORECASE)\n    phantom.debug(dkim_domain)\n",
+                    "userCode": "\n    # Write your custom code here...\n    import re\n    phantom.debug(container_artifact_cef_item_0)\n    domain_regex = r'((?!-))(xn--)?[a-z0-9][a-z0-9-_]{0,61}[a-z0-9]{0,1}\\.(xn--)?([a-z0-9\\-]{1,61}|[a-z0-9-]{1,30}\\.[a-z]{2,})'\n    for domain in re.findall(domain_regex, str(container_artifact_cef_item_0), re.IGNORECASE):\n        phantom.debug(domain)\n    \n",
                     "x": 960,
                     "y": 1760
                 }
@@ -523,7 +523,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T13:12:19.780764+00:00",
+    "create_time": "2022-03-01T13:14:48.349817+00:00",
     "draft_mode": false,
     "labels": [
         "*"
