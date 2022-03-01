@@ -39,7 +39,7 @@ def extract_email_from_emailheaders(action=None, success=None, container=None, r
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/regex_extract_email", parameters=parameters, name="extract_email_from_emailheaders", callback=format_1)
+    phantom.custom_function(custom_function="Phishing_Investigation/regex_extract_email", parameters=parameters, name="extract_email_from_emailheaders", callback=custom_list_value_in_strings_11)
 
     return
 
@@ -101,15 +101,19 @@ def add_tag_vip_to_email_artifact(action=None, success=None, container=None, res
 def debug_8(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("debug_8() called")
 
+    custom_list_value_in_strings_11_data_matches = phantom.collect2(container=container, datapath=["custom_list_value_in_strings_11:custom_function_result.data.matches.*.match"])
+    custom_list_value_in_strings_11_data_misses = phantom.collect2(container=container, datapath=["custom_list_value_in_strings_11:custom_function_result.data.misses.*.miss"])
     extract_email_from_emailheaders_data = phantom.collect2(container=container, datapath=["extract_email_from_emailheaders:custom_function_result.data.*.email_address"])
 
+    custom_list_value_in_strings_11_data_matches___match = [item[0] for item in custom_list_value_in_strings_11_data_matches]
+    custom_list_value_in_strings_11_data_misses___miss = [item[0] for item in custom_list_value_in_strings_11_data_misses]
     extract_email_from_emailheaders_data___email_address = [item[0] for item in extract_email_from_emailheaders_data]
 
     parameters = []
 
     parameters.append({
-        "input_1": None,
-        "input_2": None,
+        "input_1": custom_list_value_in_strings_11_data_matches___match,
+        "input_2": custom_list_value_in_strings_11_data_misses___miss,
         "input_3": None,
         "input_4": extract_email_from_emailheaders_data___email_address,
         "input_5": None,
@@ -152,33 +156,6 @@ def decision_2(action=None, success=None, container=None, results=None, handle=N
     return
 
 
-def format_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("format_1() called")
-
-    template = """{0}"""
-
-    # parameter list for template variable replacement
-    parameters = [
-        "extract_email_from_emailheaders:custom_function_result.data.*.email_address"
-    ]
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.format(container=container, template=template, parameters=parameters, name="format_1")
-
-    filter_3(container=container)
-
-    return
-
-
 def filter_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("filter_3() called")
 
@@ -193,6 +170,35 @@ def filter_3(action=None, success=None, container=None, results=None, handle=Non
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_1 or matched_results_1:
         pass
+
+    return
+
+
+def custom_list_value_in_strings_11(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("custom_list_value_in_strings_11() called")
+
+    extract_email_from_emailheaders_data = phantom.collect2(container=container, datapath=["extract_email_from_emailheaders:custom_function_result.data.*.email_address"])
+
+    extract_email_from_emailheaders_data___email_address = [item[0] for item in extract_email_from_emailheaders_data]
+
+    parameters = []
+
+    parameters.append({
+        "custom_list": "VIP",
+        "comparison_strings": extract_email_from_emailheaders_data___email_address,
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="Phishing_Investigation/custom_list_value_in_strings", parameters=parameters, name="custom_list_value_in_strings_11", callback=debug_8)
 
     return
 

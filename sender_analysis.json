@@ -14,21 +14,21 @@
                     "targetPort": "2_in"
                 },
                 {
-                    "id": "port_2_to_port_14",
+                    "id": "port_2_to_port_18",
                     "sourceNode": "2",
                     "sourcePort": "2_out",
-                    "targetNode": "14",
-                    "targetPort": "14_in"
+                    "targetNode": "18",
+                    "targetPort": "18_in"
                 },
                 {
-                    "id": "port_14_to_port_15",
-                    "sourceNode": "14",
-                    "sourcePort": "14_out",
-                    "targetNode": "15",
-                    "targetPort": "15_in"
+                    "id": "port_18_to_port_12",
+                    "sourceNode": "18",
+                    "sourcePort": "18_out",
+                    "targetNode": "12",
+                    "targetPort": "12_in"
                 }
             ],
-            "hash": "2d1cbce170541795b1e0cb926ae50edd52d67fa3",
+            "hash": "0e590316226656a3449de7a2479406c85a540052",
             "nodes": {
                 "0": {
                     "data": {
@@ -352,9 +352,9 @@
                         "utilityType": "custom_function",
                         "values": {
                             "debug": {
-                                "input_1": "",
+                                "input_1": "custom_list_value_in_strings_11:custom_function_result.data.matches.*.match",
                                 "input_10": null,
-                                "input_2": "",
+                                "input_2": "custom_list_value_in_strings_11:custom_function_result.data.misses.*.miss",
                                 "input_3": "",
                                 "input_4": "extract_email_from_emailheaders:custom_function_result.data.*.email_address",
                                 "input_5": null,
@@ -368,8 +368,8 @@
                     "errors": {},
                     "id": "12",
                     "type": "utility",
-                    "x": 760,
-                    "y": 1000
+                    "x": 960,
+                    "y": 980
                 },
                 "13": {
                     "data": {
@@ -403,26 +403,6 @@
                     "x": 1360,
                     "y": 1120
                 },
-                "14": {
-                    "data": {
-                        "advanced": {
-                            "join": []
-                        },
-                        "functionId": 1,
-                        "functionName": "format_1",
-                        "id": "14",
-                        "parameters": [
-                            "extract_email_from_emailheaders:custom_function_result.data.*.email_address"
-                        ],
-                        "template": "{0}",
-                        "type": "format"
-                    },
-                    "errors": {},
-                    "id": "14",
-                    "type": "format",
-                    "x": 960,
-                    "y": 840
-                },
                 "15": {
                     "data": {
                         "advanced": {
@@ -450,8 +430,70 @@
                     "errors": {},
                     "id": "15",
                     "type": "filter",
-                    "x": 1020,
-                    "y": 964.5
+                    "x": 1700,
+                    "y": 1080
+                },
+                "18": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "custom_list_value_in_strings",
+                            "repoName": "Phishing_Investigation"
+                        },
+                        "functionId": 11,
+                        "functionName": "custom_list_value_in_strings_11",
+                        "id": "18",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "custom_list_value_in_strings": {
+                                "description": "Iterates through all items of a custom list to see if any list value (i.e. \"sample.com\") exists in the input you are comparing it to (i.e \"findme.sample.com\"). Returns a list of matches, a list of misses, a count of matches, and a count of misses.",
+                                "fields": [
+                                    {
+                                        "dataTypes": [
+                                            ""
+                                        ],
+                                        "description": "Name of the custom list. Every string in this list will be compared to see if it is a substring of any of the comparison_strings",
+                                        "inputType": "item",
+                                        "label": "custom_list",
+                                        "name": "custom_list",
+                                        "placeholder": "custom_list_name",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [
+                                            "*"
+                                        ],
+                                        "description": "String to use for comparison.",
+                                        "inputType": "list",
+                                        "label": "comparison_strings",
+                                        "name": "comparison_strings",
+                                        "placeholder": "comparison_strings",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "custom_list_value_in_strings",
+                                "name": "custom_list_value_in_strings"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "custom_list_value_in_strings": {
+                                "comparison_strings": "extract_email_from_emailheaders:custom_function_result.data.*.email_address",
+                                "custom_list": "VIP"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "18",
+                    "type": "utility",
+                    "x": 960,
+                    "y": 844.5
                 },
                 "2": {
                     "data": {
@@ -547,7 +589,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T10:35:19.086949+00:00",
+    "create_time": "2022-03-01T10:38:20.516249+00:00",
     "draft_mode": false,
     "labels": [
         "*"
