@@ -26,9 +26,10 @@ def custom_list_value_in_strings(custom_list=None, comparison_strings=None, **kw
     # Loop through each comparison string
     phantom.debug('comparison_strings: {}'.format(comparison_strings))
     for comparison_string in comparison_strings:
-
+        phantom.debug('in for comparison_strings: {}'.format(comparison_string))
         # Loop through the custom list to see if any list value is found in the comparison string
         for row in this_list:
+            phantom.debug('ROW: {}'.format(row))
             for cell in row:
                 phantom.debug('Cell: {}'.format(cell))
                 lala = comparison_string.find(cell)
