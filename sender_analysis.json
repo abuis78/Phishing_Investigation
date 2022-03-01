@@ -59,7 +59,7 @@
                     "targetPort": "20_in"
                 }
             ],
-            "hash": "c4ef52827e0f3c5515c96eb71ba3fc9ddaf5678e",
+            "hash": "d623fc3303ac6676094d9f3bdb83007c43200d19",
             "nodes": {
                 "0": {
                     "data": {
@@ -548,7 +548,7 @@
                                 "input_10": null,
                                 "input_2": "finde_email_in_vip_list:action_result.status",
                                 "input_3": "finde_email_in_vip_list:action_result.parameter.exact_match",
-                                "input_4": null,
+                                "input_4": "finde_email_in_vip_list:action_result.summary",
                                 "input_5": null,
                                 "input_6": null,
                                 "input_7": null,
@@ -573,7 +573,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T12:16:16.066063+00:00",
+    "create_time": "2022-03-01T12:16:47.003363+00:00",
     "draft_mode": false,
     "labels": [
         "*"
