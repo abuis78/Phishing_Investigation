@@ -400,12 +400,20 @@ def search_vor_company_keywords_in_email(action=None, success=None, container=No
     phantom.debug(keywoard_list)
     
     for item in keywoard_list:
-        phantom.debug(item)
-        phantom.debug(extract_email_from_emailheaders_data___email_address[0])
         ergebnis = re.findall(item, extract_email_from_emailheaders_data___email_address[0], re.IGNORECASE)
         phantom.debug(len(ergebnis))
         
-
+        if ergebnis != -1:
+            matches.append({"match": item})
+        else:
+            misses.append({"miss": item})
+    
+    match_count = len(matches)
+    miss_count = len(misses)
+    
+    phantom.debug(match_count)
+    phantom.debug(miss_count)
+    
     ################################################################################
     ## Custom Code End
     ################################################################################

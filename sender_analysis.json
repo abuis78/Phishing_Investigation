@@ -142,7 +142,7 @@
                     "targetPort": "40_in"
                 }
             ],
-            "hash": "44d0e9bef481fbaf237592874e24df980c4f69f4",
+            "hash": "c672675e2138cc6f75191fcac96e558c697715f8",
             "nodes": {
                 "0": {
                     "data": {
@@ -886,7 +886,7 @@
                     "errors": {},
                     "id": "40",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    import re\n    \n    matches = []\n    misses = []    \n    \n    success, message, c_keywoards = phantom.get_list(list_name=input_parameter_0)\n    phantom.debug('phantom.get_list results: success: {}, message: {}, execs: {}'.format(success, message, c_keywoards))\n    keywoard_list = [item for sublist in c_keywoards for item in sublist]\n    \n    phantom.debug(keywoard_list)\n    \n    for item in keywoard_list:\n        phantom.debug(item)\n        phantom.debug(extract_email_from_emailheaders_data___email_address[0])\n        ergebnis = re.findall(item, extract_email_from_emailheaders_data___email_address[0], re.IGNORECASE)\n        phantom.debug(len(ergebnis))\n        \n\n",
+                    "userCode": "\n    # Write your custom code here...\n    import re\n    \n    matches = []\n    misses = []    \n    \n    success, message, c_keywoards = phantom.get_list(list_name=input_parameter_0)\n    phantom.debug('phantom.get_list results: success: {}, message: {}, execs: {}'.format(success, message, c_keywoards))\n    keywoard_list = [item for sublist in c_keywoards for item in sublist]\n    \n    phantom.debug(keywoard_list)\n    \n    for item in keywoard_list:\n        ergebnis = re.findall(item, extract_email_from_emailheaders_data___email_address[0], re.IGNORECASE)\n        phantom.debug(len(ergebnis))\n        \n        if ergebnis != -1:\n            matches.append({\"match\": item})\n        else:\n            misses.append({\"miss\": item})\n    \n    match_count = len(matches)\n    miss_count = len(misses)\n    \n    phantom.debug(match_count)\n    phantom.debug(miss_count)\n    \n",
                     "x": 100,
                     "y": 2160
                 }
@@ -900,7 +900,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T14:42:08.923035+00:00",
+    "create_time": "2022-03-01T14:48:04.813405+00:00",
     "draft_mode": false,
     "labels": [
         "*"
