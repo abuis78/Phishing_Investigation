@@ -78,7 +78,7 @@
                     "targetPort": "25_in"
                 }
             ],
-            "hash": "d729009a2735a9705e3a2d6ba4cbc3ebb54618e7",
+            "hash": "0b4a8c4991ab1f89e15c5092097f2db0796da515",
             "nodes": {
                 "0": {
                     "data": {
@@ -503,13 +503,15 @@
                             "artifact:*.cef.emailHeaders.DKIM-Signature",
                             "extract_email_from_emailheaders:custom_function_result.data.*.domain"
                         ],
-                        "outputVariables": [],
+                        "outputVariables": [
+                            "dkim_domain_check_result"
+                        ],
                         "type": "code"
                     },
                     "errors": {},
                     "id": "25",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    import re\n    phantom.debug(container_artifact_cef_item_0)\n    phantom.debug(extract_email_from_emailheaders_data___domain)\n    domain_regex = r'(((?!-))(xn--)?[a-z0-9][a-z0-9-_]{0,61}[a-z0-9]{0,1}\\.(xn--)?([a-z0-9\\-]{1,61}|[a-z0-9-]{1,30}\\.[a-z]{2,}))'\n    for domain in re.findall(domain_regex, str(container_artifact_cef_item_0), re.IGNORECASE):\n        phantom.debug(domain[0])\n        dkim_domain = domain[0]\n        \n    if dkim_domain == extract_email_from_emailheaders_data___domain[0]:\n        phantom.debug('same Domain')\n    else:\n        phantom.debug('not same Domainn')\n    \n",
+                    "userCode": "\n    # Write your custom code here...\n    import re\n    phantom.debug(container_artifact_cef_item_0)\n    phantom.debug(extract_email_from_emailheaders_data___domain)\n    domain_regex = r'(((?!-))(xn--)?[a-z0-9][a-z0-9-_]{0,61}[a-z0-9]{0,1}\\.(xn--)?([a-z0-9\\-]{1,61}|[a-z0-9-]{1,30}\\.[a-z]{2,}))'\n    for domain in re.findall(domain_regex, str(container_artifact_cef_item_0), re.IGNORECASE):\n        phantom.debug(domain[0])\n        dkim_domain = domain[0]\n        \n    if dkim_domain == extract_email_from_emailheaders_data___domain[0]:\n        phantom.debug('same Domain')\n        extract_domain_from_dkim_signature__dkim_domain_check_result = True\n        \n    else:\n        phantom.debug('not same Domainn')\n        extract_domain_from_dkim_signature__dkim_domain_check_result = False\n    \n",
                     "x": 960,
                     "y": 1760
                 }
@@ -523,7 +525,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T13:18:41.645378+00:00",
+    "create_time": "2022-03-01T13:19:42.582369+00:00",
     "draft_mode": false,
     "labels": [
         "*"

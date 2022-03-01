@@ -193,6 +193,8 @@ def extract_domain_from_dkim_signature(action=None, success=None, container=None
     container_artifact_cef_item_0 = [item[0] for item in container_artifact_data]
     extract_email_from_emailheaders_data___domain = [item[0] for item in extract_email_from_emailheaders_data]
 
+    extract_domain_from_dkim_signature__dkim_domain_check_result = None
+
     ################################################################################
     ## Custom Code Start
     ################################################################################
@@ -208,12 +210,17 @@ def extract_domain_from_dkim_signature(action=None, success=None, container=None
         
     if dkim_domain == extract_email_from_emailheaders_data___domain[0]:
         phantom.debug('same Domain')
+        extract_domain_from_dkim_signature__dkim_domain_check_result = True
+        
     else:
         phantom.debug('not same Domainn')
+        extract_domain_from_dkim_signature__dkim_domain_check_result = False
     
     ################################################################################
     ## Custom Code End
     ################################################################################
+
+    phantom.save_run_data(key="extract_domain_from_dkim_signature:dkim_domain_check_result", value=json.dumps(extract_domain_from_dkim_signature__dkim_domain_check_result))
 
     return
 
