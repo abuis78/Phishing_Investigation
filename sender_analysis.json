@@ -14,21 +14,28 @@
                     "targetPort": "2_in"
                 },
                 {
-                    "id": "port_2_to_port_18",
-                    "sourceNode": "2",
-                    "sourcePort": "2_out",
-                    "targetNode": "18",
-                    "targetPort": "18_in"
-                },
-                {
                     "id": "port_18_to_port_12",
                     "sourceNode": "18",
                     "sourcePort": "18_out",
                     "targetNode": "12",
                     "targetPort": "12_in"
+                },
+                {
+                    "id": "port_2_to_port_19",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
+                    "targetNode": "19",
+                    "targetPort": "19_in"
+                },
+                {
+                    "id": "port_19_to_port_18",
+                    "sourceNode": "19",
+                    "sourcePort": "19_out",
+                    "targetNode": "18",
+                    "targetPort": "18_in"
                 }
             ],
-            "hash": "0e590316226656a3449de7a2479406c85a540052",
+            "hash": "cbbddae3ec4faa1a5898f3e15360aec525f8b80a",
             "nodes": {
                 "0": {
                     "data": {
@@ -369,7 +376,7 @@
                     "id": "12",
                     "type": "utility",
                     "x": 960,
-                    "y": 980
+                    "y": 1100
                 },
                 "13": {
                     "data": {
@@ -484,7 +491,7 @@
                         "utilityType": "custom_function",
                         "values": {
                             "custom_list_value_in_strings": {
-                                "comparison_strings": "extract_email_from_emailheaders:custom_function_result.data.*.email_address",
+                                "comparison_strings": "format_2:formatted_data",
                                 "custom_list": "VIP"
                             }
                         }
@@ -493,7 +500,27 @@
                     "id": "18",
                     "type": "utility",
                     "x": 960,
-                    "y": 844.5
+                    "y": 960
+                },
+                "19": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 2,
+                        "functionName": "format_2",
+                        "id": "19",
+                        "parameters": [
+                            "extract_email_from_emailheaders:custom_function_result.data.*.email_address"
+                        ],
+                        "template": "{0}",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "19",
+                    "type": "format",
+                    "x": 960,
+                    "y": 804.5
                 },
                 "2": {
                     "data": {
@@ -589,7 +616,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T10:38:20.516249+00:00",
+    "create_time": "2022-03-01T10:39:10.544960+00:00",
     "draft_mode": false,
     "labels": [
         "*"
