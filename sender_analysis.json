@@ -142,7 +142,7 @@
                     "targetPort": "40_in"
                 }
             ],
-            "hash": "47e07484c281efb922e0a946b1a099fbba603394",
+            "hash": "88493dbbce7374cef0f3510ac4c8d28e32d30a6a",
             "nodes": {
                 "0": {
                     "data": {
@@ -885,7 +885,7 @@
                     "errors": {},
                     "id": "40",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    success, message, execs = phantom.get_list(list_name=input_parameter_0)\n    phantom.debug('phantom.get_list results: success: {}, message: {}, execs: {}'.format(success, message, execs))\n    \n    \n\n",
+                    "userCode": "\n    # Write your custom code here...\n    success, message, c_keywoards = phantom.get_list(list_name=input_parameter_0)\n    phantom.debug('phantom.get_list results: success: {}, message: {}, execs: {}'.format(success, message, c_keywoards))\n    keywoard_list = [item for sublist in c_keywoards for item in sublist]\n    \n    phantom.debug(keywoard_list)\n    \n    \n\n",
                     "x": 100,
                     "y": 2160
                 }
@@ -899,7 +899,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T14:26:15.151819+00:00",
+    "create_time": "2022-03-01T14:27:51.968864+00:00",
     "draft_mode": false,
     "labels": [
         "*"
