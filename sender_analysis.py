@@ -543,7 +543,7 @@ def filter_email_artifact(action=None, success=None, container=None, results=Non
     matched_artifacts_1, matched_results_1 = phantom.condition(
         container=container,
         conditions=[
-            ["artifact:*.name", "==", " Email Artifact"]
+            ["artifact:*.name", "==", "Email Artifact"]
         ],
         name="filter_email_artifact:condition_1")
 

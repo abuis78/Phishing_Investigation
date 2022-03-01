@@ -175,7 +175,7 @@
                     "targetPort": "2_in"
                 }
             ],
-            "hash": "3d28b9ebe512a0ac9fae0316055253f5145059b3",
+            "hash": "f4aa73f1f8c817adbde5e4e8673c978415dbcb02",
             "nodes": {
                 "0": {
                     "data": {
@@ -1275,7 +1275,7 @@
                                         "conditionIndex": 0,
                                         "op": "==",
                                         "param": "artifact:*.name",
-                                        "value": " Email Artifact"
+                                        "value": "Email Artifact"
                                     }
                                 ],
                                 "conditionIndex": 0,
@@ -1292,7 +1292,7 @@
                     "id": "48",
                     "type": "filter",
                     "x": 140,
-                    "y": -195.5
+                    "y": -200
                 }
             },
             "notes": ""
@@ -1304,7 +1304,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T15:18:38.257233+00:00",
+    "create_time": "2022-03-01T15:19:07.242967+00:00",
     "draft_mode": false,
     "labels": [
         "*"
