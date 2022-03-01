@@ -18,7 +18,6 @@ def custom_list_value_in_strings(custom_list=None, comparison_strings=None, **kw
 
     # Get the custom list
     success, message, this_list = phantom.get_list(list_name=custom_list)
-    phantom.debug(this_list)
     # Create the lists to store matches and misses
     matches = []
     misses = []
@@ -26,22 +25,13 @@ def custom_list_value_in_strings(custom_list=None, comparison_strings=None, **kw
     # Loop through each comparison string
     phantom.debug('comparison_strings: {}'.format(comparison_strings))
     for comparison_string in comparison_strings:
-        phantom.debug('in for comparison_strings: {}'.format(comparison_string))
         # Loop through the custom list to see if any list value is found in the comparison string
         for row in this_list:
-            phantom.debug('ROW: {}'.format(row))
             for cell in row:
-                phantom.debug('Cell: {}'.format(cell))
-                lala = comparison_string.find(cell)
-                phantom.debug('Match: {}'.format(lala))
                 if comparison_string.find(cell) != -1:
                     matches.append({"match": cell})
                 else:
                     misses.append({"miss": cell})
-                phantom.debug("-------------")       
-            phantom.debug("-------------")
-        phantom.debug("-------------")
-    # Prepare the outputs
     match_count = len(matches)
     miss_count = len(misses)
     outputs = {
