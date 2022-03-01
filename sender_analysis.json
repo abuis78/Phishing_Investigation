@@ -14,51 +14,6 @@
                     "targetPort": "2_in"
                 },
                 {
-                    "id": "port_2_to_port_3",
-                    "sourceNode": "2",
-                    "sourcePort": "2_out",
-                    "targetNode": "3",
-                    "targetPort": "3_in"
-                },
-                {
-                    "conditions": [
-                        {
-                            "index": 0
-                        }
-                    ],
-                    "id": "port_3_to_port_4",
-                    "sourceNode": "3",
-                    "sourcePort": "3_out",
-                    "targetNode": "4",
-                    "targetPort": "4_in"
-                },
-                {
-                    "conditions": [
-                        {
-                            "index": 1
-                        }
-                    ],
-                    "id": "port_3_to_port_5",
-                    "sourceNode": "3",
-                    "sourcePort": "3_out",
-                    "targetNode": "5",
-                    "targetPort": "5_in"
-                },
-                {
-                    "id": "port_5_to_port_6",
-                    "sourceNode": "5",
-                    "sourcePort": "5_out",
-                    "targetNode": "6",
-                    "targetPort": "6_in"
-                },
-                {
-                    "id": "port_4_to_port_9",
-                    "sourceNode": "4",
-                    "sourcePort": "4_out",
-                    "targetNode": "9",
-                    "targetPort": "9_in"
-                },
-                {
                     "conditions": [
                         {
                             "index": 0
@@ -71,14 +26,14 @@
                     "targetPort": "10_in"
                 },
                 {
-                    "id": "port_10_to_port_6",
-                    "sourceNode": "10",
-                    "sourcePort": "10_out",
-                    "targetNode": "6",
-                    "targetPort": "6_in"
+                    "id": "port_2_to_port_11",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
+                    "targetNode": "11",
+                    "targetPort": "11_in"
                 }
             ],
-            "hash": "ab83815d0f2e416f4193bf1aa18a1224a78f6e3c",
+            "hash": "0d99849dd571d1f819f8dfeaf6f6871ca5ad5c17",
             "nodes": {
                 "0": {
                     "data": {
@@ -92,8 +47,8 @@
                     "errors": {},
                     "id": "0",
                     "type": "start",
-                    "x": 1000,
-                    "y": 419.9999999999999
+                    "x": 980,
+                    "y": 420
                 },
                 "1": {
                     "data": {
@@ -252,8 +207,40 @@
                     "errors": {},
                     "id": "10",
                     "type": "utility",
-                    "x": 760,
-                    "y": 1240
+                    "x": 960,
+                    "y": 1180
+                },
+                "11": {
+                    "data": {
+                        "advanced": {
+                            "customName": "VIP check",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "in",
+                                        "param": "extract_email_from_emailheaders:custom_function_result.data.*.email_address",
+                                        "value": "custom_list:VIP"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "logic": "and"
+                            }
+                        ],
+                        "functionId": 2,
+                        "functionName": "vip_check",
+                        "id": "11",
+                        "type": "filter"
+                    },
+                    "errors": {},
+                    "id": "11",
+                    "type": "filter",
+                    "x": 1020,
+                    "y": 824.5
                 },
                 "2": {
                     "data": {
@@ -303,221 +290,8 @@
                     "errors": {},
                     "id": "2",
                     "type": "utility",
-                    "x": 980,
-                    "y": 580
-                },
-                "3": {
-                    "data": {
-                        "advanced": {
-                            "customName": "VIP check",
-                            "customNameId": 0,
-                            "join": []
-                        },
-                        "conditions": [
-                            {
-                                "comparisons": [
-                                    {
-                                        "conditionIndex": 0,
-                                        "op": "in",
-                                        "param": "extract_email_from_emailheaders:custom_function_result.data.*.email_address",
-                                        "value": "custom_list:VIP"
-                                    }
-                                ],
-                                "conditionIndex": 0,
-                                "customName": "email ist in VIP list",
-                                "display": "If",
-                                "logic": "and",
-                                "type": "if"
-                            },
-                            {
-                                "comparisons": [
-                                    {
-                                        "op": "==",
-                                        "param": "",
-                                        "value": ""
-                                    }
-                                ],
-                                "conditionIndex": 1,
-                                "customName": "email is not in VIP list",
-                                "display": "Else",
-                                "logic": "and",
-                                "type": "else"
-                            }
-                        ],
-                        "functionId": 1,
-                        "functionName": "vip_check",
-                        "id": "3",
-                        "type": "decision"
-                    },
-                    "errors": {},
-                    "id": "3",
-                    "type": "decision",
-                    "x": 1060,
-                    "y": 784.5
-                },
-                "4": {
-                    "data": {
-                        "advanced": {
-                            "customName": "add comment email is in VIP list",
-                            "customNameId": 0,
-                            "join": []
-                        },
-                        "functionId": 2,
-                        "functionName": "add_comment_email_is_in_vip_list",
-                        "id": "4",
-                        "selectMore": true,
-                        "tab": "apis",
-                        "type": "utility",
-                        "utilities": {
-                            "comment": {
-                                "description": "",
-                                "fields": [
-                                    {
-                                        "description": "",
-                                        "label": "comment",
-                                        "name": "comment",
-                                        "placeholder": "Enter a comment",
-                                        "renderType": "datapath",
-                                        "required": true
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "container",
-                                        "required": false
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "author",
-                                        "required": false
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "trace",
-                                        "required": false
-                                    }
-                                ],
-                                "label": "add comment",
-                                "name": "comment"
-                            }
-                        },
-                        "utilityType": "api",
-                        "values": {
-                            "comment": {
-                                "_internal": [
-                                    "container",
-                                    "author",
-                                    "trace"
-                                ],
-                                "comment": "email is in VIP list"
-                            }
-                        }
-                    },
-                    "errors": {},
-                    "id": "4",
-                    "type": "utility",
-                    "x": 760,
-                    "y": 960
-                },
-                "5": {
-                    "data": {
-                        "advanced": {
-                            "customName": "add comment email ist NOT in VIP list",
-                            "customNameId": 0,
-                            "join": []
-                        },
-                        "functionId": 3,
-                        "functionName": "add_comment_email_ist_not_in_vip_list",
-                        "id": "5",
-                        "selectMore": false,
-                        "tab": "apis",
-                        "type": "utility",
-                        "utilities": {
-                            "comment": {
-                                "description": "",
-                                "fields": [
-                                    {
-                                        "description": "",
-                                        "label": "comment",
-                                        "name": "comment",
-                                        "placeholder": "Enter a comment",
-                                        "renderType": "datapath",
-                                        "required": true
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "container",
-                                        "required": false
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "author",
-                                        "required": false
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "trace",
-                                        "required": false
-                                    }
-                                ],
-                                "label": "add comment",
-                                "name": "comment"
-                            }
-                        },
-                        "utilityType": "api",
-                        "values": {
-                            "comment": {
-                                "_internal": [
-                                    "container",
-                                    "author",
-                                    "trace"
-                                ],
-                                "comment": "email is NOT VIP list"
-                            }
-                        }
-                    },
-                    "errors": {},
-                    "id": "5",
-                    "type": "utility",
-                    "x": 1180,
-                    "y": 960
-                },
-                "6": {
-                    "data": {
-                        "advanced": {
-                            "join": [],
-                            "notRequiredJoins": [
-                                "extract_email_from_emailheaders",
-                                "add_tag_vip_to_email_artifact"
-                            ]
-                        },
-                        "customFunction": {
-                            "draftMode": false,
-                            "name": "noop",
-                            "repoName": "Phishing_Investigation"
-                        },
-                        "functionId": 4,
-                        "functionName": "noop_4",
-                        "id": "6",
-                        "selectMore": false,
-                        "type": "utility",
-                        "utilities": {
-                            "noop": {
-                                "description": "Do nothing and return nothing. Use this if you want to do something in a custom function setup section or leave a placeholder block in a playbook. This does not sleep or wait and will return as soon as possible.",
-                                "fields": [],
-                                "label": "noop",
-                                "name": "noop"
-                            }
-                        },
-                        "utilityType": "custom_function",
-                        "values": {
-                            "noop": {}
-                        }
-                    },
-                    "errors": {},
-                    "id": "6",
-                    "type": "utility",
-                    "x": 980,
-                    "y": 1460
+                    "x": 960,
+                    "y": 640
                 },
                 "9": {
                     "data": {
@@ -549,8 +323,8 @@
                     "errors": {},
                     "id": "9",
                     "type": "filter",
-                    "x": 820,
-                    "y": 1080
+                    "x": 1020,
+                    "y": 1020
                 }
             },
             "notes": ""
@@ -562,7 +336,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T09:46:58.365624+00:00",
+    "create_time": "2022-03-01T09:53:32.096173+00:00",
     "draft_mode": false,
     "labels": [
         "*"

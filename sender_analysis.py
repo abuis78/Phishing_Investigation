@@ -44,103 +44,6 @@ def extract_email_from_emailheaders(action=None, success=None, container=None, r
     return
 
 
-def vip_check(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("vip_check() called")
-
-    # check for 'if' condition 1
-    found_match_1 = phantom.decision(
-        container=container,
-        conditions=[
-            ["extract_email_from_emailheaders:custom_function_result.data.*.email_address", "in", "custom_list:VIP"]
-        ])
-
-    # call connected blocks if condition 1 matched
-    if found_match_1:
-        add_comment_email_is_in_vip_list(action=action, success=success, container=container, results=results, handle=handle)
-        return
-
-    # check for 'else' condition 2
-    add_comment_email_ist_not_in_vip_list(action=action, success=success, container=container, results=results, handle=handle)
-
-    return
-
-
-def add_comment_email_is_in_vip_list(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("add_comment_email_is_in_vip_list() called")
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.comment(container=container, comment="email is in VIP list")
-
-    filter_email_artifact(container=container)
-
-    return
-
-
-def add_comment_email_ist_not_in_vip_list(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("add_comment_email_ist_not_in_vip_list() called")
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.comment(container=container, comment="email is NOT VIP list")
-
-    join_noop_4(container=container)
-
-    return
-
-
-def join_noop_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("join_noop_4() called")
-
-    # if the joined function has already been called, do nothing
-    if phantom.get_run_data(key="join_noop_4_called"):
-        return
-
-    # save the state that the joined function has now been called
-    phantom.save_run_data(key="join_noop_4_called", value="noop_4")
-
-    # call connected block "noop_4"
-    noop_4(container=container, handle=handle)
-
-    return
-
-
-def noop_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("noop_4() called")
-
-    parameters = [{}]
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.custom_function(custom_function="Phishing_Investigation/noop", parameters=parameters, name="noop_4")
-
-    return
-
-
 def filter_email_artifact(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("filter_email_artifact() called")
 
@@ -190,7 +93,25 @@ def add_tag_vip_to_email_artifact(action=None, success=None, container=None, res
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/artifact_update", parameters=parameters, name="add_tag_vip_to_email_artifact", callback=join_noop_4)
+    phantom.custom_function(custom_function="Phishing_Investigation/artifact_update", parameters=parameters, name="add_tag_vip_to_email_artifact")
+
+    return
+
+
+def vip_check(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("vip_check() called")
+
+    # collect filtered artifact ids and results for 'if' condition 1
+    matched_artifacts_1, matched_results_1 = phantom.condition(
+        container=container,
+        conditions=[
+            ["extract_email_from_emailheaders:custom_function_result.data.*.email_address", "in", "custom_list:VIP"]
+        ],
+        name="vip_check:condition_1")
+
+    # call connected blocks if filtered artifacts or results
+    if matched_artifacts_1 or matched_results_1:
+        pass
 
     return
 
