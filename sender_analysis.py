@@ -222,6 +222,25 @@ def extract_domain_from_dkim_signature(action=None, success=None, container=None
 
     phantom.save_run_data(key="extract_domain_from_dkim_signature:dkim_domain_check_result", value=json.dumps(extract_domain_from_dkim_signature__dkim_domain_check_result))
 
+    dkim_check(container=container)
+
+    return
+
+
+def dkim_check(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("dkim_check() called")
+
+    # check for 'if' condition 1
+    found_match_1 = phantom.decision(
+        container=container,
+        conditions=[
+            ["extract_domain_from_dkim_signature:custom_function:dkim_domain_check_result", "==", True]
+        ])
+
+    # call connected blocks if condition 1 matched
+    if found_match_1:
+        return
+
     return
 
 
