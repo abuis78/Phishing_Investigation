@@ -401,7 +401,7 @@ def search_vor_company_keywords_in_email(action=None, success=None, container=No
     
     for item in keywoard_list:
         ergebnis = re.findall(item, extract_email_from_emailheaders_data___email_address[0], re.IGNORECASE)
-        phantom.debug(len(ergebnis))
+        # phantom.debug(len(ergebnis))
         for element in ergebnis:
             if ergebnis != -1:
                 matches.append({"match": element})
