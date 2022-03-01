@@ -334,7 +334,7 @@ def dkim_path(action=None, success=None, container=None, results=None, handle=No
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/noop", parameters=parameters, name="dkim_path")
+    phantom.custom_function(custom_function="Phishing_Investigation/noop", parameters=parameters, name="dkim_path", callback=search_vor_company_keywords_in_email)
 
     return
 
@@ -372,27 +372,28 @@ def convert_tag_list_into_string(action=None, success=None, container=None, resu
     return
 
 
-def format_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("format_2() called")
+def search_vor_company_keywords_in_email(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("search_vor_company_keywords_in_email() called")
 
-    template = """{0}"""
+    input_parameter_0 = "Company_Keywords"
 
-    # parameter list for template variable replacement
-    parameters = [
-        "artifact:*.tags"
-    ]
+    search_vor_company_keywords_in_email__result = None
 
     ################################################################################
     ## Custom Code Start
     ################################################################################
 
     # Write your custom code here...
+    success, message, execs = phantom.get_list(list_name=input_parameter_0)
+    phantom.debug('phantom.get_list results: success: {}, message: {}, execs: {}'.format(success, message, execs))
+    
+    
 
     ################################################################################
     ## Custom Code End
     ################################################################################
 
-    phantom.format(container=container, template=template, parameters=parameters, name="format_2")
+    phantom.save_run_data(key="search_vor_company_keywords_in_email:result", value=json.dumps(search_vor_company_keywords_in_email__result))
 
     return
 

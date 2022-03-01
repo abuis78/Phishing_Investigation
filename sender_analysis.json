@@ -133,9 +133,16 @@
                     "sourcePort": "30_out",
                     "targetNode": "38",
                     "targetPort": "38_in"
+                },
+                {
+                    "id": "port_32_to_port_40",
+                    "sourceNode": "32",
+                    "sourcePort": "32_out",
+                    "targetNode": "40",
+                    "targetPort": "40_in"
                 }
             ],
-            "hash": "140e94739e056c2349a990edfe3735c7ac1a868e",
+            "hash": "47e07484c281efb922e0a946b1a099fbba603394",
             "nodes": {
                 "0": {
                     "data": {
@@ -648,8 +655,8 @@
                     "errors": {},
                     "id": "30",
                     "type": "filter",
-                    "x": -60,
-                    "y": 1520
+                    "x": 60,
+                    "y": 1492
                 },
                 "31": {
                     "data": {
@@ -789,8 +796,8 @@
                     "errors": {},
                     "id": "31",
                     "type": "utility",
-                    "x": -120,
-                    "y": 1860
+                    "x": 0,
+                    "y": 1852
                 },
                 "32": {
                     "data": {
@@ -830,7 +837,7 @@
                     "id": "32",
                     "type": "utility",
                     "x": 90,
-                    "y": 1968
+                    "y": 2000
                 },
                 "38": {
                     "data": {
@@ -854,28 +861,33 @@
                     "id": "38",
                     "type": "code",
                     "userCode": "\n    # Write your custom code here...\n\n    lat_list = [item for sublist in container_artifact_header_item_0 for item in sublist]\n    phantom.debug(lat_list)\n    \n    tag_list = ','.join(lat_list)\n    \n    convert_tag_list_into_string__tag_str_list = tag_list + ', internal'\n\n",
-                    "x": -120,
-                    "y": 1740
+                    "x": 0,
+                    "y": 1672
                 },
-                "39": {
+                "40": {
                     "data": {
                         "advanced": {
+                            "customName": "search vor Company Keywords in email",
+                            "customNameId": 0,
                             "join": []
                         },
-                        "functionId": 2,
-                        "functionName": "format_2",
-                        "id": "39",
-                        "parameters": [
-                            "artifact:*.tags"
+                        "functionId": 3,
+                        "functionName": "search_vor_company_keywords_in_email",
+                        "id": "40",
+                        "inputParameters": [
+                            "Company_Keywords"
                         ],
-                        "template": "{0}",
-                        "type": "format"
+                        "outputVariables": [
+                            "result"
+                        ],
+                        "type": "code"
                     },
                     "errors": {},
-                    "id": "39",
-                    "type": "format",
-                    "x": -320,
-                    "y": 1580
+                    "id": "40",
+                    "type": "code",
+                    "userCode": "\n    # Write your custom code here...\n    success, message, execs = phantom.get_list(list_name=input_parameter_0)\n    phantom.debug('phantom.get_list results: success: {}, message: {}, execs: {}'.format(success, message, execs))\n    \n    \n\n",
+                    "x": 100,
+                    "y": 2160
                 }
             },
             "notes": ""
@@ -887,7 +899,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-01T14:16:14.258342+00:00",
+    "create_time": "2022-03-01T14:26:15.151819+00:00",
     "draft_mode": false,
     "labels": [
         "*"
