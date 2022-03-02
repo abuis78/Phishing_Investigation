@@ -394,8 +394,8 @@ def search_vor_company_keywords_in_email_address(action=None, success=None, cont
     phantom.debug(miss_count)
     phantom.debug(matches_keyword_list)
 
-    search_vor_company_keywords_in_email__match_count = int(match_count)
-    search_vor_company_keywords_in_email__miss_count = int(miss_count)
+    search_vor_company_keywords_in_email__match_count = match_count
+    search_vor_company_keywords_in_email__miss_count = miss_count
     search_vor_company_keywords_in_email__matches_keyword_list = matches_keyword_list
     ################################################################################
     ## Custom Code End
