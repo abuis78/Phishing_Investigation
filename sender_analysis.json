@@ -182,28 +182,21 @@
                     "targetPort": "50_in"
                 },
                 {
-                    "id": "port_57_to_port_24",
-                    "sourceNode": "57",
-                    "sourcePort": "57_out",
+                    "id": "port_10_to_port_24",
+                    "sourceNode": "10",
+                    "sourcePort": "10_out",
                     "targetNode": "24",
                     "targetPort": "24_in"
                 },
                 {
-                    "id": "port_10_to_port_58",
-                    "sourceNode": "10",
-                    "sourcePort": "10_out",
-                    "targetNode": "58",
-                    "targetPort": "58_in"
-                },
-                {
-                    "id": "port_58_to_port_57",
-                    "sourceNode": "58",
-                    "sourcePort": "58_out",
-                    "targetNode": "57",
-                    "targetPort": "57_in"
+                    "id": "port_53_to_port_1",
+                    "sourceNode": "53",
+                    "sourcePort": "53_out",
+                    "targetNode": "1",
+                    "targetPort": "1_in"
                 }
             ],
-            "hash": "be52bf30557a6b4cf226913f6dfc3cf7b468ea40",
+            "hash": "d6ed564940a1244fd3879f02726d44da94f017ef",
             "nodes": {
                 "0": {
                     "data": {
@@ -234,8 +227,8 @@
                     "id": "1",
                     "type": "end",
                     "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
-                    "x": 410,
-                    "y": 0
+                    "x": 100,
+                    "y": 3600
                 },
                 "10": {
                     "data": {
@@ -1286,140 +1279,6 @@
                     "type": "utility",
                     "x": 90,
                     "y": 2776
-                },
-                "57": {
-                    "data": {
-                        "advanced": {
-                            "join": []
-                        },
-                        "functionId": 9,
-                        "functionName": "pin_9",
-                        "id": "57",
-                        "selectMore": false,
-                        "tab": "apis",
-                        "type": "utility",
-                        "utilities": {
-                            "pin": {
-                                "description": "",
-                                "fields": [
-                                    {
-                                        "description": "",
-                                        "label": "message",
-                                        "name": "message",
-                                        "placeholder": "Enter a message",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "description": "",
-                                        "label": "data",
-                                        "name": "data",
-                                        "placeholder": "Enter a value",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "choices": [
-                                            "card",
-                                            "data"
-                                        ],
-                                        "description": "",
-                                        "label": "pin type",
-                                        "name": "pin_type",
-                                        "placeholder": "Select pin type",
-                                        "renderType": "dropdown",
-                                        "required": false
-                                    },
-                                    {
-                                        "choices": [
-                                            "grey",
-                                            "blue",
-                                            "red"
-                                        ],
-                                        "description": "",
-                                        "label": "pin color",
-                                        "name": "pin_style",
-                                        "placeholder": "Select pin color",
-                                        "renderType": "dropdown",
-                                        "required": false
-                                    },
-                                    {
-                                        "description": "",
-                                        "label": "name",
-                                        "name": "name",
-                                        "placeholder": "Use a named pin",
-                                        "renderType": "input",
-                                        "required": false
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "container",
-                                        "required": false
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "author",
-                                        "required": false
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "truncate",
-                                        "required": false
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "trace",
-                                        "required": false
-                                    }
-                                ],
-                                "label": "pin",
-                                "name": "pin"
-                            }
-                        },
-                        "utilityType": "api",
-                        "values": {
-                            "pin": {
-                                "_internal": [
-                                    "container",
-                                    "author",
-                                    "truncate",
-                                    "trace"
-                                ],
-                                "data": "format_pin_data:formatted_data",
-                                "message": "format_email_in_str:formatted_data",
-                                "name": null,
-                                "pin_style": "blue",
-                                "pin_type": "card"
-                            }
-                        }
-                    },
-                    "errors": {},
-                    "id": "57",
-                    "type": "utility",
-                    "x": 180,
-                    "y": 1573
-                },
-                "58": {
-                    "data": {
-                        "advanced": {
-                            "customName": "format  pin data",
-                            "customNameId": 0,
-                            "join": []
-                        },
-                        "functionId": 2,
-                        "functionName": "format_pin_data",
-                        "id": "58",
-                        "parameters": [
-                            "artifact:*.cef.act"
-                        ],
-                        "template": "VIP",
-                        "type": "format"
-                    },
-                    "errors": {},
-                    "id": "58",
-                    "type": "format",
-                    "x": 180,
-                    "y": 1425
                 }
             },
             "notes": ""
@@ -1431,7 +1290,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-02T09:02:08.242003+00:00",
+    "create_time": "2022-03-02T12:47:36.575539+00:00",
     "draft_mode": false,
     "labels": [
         "*"

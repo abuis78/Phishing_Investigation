@@ -75,7 +75,7 @@ def add_tag_vip_to_email_artifact(action=None, success=None, container=None, res
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/artifact_update", parameters=parameters, name="add_tag_vip_to_email_artifact", callback=format_pin_data)
+    phantom.custom_function(custom_function="Phishing_Investigation/artifact_update", parameters=parameters, name="add_tag_vip_to_email_artifact", callback=join_vip_path)
 
     return
 
@@ -575,56 +575,6 @@ def keyword_mention_in_email(action=None, success=None, container=None, results=
     ################################################################################
 
     phantom.custom_function(custom_function="Phishing_Investigation/keyword_search", parameters=parameters, name="keyword_mention_in_email", callback=decision_4)
-
-    return
-
-
-def pin_9(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("pin_9() called")
-
-    format_pin_data = phantom.get_format_data(name="format_pin_data")
-    format_email_in_str = phantom.get_format_data(name="format_email_in_str")
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.pin(container=container, data=format_pin_data, message=format_email_in_str, pin_style="blue", pin_type="card")
-
-    join_vip_path(container=container)
-
-    return
-
-
-def format_pin_data(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("format_pin_data() called")
-
-    template = """VIP"""
-
-    # parameter list for template variable replacement
-    parameters = [
-        "artifact:*.cef.act"
-    ]
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.format(container=container, template=template, parameters=parameters, name="format_pin_data")
-
-    pin_9(container=container)
 
     return
 
