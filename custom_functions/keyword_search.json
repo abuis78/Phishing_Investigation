@@ -1,0 +1,46 @@
+{
+    "create_time": "2022-03-02T08:37:45.497991+00:00",
+    "custom_function_id": "58ca30f4b6fe664c299b59905472ba4018d4fd9a",
+    "description": "this CF uses a custom list and searches in a string for the elements from the list.",
+    "draft_mode": false,
+    "inputs": [
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "item",
+            "name": "liste_name",
+            "placeholder": ""
+        },
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "item",
+            "name": "string_searched",
+            "placeholder": ""
+        }
+    ],
+    "outputs": [
+        {
+            "contains_type": [],
+            "data_path": "match_count",
+            "description": ""
+        },
+        {
+            "contains_type": [],
+            "data_path": "miss_count",
+            "description": ""
+        },
+        {
+            "contains_type": [],
+            "data_path": "match_keyword_list",
+            "description": "returns the list of keywords found in the string"
+        },
+        {
+            "contains_type": [],
+            "data_path": "match_count_result",
+            "description": "returns True | False as soon as a match is found"
+        }
+    ],
+    "platform_version": "5.2.1.78411",
+    "python_version": "3"
+}
