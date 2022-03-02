@@ -480,43 +480,6 @@ def format_email_in_str(action=None, success=None, container=None, results=None,
     return
 
 
-def artifact_update_19(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("artifact_update_19() called")
-
-    create_email_artefact__result = phantom.collect2(container=container, datapath=["create_email_artefact:custom_function_result.data.artifact_id"])
-    search_vor_company_keywords_in_email_address__matches_keyword_list = json.loads(phantom.get_run_data(key="search_vor_company_keywords_in_email_address:matches_keyword_list"))
-
-    parameters = []
-
-    # build parameters list for 'artifact_update_19' call
-    for create_email_artefact__result_item in create_email_artefact__result:
-        parameters.append({
-            "name": None,
-            "tags": None,
-            "label": None,
-            "severity": None,
-            "cef_field": "matches_keyword_list",
-            "cef_value": search_vor_company_keywords_in_email_address__matches_keyword_list,
-            "input_json": None,
-            "artifact_id": create_email_artefact__result_item[0],
-            "cef_data_type": None,
-        })
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.custom_function(custom_function="Phishing_Investigation/artifact_update", parameters=parameters, name="artifact_update_19")
-
-    return
-
-
 def filter_email_artifact(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("filter_email_artifact() called")
 
@@ -547,8 +510,74 @@ def decision_4(action=None, success=None, container=None, results=None, handle=N
 
     # call connected blocks if condition 1 matched
     if found_match_1:
-        artifact_update_19(action=action, success=success, container=container, results=results, handle=handle)
+        format_keywoard_list(action=action, success=success, container=container, results=results, handle=handle)
         return
+
+    return
+
+
+def update_artifact_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("update_artifact_1() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    cef_json_formatted_string = phantom.format(
+        container=container,
+        template="""\"keywoards_dedetcted\": {0}\n""",
+        parameters=[
+            "search_vor_company_keywords_in_email_address:custom_function:matches_keyword_list"
+        ])
+
+    create_email_artefact__result = phantom.collect2(container=container, datapath=["create_email_artefact:custom_function_result.data.artifact_id"])
+
+    parameters = []
+
+    # build parameters list for 'update_artifact_1' call
+    for create_email_artefact__result_item in create_email_artefact__result:
+        if create_email_artefact__result_item[0] is not None:
+            parameters.append({
+                "artifact_id": create_email_artefact__result_item[0],
+                "cef_json": cef_json_formatted_string,
+            })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("update artifact", parameters=parameters, name="update_artifact_1", assets=["phantom"])
+
+    return
+
+
+def format_keywoard_list(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("format_keywoard_list() called")
+
+    template = """{0}"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "search_vor_company_keywords_in_email_address:custom_function:matches_keyword_list"
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_keywoard_list")
+
+    update_artifact_1(container=container)
 
     return
 
