@@ -405,6 +405,8 @@ def search_vor_company_keywords_in_email_address(action=None, success=None, cont
     phantom.save_run_data(key="search_vor_company_keywords_in_email_address:miss_count", value=json.dumps(search_vor_company_keywords_in_email_address__miss_count))
     phantom.save_run_data(key="search_vor_company_keywords_in_email_address:matches_keyword_list", value=json.dumps(search_vor_company_keywords_in_email_address__matches_keyword_list))
 
+    decision_4(container=container)
+
     return
 
 
@@ -522,6 +524,23 @@ def filter_email_artifact(action=None, success=None, container=None, results=Non
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_1 or matched_results_1:
         extract_email_from_emailheaders(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+
+    return
+
+
+def decision_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("decision_4() called")
+
+    # check for 'if' condition 1
+    found_match_1 = phantom.decision(
+        container=container,
+        conditions=[
+            ["search_vor_company_keywords_in_email_address:custom_function:match_count", ">", 0]
+        ])
+
+    # call connected blocks if condition 1 matched
+    if found_match_1:
+        return
 
     return
 

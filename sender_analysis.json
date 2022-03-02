@@ -142,9 +142,16 @@
                     "sourcePort": "25_out",
                     "targetNode": "27",
                     "targetPort": "27_in"
+                },
+                {
+                    "id": "port_40_to_port_50",
+                    "sourceNode": "40",
+                    "sourcePort": "40_out",
+                    "targetNode": "50",
+                    "targetPort": "50_in"
                 }
             ],
-            "hash": "e45126d693cabe762eff7f059f3c24a9236d782a",
+            "hash": "7f83c40865723482f058320b4618f7444dc623d5",
             "nodes": {
                 "0": {
                     "data": {
@@ -1185,6 +1192,38 @@
                     "type": "filter",
                     "x": 140,
                     "y": -200
+                },
+                "50": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": ">",
+                                        "param": "search_vor_company_keywords_in_email_address:custom_function:match_count",
+                                        "value": "0"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "display": "If",
+                                "logic": "and",
+                                "type": "if"
+                            }
+                        ],
+                        "functionId": 4,
+                        "functionName": "decision_4",
+                        "id": "50",
+                        "type": "decision"
+                    },
+                    "errors": {},
+                    "id": "50",
+                    "type": "decision",
+                    "x": 160,
+                    "y": 2324.5
                 }
             },
             "notes": ""
@@ -1196,7 +1235,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-02T07:33:14.376412+00:00",
+    "create_time": "2022-03-02T07:34:05.315099+00:00",
     "draft_mode": false,
     "labels": [
         "*"
