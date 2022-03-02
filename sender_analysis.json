@@ -151,7 +151,7 @@
                     "targetPort": "27_in"
                 }
             ],
-            "hash": "a06221c24685a6ccbebdf280c28d7ffd710c89d6",
+            "hash": "0c4038493bcdaacca54405657cfc5afb2b735165",
             "nodes": {
                 "0": {
                     "data": {
@@ -839,7 +839,7 @@
                     "errors": {},
                     "id": "40",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    import re\n    \n    matches = []\n    misses = []  \n    matches_keyword_list = []\n    \n    success, message, c_keywoards = phantom.get_list(list_name=input_parameter_0)\n    # phantom.debug('phantom.get_list results: success: {}, message: {}, execs: {}'.format(success, message, c_keywoards))\n    keywoard_list = [item for sublist in c_keywoards for item in sublist]\n    \n    # phantom.debug(keywoard_list)\n    \n    for item in keywoard_list:\n        ergebnis = re.findall(item, extract_email_from_emailheaders_data___email_address[0], re.IGNORECASE)\n        #phantom.debug(len(ergebnis))\n        for x in ergebnis:\n            if ergebnis != -1:\n                matches.append({\"match\": x})\n                matches_keyword_list.append(item)\n            else:\n                misses.append({\"miss\": x})\n                \n    match_count = len(matches)\n    miss_count = len(misses)\n    \n    phantom.debug('Match Count {}'.format(match_count))\n    \n    phantom.debug(match_count)\n    phantom.debug(miss_count)\n    phantom.debug(matches_keyword_list)\n\n    search_vor_company_keywords_in_email__match_count = match_count\n    search_vor_company_keywords_in_email__miss_count = miss_count\n    search_vor_company_keywords_in_email__matches_keyword_list = matches_keyword_list\n",
+                    "userCode": "\n    # Write your custom code here...\n    import re\n    \n    matches = []\n    misses = []  \n    matches_keyword_list = []\n    \n    success, message, c_keywoards = phantom.get_list(list_name=input_parameter_0)\n    # phantom.debug('phantom.get_list results: success: {}, message: {}, execs: {}'.format(success, message, c_keywoards))\n    keywoard_list = [item for sublist in c_keywoards for item in sublist]\n    \n    # phantom.debug(keywoard_list)\n    \n    for item in keywoard_list:\n        ergebnis = re.findall(item, extract_email_from_emailheaders_data___email_address[0], re.IGNORECASE)\n        #phantom.debug(len(ergebnis))\n        for x in ergebnis:\n            if ergebnis != -1:\n                matches.append({\"match\": x})\n                matches_keyword_list.append(item)\n            else:\n                misses.append({\"miss\": x})\n                \n    match_count = len(matches)\n    miss_count = len(misses)\n    \n    phantom.debug('Match Count {}'.format(match_count))\n    \n    phantom.debug(match_count)\n    phantom.debug(miss_count)\n    phantom.debug(matches_keyword_list)\n\n    search_vor_company_keywords_in_email__match_count = int(match_count)\n    search_vor_company_keywords_in_email__miss_count = int(miss_count)\n    search_vor_company_keywords_in_email__matches_keyword_list = matches_keyword_list\n",
                     "x": 90,
                     "y": 2148
                 },
@@ -1250,7 +1250,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-02T07:28:40.382256+00:00",
+    "create_time": "2022-03-02T07:31:12.152377+00:00",
     "draft_mode": false,
     "labels": [
         "*"
