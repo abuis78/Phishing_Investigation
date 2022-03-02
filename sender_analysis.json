@@ -203,7 +203,7 @@
                     "targetPort": "57_in"
                 }
             ],
-            "hash": "c1b39dfb2ab9eaee42383022d7c4ca5c17d7dfaf",
+            "hash": "be52bf30557a6b4cf226913f6dfc3cf7b468ea40",
             "nodes": {
                 "0": {
                     "data": {
@@ -377,8 +377,8 @@
                     "errors": {},
                     "id": "10",
                     "type": "utility",
-                    "x": -160,
-                    "y": 1100
+                    "x": 180,
+                    "y": 1235
                 },
                 "13": {
                     "data": {
@@ -579,8 +579,8 @@
                     "errors": {},
                     "id": "24",
                     "type": "utility",
-                    "x": 280,
-                    "y": 1540
+                    "x": 90,
+                    "y": 1721
                 },
                 "25": {
                     "data": {
@@ -605,8 +605,8 @@
                     "id": "25",
                     "type": "code",
                     "userCode": "\n    # Write your custom code here...\n    import re\n    phantom.debug(container_artifact_cef_item_0)\n    phantom.debug(extract_email_from_emailheaders_data___domain)\n    domain_regex = r'(((?!-))(xn--)?[a-z0-9][a-z0-9-_]{0,61}[a-z0-9]{0,1}\\.(xn--)?([a-z0-9\\-]{1,61}|[a-z0-9-]{1,30}\\.[a-z]{2,}))'\n    for domain in re.findall(domain_regex, str(container_artifact_cef_item_0), re.IGNORECASE):\n        phantom.debug(domain[0])\n        dkim_domain = domain[0]\n        \n    if dkim_domain == extract_email_from_emailheaders_data___domain[0]:\n        phantom.debug('same Domain')\n        extract_domain_from_dkim_signature__dkim_domain_check_result = True\n        \n    else:\n        phantom.debug('not same Domainn')\n        extract_domain_from_dkim_signature__dkim_domain_check_result = False\n    \n",
-                    "x": 320,
-                    "y": 1700
+                    "x": 90,
+                    "y": 1886
                 },
                 "27": {
                     "data": {
@@ -657,7 +657,7 @@
                     "id": "27",
                     "type": "decision",
                     "x": 170,
-                    "y": 1780
+                    "y": 2076
                 },
                 "31": {
                     "data": {
@@ -799,7 +799,7 @@
                     "id": "31",
                     "type": "utility",
                     "x": 0,
-                    "y": 2150
+                    "y": 2446
                 },
                 "32": {
                     "data": {
@@ -839,7 +839,7 @@
                     "id": "32",
                     "type": "utility",
                     "x": 90,
-                    "y": 2315
+                    "y": 2611
                 },
                 "38": {
                     "data": {
@@ -865,7 +865,7 @@
                     "type": "code",
                     "userCode": "\n    # Write your custom code here...\n    phantom.debug(create_email_artefact_data_artifact_id[0])\n    url = phantom.build_phantom_rest_url('artifact', create_email_artefact_data_artifact_id[0], 'tags')\n    response = phantom.requests.get(url,verify=False,)\n    phantom.debug(\"phantom returned status code {} with message {}\".format(response.status_code, response.text))\n    \n    artifatc_tag_list = response.json()['tags']\n    phantom.debug('Tags from Artifakts {}'.format(artifatc_tag_list))\n    \n    # this builds the Tag list\n    #lat_list = [item for sublist in artifatc_tag_list for item in sublist]\n    #phantom.debug(lat_list)\n    \n    tag_list = ','.join(artifatc_tag_list)\n    \n    convert_tag_list_into_string__tag_str_list = tag_list + ', internal'\n\n",
                     "x": 0,
-                    "y": 1960
+                    "y": 2256
                 },
                 "44": {
                     "data": {
@@ -1122,7 +1122,7 @@
                     "id": "50",
                     "type": "decision",
                     "x": 170,
-                    "y": 2660
+                    "y": 2936
                 },
                 "51": {
                     "data": {
@@ -1163,7 +1163,7 @@
                     "id": "51",
                     "type": "action",
                     "x": 0,
-                    "y": 2988
+                    "y": 3264
                 },
                 "52": {
                     "data": {
@@ -1185,7 +1185,7 @@
                     "id": "52",
                     "type": "format",
                     "x": 0,
-                    "y": 2840
+                    "y": 3116
                 },
                 "53": {
                     "data": {
@@ -1225,7 +1225,7 @@
                     "id": "53",
                     "type": "utility",
                     "x": 90,
-                    "y": 3136
+                    "y": 3412
                 },
                 "56": {
                     "data": {
@@ -1284,8 +1284,8 @@
                     "errors": {},
                     "id": "56",
                     "type": "utility",
-                    "x": 80,
-                    "y": 2500
+                    "x": 90,
+                    "y": 2776
                 },
                 "57": {
                     "data": {
@@ -1396,8 +1396,8 @@
                     "errors": {},
                     "id": "57",
                     "type": "utility",
-                    "x": -160,
-                    "y": 1420
+                    "x": 180,
+                    "y": 1573
                 },
                 "58": {
                     "data": {
@@ -1418,8 +1418,8 @@
                     "errors": {},
                     "id": "58",
                     "type": "format",
-                    "x": -160,
-                    "y": 1280
+                    "x": 180,
+                    "y": 1425
                 }
             },
             "notes": ""
