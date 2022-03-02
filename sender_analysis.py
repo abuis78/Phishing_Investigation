@@ -563,7 +563,7 @@ def format_keywoard_list(action=None, success=None, container=None, results=None
 
     # parameter list for template variable replacement
     parameters = [
-        "keyword_mention_in_email:custom_function_result.data.match_keyword_list"
+        ""
     ]
 
     ################################################################################

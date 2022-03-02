@@ -189,7 +189,7 @@
                     "targetPort": "50_in"
                 }
             ],
-            "hash": "edf931fe04cbbf6ebca37ecbddef685ce6284cf7",
+            "hash": "ef548a769fb86100a93606f89d54b9689e99cf99",
             "nodes": {
                 "0": {
                     "data": {
@@ -1191,7 +1191,7 @@
                         "functionName": "format_keywoard_list",
                         "id": "52",
                         "parameters": [
-                            "keyword_mention_in_email:custom_function_result.data.match_keyword_list"
+                            ""
                         ],
                         "template": "{0}",
                         "type": "format"
@@ -1312,7 +1312,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-02T08:54:52.786578+00:00",
+    "create_time": "2022-03-02T08:57:30.981648+00:00",
     "draft_mode": false,
     "labels": [
         "*"
