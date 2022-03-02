@@ -357,6 +357,7 @@ def search_vor_company_keywords_in_email_address(action=None, success=None, cont
     search_vor_company_keywords_in_email_address__match_count = None
     search_vor_company_keywords_in_email_address__miss_count = None
     search_vor_company_keywords_in_email_address__matches_keyword_list = None
+    search_vor_company_keywords_in_email_address__match_count_result = None
 
     ################################################################################
     ## Custom Code Start
@@ -390,13 +391,18 @@ def search_vor_company_keywords_in_email_address(action=None, success=None, cont
     
     phantom.debug('Match Count:  {}'.format(match_count))
     
+    if match_count > 0:
+        search_vor_company_keywords_in_email_address__match_count_result = True
+    else:
+        search_vor_company_keywords_in_email_address__match_count_result = False
+    
     #phantom.debug(match_count)
     #phantom.debug(miss_count)
     #phantom.debug(matches_keyword_list)
 
-    search_vor_company_keywords_in_email__match_count = match_count
-    search_vor_company_keywords_in_email__miss_count = miss_count
-    search_vor_company_keywords_in_email__matches_keyword_list = matches_keyword_list
+    search_vor_company_keywords_in_email_address__match_count = match_count
+    search_vor_company_keywords_in_email_address__miss_count = miss_count
+    search_vor_company_keywords_in_email_address__matches_keyword_list = matches_keyword_list
     ################################################################################
     ## Custom Code End
     ################################################################################
@@ -404,6 +410,7 @@ def search_vor_company_keywords_in_email_address(action=None, success=None, cont
     phantom.save_run_data(key="search_vor_company_keywords_in_email_address:match_count", value=json.dumps(search_vor_company_keywords_in_email_address__match_count))
     phantom.save_run_data(key="search_vor_company_keywords_in_email_address:miss_count", value=json.dumps(search_vor_company_keywords_in_email_address__miss_count))
     phantom.save_run_data(key="search_vor_company_keywords_in_email_address:matches_keyword_list", value=json.dumps(search_vor_company_keywords_in_email_address__matches_keyword_list))
+    phantom.save_run_data(key="search_vor_company_keywords_in_email_address:match_count_result", value=json.dumps(search_vor_company_keywords_in_email_address__match_count_result))
 
     decision_4(container=container)
 
