@@ -168,9 +168,35 @@
                     "sourcePort": "52_out",
                     "targetNode": "51",
                     "targetPort": "51_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 1
+                        }
+                    ],
+                    "id": "port_50_to_port_53",
+                    "sourceNode": "50",
+                    "sourcePort": "50_out",
+                    "targetNode": "53",
+                    "targetPort": "53_in"
+                },
+                {
+                    "id": "port_51_to_port_53",
+                    "sourceNode": "51",
+                    "sourcePort": "51_out",
+                    "targetNode": "53",
+                    "targetPort": "53_in"
+                },
+                {
+                    "id": "port_53_to_port_54",
+                    "sourceNode": "53",
+                    "sourcePort": "53_out",
+                    "targetNode": "54",
+                    "targetPort": "54_in"
                 }
             ],
-            "hash": "aaf0bd8f517b8960730e11e682f9bacf4d4686ef",
+            "hash": "cd628867ec7a97851397dbab68bb2f107fbd99ad",
             "nodes": {
                 "0": {
                     "data": {
@@ -1088,6 +1114,7 @@
                                     }
                                 ],
                                 "conditionIndex": 0,
+                                "customName": "keywords available",
                                 "display": "If",
                                 "logic": "and",
                                 "type": "if"
@@ -1102,6 +1129,7 @@
                                     }
                                 ],
                                 "conditionIndex": 1,
+                                "customName": "No keywords available",
                                 "display": "Else",
                                 "logic": "and",
                                 "type": "else"
@@ -1180,6 +1208,75 @@
                     "type": "format",
                     "x": -80,
                     "y": 2600
+                },
+                "53": {
+                    "data": {
+                        "advanced": {
+                            "customName": "email address keyword path",
+                            "customNameId": 0,
+                            "join": [],
+                            "notRequiredJoins": [
+                                "dkim_path",
+                                "update_artifact_1"
+                            ]
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "noop",
+                            "repoName": "Phishing_Investigation"
+                        },
+                        "functionId": 3,
+                        "functionName": "email_address_keyword_path",
+                        "id": "53",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "noop": {
+                                "description": "Do nothing and return nothing. Use this if you want to do something in a custom function setup section or leave a placeholder block in a playbook. This does not sleep or wait and will return as soon as possible.",
+                                "fields": [],
+                                "label": "noop",
+                                "name": "noop"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "noop": {}
+                        }
+                    },
+                    "errors": {},
+                    "id": "53",
+                    "type": "utility",
+                    "x": 80,
+                    "y": 2920
+                },
+                "54": {
+                    "data": {
+                        "advanced": {
+                            "customName": "search for keyword in Subject",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 4,
+                        "functionName": "search_for_keyword_in_subject",
+                        "id": "54",
+                        "inputParameters": [
+                            "Suspicious_keywords",
+                            "filtered-data:filter_email_artifact:condition_1:artifact:*.cef.emailHeaders.Subject"
+                        ],
+                        "outputVariables": [
+                            "match_count",
+                            "miss_count",
+                            "matches_keyword_list",
+                            "match_count_result"
+                        ],
+                        "type": "code"
+                    },
+                    "errors": {},
+                    "id": "54",
+                    "type": "code",
+                    "userCode": "\n    # Write your custom code here...\n    import re\n    \n    matches = []\n    misses = []  \n    matches_keyword_list = []\n    \n    success, message, c_keywoards = phantom.get_list(list_name=input_parameter_0)\n    # phantom.debug('phantom.get_list results: success: {}, message: {}, execs: {}'.format(success, message, c_keywoards))\n    keywoard_list = [item for sublist in c_keywoards for item in sublist]\n    \n    # phantom.debug(keywoard_list)\n    \n    for item in keywoard_list:\n        ergebnis = re.findall(item, filtered_artifact_0_data_filter_email_artifact, re.IGNORECASE)\n        #phantom.debug(len(ergebnis))\n        for x in ergebnis:\n            if ergebnis != -1:\n                matches.append({\"match\": x})\n                matches_keyword_list.append(item)\n            else:\n                misses.append({\"miss\": x})\n                \n    match_count = len(matches)\n    miss_count = len(misses)\n    \n    phantom.debug('Match Count:  {}'.format(match_count))\n    \n    if match_count > 0:\n        search_for_keyword_in_subject__match_count_result = True\n    else:\n        search_for_keyword_in_subject__match_count_result = False\n    \n    phantom.debug(match_count)\n    phantom.debug(miss_count)\n    phantom.debug(matches_keyword_list)\n\n    search_for_keyword_in_subject__match_count = match_count\n    search_for_keyword_in_subject__miss_count = miss_count\n    search_for_keyword_in_subject__matches_keyword_list = matches_keyword_list\n",
+                    "x": 80,
+                    "y": 3100
                 }
             },
             "notes": ""
@@ -1191,7 +1288,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-02T07:56:45.755696+00:00",
+    "create_time": "2022-03-02T08:05:03.204600+00:00",
     "draft_mode": false,
     "labels": [
         "*"

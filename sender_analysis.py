@@ -513,6 +513,9 @@ def decision_4(action=None, success=None, container=None, results=None, handle=N
         format_keywoard_list(action=action, success=success, container=container, results=results, handle=handle)
         return
 
+    # check for 'else' condition 2
+    join_email_address_keyword_path(action=action, success=success, container=container, results=results, handle=handle)
+
     return
 
 
@@ -550,7 +553,7 @@ def update_artifact_1(action=None, success=None, container=None, results=None, h
     ## Custom Code End
     ################################################################################
 
-    phantom.act("update artifact", parameters=parameters, name="update_artifact_1", assets=["phantom"])
+    phantom.act("update artifact", parameters=parameters, name="update_artifact_1", assets=["phantom"], callback=join_email_address_keyword_path)
 
     return
 
@@ -578,6 +581,112 @@ def format_keywoard_list(action=None, success=None, container=None, results=None
     phantom.format(container=container, template=template, parameters=parameters, name="format_keywoard_list")
 
     update_artifact_1(container=container)
+
+    return
+
+
+def join_email_address_keyword_path(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("join_email_address_keyword_path() called")
+
+    # if the joined function has already been called, do nothing
+    if phantom.get_run_data(key="join_email_address_keyword_path_called"):
+        return
+
+    # save the state that the joined function has now been called
+    phantom.save_run_data(key="join_email_address_keyword_path_called", value="email_address_keyword_path")
+
+    # call connected block "email_address_keyword_path"
+    email_address_keyword_path(container=container, handle=handle)
+
+    return
+
+
+def email_address_keyword_path(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("email_address_keyword_path() called")
+
+    parameters = [{}]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="Phishing_Investigation/noop", parameters=parameters, name="email_address_keyword_path", callback=search_for_keyword_in_subject)
+
+    return
+
+
+def search_for_keyword_in_subject(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("search_for_keyword_in_subject() called")
+
+    filtered_artifact_0_data_filter_email_artifact = phantom.collect2(container=container, datapath=["filtered-data:filter_email_artifact:condition_1:artifact:*.cef.emailHeaders.Subject"])
+
+    filtered_artifact_0__cef_emailheaders_subject = [item[0] for item in filtered_artifact_0_data_filter_email_artifact]
+
+    input_parameter_0 = "Suspicious_keywords"
+
+    search_for_keyword_in_subject__match_count = None
+    search_for_keyword_in_subject__miss_count = None
+    search_for_keyword_in_subject__matches_keyword_list = None
+    search_for_keyword_in_subject__match_count_result = None
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+    import re
+    
+    matches = []
+    misses = []  
+    matches_keyword_list = []
+    
+    success, message, c_keywoards = phantom.get_list(list_name=input_parameter_0)
+    # phantom.debug('phantom.get_list results: success: {}, message: {}, execs: {}'.format(success, message, c_keywoards))
+    keywoard_list = [item for sublist in c_keywoards for item in sublist]
+    
+    # phantom.debug(keywoard_list)
+    
+    for item in keywoard_list:
+        ergebnis = re.findall(item, filtered_artifact_0_data_filter_email_artifact, re.IGNORECASE)
+        #phantom.debug(len(ergebnis))
+        for x in ergebnis:
+            if ergebnis != -1:
+                matches.append({"match": x})
+                matches_keyword_list.append(item)
+            else:
+                misses.append({"miss": x})
+                
+    match_count = len(matches)
+    miss_count = len(misses)
+    
+    phantom.debug('Match Count:  {}'.format(match_count))
+    
+    if match_count > 0:
+        search_for_keyword_in_subject__match_count_result = True
+    else:
+        search_for_keyword_in_subject__match_count_result = False
+    
+    phantom.debug(match_count)
+    phantom.debug(miss_count)
+    phantom.debug(matches_keyword_list)
+
+    search_for_keyword_in_subject__match_count = match_count
+    search_for_keyword_in_subject__miss_count = miss_count
+    search_for_keyword_in_subject__matches_keyword_list = matches_keyword_list
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.save_run_data(key="search_for_keyword_in_subject:match_count", value=json.dumps(search_for_keyword_in_subject__match_count))
+    phantom.save_run_data(key="search_for_keyword_in_subject:miss_count", value=json.dumps(search_for_keyword_in_subject__miss_count))
+    phantom.save_run_data(key="search_for_keyword_in_subject:matches_keyword_list", value=json.dumps(search_for_keyword_in_subject__matches_keyword_list))
+    phantom.save_run_data(key="search_for_keyword_in_subject:match_count_result", value=json.dumps(search_for_keyword_in_subject__match_count_result))
 
     return
 
