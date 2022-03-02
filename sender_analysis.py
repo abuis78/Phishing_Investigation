@@ -523,7 +523,7 @@ def update_artifact_1(action=None, success=None, container=None, results=None, h
 
     cef_json_formatted_string = phantom.format(
         container=container,
-        template="""\"keywoards_dedetcted\": {0}\n""",
+        template="""{{ \"keywoards_dedetcted\": {0} }}\n""",
         parameters=[
             "search_vor_company_keywords_in_email_address:custom_function:matches_keyword_list"
         ])

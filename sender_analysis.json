@@ -170,7 +170,7 @@
                     "targetPort": "51_in"
                 }
             ],
-            "hash": "0db63a3911123a210acee6f44f495438c15ca550",
+            "hash": "31a2f3494168fe5ca93aaf5622558cd2aa0e1e48",
             "nodes": {
                 "0": {
                     "data": {
@@ -1141,7 +1141,7 @@
                                 "parameters": [
                                     "search_vor_company_keywords_in_email_address:custom_function:matches_keyword_list"
                                 ],
-                                "template": "\"keywoards_dedetcted\": {0}\n"
+                                "template": "{{ \"keywoards_dedetcted\": {0} }}\n"
                             }
                         },
                         "requiredParameters": [
@@ -1191,7 +1191,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-02T07:55:12.601941+00:00",
+    "create_time": "2022-03-02T07:56:01.313689+00:00",
     "draft_mode": false,
     "labels": [
         "*"
