@@ -26,13 +26,6 @@
                     "targetPort": "24_in"
                 },
                 {
-                    "id": "port_10_to_port_24",
-                    "sourceNode": "10",
-                    "sourcePort": "10_out",
-                    "targetNode": "24",
-                    "targetPort": "24_in"
-                },
-                {
                     "id": "port_24_to_port_25",
                     "sourceNode": "24",
                     "sourcePort": "24_out",
@@ -187,9 +180,30 @@
                     "sourcePort": "56_out",
                     "targetNode": "50",
                     "targetPort": "50_in"
+                },
+                {
+                    "id": "port_57_to_port_24",
+                    "sourceNode": "57",
+                    "sourcePort": "57_out",
+                    "targetNode": "24",
+                    "targetPort": "24_in"
+                },
+                {
+                    "id": "port_10_to_port_58",
+                    "sourceNode": "10",
+                    "sourcePort": "10_out",
+                    "targetNode": "58",
+                    "targetPort": "58_in"
+                },
+                {
+                    "id": "port_58_to_port_57",
+                    "sourceNode": "58",
+                    "sourcePort": "58_out",
+                    "targetNode": "57",
+                    "targetPort": "57_in"
                 }
             ],
-            "hash": "edf931fe04cbbf6ebca37ecbddef685ce6284cf7",
+            "hash": "c1b39dfb2ab9eaee42383022d7c4ca5c17d7dfaf",
             "nodes": {
                 "0": {
                     "data": {
@@ -363,8 +377,8 @@
                     "errors": {},
                     "id": "10",
                     "type": "utility",
-                    "x": 0,
-                    "y": 1235
+                    "x": -160,
+                    "y": 1100
                 },
                 "13": {
                     "data": {
@@ -565,8 +579,8 @@
                     "errors": {},
                     "id": "24",
                     "type": "utility",
-                    "x": 90,
-                    "y": 1425
+                    "x": 280,
+                    "y": 1540
                 },
                 "25": {
                     "data": {
@@ -591,8 +605,8 @@
                     "id": "25",
                     "type": "code",
                     "userCode": "\n    # Write your custom code here...\n    import re\n    phantom.debug(container_artifact_cef_item_0)\n    phantom.debug(extract_email_from_emailheaders_data___domain)\n    domain_regex = r'(((?!-))(xn--)?[a-z0-9][a-z0-9-_]{0,61}[a-z0-9]{0,1}\\.(xn--)?([a-z0-9\\-]{1,61}|[a-z0-9-]{1,30}\\.[a-z]{2,}))'\n    for domain in re.findall(domain_regex, str(container_artifact_cef_item_0), re.IGNORECASE):\n        phantom.debug(domain[0])\n        dkim_domain = domain[0]\n        \n    if dkim_domain == extract_email_from_emailheaders_data___domain[0]:\n        phantom.debug('same Domain')\n        extract_domain_from_dkim_signature__dkim_domain_check_result = True\n        \n    else:\n        phantom.debug('not same Domainn')\n        extract_domain_from_dkim_signature__dkim_domain_check_result = False\n    \n",
-                    "x": 90,
-                    "y": 1590
+                    "x": 320,
+                    "y": 1700
                 },
                 "27": {
                     "data": {
@@ -852,35 +866,6 @@
                     "userCode": "\n    # Write your custom code here...\n    phantom.debug(create_email_artefact_data_artifact_id[0])\n    url = phantom.build_phantom_rest_url('artifact', create_email_artefact_data_artifact_id[0], 'tags')\n    response = phantom.requests.get(url,verify=False,)\n    phantom.debug(\"phantom returned status code {} with message {}\".format(response.status_code, response.text))\n    \n    artifatc_tag_list = response.json()['tags']\n    phantom.debug('Tags from Artifakts {}'.format(artifatc_tag_list))\n    \n    # this builds the Tag list\n    #lat_list = [item for sublist in artifatc_tag_list for item in sublist]\n    #phantom.debug(lat_list)\n    \n    tag_list = ','.join(artifatc_tag_list)\n    \n    convert_tag_list_into_string__tag_str_list = tag_list + ', internal'\n\n",
                     "x": 0,
                     "y": 1960
-                },
-                "40": {
-                    "data": {
-                        "advanced": {
-                            "customName": "search vor Company Keywords in email address",
-                            "customNameId": 0,
-                            "join": []
-                        },
-                        "functionId": 3,
-                        "functionName": "search_vor_company_keywords_in_email_address",
-                        "id": "40",
-                        "inputParameters": [
-                            "Company_Keywords",
-                            "extract_email_from_emailheaders:custom_function_result.data.*.email_address"
-                        ],
-                        "outputVariables": [
-                            "match_count",
-                            "miss_count",
-                            "matches_keyword_list",
-                            "match_count_result"
-                        ],
-                        "type": "code"
-                    },
-                    "errors": {},
-                    "id": "40",
-                    "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    import re\n    \n    matches = []\n    misses = []  \n    matches_keyword_list = []\n    \n    success, message, c_keywoards = phantom.get_list(list_name=input_parameter_0)\n    # phantom.debug('phantom.get_list results: success: {}, message: {}, execs: {}'.format(success, message, c_keywoards))\n    keywoard_list = [item for sublist in c_keywoards for item in sublist]\n    \n    # phantom.debug(keywoard_list)\n    \n    for item in keywoard_list:\n        ergebnis = re.findall(item, extract_email_from_emailheaders_data___email_address[0], re.IGNORECASE)\n        #phantom.debug(len(ergebnis))\n        for x in ergebnis:\n            if ergebnis != -1:\n                matches.append({\"match\": x})\n                matches_keyword_list.append(item)\n            else:\n                misses.append({\"miss\": x})\n                \n    match_count = len(matches)\n    miss_count = len(misses)\n    \n    phantom.debug('Match Count:  {}'.format(match_count))\n    \n    if match_count > 0:\n        search_vor_company_keywords_in_email_address__match_count_result = True\n    else:\n        search_vor_company_keywords_in_email_address__match_count_result = False\n    \n    #phantom.debug(match_count)\n    #phantom.debug(miss_count)\n    #phantom.debug(matches_keyword_list)\n\n    search_vor_company_keywords_in_email_address__match_count = match_count\n    search_vor_company_keywords_in_email_address__miss_count = miss_count\n    search_vor_company_keywords_in_email_address__matches_keyword_list = matches_keyword_list\n",
-                    "x": 580,
-                    "y": 2480
                 },
                 "44": {
                     "data": {
@@ -1301,6 +1286,140 @@
                     "type": "utility",
                     "x": 80,
                     "y": 2500
+                },
+                "57": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 9,
+                        "functionName": "pin_9",
+                        "id": "57",
+                        "selectMore": false,
+                        "tab": "apis",
+                        "type": "utility",
+                        "utilities": {
+                            "pin": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "description": "",
+                                        "label": "message",
+                                        "name": "message",
+                                        "placeholder": "Enter a message",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "description": "",
+                                        "label": "data",
+                                        "name": "data",
+                                        "placeholder": "Enter a value",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "choices": [
+                                            "card",
+                                            "data"
+                                        ],
+                                        "description": "",
+                                        "label": "pin type",
+                                        "name": "pin_type",
+                                        "placeholder": "Select pin type",
+                                        "renderType": "dropdown",
+                                        "required": false
+                                    },
+                                    {
+                                        "choices": [
+                                            "grey",
+                                            "blue",
+                                            "red"
+                                        ],
+                                        "description": "",
+                                        "label": "pin color",
+                                        "name": "pin_style",
+                                        "placeholder": "Select pin color",
+                                        "renderType": "dropdown",
+                                        "required": false
+                                    },
+                                    {
+                                        "description": "",
+                                        "label": "name",
+                                        "name": "name",
+                                        "placeholder": "Use a named pin",
+                                        "renderType": "input",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "container",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "author",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "truncate",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "trace",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "pin",
+                                "name": "pin"
+                            }
+                        },
+                        "utilityType": "api",
+                        "values": {
+                            "pin": {
+                                "_internal": [
+                                    "container",
+                                    "author",
+                                    "truncate",
+                                    "trace"
+                                ],
+                                "data": "format_pin_data:formatted_data",
+                                "message": "format_email_in_str:formatted_data",
+                                "name": null,
+                                "pin_style": "blue",
+                                "pin_type": "card"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "57",
+                    "type": "utility",
+                    "x": -160,
+                    "y": 1420
+                },
+                "58": {
+                    "data": {
+                        "advanced": {
+                            "customName": "format  pin data",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 2,
+                        "functionName": "format_pin_data",
+                        "id": "58",
+                        "parameters": [
+                            "artifact:*.cef.act"
+                        ],
+                        "template": "VIP",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "58",
+                    "type": "format",
+                    "x": -160,
+                    "y": 1280
                 }
             },
             "notes": ""
@@ -1312,7 +1431,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-02T08:57:52.843969+00:00",
+    "create_time": "2022-03-02T09:02:08.242003+00:00",
     "draft_mode": false,
     "labels": [
         "*"

@@ -75,7 +75,7 @@ def add_tag_vip_to_email_artifact(action=None, success=None, container=None, res
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/artifact_update", parameters=parameters, name="add_tag_vip_to_email_artifact", callback=join_vip_path)
+    phantom.custom_function(custom_function="Phishing_Investigation/artifact_update", parameters=parameters, name="add_tag_vip_to_email_artifact", callback=format_pin_data)
 
     return
 
@@ -345,76 +345,6 @@ def convert_tag_list_into_string(action=None, success=None, container=None, resu
     return
 
 
-def search_vor_company_keywords_in_email_address(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("search_vor_company_keywords_in_email_address() called")
-
-    extract_email_from_emailheaders_data = phantom.collect2(container=container, datapath=["extract_email_from_emailheaders:custom_function_result.data.*.email_address"])
-
-    extract_email_from_emailheaders_data___email_address = [item[0] for item in extract_email_from_emailheaders_data]
-
-    input_parameter_0 = "Company_Keywords"
-
-    search_vor_company_keywords_in_email_address__match_count = None
-    search_vor_company_keywords_in_email_address__miss_count = None
-    search_vor_company_keywords_in_email_address__matches_keyword_list = None
-    search_vor_company_keywords_in_email_address__match_count_result = None
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-    import re
-    
-    matches = []
-    misses = []  
-    matches_keyword_list = []
-    
-    success, message, c_keywoards = phantom.get_list(list_name=input_parameter_0)
-    # phantom.debug('phantom.get_list results: success: {}, message: {}, execs: {}'.format(success, message, c_keywoards))
-    keywoard_list = [item for sublist in c_keywoards for item in sublist]
-    
-    # phantom.debug(keywoard_list)
-    
-    for item in keywoard_list:
-        ergebnis = re.findall(item, extract_email_from_emailheaders_data___email_address[0], re.IGNORECASE)
-        #phantom.debug(len(ergebnis))
-        for x in ergebnis:
-            if ergebnis != -1:
-                matches.append({"match": x})
-                matches_keyword_list.append(item)
-            else:
-                misses.append({"miss": x})
-                
-    match_count = len(matches)
-    miss_count = len(misses)
-    
-    phantom.debug('Match Count:  {}'.format(match_count))
-    
-    if match_count > 0:
-        search_vor_company_keywords_in_email_address__match_count_result = True
-    else:
-        search_vor_company_keywords_in_email_address__match_count_result = False
-    
-    #phantom.debug(match_count)
-    #phantom.debug(miss_count)
-    #phantom.debug(matches_keyword_list)
-
-    search_vor_company_keywords_in_email_address__match_count = match_count
-    search_vor_company_keywords_in_email_address__miss_count = miss_count
-    search_vor_company_keywords_in_email_address__matches_keyword_list = matches_keyword_list
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.save_run_data(key="search_vor_company_keywords_in_email_address:match_count", value=json.dumps(search_vor_company_keywords_in_email_address__match_count))
-    phantom.save_run_data(key="search_vor_company_keywords_in_email_address:miss_count", value=json.dumps(search_vor_company_keywords_in_email_address__miss_count))
-    phantom.save_run_data(key="search_vor_company_keywords_in_email_address:matches_keyword_list", value=json.dumps(search_vor_company_keywords_in_email_address__matches_keyword_list))
-    phantom.save_run_data(key="search_vor_company_keywords_in_email_address:match_count_result", value=json.dumps(search_vor_company_keywords_in_email_address__match_count_result))
-
-    return
-
-
 def create_email_artefact(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("create_email_artefact() called")
 
@@ -645,6 +575,56 @@ def keyword_mention_in_email(action=None, success=None, container=None, results=
     ################################################################################
 
     phantom.custom_function(custom_function="Phishing_Investigation/keyword_search", parameters=parameters, name="keyword_mention_in_email", callback=decision_4)
+
+    return
+
+
+def pin_9(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("pin_9() called")
+
+    format_pin_data = phantom.get_format_data(name="format_pin_data")
+    format_email_in_str = phantom.get_format_data(name="format_email_in_str")
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.pin(container=container, data=format_pin_data, message=format_email_in_str, pin_style="blue", pin_type="card")
+
+    join_vip_path(container=container)
+
+    return
+
+
+def format_pin_data(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("format_pin_data() called")
+
+    template = """VIP"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "artifact:*.cef.act"
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_pin_data")
+
+    pin_9(container=container)
 
     return
 
