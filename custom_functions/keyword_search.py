@@ -59,7 +59,7 @@ def keyword_search(liste_name=None, string_searched=None, **kwargs):
     outputs = {
         'match_count': match_count,
         'miss_count': miss_count,
-        'matches_keyword_list' : matches_keyword_list,
+        'match_keyword_list' : matches_keyword_list,
         'match_count_result' : match_count_result
         
     }    

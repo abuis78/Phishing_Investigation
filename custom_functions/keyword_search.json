@@ -1,5 +1,5 @@
 {
-    "create_time": "2022-03-02T08:37:45.497991+00:00",
+    "create_time": "2022-03-02T08:57:15.985880+00:00",
     "custom_function_id": "58ca30f4b6fe664c299b59905472ba4018d4fd9a",
     "description": "this CF uses a custom list and searches in a string for the elements from the list.",
     "draft_mode": false,
