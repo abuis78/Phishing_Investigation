@@ -299,7 +299,7 @@ def dkim_path(action=None, success=None, container=None, results=None, handle=No
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/noop", parameters=parameters, name="dkim_path", callback=search_vor_company_keywords_in_email)
+    phantom.custom_function(custom_function="Phishing_Investigation/noop", parameters=parameters, name="dkim_path", callback=search_vor_company_keywords_in_email_address)
 
     return
 
@@ -345,8 +345,8 @@ def convert_tag_list_into_string(action=None, success=None, container=None, resu
     return
 
 
-def search_vor_company_keywords_in_email(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("search_vor_company_keywords_in_email() called")
+def search_vor_company_keywords_in_email_address(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("search_vor_company_keywords_in_email_address() called")
 
     extract_email_from_emailheaders_data = phantom.collect2(container=container, datapath=["extract_email_from_emailheaders:custom_function_result.data.*.email_address"])
 
@@ -354,9 +354,9 @@ def search_vor_company_keywords_in_email(action=None, success=None, container=No
 
     input_parameter_0 = "Company_Keywords"
 
-    search_vor_company_keywords_in_email__match_count = None
-    search_vor_company_keywords_in_email__miss_count = None
-    search_vor_company_keywords_in_email__matches_keyword_list = None
+    search_vor_company_keywords_in_email_address__match_count = None
+    search_vor_company_keywords_in_email_address__miss_count = None
+    search_vor_company_keywords_in_email_address__matches_keyword_list = None
 
     ################################################################################
     ## Custom Code Start
@@ -399,9 +399,9 @@ def search_vor_company_keywords_in_email(action=None, success=None, container=No
     ## Custom Code End
     ################################################################################
 
-    phantom.save_run_data(key="search_vor_company_keywords_in_email:match_count", value=json.dumps(search_vor_company_keywords_in_email__match_count))
-    phantom.save_run_data(key="search_vor_company_keywords_in_email:miss_count", value=json.dumps(search_vor_company_keywords_in_email__miss_count))
-    phantom.save_run_data(key="search_vor_company_keywords_in_email:matches_keyword_list", value=json.dumps(search_vor_company_keywords_in_email__matches_keyword_list))
+    phantom.save_run_data(key="search_vor_company_keywords_in_email_address:match_count", value=json.dumps(search_vor_company_keywords_in_email_address__match_count))
+    phantom.save_run_data(key="search_vor_company_keywords_in_email_address:miss_count", value=json.dumps(search_vor_company_keywords_in_email_address__miss_count))
+    phantom.save_run_data(key="search_vor_company_keywords_in_email_address:matches_keyword_list", value=json.dumps(search_vor_company_keywords_in_email_address__matches_keyword_list))
 
     decision_3(container=container)
 
@@ -420,6 +420,7 @@ def decision_3(action=None, success=None, container=None, results=None, handle=N
 
     # call connected blocks if condition 1 matched
     if found_match_1:
+        artifact_update_19(action=action, success=success, container=container, results=results, handle=handle)
         return
 
     return

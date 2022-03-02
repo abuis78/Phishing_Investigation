@@ -149,9 +149,21 @@
                     "sourcePort": "25_out",
                     "targetNode": "27",
                     "targetPort": "27_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_41_to_port_47",
+                    "sourceNode": "41",
+                    "sourcePort": "41_out",
+                    "targetNode": "47",
+                    "targetPort": "47_in"
                 }
             ],
-            "hash": "fdd7e650fc153fc447b2b12a93a19f1241cbd891",
+            "hash": "15720138a844e93b0fb86554329e83b83fe6ab8a",
             "nodes": {
                 "0": {
                     "data": {
@@ -818,12 +830,12 @@
                 "40": {
                     "data": {
                         "advanced": {
-                            "customName": "search vor Company Keywords in email",
+                            "customName": "search vor Company Keywords in email address",
                             "customNameId": 0,
                             "join": []
                         },
                         "functionId": 3,
-                        "functionName": "search_vor_company_keywords_in_email",
+                        "functionName": "search_vor_company_keywords_in_email_address",
                         "id": "40",
                         "inputParameters": [
                             "Company_Keywords",
@@ -888,7 +900,7 @@
                     "id": "41",
                     "type": "decision",
                     "x": 180,
-                    "y": 2340
+                    "y": 2300
                 },
                 "44": {
                     "data": {
@@ -1250,7 +1262,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-02T07:24:56.492801+00:00",
+    "create_time": "2022-03-02T07:26:03.825277+00:00",
     "draft_mode": false,
     "labels": [
         "*"
