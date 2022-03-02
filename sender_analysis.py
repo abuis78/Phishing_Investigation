@@ -307,10 +307,8 @@ def dkim_path(action=None, success=None, container=None, results=None, handle=No
 def convert_tag_list_into_string(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("convert_tag_list_into_string() called")
 
-    filtered_artifact_0_data_filter_sender_email_address = phantom.collect2(container=container, datapath=["filtered-data:filter_sender_email_address:condition_1:artifact:*.tags"], scope="all")
     create_email_artefact__result = phantom.collect2(container=container, datapath=["create_email_artefact:custom_function_result.data.artifact_id"], scope="all")
 
-    filtered_artifact_0__tags = [item[0] for item in filtered_artifact_0_data_filter_sender_email_address]
     create_email_artefact_data_artifact_id = [item[0] for item in create_email_artefact__result]
 
     convert_tag_list_into_string__tag_str_list = None
@@ -320,8 +318,11 @@ def convert_tag_list_into_string(action=None, success=None, container=None, resu
     ################################################################################
 
     # Write your custom code here...
-
-    lat_list = [item for sublist in filtered_artifact_0__tags for item in sublist]
+    
+    artifatc_tag_list = []
+    
+    # this builds the Tag list
+    lat_list = [item for sublist in artifatc_tag_list for item in sublist]
     phantom.debug(lat_list)
     
     tag_list = ','.join(lat_list)

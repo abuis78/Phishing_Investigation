@@ -163,7 +163,7 @@
                     "targetPort": "38_in"
                 }
             ],
-            "hash": "7ba7d334694d23f823a145e8ab9316881015c6c0",
+            "hash": "23fd117e553fa25cc3336968ef5df399dc0839bb",
             "nodes": {
                 "0": {
                     "data": {
@@ -813,7 +813,6 @@
                         "functionName": "convert_tag_list_into_string",
                         "id": "38",
                         "inputParameters": [
-                            "filtered-data:filter_sender_email_address:condition_1:artifact:*.tags",
                             "create_email_artefact:custom_function_result.data.artifact_id"
                         ],
                         "outputVariables": [
@@ -824,7 +823,7 @@
                     "errors": {},
                     "id": "38",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n\n    lat_list = [item for sublist in filtered_artifact_0__tags for item in sublist]\n    phantom.debug(lat_list)\n    \n    tag_list = ','.join(lat_list)\n    \n    convert_tag_list_into_string__tag_str_list = tag_list + ', internal'\n\n",
+                    "userCode": "\n    # Write your custom code here...\n    \n    artifatc_tag_list = []\n    \n    # this builds the Tag list\n    lat_list = [item for sublist in artifatc_tag_list for item in sublist]\n    phantom.debug(lat_list)\n    \n    tag_list = ','.join(lat_list)\n    \n    convert_tag_list_into_string__tag_str_list = tag_list + ', internal'\n\n",
                     "x": -200,
                     "y": 1600
                 },
@@ -1263,7 +1262,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-02T06:28:53.780199+00:00",
+    "create_time": "2022-03-02T06:34:33.595278+00:00",
     "draft_mode": false,
     "labels": [
         "*"
