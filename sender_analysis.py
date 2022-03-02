@@ -204,8 +204,6 @@ def extract_domain_from_dkim_signature(action=None, success=None, container=None
 
     phantom.save_run_data(key="extract_domain_from_dkim_signature:dkim_domain_check_result", value=json.dumps(extract_domain_from_dkim_signature__dkim_domain_check_result))
 
-    dkim_check(container=container)
-
     return
 
 

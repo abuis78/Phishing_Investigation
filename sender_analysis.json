@@ -40,13 +40,6 @@
                     "targetPort": "25_in"
                 },
                 {
-                    "id": "port_25_to_port_27",
-                    "sourceNode": "25",
-                    "sourcePort": "25_out",
-                    "targetNode": "27",
-                    "targetPort": "27_in"
-                },
-                {
                     "conditions": [
                         {
                             "index": 1
@@ -163,7 +156,7 @@
                     "targetPort": "38_in"
                 }
             ],
-            "hash": "3ab93afdcfb1a489f0124193fabef2700d943cdd",
+            "hash": "9e2a8bea32a56edd0d9c2c89186a6255a8109f32",
             "nodes": {
                 "0": {
                     "data": {
@@ -1262,7 +1255,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-02T07:21:49.642353+00:00",
+    "create_time": "2022-03-02T07:23:40.709128+00:00",
     "draft_mode": false,
     "labels": [
         "*"
