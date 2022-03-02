@@ -318,6 +318,7 @@ def convert_tag_list_into_string(action=None, success=None, container=None, resu
     ################################################################################
 
     # Write your custom code here...
+    phantom.debug(create_email_artefact_data_artifact_id)
     url = phantom.build_phantom_rest_url('artifact', create_email_artefact_data_artifact_id, 'tags')
     response = phantom.requests.get(url,verify=False,)
     phantom.debug("phantom returned status code {} with message {}".format(response.status_code, response.text))
