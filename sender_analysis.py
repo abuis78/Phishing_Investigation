@@ -327,10 +327,10 @@ def convert_tag_list_into_string(action=None, success=None, container=None, resu
     phantom.debug('Tags from Artifakts {}'.format(artifatc_tag_list))
     
     # this builds the Tag list
-    lat_list = [item for sublist in artifatc_tag_list for item in sublist]
-    phantom.debug(lat_list)
+    #lat_list = [item for sublist in artifatc_tag_list for item in sublist]
+    #phantom.debug(lat_list)
     
-    tag_list = ','.join(lat_list)
+    tag_list = ','.join(artifatc_tag_list)
     
     convert_tag_list_into_string__tag_str_list = tag_list + ', internal'
 
