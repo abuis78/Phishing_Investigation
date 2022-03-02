@@ -66,13 +66,6 @@
                     "targetPort": "40_in"
                 },
                 {
-                    "id": "port_40_to_port_41",
-                    "sourceNode": "40",
-                    "sourcePort": "40_out",
-                    "targetNode": "41",
-                    "targetPort": "41_in"
-                },
-                {
                     "id": "port_44_to_port_23",
                     "sourceNode": "44",
                     "sourcePort": "44_out",
@@ -151,7 +144,7 @@
                     "targetPort": "27_in"
                 }
             ],
-            "hash": "e52417a51c68003f7e7163d73d5a1ebd7fbb7988",
+            "hash": "e45126d693cabe762eff7f059f3c24a9236d782a",
             "nodes": {
                 "0": {
                     "data": {
@@ -843,53 +836,6 @@
                     "x": 90,
                     "y": 2148
                 },
-                "41": {
-                    "data": {
-                        "advanced": {
-                            "join": []
-                        },
-                        "conditions": [
-                            {
-                                "comparisons": [
-                                    {
-                                        "conditionIndex": 0,
-                                        "op": ">",
-                                        "param": "search_vor_company_keywords_in_email:custom_function:match_count",
-                                        "value": "0"
-                                    }
-                                ],
-                                "conditionIndex": 0,
-                                "customName": "match count groesser 0",
-                                "display": "If",
-                                "logic": "and",
-                                "type": "if"
-                            },
-                            {
-                                "comparisons": [
-                                    {
-                                        "conditionIndex": 1,
-                                        "op": "==",
-                                        "param": "",
-                                        "value": ""
-                                    }
-                                ],
-                                "conditionIndex": 1,
-                                "display": "Else",
-                                "logic": "and",
-                                "type": "else"
-                            }
-                        ],
-                        "functionId": 3,
-                        "functionName": "decision_3",
-                        "id": "41",
-                        "type": "decision"
-                    },
-                    "errors": {},
-                    "id": "41",
-                    "type": "decision",
-                    "x": 180,
-                    "y": 2300
-                },
                 "44": {
                     "data": {
                         "advanced": {
@@ -1250,7 +1196,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-02T07:32:00.529766+00:00",
+    "create_time": "2022-03-02T07:33:14.376412+00:00",
     "draft_mode": false,
     "labels": [
         "*"
