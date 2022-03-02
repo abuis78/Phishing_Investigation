@@ -204,6 +204,8 @@ def extract_domain_from_dkim_signature(action=None, success=None, container=None
 
     phantom.save_run_data(key="extract_domain_from_dkim_signature:dkim_domain_check_result", value=json.dumps(extract_domain_from_dkim_signature__dkim_domain_check_result))
 
+    dkim_check(container=container)
+
     return
 
 
@@ -232,13 +234,13 @@ def dkim_check(action=None, success=None, container=None, results=None, handle=N
 def artifact_update_12(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("artifact_update_12() called")
 
-    filtered_artifact_0_data_filter_4 = phantom.collect2(container=container, datapath=["filtered-data:filter_4:condition_1:artifact:*.id","filtered-data:filter_4:condition_1:artifact:*.id"], scope="all")
+    create_email_artefact__result = phantom.collect2(container=container, datapath=["create_email_artefact:custom_function_result.data.artifact_id"], scope="all")
     convert_tag_list_into_string__tag_str_list = json.loads(phantom.get_run_data(key="convert_tag_list_into_string:tag_str_list"))
 
     parameters = []
 
     # build parameters list for 'artifact_update_12' call
-    for filtered_artifact_0_item_filter_4 in filtered_artifact_0_data_filter_4:
+    for create_email_artefact__result_item in create_email_artefact__result:
         parameters.append({
             "name": None,
             "tags": convert_tag_list_into_string__tag_str_list,
@@ -247,7 +249,7 @@ def artifact_update_12(action=None, success=None, container=None, results=None, 
             "cef_field": None,
             "cef_value": None,
             "input_json": None,
-            "artifact_id": filtered_artifact_0_item_filter_4[0],
+            "artifact_id": create_email_artefact__result_item[0],
             "cef_data_type": None,
         })
 
@@ -418,7 +420,6 @@ def decision_3(action=None, success=None, container=None, results=None, handle=N
 
     # call connected blocks if condition 1 matched
     if found_match_1:
-        artifact_update_19(action=action, success=success, container=container, results=results, handle=handle)
         return
 
     return

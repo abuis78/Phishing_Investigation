@@ -106,18 +106,6 @@
                     "targetPort": "10_in"
                 },
                 {
-                    "conditions": [
-                        {
-                            "index": 0
-                        }
-                    ],
-                    "id": "port_41_to_port_47",
-                    "sourceNode": "41",
-                    "sourcePort": "41_out",
-                    "targetNode": "47",
-                    "targetPort": "47_in"
-                },
-                {
                     "id": "port_0_to_port_48",
                     "sourceNode": "0",
                     "sourcePort": "0_out",
@@ -154,9 +142,16 @@
                     "sourcePort": "27_out",
                     "targetNode": "38",
                     "targetPort": "38_in"
+                },
+                {
+                    "id": "port_25_to_port_27",
+                    "sourceNode": "25",
+                    "sourcePort": "25_out",
+                    "targetNode": "27",
+                    "targetPort": "27_in"
                 }
             ],
-            "hash": "9e2a8bea32a56edd0d9c2c89186a6255a8109f32",
+            "hash": "fdd7e650fc153fc447b2b12a93a19f1241cbd891",
             "nodes": {
                 "0": {
                     "data": {
@@ -736,7 +731,7 @@
                         "utilityType": "custom_function",
                         "values": {
                             "artifact_update": {
-                                "artifact_id": "filtered-data:filter_4:condition_1:artifact:*.id",
+                                "artifact_id": "create_email_artefact:custom_function_result.data.artifact_id",
                                 "cef_data_type": null,
                                 "cef_field": null,
                                 "cef_value": null,
@@ -1255,7 +1250,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-02T07:23:40.709128+00:00",
+    "create_time": "2022-03-02T07:24:56.492801+00:00",
     "draft_mode": false,
     "labels": [
         "*"
