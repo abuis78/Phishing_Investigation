@@ -390,7 +390,7 @@ def search_vor_company_keywords_in_email_address(action=None, success=None, cont
     
     phantom.debug('Match Count {}'.format(match_count))
     
-    phantom.debug(match_count)
+    phantom.debug(type(match_count))
     phantom.debug(miss_count)
     phantom.debug(matches_keyword_list)
 
