@@ -484,7 +484,7 @@ def artifact_update_19(action=None, success=None, container=None, results=None, 
     phantom.debug("artifact_update_19() called")
 
     create_email_artefact__result = phantom.collect2(container=container, datapath=["create_email_artefact:custom_function_result.data.artifact_id"])
-    search_vor_company_keywords_in_email__matches_keyword_list = json.loads(phantom.get_run_data(key="search_vor_company_keywords_in_email:matches_keyword_list"))
+    search_vor_company_keywords_in_email_address__matches_keyword_list = json.loads(phantom.get_run_data(key="search_vor_company_keywords_in_email_address:matches_keyword_list"))
 
     parameters = []
 
@@ -496,7 +496,7 @@ def artifact_update_19(action=None, success=None, container=None, results=None, 
             "label": None,
             "severity": None,
             "cef_field": "matches_keyword_list",
-            "cef_value": search_vor_company_keywords_in_email__matches_keyword_list,
+            "cef_value": search_vor_company_keywords_in_email_address__matches_keyword_list,
             "input_json": None,
             "artifact_id": create_email_artefact__result_item[0],
             "cef_data_type": None,

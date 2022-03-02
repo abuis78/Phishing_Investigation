@@ -163,7 +163,7 @@
                     "targetPort": "47_in"
                 }
             ],
-            "hash": "230c54cd41dae869b19e39ebbbb735b5abf44404",
+            "hash": "b496cda472135d48f20ef140b9ab2fc1c05c8e4e",
             "nodes": {
                 "0": {
                     "data": {
@@ -1158,7 +1158,7 @@
                                 "artifact_id": "create_email_artefact:custom_function_result.data.artifact_id",
                                 "cef_data_type": null,
                                 "cef_field": "matches_keyword_list",
-                                "cef_value": "search_vor_company_keywords_in_email:custom_function:matches_keyword_list",
+                                "cef_value": "search_vor_company_keywords_in_email_address:custom_function:matches_keyword_list",
                                 "input_json": null,
                                 "label": null,
                                 "name": null,
@@ -1262,7 +1262,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-02T07:41:48.658625+00:00",
+    "create_time": "2022-03-02T07:42:22.743572+00:00",
     "draft_mode": false,
     "labels": [
         "*"
