@@ -189,7 +189,7 @@
                     "targetPort": "50_in"
                 }
             ],
-            "hash": "2cf8c70c406d343b6afc1bdb7a328f569683d933",
+            "hash": "edf931fe04cbbf6ebca37ecbddef685ce6284cf7",
             "nodes": {
                 "0": {
                     "data": {
@@ -1102,7 +1102,7 @@
                                     {
                                         "conditionIndex": 0,
                                         "op": "==",
-                                        "param": "search_vor_company_keywords_in_email_address:custom_function:match_count_result",
+                                        "param": "keyword_mention_in_email:custom_function_result.data.match_count_result",
                                         "value": "True"
                                     }
                                 ],
@@ -1160,7 +1160,7 @@
                             "cef_json": {
                                 "functionId": 1,
                                 "parameters": [
-                                    "search_vor_company_keywords_in_email_address:custom_function:matches_keyword_list"
+                                    "format_keywoard_list:formatted_data"
                                 ],
                                 "template": "{{ \"keywoards_dedetcted\": \"{0}\" }}\n"
                             }
@@ -1191,7 +1191,7 @@
                         "functionName": "format_keywoard_list",
                         "id": "52",
                         "parameters": [
-                            "search_vor_company_keywords_in_email_address:custom_function:matches_keyword_list"
+                            "keyword_mention_in_email:custom_function_result.data.match_keyword_list"
                         ],
                         "template": "{0}",
                         "type": "format"
@@ -1245,6 +1245,8 @@
                 "56": {
                     "data": {
                         "advanced": {
+                            "customName": "keyword mention in email",
+                            "customNameId": 0,
                             "join": []
                         },
                         "customFunction": {
@@ -1253,7 +1255,7 @@
                             "repoName": "Phishing_Investigation"
                         },
                         "functionId": 8,
-                        "functionName": "keyword_search_8",
+                        "functionName": "keyword_mention_in_email",
                         "id": "56",
                         "selectMore": false,
                         "type": "utility",
@@ -1310,7 +1312,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-02T08:52:37.578868+00:00",
+    "create_time": "2022-03-02T08:54:52.786578+00:00",
     "draft_mode": false,
     "labels": [
         "*"

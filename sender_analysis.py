@@ -299,7 +299,7 @@ def dkim_path(action=None, success=None, container=None, results=None, handle=No
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/noop", parameters=parameters, name="dkim_path", callback=keyword_search_8)
+    phantom.custom_function(custom_function="Phishing_Investigation/noop", parameters=parameters, name="dkim_path", callback=keyword_mention_in_email)
 
     return
 
@@ -503,7 +503,7 @@ def decision_4(action=None, success=None, container=None, results=None, handle=N
     found_match_1 = phantom.decision(
         container=container,
         conditions=[
-            ["search_vor_company_keywords_in_email_address:custom_function:match_count_result", "==", True]
+            ["keyword_mention_in_email:custom_function_result.data.match_count_result", "==", True]
         ])
 
     # call connected blocks if condition 1 matched
@@ -526,7 +526,7 @@ def update_artifact_1(action=None, success=None, container=None, results=None, h
         container=container,
         template="""{{ \"keywoards_dedetcted\": \"{0}\" }}\n""",
         parameters=[
-            "search_vor_company_keywords_in_email_address:custom_function:matches_keyword_list"
+            "format_keywoard_list:formatted_data"
         ])
 
     create_email_artefact__result = phantom.collect2(container=container, datapath=["create_email_artefact:custom_function_result.data.artifact_id"])
@@ -563,7 +563,7 @@ def format_keywoard_list(action=None, success=None, container=None, results=None
 
     # parameter list for template variable replacement
     parameters = [
-        "search_vor_company_keywords_in_email_address:custom_function:matches_keyword_list"
+        "keyword_mention_in_email:custom_function_result.data.match_keyword_list"
     ]
 
     ################################################################################
@@ -590,7 +590,7 @@ def join_email_address_keyword_path(action=None, success=None, container=None, r
     if phantom.get_run_data(key="join_email_address_keyword_path_called"):
         return
 
-    if phantom.completed(custom_function_names=["keyword_search_8"]):
+    if phantom.completed(custom_function_names=["keyword_mention_in_email"]):
         # save the state that the joined function has now been called
         phantom.save_run_data(key="join_email_address_keyword_path_called", value="email_address_keyword_path")
 
@@ -620,14 +620,14 @@ def email_address_keyword_path(action=None, success=None, container=None, result
     return
 
 
-def keyword_search_8(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("keyword_search_8() called")
+def keyword_mention_in_email(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("keyword_mention_in_email() called")
 
     filtered_artifact_0_data_filter_email_artifact = phantom.collect2(container=container, datapath=["filtered-data:filter_email_artifact:condition_1:artifact:*.cef.emailHeaders.From","filtered-data:filter_email_artifact:condition_1:artifact:*.id"])
 
     parameters = []
 
-    # build parameters list for 'keyword_search_8' call
+    # build parameters list for 'keyword_mention_in_email' call
     for filtered_artifact_0_item_filter_email_artifact in filtered_artifact_0_data_filter_email_artifact:
         parameters.append({
             "liste_name": "Company_Keywords",
@@ -644,7 +644,7 @@ def keyword_search_8(action=None, success=None, container=None, results=None, ha
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/keyword_search", parameters=parameters, name="keyword_search_8", callback=decision_4)
+    phantom.custom_function(custom_function="Phishing_Investigation/keyword_search", parameters=parameters, name="keyword_mention_in_email", callback=decision_4)
 
     return
 
