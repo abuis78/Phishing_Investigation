@@ -59,13 +59,6 @@
                     "targetPort": "32_in"
                 },
                 {
-                    "id": "port_32_to_port_40",
-                    "sourceNode": "32",
-                    "sourcePort": "32_out",
-                    "targetNode": "40",
-                    "targetPort": "40_in"
-                },
-                {
                     "id": "port_44_to_port_23",
                     "sourceNode": "44",
                     "sourcePort": "44_out",
@@ -144,13 +137,6 @@
                     "targetPort": "27_in"
                 },
                 {
-                    "id": "port_40_to_port_50",
-                    "sourceNode": "40",
-                    "sourcePort": "40_out",
-                    "targetNode": "50",
-                    "targetPort": "50_in"
-                },
-                {
                     "conditions": [
                         {
                             "index": 0
@@ -189,14 +175,21 @@
                     "targetPort": "53_in"
                 },
                 {
-                    "id": "port_53_to_port_55",
-                    "sourceNode": "53",
-                    "sourcePort": "53_out",
-                    "targetNode": "55",
-                    "targetPort": "55_in"
+                    "id": "port_32_to_port_56",
+                    "sourceNode": "32",
+                    "sourcePort": "32_out",
+                    "targetNode": "56",
+                    "targetPort": "56_in"
+                },
+                {
+                    "id": "port_56_to_port_50",
+                    "sourceNode": "56",
+                    "sourcePort": "56_out",
+                    "targetNode": "50",
+                    "targetPort": "50_in"
                 }
             ],
-            "hash": "ba7112f2b0e2714f8aecf4750ae1aafdf82791e3",
+            "hash": "2cf8c70c406d343b6afc1bdb7a328f569683d933",
             "nodes": {
                 "0": {
                     "data": {
@@ -210,8 +203,8 @@
                     "errors": {},
                     "id": "0",
                     "type": "start",
-                    "x": 100,
-                    "y": -340.00000000000006
+                    "x": 110,
+                    "y": 0
                 },
                 "1": {
                     "data": {
@@ -228,7 +221,7 @@
                     "type": "end",
                     "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
                     "x": 410,
-                    "y": -2.842170943040401e-14
+                    "y": 0
                 },
                 "10": {
                     "data": {
@@ -370,8 +363,8 @@
                     "errors": {},
                     "id": "10",
                     "type": "utility",
-                    "x": -100,
-                    "y": 800
+                    "x": 0,
+                    "y": 1235
                 },
                 "13": {
                     "data": {
@@ -417,8 +410,8 @@
                     "errors": {},
                     "id": "13",
                     "type": "decision",
-                    "x": 200,
-                    "y": 520
+                    "x": 170,
+                    "y": 1055
                 },
                 "2": {
                     "data": {
@@ -468,8 +461,8 @@
                     "errors": {},
                     "id": "2",
                     "type": "utility",
-                    "x": 80,
-                    "y": -60.00000000000006
+                    "x": 90,
+                    "y": 345
                 },
                 "23": {
                     "data": {
@@ -533,7 +526,7 @@
                     "id": "23",
                     "type": "utility",
                     "x": 90,
-                    "y": 311.99999999999994
+                    "y": 865
                 },
                 "24": {
                     "data": {
@@ -573,7 +566,7 @@
                     "id": "24",
                     "type": "utility",
                     "x": 90,
-                    "y": 1000
+                    "y": 1425
                 },
                 "25": {
                     "data": {
@@ -599,7 +592,7 @@
                     "type": "code",
                     "userCode": "\n    # Write your custom code here...\n    import re\n    phantom.debug(container_artifact_cef_item_0)\n    phantom.debug(extract_email_from_emailheaders_data___domain)\n    domain_regex = r'(((?!-))(xn--)?[a-z0-9][a-z0-9-_]{0,61}[a-z0-9]{0,1}\\.(xn--)?([a-z0-9\\-]{1,61}|[a-z0-9-]{1,30}\\.[a-z]{2,}))'\n    for domain in re.findall(domain_regex, str(container_artifact_cef_item_0), re.IGNORECASE):\n        phantom.debug(domain[0])\n        dkim_domain = domain[0]\n        \n    if dkim_domain == extract_email_from_emailheaders_data___domain[0]:\n        phantom.debug('same Domain')\n        extract_domain_from_dkim_signature__dkim_domain_check_result = True\n        \n    else:\n        phantom.debug('not same Domainn')\n        extract_domain_from_dkim_signature__dkim_domain_check_result = False\n    \n",
                     "x": 90,
-                    "y": 1148
+                    "y": 1590
                 },
                 "27": {
                     "data": {
@@ -650,7 +643,7 @@
                     "id": "27",
                     "type": "decision",
                     "x": 170,
-                    "y": 1312
+                    "y": 1780
                 },
                 "31": {
                     "data": {
@@ -791,8 +784,8 @@
                     "errors": {},
                     "id": "31",
                     "type": "utility",
-                    "x": -200,
-                    "y": 1860
+                    "x": 0,
+                    "y": 2150
                 },
                 "32": {
                     "data": {
@@ -832,7 +825,7 @@
                     "id": "32",
                     "type": "utility",
                     "x": 90,
-                    "y": 2000
+                    "y": 2315
                 },
                 "38": {
                     "data": {
@@ -857,8 +850,8 @@
                     "id": "38",
                     "type": "code",
                     "userCode": "\n    # Write your custom code here...\n    phantom.debug(create_email_artefact_data_artifact_id[0])\n    url = phantom.build_phantom_rest_url('artifact', create_email_artefact_data_artifact_id[0], 'tags')\n    response = phantom.requests.get(url,verify=False,)\n    phantom.debug(\"phantom returned status code {} with message {}\".format(response.status_code, response.text))\n    \n    artifatc_tag_list = response.json()['tags']\n    phantom.debug('Tags from Artifakts {}'.format(artifatc_tag_list))\n    \n    # this builds the Tag list\n    #lat_list = [item for sublist in artifatc_tag_list for item in sublist]\n    #phantom.debug(lat_list)\n    \n    tag_list = ','.join(artifatc_tag_list)\n    \n    convert_tag_list_into_string__tag_str_list = tag_list + ', internal'\n\n",
-                    "x": -200,
-                    "y": 1600
+                    "x": 0,
+                    "y": 1960
                 },
                 "40": {
                     "data": {
@@ -886,8 +879,8 @@
                     "id": "40",
                     "type": "code",
                     "userCode": "\n    # Write your custom code here...\n    import re\n    \n    matches = []\n    misses = []  \n    matches_keyword_list = []\n    \n    success, message, c_keywoards = phantom.get_list(list_name=input_parameter_0)\n    # phantom.debug('phantom.get_list results: success: {}, message: {}, execs: {}'.format(success, message, c_keywoards))\n    keywoard_list = [item for sublist in c_keywoards for item in sublist]\n    \n    # phantom.debug(keywoard_list)\n    \n    for item in keywoard_list:\n        ergebnis = re.findall(item, extract_email_from_emailheaders_data___email_address[0], re.IGNORECASE)\n        #phantom.debug(len(ergebnis))\n        for x in ergebnis:\n            if ergebnis != -1:\n                matches.append({\"match\": x})\n                matches_keyword_list.append(item)\n            else:\n                misses.append({\"miss\": x})\n                \n    match_count = len(matches)\n    miss_count = len(misses)\n    \n    phantom.debug('Match Count:  {}'.format(match_count))\n    \n    if match_count > 0:\n        search_vor_company_keywords_in_email_address__match_count_result = True\n    else:\n        search_vor_company_keywords_in_email_address__match_count_result = False\n    \n    #phantom.debug(match_count)\n    #phantom.debug(miss_count)\n    #phantom.debug(matches_keyword_list)\n\n    search_vor_company_keywords_in_email_address__match_count = match_count\n    search_vor_company_keywords_in_email_address__miss_count = miss_count\n    search_vor_company_keywords_in_email_address__matches_keyword_list = matches_keyword_list\n",
-                    "x": 80,
-                    "y": 2160
+                    "x": 580,
+                    "y": 2480
                 },
                 "44": {
                     "data": {
@@ -1040,8 +1033,8 @@
                     "errors": {},
                     "id": "44",
                     "type": "utility",
-                    "x": 80,
-                    "y": 159.99999999999997
+                    "x": 90,
+                    "y": 700
                 },
                 "45": {
                     "data": {
@@ -1062,8 +1055,8 @@
                     "errors": {},
                     "id": "45",
                     "type": "format",
-                    "x": 80,
-                    "y": 59.99999999999997
+                    "x": 90,
+                    "y": 535
                 },
                 "48": {
                     "data": {
@@ -1095,8 +1088,8 @@
                     "errors": {},
                     "id": "48",
                     "type": "filter",
-                    "x": 140,
-                    "y": -200
+                    "x": 150,
+                    "y": 165
                 },
                 "50": {
                     "data": {
@@ -1143,8 +1136,8 @@
                     "errors": {},
                     "id": "50",
                     "type": "decision",
-                    "x": 160,
-                    "y": 2324.5
+                    "x": 170,
+                    "y": 2660
                 },
                 "51": {
                     "data": {
@@ -1184,8 +1177,8 @@
                     "errors": {},
                     "id": "51",
                     "type": "action",
-                    "x": -80,
-                    "y": 2720
+                    "x": 0,
+                    "y": 2988
                 },
                 "52": {
                     "data": {
@@ -1206,8 +1199,8 @@
                     "errors": {},
                     "id": "52",
                     "type": "format",
-                    "x": -80,
-                    "y": 2600
+                    "x": 0,
+                    "y": 2840
                 },
                 "53": {
                     "data": {
@@ -1246,10 +1239,10 @@
                     "errors": {},
                     "id": "53",
                     "type": "utility",
-                    "x": 80,
-                    "y": 2920
+                    "x": 90,
+                    "y": 3136
                 },
-                "55": {
+                "56": {
                     "data": {
                         "advanced": {
                             "join": []
@@ -1259,9 +1252,9 @@
                             "name": "keyword_search",
                             "repoName": "Phishing_Investigation"
                         },
-                        "functionId": 4,
-                        "functionName": "keyword_search_4",
-                        "id": "55",
+                        "functionId": 8,
+                        "functionName": "keyword_search_8",
+                        "id": "56",
                         "selectMore": false,
                         "type": "utility",
                         "utilities": {
@@ -1296,16 +1289,16 @@
                         "utilityType": "custom_function",
                         "values": {
                             "keyword_search": {
-                                "liste_name": "Suspicious_keywords",
-                                "string_searched": "filtered-data:filter_email_artifact:condition_1:artifact:*.cef.emailHeaders.Subject"
+                                "liste_name": "Company_Keywords",
+                                "string_searched": "filtered-data:filter_email_artifact:condition_1:artifact:*.cef.emailHeaders.From"
                             }
                         }
                     },
                     "errors": {},
-                    "id": "55",
+                    "id": "56",
                     "type": "utility",
                     "x": 80,
-                    "y": 3084.5
+                    "y": 2500
                 }
             },
             "notes": ""
@@ -1317,7 +1310,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-02T08:44:24.569482+00:00",
+    "create_time": "2022-03-02T08:52:37.578868+00:00",
     "draft_mode": false,
     "labels": [
         "*"

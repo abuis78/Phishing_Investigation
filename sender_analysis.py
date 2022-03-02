@@ -299,7 +299,7 @@ def dkim_path(action=None, success=None, container=None, results=None, handle=No
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/noop", parameters=parameters, name="dkim_path", callback=search_vor_company_keywords_in_email_address)
+    phantom.custom_function(custom_function="Phishing_Investigation/noop", parameters=parameters, name="dkim_path", callback=keyword_search_8)
 
     return
 
@@ -411,8 +411,6 @@ def search_vor_company_keywords_in_email_address(action=None, success=None, cont
     phantom.save_run_data(key="search_vor_company_keywords_in_email_address:miss_count", value=json.dumps(search_vor_company_keywords_in_email_address__miss_count))
     phantom.save_run_data(key="search_vor_company_keywords_in_email_address:matches_keyword_list", value=json.dumps(search_vor_company_keywords_in_email_address__matches_keyword_list))
     phantom.save_run_data(key="search_vor_company_keywords_in_email_address:match_count_result", value=json.dumps(search_vor_company_keywords_in_email_address__match_count_result))
-
-    decision_4(container=container)
 
     return
 
@@ -592,11 +590,12 @@ def join_email_address_keyword_path(action=None, success=None, container=None, r
     if phantom.get_run_data(key="join_email_address_keyword_path_called"):
         return
 
-    # save the state that the joined function has now been called
-    phantom.save_run_data(key="join_email_address_keyword_path_called", value="email_address_keyword_path")
+    if phantom.completed(custom_function_names=["keyword_search_8"]):
+        # save the state that the joined function has now been called
+        phantom.save_run_data(key="join_email_address_keyword_path_called", value="email_address_keyword_path")
 
-    # call connected block "email_address_keyword_path"
-    email_address_keyword_path(container=container, handle=handle)
+        # call connected block "email_address_keyword_path"
+        email_address_keyword_path(container=container, handle=handle)
 
     return
 
@@ -616,22 +615,22 @@ def email_address_keyword_path(action=None, success=None, container=None, result
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/noop", parameters=parameters, name="email_address_keyword_path", callback=keyword_search_4)
+    phantom.custom_function(custom_function="Phishing_Investigation/noop", parameters=parameters, name="email_address_keyword_path")
 
     return
 
 
-def keyword_search_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("keyword_search_4() called")
+def keyword_search_8(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("keyword_search_8() called")
 
-    filtered_artifact_0_data_filter_email_artifact = phantom.collect2(container=container, datapath=["filtered-data:filter_email_artifact:condition_1:artifact:*.cef.emailHeaders.Subject","filtered-data:filter_email_artifact:condition_1:artifact:*.id"])
+    filtered_artifact_0_data_filter_email_artifact = phantom.collect2(container=container, datapath=["filtered-data:filter_email_artifact:condition_1:artifact:*.cef.emailHeaders.From","filtered-data:filter_email_artifact:condition_1:artifact:*.id"])
 
     parameters = []
 
-    # build parameters list for 'keyword_search_4' call
+    # build parameters list for 'keyword_search_8' call
     for filtered_artifact_0_item_filter_email_artifact in filtered_artifact_0_data_filter_email_artifact:
         parameters.append({
-            "liste_name": "Suspicious_keywords",
+            "liste_name": "Company_Keywords",
             "string_searched": filtered_artifact_0_item_filter_email_artifact[0],
         })
 
@@ -645,7 +644,7 @@ def keyword_search_4(action=None, success=None, container=None, results=None, ha
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/keyword_search", parameters=parameters, name="keyword_search_4")
+    phantom.custom_function(custom_function="Phishing_Investigation/keyword_search", parameters=parameters, name="keyword_search_8", callback=decision_4)
 
     return
 
