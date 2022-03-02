@@ -222,11 +222,11 @@ def dkim_check(action=None, success=None, container=None, results=None, handle=N
 
     # call connected blocks if condition 1 matched
     if found_match_1:
+        convert_tag_list_into_string(action=action, success=success, container=container, results=results, handle=handle)
         return
 
     # check for 'else' condition 2
     join_dkim_path(action=action, success=success, container=container, results=results, handle=handle)
-    filter_sender_email_address(action=action, success=success, container=container, results=results, handle=handle)
 
     return
 
@@ -242,15 +242,15 @@ def artifact_update_12(action=None, success=None, container=None, results=None, 
     # build parameters list for 'artifact_update_12' call
     for filtered_artifact_0_item_filter_4 in filtered_artifact_0_data_filter_4:
         parameters.append({
-            "artifact_id": filtered_artifact_0_item_filter_4[0],
             "name": None,
+            "tags": convert_tag_list_into_string__tag_str_list,
             "label": None,
             "severity": None,
             "cef_field": None,
             "cef_value": None,
-            "cef_data_type": None,
-            "tags": convert_tag_list_into_string__tag_str_list,
             "input_json": None,
+            "artifact_id": filtered_artifact_0_item_filter_4[0],
+            "cef_data_type": None,
         })
 
     ################################################################################
@@ -308,8 +308,10 @@ def convert_tag_list_into_string(action=None, success=None, container=None, resu
     phantom.debug("convert_tag_list_into_string() called")
 
     filtered_artifact_0_data_filter_sender_email_address = phantom.collect2(container=container, datapath=["filtered-data:filter_sender_email_address:condition_1:artifact:*.tags"], scope="all")
+    create_email_artefact__result = phantom.collect2(container=container, datapath=["create_email_artefact:custom_function_result.data.artifact_id"], scope="all")
 
     filtered_artifact_0__tags = [item[0] for item in filtered_artifact_0_data_filter_sender_email_address]
+    create_email_artefact_data_artifact_id = [item[0] for item in create_email_artefact__result]
 
     convert_tag_list_into_string__tag_str_list = None
 
@@ -427,16 +429,16 @@ def create_email_artefact(action=None, success=None, container=None, results=Non
     parameters = []
 
     parameters.append({
-        "container": id_value,
         "name": "Sender email address",
+        "tags": None,
         "label": " artifact",
         "severity": "low",
         "cef_field": "from",
         "cef_value": format_email_in_str,
-        "cef_data_type": None,
-        "tags": None,
-        "run_automation": None,
+        "container": id_value,
         "input_json": None,
+        "cef_data_type": None,
+        "run_automation": None,
     })
 
     ################################################################################
@@ -481,25 +483,6 @@ def format_email_in_str(action=None, success=None, container=None, results=None,
     return
 
 
-def filter_sender_email_address(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("filter_sender_email_address() called")
-
-    # collect filtered artifact ids and results for 'if' condition 1
-    matched_artifacts_1, matched_results_1 = phantom.condition(
-        container=container,
-        conditions=[
-            ["Sender email address", "in", "artifact:*.name"]
-        ],
-        name="filter_sender_email_address:condition_1",
-        scope="all")
-
-    # call connected blocks if filtered artifacts or results
-    if matched_artifacts_1 or matched_results_1:
-        convert_tag_list_into_string(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
-
-    return
-
-
 def artifact_update_19(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("artifact_update_19() called")
 
@@ -511,15 +494,15 @@ def artifact_update_19(action=None, success=None, container=None, results=None, 
     # build parameters list for 'artifact_update_19' call
     for create_email_artefact__result_item in create_email_artefact__result:
         parameters.append({
-            "artifact_id": create_email_artefact__result_item[0],
             "name": None,
+            "tags": None,
             "label": None,
             "severity": None,
             "cef_field": "matches_keyword_list",
             "cef_value": search_vor_company_keywords_in_email__matches_keyword_list,
-            "cef_data_type": None,
-            "tags": None,
             "input_json": None,
+            "artifact_id": create_email_artefact__result_item[0],
+            "cef_data_type": None,
         })
 
     ################################################################################
