@@ -163,7 +163,7 @@
                     "targetPort": "38_in"
                 }
             ],
-            "hash": "be52bf30557a6b4cf226913f6dfc3cf7b468ea40",
+            "hash": "8bec957db616173fd0e6a7892715dc4243c6ecec",
             "nodes": {
                 "0": {
                     "data": {
@@ -823,7 +823,7 @@
                     "errors": {},
                     "id": "38",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    \n    artifatc_tag_list = []\n    \n    # this builds the Tag list\n    lat_list = [item for sublist in artifatc_tag_list for item in sublist]\n    phantom.debug(lat_list)\n    \n    tag_list = ','.join(lat_list)\n    \n    convert_tag_list_into_string__tag_str_list = tag_list + ', internal'\n\n",
+                    "userCode": "\n    # Write your custom code here...\n    url = phantom.build_phantom_rest_url('artifact', create_email_artefact_data_artifact_id, 'tags')\n    response = phantom.requests.get(url,verify=False,)\n    phantom.debug(\"phantom returned status code {} with message {}\".format(response.status_code, response.text))\n    \n    artifatc_tag_list = response.json()['tags']\n    phantom.debug('Tags from Artifakts {}'.format(artifatc_tag_list))\n    \n    # this builds the Tag list\n    lat_list = [item for sublist in artifatc_tag_list for item in sublist]\n    phantom.debug(lat_list)\n    \n    tag_list = ','.join(lat_list)\n    \n    convert_tag_list_into_string__tag_str_list = tag_list + ', internal'\n\n",
                     "x": -200,
                     "y": 1600
                 },
@@ -1262,7 +1262,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-02T06:34:33.595278+00:00",
+    "create_time": "2022-03-02T07:18:13.810161+00:00",
     "draft_mode": false,
     "labels": [
         "*"
