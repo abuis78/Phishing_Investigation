@@ -388,6 +388,8 @@ def search_vor_company_keywords_in_email_address(action=None, success=None, cont
     match_count = len(matches)
     miss_count = len(misses)
     
+    phantom.debug('Match Count {}'.format(match_count))
+    
     phantom.debug(match_count)
     phantom.debug(miss_count)
     phantom.debug(matches_keyword_list)
@@ -420,7 +422,6 @@ def decision_3(action=None, success=None, container=None, results=None, handle=N
 
     # call connected blocks if condition 1 matched
     if found_match_1:
-        artifact_update_19(action=action, success=success, container=container, results=results, handle=handle)
         return
 
     return
