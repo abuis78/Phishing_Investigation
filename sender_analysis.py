@@ -651,9 +651,10 @@ def search_for_keyword_in_subject(action=None, success=None, container=None, res
     keywoard_list = [item for sublist in c_keywoards for item in sublist]
     
     # phantom.debug(keywoard_list)
+    phantom.debug(filtered_artifact_0_data_filter_email_artifact[0])
     
     for item in keywoard_list:
-        ergebnis = re.findall(item, filtered_artifact_0_data_filter_email_artifact, re.IGNORECASE)
+        ergebnis = re.findall(item, filtered_artifact_0_data_filter_email_artifact[0], re.IGNORECASE)
         #phantom.debug(len(ergebnis))
         for x in ergebnis:
             if ergebnis != -1:
