@@ -616,78 +616,36 @@ def email_address_keyword_path(action=None, success=None, container=None, result
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/noop", parameters=parameters, name="email_address_keyword_path", callback=search_for_keyword_in_subject)
+    phantom.custom_function(custom_function="Phishing_Investigation/noop", parameters=parameters, name="email_address_keyword_path", callback=keyword_search_4)
 
     return
 
 
-def search_for_keyword_in_subject(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("search_for_keyword_in_subject() called")
+def keyword_search_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("keyword_search_4() called")
 
-    filtered_artifact_0_data_filter_email_artifact = phantom.collect2(container=container, datapath=["filtered-data:filter_email_artifact:condition_1:artifact:*.cef.emailHeaders.Subject"])
+    filtered_artifact_0_data_filter_email_artifact = phantom.collect2(container=container, datapath=["filtered-data:filter_email_artifact:condition_1:artifact:*.cef.emailHeaders.Subject","filtered-data:filter_email_artifact:condition_1:artifact:*.id"])
 
-    filtered_artifact_0__cef_emailheaders_subject = [item[0] for item in filtered_artifact_0_data_filter_email_artifact]
+    parameters = []
 
-    input_parameter_0 = "Suspicious_keywords"
-
-    search_for_keyword_in_subject__match_count = None
-    search_for_keyword_in_subject__miss_count = None
-    search_for_keyword_in_subject__matches_keyword_list = None
-    search_for_keyword_in_subject__match_count_result = None
+    # build parameters list for 'keyword_search_4' call
+    for filtered_artifact_0_item_filter_email_artifact in filtered_artifact_0_data_filter_email_artifact:
+        parameters.append({
+            "liste_name": "Suspicious_keywords",
+            "string_searched": filtered_artifact_0_item_filter_email_artifact[0],
+        })
 
     ################################################################################
     ## Custom Code Start
     ################################################################################
 
     # Write your custom code here...
-    import re
-    
-    matches = []
-    misses = []  
-    matches_keyword_list = []
-    
-    success, message, c_keywoards = phantom.get_list(list_name=input_parameter_0)
-    # phantom.debug('phantom.get_list results: success: {}, message: {}, execs: {}'.format(success, message, c_keywoards))
-    keywoard_list = [item for sublist in c_keywoards for item in sublist]
-    
-    phantom.debug('Keywoard list: {}'.format(keywoard_list))
-    phantom.debug('Subject: {}'.format(filtered_artifact_0_data_filter_email_artifact[0]))
-    
-    for item in keywoard_list:
-        ergebnis = re.findall(item, filtered_artifact_0_data_filter_email_artifact[0], re.IGNORECASE)
-        #phantom.debug(len(ergebnis))
-        for x in ergebnis:
-            if ergebnis != -1:
-                matches.append({"match": x})
-                matches_keyword_list.append(item)
-            else:
-                misses.append({"miss": x})
-                
-    match_count = len(matches)
-    miss_count = len(misses)
-    
-    phantom.debug('Match Count:  {}'.format(match_count))
-    
-    if match_count > 0:
-        search_for_keyword_in_subject__match_count_result = True
-    else:
-        search_for_keyword_in_subject__match_count_result = False
-    
-    phantom.debug(match_count)
-    phantom.debug(miss_count)
-    phantom.debug(matches_keyword_list)
 
-    search_for_keyword_in_subject__match_count = match_count
-    search_for_keyword_in_subject__miss_count = miss_count
-    search_for_keyword_in_subject__matches_keyword_list = matches_keyword_list
     ################################################################################
     ## Custom Code End
     ################################################################################
 
-    phantom.save_run_data(key="search_for_keyword_in_subject:match_count", value=json.dumps(search_for_keyword_in_subject__match_count))
-    phantom.save_run_data(key="search_for_keyword_in_subject:miss_count", value=json.dumps(search_for_keyword_in_subject__miss_count))
-    phantom.save_run_data(key="search_for_keyword_in_subject:matches_keyword_list", value=json.dumps(search_for_keyword_in_subject__matches_keyword_list))
-    phantom.save_run_data(key="search_for_keyword_in_subject:match_count_result", value=json.dumps(search_for_keyword_in_subject__match_count_result))
+    phantom.custom_function(custom_function="Phishing_Investigation/keyword_search", parameters=parameters, name="keyword_search_4")
 
     return
 
