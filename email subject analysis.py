@@ -11,9 +11,182 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-
+    # call 'filter_email_artifact' block
+    filter_email_artifact(container=container)
 
     return
+
+def filter_email_artifact(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("filter_email_artifact() called")
+
+    # collect filtered artifact ids and results for 'if' condition 1
+    matched_artifacts_1, matched_results_1 = phantom.condition(
+        container=container,
+        conditions=[
+            ["artifact:*.name", "==", "Email Artifact"]
+        ],
+        name="filter_email_artifact:condition_1")
+
+    # call connected blocks if filtered artifacts or results
+    if matched_artifacts_1 or matched_results_1:
+        keyword_search_in_subject(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+
+    return
+
+
+def keyword_search_in_subject(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("keyword_search_in_subject() called")
+
+    filtered_artifact_0_data_filter_email_artifact = phantom.collect2(container=container, datapath=["filtered-data:filter_email_artifact:condition_1:artifact:*.cef.emailHeaders.Subject","filtered-data:filter_email_artifact:condition_1:artifact:*.id"])
+
+    parameters = []
+
+    # build parameters list for 'keyword_search_in_subject' call
+    for filtered_artifact_0_item_filter_email_artifact in filtered_artifact_0_data_filter_email_artifact:
+        parameters.append({
+            "liste_name": "Suspicious_keywords",
+            "string_searched": filtered_artifact_0_item_filter_email_artifact[0],
+        })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="Phishing_Investigation/keyword_search", parameters=parameters, name="keyword_search_in_subject", callback=decision_1)
+
+    return
+
+
+def keyword_search_in_decodedsubject(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("keyword_search_in_decodedsubject() called")
+
+    filtered_artifact_0_data_filter_email_artifact = phantom.collect2(container=container, datapath=["filtered-data:filter_email_artifact:condition_1:artifact:*.cef.emailHeaders.decodedSubject","filtered-data:filter_email_artifact:condition_1:artifact:*.id"])
+
+    parameters = []
+
+    # build parameters list for 'keyword_search_in_decodedsubject' call
+    for filtered_artifact_0_item_filter_email_artifact in filtered_artifact_0_data_filter_email_artifact:
+        parameters.append({
+            "liste_name": "Suspicious_keywords",
+            "string_searched": filtered_artifact_0_item_filter_email_artifact[0],
+        })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="Phishing_Investigation/keyword_search", parameters=parameters, name="keyword_search_in_decodedsubject")
+
+    return
+
+
+def decision_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("decision_1() called")
+
+    # check for 'if' condition 1
+    found_match_1 = phantom.decision(
+        container=container,
+        conditions=[
+            ["keyword_search_in_subject:custom_function_result.data.match_count_result", "==", True]
+        ])
+
+    # call connected blocks if condition 1 matched
+    if found_match_1:
+        create_subject_artifact(action=action, success=success, container=container, results=results, handle=handle)
+        return
+
+    return
+
+
+def create_subject_artifact(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("create_subject_artifact() called")
+
+    id_value = container.get("id", None)
+    filtered_artifact_0_data_filter_email_artifact = phantom.collect2(container=container, datapath=["filtered-data:filter_email_artifact:condition_1:artifact:*.cef.emailHeaders.Subject","filtered-data:filter_email_artifact:condition_1:artifact:*.id"])
+
+    parameters = []
+
+    # build parameters list for 'create_subject_artifact' call
+    for filtered_artifact_0_item_filter_email_artifact in filtered_artifact_0_data_filter_email_artifact:
+        parameters.append({
+            "container": id_value,
+            "name": "eMail Subject",
+            "label": "artifact",
+            "severity": "Low",
+            "cef_field": "subject",
+            "cef_value": filtered_artifact_0_item_filter_email_artifact[0],
+            "cef_data_type": None,
+            "tags": None,
+            "run_automation": None,
+            "input_json": None,
+        })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="Phishing_Investigation/artifact_create", parameters=parameters, name="create_subject_artifact", callback=update_artifact_1)
+
+    return
+
+
+def update_artifact_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("update_artifact_1() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    cef_json_formatted_string = phantom.format(
+        container=container,
+        template="""{{ \"keywoards_dedetcted\": \"{0}\" }}\n""",
+        parameters=[
+            "keyword_search_in_subject:custom_function_result.data.match_keyword_list"
+        ])
+
+    create_subject_artifact__result = phantom.collect2(container=container, datapath=["create_subject_artifact:custom_function_result.data.artifact_id"])
+
+    parameters = []
+
+    # build parameters list for 'update_artifact_1' call
+    for create_subject_artifact__result_item in create_subject_artifact__result:
+        if create_subject_artifact__result_item[0] is not None:
+            parameters.append({
+                "artifact_id": create_subject_artifact__result_item[0],
+                "cef_json": cef_json_formatted_string,
+                "severity": "medium",
+            })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("update artifact", parameters=parameters, name="update_artifact_1", assets=["phantom"])
+
+    return
+
 
 def on_finish(container, summary):
     phantom.debug("on_finish() called")
