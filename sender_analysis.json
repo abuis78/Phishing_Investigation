@@ -163,7 +163,7 @@
                     "targetPort": "47_in"
                 }
             ],
-            "hash": "9717a199cd5e5ac158888434e95b00b19352e2ed",
+            "hash": "230c54cd41dae869b19e39ebbbb735b5abf44404",
             "nodes": {
                 "0": {
                     "data": {
@@ -1216,9 +1216,9 @@
                                 "comparisons": [
                                     {
                                         "conditionIndex": 0,
-                                        "op": ">",
-                                        "param": "search_vor_company_keywords_in_email_address:custom_function:match_count",
-                                        "value": "0"
+                                        "op": "==",
+                                        "param": "search_vor_company_keywords_in_email_address:custom_function:match_count_result",
+                                        "value": "True"
                                     }
                                 ],
                                 "conditionIndex": 0,
@@ -1262,7 +1262,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-02T07:41:21.201368+00:00",
+    "create_time": "2022-03-02T07:41:48.658625+00:00",
     "draft_mode": false,
     "labels": [
         "*"

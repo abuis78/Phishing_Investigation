@@ -542,7 +542,7 @@ def decision_4(action=None, success=None, container=None, results=None, handle=N
     found_match_1 = phantom.decision(
         container=container,
         conditions=[
-            ["search_vor_company_keywords_in_email_address:custom_function:match_count", ">", 0]
+            ["search_vor_company_keywords_in_email_address:custom_function:match_count_result", "==", True]
         ])
 
     # call connected blocks if condition 1 matched
