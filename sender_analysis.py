@@ -540,6 +540,7 @@ def decision_4(action=None, success=None, container=None, results=None, handle=N
 
     # call connected blocks if condition 1 matched
     if found_match_1:
+        artifact_update_19(action=action, success=success, container=container, results=results, handle=handle)
         return
 
     return
