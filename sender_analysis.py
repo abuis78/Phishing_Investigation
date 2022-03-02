@@ -388,11 +388,11 @@ def search_vor_company_keywords_in_email_address(action=None, success=None, cont
     match_count = len(matches)
     miss_count = len(misses)
     
-    phantom.debug('Match Count {}'.format(match_count))
+    phantom.debug('Match Count:  {}'.format(match_count))
     
-    phantom.debug(match_count)
-    phantom.debug(miss_count)
-    phantom.debug(matches_keyword_list)
+    #phantom.debug(match_count)
+    #phantom.debug(miss_count)
+    #phantom.debug(matches_keyword_list)
 
     search_vor_company_keywords_in_email__match_count = match_count
     search_vor_company_keywords_in_email__miss_count = miss_count
