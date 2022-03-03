@@ -119,12 +119,11 @@ def format_2(action=None, success=None, container=None, results=None, handle=Non
     ## Custom Code End
     ################################################################################
 
-    phantom.format(container=container, template=template, parameters=parameters, name="format_2")
-
+    fu =phantom.format(container=container, template=template, parameters=parameters, name="format_2")
+    phantom.debug(type(fu))
     debug_3(container=container)
 
     return
-
 
 def debug_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("debug_3() called")
