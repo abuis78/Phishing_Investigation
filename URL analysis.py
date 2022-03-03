@@ -113,17 +113,17 @@ def format_2(action=None, success=None, container=None, results=None, handle=Non
     ################################################################################
 
     # Write your custom code here...
+    
 
     ################################################################################
     ## Custom Code End
     ################################################################################
 
-    phantom.format(container=container, template=template, parameters=parameters, name="format_2")
-
+    fu = phantom.format(container=container, template=template, parameters=parameters, name="format_2")
+    phantom.debug(fu)
     update_artifact_1(container=container)
 
     return
-
 
 def on_finish(container, summary):
     phantom.debug("on_finish() called")
