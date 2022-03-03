@@ -24,9 +24,16 @@
                     "sourcePort": "2_out",
                     "targetNode": "6",
                     "targetPort": "6_in"
+                },
+                {
+                    "id": "port_6_to_port_7",
+                    "sourceNode": "6",
+                    "sourcePort": "6_out",
+                    "targetNode": "7",
+                    "targetPort": "7_in"
                 }
             ],
-            "hash": "904fc53d8e37dcd868f4e4360ef69cfe6a1aa40a",
+            "hash": "da7c65690672d8447aeda29e5a148397a125d3fd",
             "nodes": {
                 "0": {
                     "data": {
@@ -151,6 +158,46 @@
                     "type": "utility",
                     "x": 980,
                     "y": 744.5
+                },
+                "7": {
+                    "data": {
+                        "action": "update artifact",
+                        "actionType": "generic",
+                        "advanced": {
+                            "join": []
+                        },
+                        "connector": "Phantom",
+                        "connectorConfigs": [
+                            "phantom"
+                        ],
+                        "connectorId": "deb82aa9-22cc-4675-9cf1-534b8d006eb7",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "update_artifact_1",
+                        "id": "7",
+                        "parameters": {
+                            "artifact_id": "url_parse_2:custom_function_result.data.context_id",
+                            "cef_json": {
+                                "functionId": 1,
+                                "parameters": [
+                                    "url_parse_2:custom_function_result.data.scheme"
+                                ],
+                                "template": "{{ \"scheme\": \"{0}\"\n}}\n"
+                            }
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "artifact_id"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "7",
+                    "type": "action",
+                    "x": 980,
+                    "y": 1140
                 }
             },
             "notes": ""
@@ -162,7 +209,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-03T08:27:12.077981+00:00",
+    "create_time": "2022-03-03T08:31:11.797632+00:00",
     "draft_mode": false,
     "labels": [
         "*"

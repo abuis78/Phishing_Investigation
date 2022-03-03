@@ -58,7 +58,46 @@ def url_parse_2(action=None, success=None, container=None, results=None, handle=
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/url_parse", parameters=parameters, name="url_parse_2")
+    phantom.custom_function(custom_function="Phishing_Investigation/url_parse", parameters=parameters, name="url_parse_2", callback=update_artifact_1)
+
+    return
+
+
+def update_artifact_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("update_artifact_1() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    cef_json_formatted_string = phantom.format(
+        container=container,
+        template="""{{ \"scheme\": \"{0}\"\n}}\n""",
+        parameters=[
+            "url_parse_2:custom_function_result.data.scheme"
+        ])
+
+    url_parse_2__result = phantom.collect2(container=container, datapath=["url_parse_2:custom_function_result.data.context_id"])
+
+    parameters = []
+
+    # build parameters list for 'update_artifact_1' call
+    for url_parse_2__result_item in url_parse_2__result:
+        if url_parse_2__result_item[0] is not None:
+            parameters.append({
+                "artifact_id": url_parse_2__result_item[0],
+                "cef_json": cef_json_formatted_string,
+            })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("update artifact", parameters=parameters, name="update_artifact_1", assets=["phantom"])
 
     return
 
