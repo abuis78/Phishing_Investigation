@@ -121,8 +121,6 @@ def format_2(action=None, success=None, container=None, results=None, handle=Non
 
     fu = phantom.format(container=container, template=template, parameters=parameters, name="format_2")
     phantom.debug(fu)
-    update_artifact_1(container=container)
-
     return
 
 def on_finish(container, summary):

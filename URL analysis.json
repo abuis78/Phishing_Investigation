@@ -33,6 +33,7 @@
                     "targetPort": "8_in"
                 }
             ],
+            "hash": "4dacc276f2ec32f0f4dd748cd00b5b85adac9224",
             "nodes": {
                 "0": {
                     "data": {
@@ -193,7 +194,7 @@
                     "y": 1140
                 },
                 "8": {
-                    "customCode": "def format_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):\n    phantom.debug(\"format_2() called\")\n\n    template = \"\"\"%%\\n{{ \\\"scheme\\\": \\\"{0}\\\", \\\"output_url\\\": \\\"{1}\\\"\\n}}\\n%%\"\"\"\n\n    # parameter list for template variable replacement\n    parameters = [\n        \"url_parse_2:custom_function_result.data.scheme\",\n        \"url_parse_2:custom_function_result.data.output_url\"\n    ]\n\n    ################################################################################\n    ## Custom Code Start\n    ################################################################################\n\n    # Write your custom code here...\n    \n\n    ################################################################################\n    ## Custom Code End\n    ################################################################################\n\n    fu = phantom.format(container=container, template=template, parameters=parameters, name=\"format_2\")\n    phantom.debug(fu)\n    update_artifact_1(container=container)\n\n    return",
+                    "customCode": "def format_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):\n    phantom.debug(\"format_2() called\")\n\n    template = \"\"\"%%\\n{{ \\\"scheme\\\": \\\"{0}\\\", \\\"output_url\\\": \\\"{1}\\\"\\n}}\\n%%\"\"\"\n\n    # parameter list for template variable replacement\n    parameters = [\n        \"url_parse_2:custom_function_result.data.scheme\",\n        \"url_parse_2:custom_function_result.data.output_url\"\n    ]\n\n    ################################################################################\n    ## Custom Code Start\n    ################################################################################\n\n    # Write your custom code here...\n    \n\n    ################################################################################\n    ## Custom Code End\n    ################################################################################\n\n    fu = phantom.format(container=container, template=template, parameters=parameters, name=\"format_2\")\n    phantom.debug(fu)\n    return",
                     "data": {
                         "advanced": {
                             "join": []
@@ -225,7 +226,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-03T08:58:53.930794+00:00",
+    "create_time": "2022-03-03T08:59:58.727715+00:00",
     "draft_mode": false,
     "labels": [
         "*"
