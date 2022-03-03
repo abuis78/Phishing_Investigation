@@ -26,14 +26,21 @@
                     "targetPort": "6_in"
                 },
                 {
-                    "id": "port_6_to_port_7",
+                    "id": "port_6_to_port_8",
                     "sourceNode": "6",
                     "sourcePort": "6_out",
+                    "targetNode": "8",
+                    "targetPort": "8_in"
+                },
+                {
+                    "id": "port_8_to_port_7",
+                    "sourceNode": "8",
+                    "sourcePort": "8_out",
                     "targetNode": "7",
                     "targetPort": "7_in"
                 }
             ],
-            "hash": "da7c65690672d8447aeda29e5a148397a125d3fd",
+            "hash": "2fff14b2f356af7d7f37f40eecfb49f5fba770f9",
             "nodes": {
                 "0": {
                     "data": {
@@ -177,13 +184,7 @@
                         "id": "7",
                         "parameters": {
                             "artifact_id": "url_parse_2:custom_function_result.data.context_id",
-                            "cef_json": {
-                                "functionId": 1,
-                                "parameters": [
-                                    "url_parse_2:custom_function_result.data.scheme"
-                                ],
-                                "template": "{{ \"scheme\": \"{0}\"\n}}\n"
-                            }
+                            "cef_json": "format_2:formatted_data.*"
                         },
                         "requiredParameters": [
                             {
@@ -198,6 +199,26 @@
                     "type": "action",
                     "x": 980,
                     "y": 1140
+                },
+                "8": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 2,
+                        "functionName": "format_2",
+                        "id": "8",
+                        "parameters": [
+                            ""
+                        ],
+                        "template": "%%\n{{ \"scheme\": \"{0}\"\n}}\n%%",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "8",
+                    "type": "format",
+                    "x": 980,
+                    "y": 940
                 }
             },
             "notes": ""
@@ -209,7 +230,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-03T08:31:11.797632+00:00",
+    "create_time": "2022-03-03T08:32:26.359223+00:00",
     "draft_mode": false,
     "labels": [
         "*"
