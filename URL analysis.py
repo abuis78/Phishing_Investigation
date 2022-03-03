@@ -100,12 +100,13 @@ def update_artifact_1(action=None, success=None, container=None, results=None, h
 def format_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("format_2() called")
 
-    template = """Text davor\n%%\n{{ \"scheme\": \"{0}\", \n\"output_url\": \"{1}\" }}\n%%\nText danach"""
+    template = """Text davor\n%%\n{{ \"scheme\": \"{0}\", \n\"output_url\": \"{1}\",\n\"context_id\": \"{2}\"  }}\n%%\nText danach"""
 
     # parameter list for template variable replacement
     parameters = [
         "url_parse_2:custom_function_result.data.scheme",
-        "url_parse_2:custom_function_result.data.output_url"
+        "url_parse_2:custom_function_result.data.output_url",
+        "url_parse_2:custom_function_result.data.context_id"
     ]
 
     ################################################################################

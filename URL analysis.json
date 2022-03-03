@@ -40,7 +40,7 @@
                     "targetPort": "9_in"
                 }
             ],
-            "hash": "a730f7d5970f959022fa572ae1aa8813aa72cd80",
+            "hash": "93201707471c2b3243ed5f7de8cbf987cd66ac35",
             "nodes": {
                 "0": {
                     "data": {
@@ -211,9 +211,10 @@
                         "id": "8",
                         "parameters": [
                             "url_parse_2:custom_function_result.data.scheme",
-                            "url_parse_2:custom_function_result.data.output_url"
+                            "url_parse_2:custom_function_result.data.output_url",
+                            "url_parse_2:custom_function_result.data.context_id"
                         ],
-                        "template": "Text davor\n%%\n{{ \"scheme\": \"{0}\", \n\"output_url\": \"{1}\" }}\n%%\nText danach",
+                        "template": "Text davor\n%%\n{{ \"scheme\": \"{0}\", \n\"output_url\": \"{1}\",\n\"context_id\": \"{2}\"  }}\n%%\nText danach",
                         "type": "format"
                     },
                     "errors": {},
@@ -399,7 +400,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-03T09:13:59.779979+00:00",
+    "create_time": "2022-03-03T09:15:20.941168+00:00",
     "draft_mode": false,
     "labels": [
         "*"
