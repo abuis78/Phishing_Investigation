@@ -14,18 +14,22 @@ def url_parse_update_coresponding_artifact(input_url=None, artifact_id=None, **k
         query: The query string of the URL after the question mark. Multiple parameters are not separated from each other.
         fragment: The subcomponent of the resource which is identified after the hash sign.
         output_url (CEF type: url): Passthrough of the original url
-        context_id
     """
     ############################ Custom Code Goes Below This Line #################################
     import json
     import phantom.rules as phantom
     from urllib.parse import urlparse
-    phantom.debug('URL Uebergeben {}'.format(input_url))
+    
     outputs = {}
     if input_url:
         parsed = urlparse(input_url)
-        outputs = [{'scheme': parsed.scheme, 'netloc': parsed.netloc, 'path': parsed.path, 'params': parsed.params, 'query': parsed.query, 'fragment': parsed.fragment, 'output_url': input_url, 'context_id': artifact_id}]
-        phantom.debug('outputs {}'.format(outputs))        
+        outputs = {'scheme': parsed.scheme, 'netloc': parsed.netloc, 'path': parsed.path, 'params': parsed.params, 'query': parsed.query, 'fragment': parsed.fragment, 'output_url': input_url}
+        
+        #updating the coresponding artifact
+        if artifact_id:
+            art_url = phantom.build_phantom_rest_url('artifact', artifact_id)
+            response_data = phantom.requests.post(art_url, json=outputs, verify=False).json()
+            phantom.debug(response_data)
     # Return a JSON-serializable object
     assert json.dumps(outputs)  # Will raise an exception if the :outputs: object is not JSON-serializable
     return outputs
