@@ -24,22 +24,9 @@
                     "sourcePort": "2_out",
                     "targetNode": "3",
                     "targetPort": "3_in"
-                },
-                {
-                    "id": "port_3_to_port_5",
-                    "sourceNode": "3",
-                    "sourcePort": "3_out",
-                    "targetNode": "5",
-                    "targetPort": "5_in"
-                },
-                {
-                    "id": "port_5_to_port_4",
-                    "sourceNode": "5",
-                    "sourcePort": "5_out",
-                    "targetNode": "4",
-                    "targetPort": "4_in"
                 }
             ],
+            "hash": "74afc6b1584dc92423324d20e5721864dd40f703",
             "nodes": {
                 "0": {
                     "data": {
@@ -155,68 +142,6 @@
                     "type": "utility",
                     "x": 980,
                     "y": 764.5
-                },
-                "4": {
-                    "data": {
-                        "action": "update artifact",
-                        "actionType": "generic",
-                        "advanced": {
-                            "join": []
-                        },
-                        "connector": "Phantom",
-                        "connectorConfigs": [
-                            "phantom"
-                        ],
-                        "connectorId": "deb82aa9-22cc-4675-9cf1-534b8d006eb7",
-                        "connectorVersion": "v1",
-                        "functionId": 1,
-                        "functionName": "update_artifact_1",
-                        "id": "4",
-                        "parameters": {
-                            "artifact_id": "filtered-data:filter_url_artifact:condition_1:artifact:*.id",
-                            "cef_json": "format_json_for_artifact_update:formatted_data.*"
-                        },
-                        "requiredParameters": [
-                            {
-                                "data_type": "string",
-                                "field": "artifact_id"
-                            }
-                        ],
-                        "type": "action"
-                    },
-                    "errors": {},
-                    "id": "4",
-                    "type": "action",
-                    "x": 980,
-                    "y": 980
-                },
-                "5": {
-                    "data": {
-                        "advanced": {
-                            "customName": "format json for artifact update",
-                            "customNameId": 0,
-                            "join": []
-                        },
-                        "functionId": 1,
-                        "functionName": "format_json_for_artifact_update",
-                        "id": "5",
-                        "parameters": [
-                            "separate_a_url_into_components:custom_function_result.data.scheme",
-                            "separate_a_url_into_components:custom_function_result.data.netloc",
-                            "separate_a_url_into_components:custom_function_result.data.path",
-                            "separate_a_url_into_components:custom_function_result.data.params",
-                            "separate_a_url_into_components:custom_function_result.data.query",
-                            "separate_a_url_into_components:custom_function_result.data.fragment",
-                            "separate_a_url_into_components:custom_function_result.data.output_url"
-                        ],
-                        "template": "%%\n{{ \"scheme\": \"{0}\",\"netloc\": \"{1}\",\"path\": \"{2}\",\"params\": \"{3}\",\"query\": \"{4}\",\"fragment\": \"{5}\",\"output_url\": \"{6}\"  \n\n}}\n%%\n",
-                        "type": "format"
-                    },
-                    "errors": {},
-                    "id": "5",
-                    "type": "format",
-                    "x": 980,
-                    "y": 880
                 }
             },
             "notes": ""
@@ -228,7 +153,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-03T07:57:09.995732+00:00",
+    "create_time": "2022-03-03T08:22:05.759075+00:00",
     "draft_mode": false,
     "labels": [
         "*"
