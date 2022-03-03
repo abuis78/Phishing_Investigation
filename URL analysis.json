@@ -14,7 +14,7 @@
                     "targetPort": "2_in"
                 }
             ],
-            "hash": "fa35688491c711ea021d70f33b9fe2f881d680dc",
+            "hash": "8cbb3a4dce1fc0fe06f05d5c53f8644c82900eb2",
             "nodes": {
                 "0": {
                     "data": {
@@ -51,6 +51,8 @@
                 "2": {
                     "data": {
                         "advanced": {
+                            "customName": "filter URL Artifact",
+                            "customNameId": 0,
                             "join": []
                         },
                         "conditions": [
@@ -68,7 +70,7 @@
                             }
                         ],
                         "functionId": 1,
-                        "functionName": "filter_1",
+                        "functionName": "filter_url_artifact",
                         "id": "2",
                         "type": "filter"
                     },
@@ -88,7 +90,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-03T07:45:55.219398+00:00",
+    "create_time": "2022-03-03T07:46:13.303574+00:00",
     "draft_mode": false,
     "labels": [
         "*"
