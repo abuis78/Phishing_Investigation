@@ -1,6 +1,6 @@
 def url_parse_update_coresponding_artifact(input_url=None, artifact_id=None, **kwargs):
     """
-    Separate a URL into its components using urlparse() from the urllib module of Python 3.
+    Separate a URL into its components using urlparse() from the urllib module of Python 3. And updates the corresponding artifact.
     
     Args:
         input_url (CEF type: url): The URL to parse
