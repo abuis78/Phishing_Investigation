@@ -1,0 +1,72 @@
+{
+    "create_time": "2022-03-03T09:44:17.547742+00:00",
+    "custom_function_id": "77eedc132914a6270bd54c7b69da3e2178ee7e7c",
+    "description": "Separate a URL into its components using urlparse() from the urllib module of Python 3.",
+    "draft_mode": false,
+    "inputs": [
+        {
+            "contains_type": [
+                "url"
+            ],
+            "description": "The URL to parse",
+            "input_type": "item",
+            "name": "input_url",
+            "placeholder": "artifact:*.cef.requestUrl"
+        },
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "item",
+            "name": "artifact_id",
+            "placeholder": ""
+        }
+    ],
+    "outputs": [
+        {
+            "contains_type": [],
+            "data_path": "scheme",
+            "description": "The scheme of the URL, such as HTTP, HTTPS, or FTP."
+        },
+        {
+            "contains_type": [
+                "domain"
+            ],
+            "data_path": "netloc",
+            "description": "The network location of the URL, which is typically the hostname."
+        },
+        {
+            "contains_type": [],
+            "data_path": "path",
+            "description": "The path to the resource after the first slash in the URL, such as \"en_us/software/splunk-security-orchestration-and-automation.html\"."
+        },
+        {
+            "contains_type": [],
+            "data_path": "params",
+            "description": "The parameters in the URL after the semicolon."
+        },
+        {
+            "contains_type": [],
+            "data_path": "query",
+            "description": "The query string of the URL after the question mark. Multiple parameters are not separated from each other."
+        },
+        {
+            "contains_type": [],
+            "data_path": "fragment",
+            "description": "The subcomponent of the resource which is identified after the hash sign."
+        },
+        {
+            "contains_type": [
+                "url"
+            ],
+            "data_path": "output_url",
+            "description": "Passthrough of the original url"
+        },
+        {
+            "contains_type": [],
+            "data_path": "context_id",
+            "description": ""
+        }
+    ],
+    "platform_version": "5.2.1.78411",
+    "python_version": "3"
+}
