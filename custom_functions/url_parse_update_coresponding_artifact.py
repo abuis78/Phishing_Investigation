@@ -28,7 +28,8 @@ def url_parse_update_coresponding_artifact(input_url=None, artifact_id=None, **k
         #updating the coresponding artifact
         if artifact_id:
             art_url = phantom.build_phantom_rest_url('artifact', artifact_id)
-            response_data = phantom.requests.post(art_url, json=outputs, verify=False).json()
+            data = { 'cef':{'scheme': parsed.scheme, 'netloc': parsed.netloc, 'path': parsed.path, 'params': parsed.params, 'query': parsed.query, 'fragment': parsed.fragment, 'output_url': input_url}}
+            response_data = phantom.requests.post(art_url, json=data, verify=False).json()
             phantom.debug(response_data)
     # Return a JSON-serializable object
     assert json.dumps(outputs)  # Will raise an exception if the :outputs: object is not JSON-serializable

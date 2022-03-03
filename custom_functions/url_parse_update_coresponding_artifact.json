@@ -1,5 +1,5 @@
 {
-    "create_time": "2022-03-03T09:53:27.978318+00:00",
+    "create_time": "2022-03-03T10:01:29.773314+00:00",
     "custom_function_id": "77eedc132914a6270bd54c7b69da3e2178ee7e7c",
     "description": "Separate a URL into its components using urlparse() from the urllib module of Python 3. And updates the corresponding artifact.",
     "draft_mode": false,
@@ -14,7 +14,9 @@
             "placeholder": "artifact:*.cef.requestUrl"
         },
         {
-            "contains_type": [],
+            "contains_type": [
+                ""
+            ],
             "description": "",
             "input_type": "item",
             "name": "artifact_id",
