@@ -40,7 +40,7 @@
                     "targetPort": "9_in"
                 }
             ],
-            "hash": "80ea83b9083ec85523e5a73a0236b78960f7b13f",
+            "hash": "d523d0d903066900a90c39ce9ca35a4f37a8a9ab",
             "nodes": {
                 "0": {
                     "data": {
@@ -201,7 +201,7 @@
                     "y": 1140
                 },
                 "8": {
-                    "customCode": "def format_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):\n    phantom.debug(\"format_2() called\")\n\n    template = \"\"\"%%\\n{{ \\\"scheme\\\": \\\"{0}\\\", \\\"output_url\\\": \\\"{1}\\\"\\n}}\\n%%\"\"\"\n\n    # parameter list for template variable replacement\n    parameters = [\n        \"url_parse_2:custom_function_result.data.scheme\",\n        \"url_parse_2:custom_function_result.data.output_url\"\n    ]\n\n    ################################################################################\n    ## Custom Code Start\n    ################################################################################\n\n    # Write your custom code here...\n    \n\n    ################################################################################\n    ## Custom Code End\n    ################################################################################\n\n    fu =phantom.format(container=container, template=template, parameters=parameters, name=\"format_2\")\n    phantom.debug(type(fu))\n    debug_3(container=container)\n\n    return",
+                    "customCode": null,
                     "data": {
                         "advanced": {
                             "join": []
@@ -213,7 +213,7 @@
                             "url_parse_2:custom_function_result.data.scheme",
                             "url_parse_2:custom_function_result.data.output_url"
                         ],
-                        "template": "%%\n{{ \"scheme\": \"{0}\", \"output_url\": \"{1}\"\n}}\n%%",
+                        "template": "%%\n{{ \"scheme\": \"{0}\", \"output_url\": \"{1}\" }}\n%%",
                         "type": "format"
                     },
                     "errors": {},
@@ -399,7 +399,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-03T09:03:51.526131+00:00",
+    "create_time": "2022-03-03T09:08:30.952457+00:00",
     "draft_mode": false,
     "labels": [
         "*"
