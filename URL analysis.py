@@ -119,9 +119,48 @@ def format_2(action=None, success=None, container=None, results=None, handle=Non
     ## Custom Code End
     ################################################################################
 
-    fu = phantom.format(container=container, template=template, parameters=parameters, name="format_2")
-    phantom.debug(fu)
+    phantom.format(container=container, template=template, parameters=parameters, name="format_2")
+
+    debug_3(container=container)
+
     return
+
+
+def debug_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("debug_3() called")
+
+    format_2 = phantom.get_format_data(name="format_2")
+    format_2__as_list = phantom.get_format_data(name="format_2__as_list")
+
+    parameters = []
+
+    parameters.append({
+        "input_1": format_2,
+        "input_2": format_2__as_list,
+        "input_3": None,
+        "input_4": None,
+        "input_5": None,
+        "input_6": None,
+        "input_7": None,
+        "input_8": None,
+        "input_9": None,
+        "input_10": None,
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_3")
+
+    return
+
 
 def on_finish(container, summary):
     phantom.debug("on_finish() called")
