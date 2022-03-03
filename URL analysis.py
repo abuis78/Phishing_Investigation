@@ -100,7 +100,7 @@ def update_artifact_1(action=None, success=None, container=None, results=None, h
 def format_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("format_2() called")
 
-    template = """%%\n{{ \"scheme\": \"{0}\", \"output_url\": \"{1}\" }}\n%%"""
+    template = """%%\n{{ \"scheme\": \"{0}\", \n\"output_url\": \"{1}\" }}\n%%"""
 
     # parameter list for template variable replacement
     parameters = [
