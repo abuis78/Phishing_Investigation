@@ -3,12 +3,12 @@ def keyword_search(liste_name=None, string_searched=None, **kwargs):
     this CF uses a custom list and searches in a string for the elements from the list.
     
     Args:
-        liste_name
-        string_searched
+        liste_name: Enter the list name here.
+        string_searched: the data path to the string. e.g. emailBody, subject, requestURL etc.
     
     Returns a JSON-serializable object that implements the configured data paths:
-        match_count
-        miss_count
+        match_count: Indicates the number of hits
+        miss_count: Specifies the number for "no hits
         match_keyword_list: returns the list of keywords found in the string
         match_count_result: returns True | False as soon as a match is found
     """

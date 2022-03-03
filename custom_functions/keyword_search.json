@@ -1,19 +1,19 @@
 {
-    "create_time": "2022-03-02T08:57:15.985880+00:00",
+    "create_time": "2022-03-03T09:41:19.222952+00:00",
     "custom_function_id": "58ca30f4b6fe664c299b59905472ba4018d4fd9a",
     "description": "this CF uses a custom list and searches in a string for the elements from the list.",
     "draft_mode": false,
     "inputs": [
         {
             "contains_type": [],
-            "description": "",
+            "description": "Enter the list name here.",
             "input_type": "item",
             "name": "liste_name",
             "placeholder": ""
         },
         {
             "contains_type": [],
-            "description": "",
+            "description": "the data path to the string. e.g. emailBody, subject, requestURL etc.",
             "input_type": "item",
             "name": "string_searched",
             "placeholder": ""
@@ -23,12 +23,12 @@
         {
             "contains_type": [],
             "data_path": "match_count",
-            "description": ""
+            "description": "Indicates the number of hits"
         },
         {
             "contains_type": [],
             "data_path": "miss_count",
-            "description": ""
+            "description": "Specifies the number for \"no hits"
         },
         {
             "contains_type": [],
