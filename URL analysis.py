@@ -57,7 +57,7 @@ def separate_a_url_into_components(action=None, success=None, container=None, re
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/url_parse", parameters=parameters, name="separate_a_url_into_components", callback=update_artifact_1)
+    phantom.custom_function(custom_function="Phishing_Investigation/url_parse", parameters=parameters, name="separate_a_url_into_components", callback=format_json_for_artifact_update)
 
     return
 
@@ -67,31 +67,20 @@ def update_artifact_1(action=None, success=None, container=None, results=None, h
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
-    cef_json_formatted_string = phantom.format(
-        container=container,
-        template="""{{ \"scheme\": \"{0}\",\"netloc\": \"{1}\",\"path\": \"{2}\",\"params\": \"{3}\",\"query\": \"{4}\",\"fragment\": \"{5}\",\"output_url\": \"{6}\"  \n\n}}\n""",
-        parameters=[
-            "separate_a_url_into_components:custom_function_result.data.scheme",
-            "separate_a_url_into_components:custom_function_result.data.netloc",
-            "separate_a_url_into_components:custom_function_result.data.path",
-            "separate_a_url_into_components:custom_function_result.data.params",
-            "separate_a_url_into_components:custom_function_result.data.query",
-            "separate_a_url_into_components:custom_function_result.data.fragment",
-            "separate_a_url_into_components:custom_function_result.data.output_url"
-        ])
-
     filtered_artifact_0_data_filter_url_artifact = phantom.collect2(container=container, datapath=["filtered-data:filter_url_artifact:condition_1:artifact:*.id","filtered-data:filter_url_artifact:condition_1:artifact:*.id"])
+    format_json_for_artifact_update__as_list = phantom.get_format_data(name="format_json_for_artifact_update__as_list")
 
     parameters = []
 
     # build parameters list for 'update_artifact_1' call
     for filtered_artifact_0_item_filter_url_artifact in filtered_artifact_0_data_filter_url_artifact:
-        if filtered_artifact_0_item_filter_url_artifact[0] is not None:
-            parameters.append({
-                "artifact_id": filtered_artifact_0_item_filter_url_artifact[0],
-                "cef_json": cef_json_formatted_string,
-                "context": {'artifact_id': filtered_artifact_0_item_filter_url_artifact[1]},
-            })
+        for format_json_for_artifact_update__item in format_json_for_artifact_update__as_list:
+            if filtered_artifact_0_item_filter_url_artifact[0] is not None:
+                parameters.append({
+                    "artifact_id": filtered_artifact_0_item_filter_url_artifact[0],
+                    "cef_json": format_json_for_artifact_update__item,
+                    "context": {'artifact_id': filtered_artifact_0_item_filter_url_artifact[1]},
+                })
 
     ################################################################################
     ## Custom Code Start
@@ -104,6 +93,39 @@ def update_artifact_1(action=None, success=None, container=None, results=None, h
     ################################################################################
 
     phantom.act("update artifact", parameters=parameters, name="update_artifact_1", assets=["phantom"])
+
+    return
+
+
+def format_json_for_artifact_update(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("format_json_for_artifact_update() called")
+
+    template = """%%\n{{ \"scheme\": \"{0}\",\"netloc\": \"{1}\",\"path\": \"{2}\",\"params\": \"{3}\",\"query\": \"{4}\",\"fragment\": \"{5}\",\"output_url\": \"{6}\"  \n\n}}\n%%\n"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "separate_a_url_into_components:custom_function_result.data.scheme",
+        "separate_a_url_into_components:custom_function_result.data.netloc",
+        "separate_a_url_into_components:custom_function_result.data.path",
+        "separate_a_url_into_components:custom_function_result.data.params",
+        "separate_a_url_into_components:custom_function_result.data.query",
+        "separate_a_url_into_components:custom_function_result.data.fragment",
+        "separate_a_url_into_components:custom_function_result.data.output_url"
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_json_for_artifact_update")
+
+    update_artifact_1(container=container)
 
     return
 
