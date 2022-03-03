@@ -38,9 +38,16 @@
                     "sourcePort": "8_out",
                     "targetNode": "9",
                     "targetPort": "9_in"
+                },
+                {
+                    "id": "port_8_to_port_7",
+                    "sourceNode": "8",
+                    "sourcePort": "8_out",
+                    "targetNode": "7",
+                    "targetPort": "7_in"
                 }
             ],
-            "hash": "93201707471c2b3243ed5f7de8cbf987cd66ac35",
+            "hash": "6193915074afb4dfea3d2c2ba05b6f1774088516",
             "nodes": {
                 "0": {
                     "data": {
@@ -183,7 +190,7 @@
                         "functionName": "update_artifact_1",
                         "id": "7",
                         "parameters": {
-                            "artifact_id": "url_parse_2:custom_function_result.data.context_id",
+                            "artifact_id": "format_2:formatted_data.*.context_id",
                             "cef_json": "format_2:formatted_data.*"
                         },
                         "requiredParameters": [
@@ -198,7 +205,7 @@
                     "id": "7",
                     "type": "action",
                     "x": 980,
-                    "y": 1140
+                    "y": 1120
                 },
                 "8": {
                     "customCode": null,
@@ -400,7 +407,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-03T09:15:20.941168+00:00",
+    "create_time": "2022-03-03T09:21:08.344050+00:00",
     "draft_mode": false,
     "labels": [
         "*"

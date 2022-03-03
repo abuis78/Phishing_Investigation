@@ -68,19 +68,18 @@ def update_artifact_1(action=None, success=None, container=None, results=None, h
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
-    url_parse_2__result = phantom.collect2(container=container, datapath=["url_parse_2:custom_function_result.data.context_id"])
+    format_2__as_list = phantom.get_format_data(name="format_2__as_list")
     format_2__as_list = phantom.get_format_data(name="format_2__as_list")
 
     parameters = []
 
     # build parameters list for 'update_artifact_1' call
-    for url_parse_2__result_item in url_parse_2__result:
-        for format_2__item in format_2__as_list:
-            if url_parse_2__result_item[0] is not None:
-                parameters.append({
-                    "artifact_id": url_parse_2__result_item[0],
-                    "cef_json": format_2__item,
-                })
+    for format_2__item in format_2__as_list:
+        if format_2__item is not None:
+            parameters.append({
+                "artifact_id": format_2__item,
+                "cef_json": format_2__item,
+            })
 
     ################################################################################
     ## Custom Code Start
@@ -123,6 +122,7 @@ def format_2(action=None, success=None, container=None, results=None, handle=Non
     phantom.format(container=container, template=template, parameters=parameters, name="format_2")
 
     debug_3(container=container)
+    update_artifact_1(container=container)
 
     return
 
