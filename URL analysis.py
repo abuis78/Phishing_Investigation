@@ -129,16 +129,21 @@ def format_2(action=None, success=None, container=None, results=None, handle=Non
 def debug_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("debug_3() called")
 
+    url_parse_2__result = phantom.collect2(container=container, datapath=["url_parse_2:custom_function_result.data.context_id"])
+    filtered_artifact_0_data_filter_url_artifact = phantom.collect2(container=container, datapath=["filtered-data:filter_url_artifact:condition_1:artifact:*.id","filtered-data:filter_url_artifact:condition_1:artifact:*.id"])
     format_2 = phantom.get_format_data(name="format_2")
     format_2__as_list = phantom.get_format_data(name="format_2__as_list")
+
+    url_parse_2_data_context_id = [item[0] for item in url_parse_2__result]
+    filtered_artifact_0__id = [item[0] for item in filtered_artifact_0_data_filter_url_artifact]
 
     parameters = []
 
     parameters.append({
         "input_1": format_2,
         "input_2": format_2__as_list,
-        "input_3": None,
-        "input_4": None,
+        "input_3": url_parse_2_data_context_id,
+        "input_4": filtered_artifact_0__id,
         "input_5": None,
         "input_6": None,
         "input_7": None,
