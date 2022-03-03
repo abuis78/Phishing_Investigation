@@ -19,14 +19,14 @@
                             "index": 0
                         }
                     ],
-                    "id": "port_2_to_port_3",
+                    "id": "port_2_to_port_6",
                     "sourceNode": "2",
                     "sourcePort": "2_out",
-                    "targetNode": "3",
-                    "targetPort": "3_in"
+                    "targetNode": "6",
+                    "targetPort": "6_in"
                 }
             ],
-            "hash": "74afc6b1584dc92423324d20e5721864dd40f703",
+            "hash": "904fc53d8e37dcd868f4e4360ef69cfe6a1aa40a",
             "nodes": {
                 "0": {
                     "data": {
@@ -92,11 +92,9 @@
                     "x": 1040,
                     "y": 544.5
                 },
-                "3": {
+                "6": {
                     "data": {
                         "advanced": {
-                            "customName": "Separate a URL into components ",
-                            "customNameId": 0,
                             "join": []
                         },
                         "customFunction": {
@@ -104,9 +102,9 @@
                             "name": "url_parse",
                             "repoName": "Phishing_Investigation"
                         },
-                        "functionId": 1,
-                        "functionName": "separate_a_url_into_components",
-                        "id": "3",
+                        "functionId": 2,
+                        "functionName": "url_parse_2",
+                        "id": "6",
                         "selectMore": false,
                         "type": "utility",
                         "utilities": {
@@ -124,6 +122,16 @@
                                         "placeholder": "artifact:*.cef.requestUrl",
                                         "renderType": "datapath",
                                         "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "artifact_id",
+                                        "name": "artifact_id",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
                                     }
                                 ],
                                 "label": "url_parse",
@@ -133,15 +141,16 @@
                         "utilityType": "custom_function",
                         "values": {
                             "url_parse": {
+                                "artifact_id": "filtered-data:filter_url_artifact:condition_1:artifact:*.id",
                                 "input_url": "filtered-data:filter_url_artifact:condition_1:artifact:*.cef.requestURL"
                             }
                         }
                     },
                     "errors": {},
-                    "id": "3",
+                    "id": "6",
                     "type": "utility",
                     "x": 980,
-                    "y": 764.5
+                    "y": 744.5
                 }
             },
             "notes": ""
@@ -153,7 +162,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-03T08:22:05.759075+00:00",
+    "create_time": "2022-03-03T08:27:12.077981+00:00",
     "draft_mode": false,
     "labels": [
         "*"

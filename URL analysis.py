@@ -29,22 +29,23 @@ def filter_url_artifact(action=None, success=None, container=None, results=None,
 
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_1 or matched_results_1:
-        separate_a_url_into_components(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+        url_parse_2(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
 
     return
 
 
-def separate_a_url_into_components(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("separate_a_url_into_components() called")
+def url_parse_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("url_parse_2() called")
 
-    filtered_artifact_0_data_filter_url_artifact = phantom.collect2(container=container, datapath=["filtered-data:filter_url_artifact:condition_1:artifact:*.cef.requestURL","filtered-data:filter_url_artifact:condition_1:artifact:*.id"])
+    filtered_artifact_0_data_filter_url_artifact = phantom.collect2(container=container, datapath=["filtered-data:filter_url_artifact:condition_1:artifact:*.cef.requestURL","filtered-data:filter_url_artifact:condition_1:artifact:*.id","filtered-data:filter_url_artifact:condition_1:artifact:*.id"])
 
     parameters = []
 
-    # build parameters list for 'separate_a_url_into_components' call
+    # build parameters list for 'url_parse_2' call
     for filtered_artifact_0_item_filter_url_artifact in filtered_artifact_0_data_filter_url_artifact:
         parameters.append({
             "input_url": filtered_artifact_0_item_filter_url_artifact[0],
+            "artifact_id": filtered_artifact_0_item_filter_url_artifact[1],
         })
 
     ################################################################################
@@ -57,7 +58,7 @@ def separate_a_url_into_components(action=None, success=None, container=None, re
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/url_parse", parameters=parameters, name="separate_a_url_into_components")
+    phantom.custom_function(custom_function="Phishing_Investigation/url_parse", parameters=parameters, name="url_parse_2")
 
     return
 
