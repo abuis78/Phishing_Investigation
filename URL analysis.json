@@ -40,7 +40,7 @@
                     "targetPort": "7_in"
                 }
             ],
-            "hash": "b33c6e796a1a32563e974507ae95123f9bb67dff",
+            "hash": "26db959f3335ea3d8e68669db2009dcf40795ea5",
             "nodes": {
                 "0": {
                     "data": {
@@ -209,9 +209,10 @@
                         "functionName": "format_2",
                         "id": "8",
                         "parameters": [
-                            "url_parse_2:custom_function_result.data.scheme"
+                            "url_parse_2:custom_function_result.data.scheme",
+                            "url_parse_2:custom_function_result.data.output_url"
                         ],
-                        "template": "%%\n{{ \"scheme\": \"{0}\"\n}}\n%%",
+                        "template": "%%\n{{ \"scheme\": \"{0}\", \"output_url\": \"{1}\"\n}}\n%%",
                         "type": "format"
                     },
                     "errors": {},
@@ -230,7 +231,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-03T08:33:18.201699+00:00",
+    "create_time": "2022-03-03T08:34:14.363285+00:00",
     "draft_mode": false,
     "labels": [
         "*"
