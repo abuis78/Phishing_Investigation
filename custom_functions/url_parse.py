@@ -20,12 +20,12 @@ def url_parse(input_url=None, artifact_id=None, **kwargs):
     import json
     import phantom.rules as phantom
     from urllib.parse import urlparse
-    
+    phantom.debug('URL Uebergeben {}'.format(input_url))
     outputs = {}
     if input_url:
         parsed = urlparse(input_url)
         outputs = {'scheme': parsed.scheme, 'netloc': parsed.netloc, 'path': parsed.path, 'params': parsed.params, 'query': parsed.query, 'fragment': parsed.fragment, 'output_url': input_url, 'context_id': artifact_id}
-                
+        phantom.debug('outputs {}'.format(outputs))        
     # Return a JSON-serializable object
     assert json.dumps(outputs)  # Will raise an exception if the :outputs: object is not JSON-serializable
     return outputs
