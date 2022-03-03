@@ -104,7 +104,7 @@ def format_2(action=None, success=None, container=None, results=None, handle=Non
 
     # parameter list for template variable replacement
     parameters = [
-        ""
+        "url_parse_2:custom_function_result.data.scheme"
     ]
 
     ################################################################################
