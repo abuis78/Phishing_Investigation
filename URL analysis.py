@@ -29,19 +29,19 @@ def filter_url_artifact(action=None, success=None, container=None, results=None,
 
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_1 or matched_results_1:
-        url_parse_update_coresponding_artifact_4(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+        parse_url_its_component(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
 
     return
 
 
-def url_parse_update_coresponding_artifact_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("url_parse_update_coresponding_artifact_4() called")
+def parse_url_its_component(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("parse_url_its_component() called")
 
     filtered_artifact_0_data_filter_url_artifact = phantom.collect2(container=container, datapath=["filtered-data:filter_url_artifact:condition_1:artifact:*.cef.requestURL","filtered-data:filter_url_artifact:condition_1:artifact:*.id","filtered-data:filter_url_artifact:condition_1:artifact:*.id"])
 
     parameters = []
 
-    # build parameters list for 'url_parse_update_coresponding_artifact_4' call
+    # build parameters list for 'parse_url_its_component' call
     for filtered_artifact_0_item_filter_url_artifact in filtered_artifact_0_data_filter_url_artifact:
         parameters.append({
             "input_url": filtered_artifact_0_item_filter_url_artifact[0],
@@ -58,7 +58,47 @@ def url_parse_update_coresponding_artifact_4(action=None, success=None, containe
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/url_parse_update_coresponding_artifact", parameters=parameters, name="url_parse_update_coresponding_artifact_4")
+    phantom.custom_function(custom_function="Phishing_Investigation/url_parse_update_coresponding_artifact", parameters=parameters, name="parse_url_its_component", callback=vt_url_reputation_check)
+
+    return
+
+
+def vt_url_reputation_check(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("vt_url_reputation_check() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    filtered_artifact_0_data_filter_url_artifact = phantom.collect2(container=container, datapath=["filtered-data:filter_url_artifact:condition_1:artifact:*.cef.requestURL","filtered-data:filter_url_artifact:condition_1:artifact:*.id"])
+
+    parameters = []
+
+    # build parameters list for 'vt_url_reputation_check' call
+    for filtered_artifact_0_item_filter_url_artifact in filtered_artifact_0_data_filter_url_artifact:
+        if filtered_artifact_0_item_filter_url_artifact[0] is not None:
+            parameters.append({
+                "url": filtered_artifact_0_item_filter_url_artifact[0],
+                "context": {'artifact_id': filtered_artifact_0_item_filter_url_artifact[1]},
+            })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("url reputation", parameters=parameters, name="vt_url_reputation_check", assets=["virustotal v3"])
+
+    return
+
+
+def filter_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("filter_2() called")
+
+
 
     return
 

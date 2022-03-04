@@ -24,9 +24,16 @@
                     "sourcePort": "2_out",
                     "targetNode": "12",
                     "targetPort": "12_in"
+                },
+                {
+                    "id": "port_12_to_port_13",
+                    "sourceNode": "12",
+                    "sourcePort": "12_out",
+                    "targetNode": "13",
+                    "targetPort": "13_in"
                 }
             ],
-            "hash": "e423c0acfd492de13369c7a25938afed69981328",
+            "hash": "165f1fecb755e70b25c9aa427797c5a1c2c0bdc1",
             "nodes": {
                 "0": {
                     "data": {
@@ -41,7 +48,7 @@
                     "id": "0",
                     "type": "start",
                     "x": 1000,
-                    "y": 419.9999999999999
+                    "y": 419.9999999999998
                 },
                 "1": {
                     "data": {
@@ -58,11 +65,13 @@
                     "type": "end",
                     "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
                     "x": 1240,
-                    "y": 420
+                    "y": 419.9999999999999
                 },
                 "12": {
                     "data": {
                         "advanced": {
+                            "customName": "parse URL its component",
+                            "customNameId": 0,
                             "join": []
                         },
                         "customFunction": {
@@ -71,7 +80,7 @@
                             "repoName": "Phishing_Investigation"
                         },
                         "functionId": 4,
-                        "functionName": "url_parse_update_coresponding_artifact_4",
+                        "functionName": "parse_url_its_component",
                         "id": "12",
                         "selectMore": false,
                         "type": "utility",
@@ -120,6 +129,71 @@
                     "x": 980,
                     "y": 760
                 },
+                "13": {
+                    "data": {
+                        "action": "url reputation",
+                        "actionType": "investigate",
+                        "advanced": {
+                            "customName": "VT URL Reputation check",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "connector": "VirusTotal v3",
+                        "connectorConfigs": [
+                            "virustotal v3"
+                        ],
+                        "connectorId": "3fe4875d-a4a7-47d3-9ef1-f9e63a6653a4",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "vt_url_reputation_check",
+                        "id": "13",
+                        "parameters": {
+                            "url": "filtered-data:filter_url_artifact:condition_1:artifact:*.cef.requestURL"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "url"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "13",
+                    "type": "action",
+                    "x": 980,
+                    "y": 940
+                },
+                "14": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "==",
+                                        "param": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "logic": "and"
+                            }
+                        ],
+                        "functionId": 2,
+                        "functionName": "filter_2",
+                        "id": "14",
+                        "type": "filter"
+                    },
+                    "errors": {},
+                    "id": "14",
+                    "type": "filter",
+                    "x": 1040,
+                    "y": 1144.5
+                },
                 "2": {
                     "data": {
                         "advanced": {
@@ -162,7 +236,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-03T09:54:20.201855+00:00",
+    "create_time": "2022-03-04T09:27:31.285847+00:00",
     "draft_mode": false,
     "labels": [
         "*"
