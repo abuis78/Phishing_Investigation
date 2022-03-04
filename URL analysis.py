@@ -110,6 +110,18 @@ def filter_reputation_check(action=None, success=None, container=None, results=N
     if matched_artifacts_1 or matched_results_1:
         update_artifact_1(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
 
+    # collect filtered artifact ids and results for 'if' condition 2
+    matched_artifacts_2, matched_results_2 = phantom.condition(
+        container=container,
+        conditions=[
+            ["vt_url_reputation_check:action_result.status", "==", "success"]
+        ],
+        name="filter_reputation_check:condition_2")
+
+    # call connected blocks if filtered artifacts or results
+    if matched_artifacts_2 or matched_results_2:
+        pass
+
     return
 
 

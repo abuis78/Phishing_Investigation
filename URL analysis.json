@@ -52,7 +52,7 @@
                     "targetPort": "16_in"
                 }
             ],
-            "hash": "e3f3e6a3321b1223a59d4b5e98b02704a9e3de0a",
+            "hash": "f3241c2159461f28dcd9a8281c3a1af79c1d0e21",
             "nodes": {
                 "0": {
                     "data": {
@@ -203,6 +203,18 @@
                                 "conditionIndex": 0,
                                 "customName": "status failed",
                                 "logic": "and"
+                            },
+                            {
+                                "comparisons": [
+                                    {
+                                        "op": "==",
+                                        "param": "vt_url_reputation_check:action_result.status",
+                                        "value": "success"
+                                    }
+                                ],
+                                "conditionIndex": 1,
+                                "customName": "status success",
+                                "logic": "and"
                             }
                         ],
                         "functionId": 2,
@@ -292,7 +304,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-04T09:39:43.321345+00:00",
+    "create_time": "2022-03-04T09:40:57.663044+00:00",
     "draft_mode": false,
     "labels": [
         "*"
