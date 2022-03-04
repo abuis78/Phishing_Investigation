@@ -108,32 +108,27 @@ def filter_reputation_check(action=None, success=None, container=None, results=N
 
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_1 or matched_results_1:
-        artifact_update_1(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+        update_artifact_1(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
 
     return
 
 
-def artifact_update_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("artifact_update_1() called")
+def update_artifact_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("update_artifact_1() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
     filtered_result_0_data_filter_reputation_check = phantom.collect2(container=container, datapath=["filtered-data:filter_reputation_check:condition_1:vt_url_reputation_check:action_result.parameter.context.artifact_id"])
 
     parameters = []
 
-    # build parameters list for 'artifact_update_1' call
+    # build parameters list for 'update_artifact_1' call
     for filtered_result_0_item_filter_reputation_check in filtered_result_0_data_filter_reputation_check:
-        parameters.append({
-            "artifact_id": filtered_result_0_item_filter_reputation_check[0],
-            "name": None,
-            "description": None,
-            "label": None,
-            "severity": None,
-            "cef_field": None,
-            "cef_value": None,
-            "cef_data_type": None,
-            "tags": "status_failed",
-            "input_json": None,
-        })
+        if filtered_result_0_item_filter_reputation_check[0] is not None:
+            parameters.append({
+                "artifact_id": filtered_result_0_item_filter_reputation_check[0],
+                "tags": "status_failed",
+            })
 
     ################################################################################
     ## Custom Code Start
@@ -145,7 +140,7 @@ def artifact_update_1(action=None, success=None, container=None, results=None, h
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/artifact_update", parameters=parameters, name="artifact_update_1")
+    phantom.act("update artifact", parameters=parameters, name="update_artifact_1", assets=["phantom"])
 
     return
 
