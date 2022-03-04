@@ -90,15 +90,62 @@ def vt_url_reputation_check(action=None, success=None, container=None, results=N
     ## Custom Code End
     ################################################################################
 
-    phantom.act("url reputation", parameters=parameters, name="vt_url_reputation_check", assets=["virustotal v3"])
+    phantom.act("url reputation", parameters=parameters, name="vt_url_reputation_check", assets=["virustotal v3"], callback=filter_reputation_check)
 
     return
 
 
-def filter_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("filter_2() called")
+def filter_reputation_check(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("filter_reputation_check() called")
+
+    # collect filtered artifact ids and results for 'if' condition 1
+    matched_artifacts_1, matched_results_1 = phantom.condition(
+        container=container,
+        conditions=[
+            ["vt_url_reputation_check:action_result.status", "==", "Failed"]
+        ],
+        name="filter_reputation_check:condition_1")
+
+    # call connected blocks if filtered artifacts or results
+    if matched_artifacts_1 or matched_results_1:
+        artifact_update_1(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+
+    return
 
 
+def artifact_update_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("artifact_update_1() called")
+
+    filtered_result_0_data_filter_reputation_check = phantom.collect2(container=container, datapath=["filtered-data:filter_reputation_check:condition_1:vt_url_reputation_check:action_result.parameter.context.artifact_id"])
+
+    parameters = []
+
+    # build parameters list for 'artifact_update_1' call
+    for filtered_result_0_item_filter_reputation_check in filtered_result_0_data_filter_reputation_check:
+        parameters.append({
+            "artifact_id": filtered_result_0_item_filter_reputation_check[0],
+            "name": None,
+            "description": None,
+            "label": None,
+            "severity": None,
+            "cef_field": None,
+            "cef_value": None,
+            "cef_data_type": None,
+            "tags": "status_failed",
+            "input_json": None,
+        })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="Phishing_Investigation/artifact_update", parameters=parameters, name="artifact_update_1")
 
     return
 
