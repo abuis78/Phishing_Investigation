@@ -81,9 +81,35 @@
                     "sourcePort": "18_out",
                     "targetNode": "19",
                     "targetPort": "19_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 1
+                        }
+                    ],
+                    "id": "port_18_to_port_20",
+                    "sourceNode": "18",
+                    "sourcePort": "18_out",
+                    "targetNode": "20",
+                    "targetPort": "20_in"
+                },
+                {
+                    "id": "port_19_to_port_21",
+                    "sourceNode": "19",
+                    "sourcePort": "19_out",
+                    "targetNode": "21",
+                    "targetPort": "21_in"
+                },
+                {
+                    "id": "port_20_to_port_21",
+                    "sourceNode": "20",
+                    "sourcePort": "20_out",
+                    "targetNode": "21",
+                    "targetPort": "21_in"
                 }
             ],
-            "hash": "471bc165e9130d3cee2b48edc30d9286604f3e50",
+            "hash": "5f7f81d1644d1b707d6136aeeae60a581f5b4039",
             "nodes": {
                 "0": {
                     "data": {
@@ -98,7 +124,7 @@
                     "id": "0",
                     "type": "start",
                     "x": 1000,
-                    "y": 419.9999999999998
+                    "y": 419.9999999999997
                 },
                 "1": {
                     "data": {
@@ -115,7 +141,7 @@
                     "type": "end",
                     "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
                     "x": 1240,
-                    "y": 419.9999999999999
+                    "y": 419.99999999999983
                 },
                 "12": {
                     "data": {
@@ -390,6 +416,8 @@
                         "action": "update artifact",
                         "actionType": "generic",
                         "advanced": {
+                            "customName": "Set artifact status high",
+                            "customNameId": 0,
                             "join": []
                         },
                         "connector": "Phantom",
@@ -399,7 +427,7 @@
                         "connectorId": "deb82aa9-22cc-4675-9cf1-534b8d006eb7",
                         "connectorVersion": "v1",
                         "functionId": 3,
-                        "functionName": "update_artifact_3",
+                        "functionName": "set_artifact_status_high",
                         "id": "19",
                         "parameters": {
                             "artifact_id": "filtered-data:severity_set_based_on_malicious:condition_1:vt_url_reputation_check:action_result.parameter.context.artifact_id",
@@ -416,8 +444,8 @@
                     "errors": {},
                     "id": "19",
                     "type": "action",
-                    "x": 1340,
-                    "y": 1724.5
+                    "x": 1240,
+                    "y": 1720
                 },
                 "2": {
                     "data": {
@@ -450,6 +478,82 @@
                     "type": "filter",
                     "x": 1040,
                     "y": 544.5
+                },
+                "20": {
+                    "data": {
+                        "action": "update artifact",
+                        "actionType": "generic",
+                        "advanced": {
+                            "customName": "Set artifact status low",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "connector": "Phantom",
+                        "connectorConfigs": [
+                            "phantom"
+                        ],
+                        "connectorId": "deb82aa9-22cc-4675-9cf1-534b8d006eb7",
+                        "connectorVersion": "v1",
+                        "functionId": 4,
+                        "functionName": "set_artifact_status_low",
+                        "id": "20",
+                        "parameters": {
+                            "artifact_id": "filtered-data:severity_set_based_on_malicious:condition_2:vt_url_reputation_check:action_result.parameter.context.artifact_id",
+                            "severity": "low"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "artifact_id"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "20",
+                    "type": "action",
+                    "x": 1700,
+                    "y": 1720
+                },
+                "21": {
+                    "data": {
+                        "advanced": {
+                            "customName": "URL reputation path",
+                            "customNameId": 0,
+                            "join": [],
+                            "notRequiredJoins": [
+                                "set_artifact_status_high",
+                                "set_artifact_status_low"
+                            ]
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "noop",
+                            "repoName": "DB_POC_final"
+                        },
+                        "functionId": 1,
+                        "functionName": "url_reputation_path",
+                        "id": "21",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "noop": {
+                                "description": "Do nothing and return nothing. Use this if you want to do something in a custom function setup section or leave a placeholder block in a playbook. This does not sleep or wait and will return as soon as possible.",
+                                "fields": [],
+                                "label": "noop",
+                                "name": "noop"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "noop": {}
+                        }
+                    },
+                    "errors": {},
+                    "id": "21",
+                    "type": "utility",
+                    "x": 1460,
+                    "y": 1964.5
                 }
             },
             "notes": ""
@@ -461,7 +565,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-04T09:58:23.315108+00:00",
+    "create_time": "2022-03-04T12:42:30.232672+00:00",
     "draft_mode": false,
     "labels": [
         "*"

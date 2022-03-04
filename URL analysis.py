@@ -138,8 +138,8 @@ def update_artifact_add_tag_status_failed(action=None, success=None, container=N
     for filtered_result_0_item_filter_reputation_check in filtered_result_0_data_filter_reputation_check:
         if filtered_result_0_item_filter_reputation_check[0] is not None:
             parameters.append({
-                "artifact_id": filtered_result_0_item_filter_reputation_check[0],
                 "tags": "status_failed",
+                "artifact_id": filtered_result_0_item_filter_reputation_check[0],
             })
 
     ################################################################################
@@ -177,9 +177,9 @@ def update_artifact_add_tag_status_success_and_message(action=None, success=None
     for filtered_result_0_item_filter_reputation_check in filtered_result_0_data_filter_reputation_check:
         if filtered_result_0_item_filter_reputation_check[0] is not None:
             parameters.append({
-                "artifact_id": filtered_result_0_item_filter_reputation_check[0],
                 "tags": "status_success",
                 "cef_json": cef_json_formatted_string,
+                "artifact_id": filtered_result_0_item_filter_reputation_check[0],
             })
 
     ################################################################################
@@ -210,7 +210,7 @@ def severity_set_based_on_malicious(action=None, success=None, container=None, r
 
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_1 or matched_results_1:
-        update_artifact_3(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+        set_artifact_status_high(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
 
     # collect filtered artifact ids and results for 'if' condition 2
     matched_artifacts_2, matched_results_2 = phantom.condition(
@@ -222,13 +222,13 @@ def severity_set_based_on_malicious(action=None, success=None, container=None, r
 
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_2 or matched_results_2:
-        pass
+        set_artifact_status_low(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_2, filtered_results=matched_results_2)
 
     return
 
 
-def update_artifact_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("update_artifact_3() called")
+def set_artifact_status_high(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("set_artifact_status_high() called")
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
@@ -236,12 +236,12 @@ def update_artifact_3(action=None, success=None, container=None, results=None, h
 
     parameters = []
 
-    # build parameters list for 'update_artifact_3' call
+    # build parameters list for 'set_artifact_status_high' call
     for filtered_result_0_item_severity_set_based_on_malicious in filtered_result_0_data_severity_set_based_on_malicious:
         if filtered_result_0_item_severity_set_based_on_malicious[0] is not None:
             parameters.append({
-                "artifact_id": filtered_result_0_item_severity_set_based_on_malicious[0],
                 "severity": "high",
+                "artifact_id": filtered_result_0_item_severity_set_based_on_malicious[0],
             })
 
     ################################################################################
@@ -254,7 +254,75 @@ def update_artifact_3(action=None, success=None, container=None, results=None, h
     ## Custom Code End
     ################################################################################
 
-    phantom.act("update artifact", parameters=parameters, name="update_artifact_3", assets=["phantom"])
+    phantom.act("update artifact", parameters=parameters, name="set_artifact_status_high", assets=["phantom"], callback=join_url_reputation_path)
+
+    return
+
+
+def set_artifact_status_low(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("set_artifact_status_low() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    filtered_result_0_data_severity_set_based_on_malicious = phantom.collect2(container=container, datapath=["filtered-data:severity_set_based_on_malicious:condition_2:vt_url_reputation_check:action_result.parameter.context.artifact_id"])
+
+    parameters = []
+
+    # build parameters list for 'set_artifact_status_low' call
+    for filtered_result_0_item_severity_set_based_on_malicious in filtered_result_0_data_severity_set_based_on_malicious:
+        if filtered_result_0_item_severity_set_based_on_malicious[0] is not None:
+            parameters.append({
+                "artifact_id": filtered_result_0_item_severity_set_based_on_malicious[0],
+                "severity": "low",
+            })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("update artifact", parameters=parameters, name="set_artifact_status_low", assets=["phantom"], callback=join_url_reputation_path)
+
+    return
+
+
+def join_url_reputation_path(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("join_url_reputation_path() called")
+
+    # if the joined function has already been called, do nothing
+    if phantom.get_run_data(key="join_url_reputation_path_called"):
+        return
+
+    # save the state that the joined function has now been called
+    phantom.save_run_data(key="join_url_reputation_path_called", value="url_reputation_path")
+
+    # call connected block "url_reputation_path"
+    url_reputation_path(container=container, handle=handle)
+
+    return
+
+
+def url_reputation_path(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("url_reputation_path() called")
+
+    parameters = [{}]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="DB_POC_final/noop", parameters=parameters, name="url_reputation_path")
 
     return
 
