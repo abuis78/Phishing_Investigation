@@ -108,7 +108,7 @@ def filter_reputation_check(action=None, success=None, container=None, results=N
 
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_1 or matched_results_1:
-        update_artifact_1(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+        update_artifact_add_tag_status_failed(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
 
     # collect filtered artifact ids and results for 'if' condition 2
     matched_artifacts_2, matched_results_2 = phantom.condition(
@@ -120,13 +120,13 @@ def filter_reputation_check(action=None, success=None, container=None, results=N
 
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_2 or matched_results_2:
-        pass
+        update_artifact_add_tag_status_success_and_message(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_2, filtered_results=matched_results_2)
 
     return
 
 
-def update_artifact_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("update_artifact_1() called")
+def update_artifact_add_tag_status_failed(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("update_artifact_add_tag_status_failed() called")
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
@@ -134,7 +134,7 @@ def update_artifact_1(action=None, success=None, container=None, results=None, h
 
     parameters = []
 
-    # build parameters list for 'update_artifact_1' call
+    # build parameters list for 'update_artifact_add_tag_status_failed' call
     for filtered_result_0_item_filter_reputation_check in filtered_result_0_data_filter_reputation_check:
         if filtered_result_0_item_filter_reputation_check[0] is not None:
             parameters.append({
@@ -152,7 +152,109 @@ def update_artifact_1(action=None, success=None, container=None, results=None, h
     ## Custom Code End
     ################################################################################
 
-    phantom.act("update artifact", parameters=parameters, name="update_artifact_1", assets=["phantom"])
+    phantom.act("update artifact", parameters=parameters, name="update_artifact_add_tag_status_failed", assets=["phantom"])
+
+    return
+
+
+def update_artifact_add_tag_status_success_and_message(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("update_artifact_add_tag_status_success_and_message() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    cef_json_formatted_string = phantom.format(
+        container=container,
+        template="""{{ \"VT_message\": \"{0}\" }}\n""",
+        parameters=[
+            "filtered-data:filter_reputation_check:condition_2:vt_url_reputation_check:action_result.message"
+        ])
+
+    filtered_result_0_data_filter_reputation_check = phantom.collect2(container=container, datapath=["filtered-data:filter_reputation_check:condition_2:vt_url_reputation_check:action_result.parameter.context.artifact_id"])
+
+    parameters = []
+
+    # build parameters list for 'update_artifact_add_tag_status_success_and_message' call
+    for filtered_result_0_item_filter_reputation_check in filtered_result_0_data_filter_reputation_check:
+        if filtered_result_0_item_filter_reputation_check[0] is not None:
+            parameters.append({
+                "artifact_id": filtered_result_0_item_filter_reputation_check[0],
+                "tags": "status_success",
+                "cef_json": cef_json_formatted_string,
+            })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("update artifact", parameters=parameters, name="update_artifact_add_tag_status_success_and_message", assets=["phantom"], callback=severity_set_based_on_malicious)
+
+    return
+
+
+def severity_set_based_on_malicious(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("severity_set_based_on_malicious() called")
+
+    # collect filtered artifact ids and results for 'if' condition 1
+    matched_artifacts_1, matched_results_1 = phantom.condition(
+        container=container,
+        conditions=[
+            ["filtered-data:filter_reputation_check:condition_2:vt_url_reputation_check:action_result.summary.malicious", ">", 0]
+        ],
+        name="severity_set_based_on_malicious:condition_1")
+
+    # call connected blocks if filtered artifacts or results
+    if matched_artifacts_1 or matched_results_1:
+        update_artifact_3(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+
+    # collect filtered artifact ids and results for 'if' condition 2
+    matched_artifacts_2, matched_results_2 = phantom.condition(
+        container=container,
+        conditions=[
+            ["filtered-data:filter_reputation_check:condition_2:vt_url_reputation_check:action_result.summary.malicious", "==", 0]
+        ],
+        name="severity_set_based_on_malicious:condition_2")
+
+    # call connected blocks if filtered artifacts or results
+    if matched_artifacts_2 or matched_results_2:
+        pass
+
+    return
+
+
+def update_artifact_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("update_artifact_3() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    filtered_result_0_data_severity_set_based_on_malicious = phantom.collect2(container=container, datapath=["filtered-data:severity_set_based_on_malicious:condition_1:vt_url_reputation_check:action_result.parameter.context.artifact_id"])
+
+    parameters = []
+
+    # build parameters list for 'update_artifact_3' call
+    for filtered_result_0_item_severity_set_based_on_malicious in filtered_result_0_data_severity_set_based_on_malicious:
+        if filtered_result_0_item_severity_set_based_on_malicious[0] is not None:
+            parameters.append({
+                "artifact_id": filtered_result_0_item_severity_set_based_on_malicious[0],
+                "severity": "high",
+            })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("update artifact", parameters=parameters, name="update_artifact_3", assets=["phantom"])
 
     return
 
