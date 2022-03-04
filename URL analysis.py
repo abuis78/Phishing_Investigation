@@ -330,10 +330,14 @@ def url_reputation_path(action=None, success=None, container=None, results=None,
 def debug_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("debug_2() called")
 
+    vt_url_reputation_check_result_data = phantom.collect2(container=container, datapath=["vt_url_reputation_check:action_result.object","vt_url_reputation_check:action_result.parameter.context.artifact_id"], action_results=results)
+
+    vt_url_reputation_check_result_item_0 = [item[0] for item in vt_url_reputation_check_result_data]
+
     parameters = []
 
     parameters.append({
-        "input_1": "vt_url_reputation_check:object",
+        "input_1": vt_url_reputation_check_result_item_0,
         "input_2": None,
         "input_3": None,
         "input_4": None,

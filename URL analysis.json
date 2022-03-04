@@ -116,7 +116,7 @@
                     "targetPort": "23_in"
                 }
             ],
-            "hash": "2f413dc47ad5c0c8497c7622020c13bf9c6f66db",
+            "hash": "c3003bf4d735d23f1a8457f99f3d31710faafb77",
             "nodes": {
                 "0": {
                     "data": {
@@ -709,7 +709,7 @@
                         "utilityType": "custom_function",
                         "values": {
                             "debug": {
-                                "input_1": "vt_url_reputation_check:object",
+                                "input_1": "vt_url_reputation_check:action_result.object",
                                 "input_10": null,
                                 "input_2": null,
                                 "input_3": null,
@@ -738,7 +738,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-04T12:47:26.457564+00:00",
+    "create_time": "2022-03-04T12:48:12.545834+00:00",
     "draft_mode": false,
     "labels": [
         "*"
