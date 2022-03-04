@@ -102,7 +102,7 @@ def filter_reputation_check(action=None, success=None, container=None, results=N
     matched_artifacts_1, matched_results_1 = phantom.condition(
         container=container,
         conditions=[
-            ["vt_url_reputation_check:action_result.status", "==", "Failed"]
+            ["vt_url_reputation_check:action_result.status", "==", "failed"]
         ],
         name="filter_reputation_check:condition_1")
 
