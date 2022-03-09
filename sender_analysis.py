@@ -92,11 +92,11 @@ def decision_2(action=None, success=None, container=None, results=None, handle=N
 
     # call connected blocks if condition 1 matched
     if found_match_1:
+        update_artifact_2(action=action, success=success, container=container, results=results, handle=handle)
         return
 
     # check for 'else' condition 2
     join_vip_path(action=action, success=success, container=container, results=results, handle=handle)
-    update_artifact_2(action=action, success=success, container=container, results=results, handle=handle)
 
     return
 
