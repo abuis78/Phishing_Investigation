@@ -177,7 +177,27 @@ def send_email_1(action=None, success=None, container=None, results=None, handle
     ## Custom Code End
     ################################################################################
 
-    phantom.act("send email", parameters=parameters, name="send_email_1", assets=["smtp"])
+    phantom.act("send email", parameters=parameters, name="send_email_1", assets=["smtp"], callback=add_note_4)
+
+    return
+
+
+def add_note_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("add_note_4() called")
+
+    email_body = phantom.get_format_data(name="email_body")
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.add_note(container=container, content=email_body, note_format="markdown", note_type="general", title="Email to the customer")
 
     return
 
