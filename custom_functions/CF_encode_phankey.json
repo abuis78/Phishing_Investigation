@@ -1,5 +1,5 @@
 {
-    "create_time": "2022-03-09T11:50:16.244270+00:00",
+    "create_time": "2022-03-09T11:52:41.284024+00:00",
     "custom_function_id": "81d682cbf549b9a8b10cbc82da41cd9731ca0c75",
     "description": "Creates a new PHANKEY",
     "draft_mode": false,
@@ -17,20 +17,6 @@
             "input_type": "item",
             "name": "user_email",
             "placeholder": ""
-        },
-        {
-            "contains_type": [],
-            "description": "",
-            "input_type": "item",
-            "name": "container_label",
-            "placeholder": ""
-        },
-        {
-            "contains_type": [],
-            "description": "specifies the type (number) of the email:\n1) Standrad Email\n2) individual email\n3) SAP request for an ID\nother types can be added at any time\n>> Default value is 1",
-            "input_type": "item",
-            "name": "email_type",
-            "placeholder": ""
         }
     ],
     "outputs": [
@@ -45,6 +31,11 @@
             "contains_type": [],
             "data_path": "PHANKEY_subject",
             "description": "PHANKEY formatted for email subject"
+        },
+        {
+            "contains_type": [],
+            "data_path": "PHANKEY_body",
+            "description": ""
         }
     ],
     "platform_version": "5.2.1.78411",
