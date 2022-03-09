@@ -521,8 +521,8 @@ def update_artifact_2(action=None, success=None, container=None, results=None, h
     for create_email_artefact__result_item in create_email_artefact__result:
         if create_email_artefact__result_item[0] is not None:
             parameters.append({
-                "artifact_id": create_email_artefact__result_item[0],
                 "tags": "VIP",
+                "artifact_id": create_email_artefact__result_item[0],
             })
 
     ################################################################################
@@ -554,8 +554,8 @@ def update_artifact_3(action=None, success=None, container=None, results=None, h
     for create_email_artefact__result_item in create_email_artefact__result:
         if create_email_artefact__result_item[0] is not None:
             parameters.append({
-                "artifact_id": create_email_artefact__result_item[0],
                 "tags": convert_tag_list_into_string__tag_str_list,
+                "artifact_id": create_email_artefact__result_item[0],
             })
 
     ################################################################################
