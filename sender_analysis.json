@@ -73,18 +73,6 @@
                     "targetPort": "44_in"
                 },
                 {
-                    "conditions": [
-                        {
-                            "index": 0
-                        }
-                    ],
-                    "id": "port_13_to_port_10",
-                    "sourceNode": "13",
-                    "sourcePort": "13_out",
-                    "targetNode": "10",
-                    "targetPort": "10_in"
-                },
-                {
                     "id": "port_0_to_port_48",
                     "sourceNode": "0",
                     "sourcePort": "0_out",
@@ -182,21 +170,33 @@
                     "targetPort": "50_in"
                 },
                 {
-                    "id": "port_10_to_port_24",
-                    "sourceNode": "10",
-                    "sourcePort": "10_out",
-                    "targetNode": "24",
-                    "targetPort": "24_in"
-                },
-                {
                     "id": "port_53_to_port_1",
                     "sourceNode": "53",
                     "sourcePort": "53_out",
                     "targetNode": "1",
                     "targetPort": "1_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 1
+                        }
+                    ],
+                    "id": "port_13_to_port_57",
+                    "sourceNode": "13",
+                    "sourcePort": "13_out",
+                    "targetNode": "57",
+                    "targetPort": "57_in"
+                },
+                {
+                    "id": "port_57_to_port_24",
+                    "sourceNode": "57",
+                    "sourcePort": "57_out",
+                    "targetNode": "24",
+                    "targetPort": "24_in"
                 }
             ],
-            "hash": "be52bf30557a6b4cf226913f6dfc3cf7b468ea40",
+            "hash": "e0f0ee8edb909194eff7124bffa426174ce57684",
             "nodes": {
                 "0": {
                     "data": {
@@ -211,7 +211,7 @@
                     "id": "0",
                     "type": "start",
                     "x": 110,
-                    "y": 0
+                    "y": -3.907985046680551e-14
                 },
                 "1": {
                     "data": {
@@ -370,8 +370,8 @@
                     "errors": {},
                     "id": "10",
                     "type": "utility",
-                    "x": 180,
-                    "y": 1235
+                    "x": 660,
+                    "y": 1380
                 },
                 "13": {
                     "data": {
@@ -857,7 +857,7 @@
                     "id": "38",
                     "type": "code",
                     "userCode": "\n    # Write your custom code here...\n    phantom.debug(create_email_artefact_data_artifact_id[0])\n    url = phantom.build_phantom_rest_url('artifact', create_email_artefact_data_artifact_id[0], 'tags')\n    response = phantom.requests.get(url,verify=False,)\n    phantom.debug(\"phantom returned status code {} with message {}\".format(response.status_code, response.text))\n    \n    artifatc_tag_list = response.json()['tags']\n    phantom.debug('Tags from Artifakts {}'.format(artifatc_tag_list))\n    \n    # this builds the Tag list\n    #lat_list = [item for sublist in artifatc_tag_list for item in sublist]\n    #phantom.debug(lat_list)\n    \n    tag_list = ','.join(artifatc_tag_list)\n    \n    convert_tag_list_into_string__tag_str_list = tag_list + ', internal'\n\n",
-                    "x": 0,
+                    "x": -1.4210854715202004e-14,
                     "y": 2256
                 },
                 "44": {
@@ -1279,6 +1279,40 @@
                     "type": "utility",
                     "x": 90,
                     "y": 2776
+                },
+                "57": {
+                    "data": {
+                        "action": "update artifact",
+                        "actionType": "generic",
+                        "advanced": {
+                            "join": []
+                        },
+                        "connector": "Phantom",
+                        "connectorConfigs": [
+                            "phantom"
+                        ],
+                        "connectorId": "deb82aa9-22cc-4675-9cf1-534b8d006eb7",
+                        "connectorVersion": "v1",
+                        "functionId": 2,
+                        "functionName": "update_artifact_2",
+                        "id": "57",
+                        "parameters": {
+                            "artifact_id": "create_email_artefact:custom_function_result.data.artifact_id",
+                            "tags": "VIP"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "artifact_id"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "57",
+                    "type": "action",
+                    "x": 260,
+                    "y": 1344.5
                 }
             },
             "notes": ""
@@ -1290,7 +1324,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-02T12:47:36.575539+00:00",
+    "create_time": "2022-03-09T10:58:49.345595+00:00",
     "draft_mode": false,
     "labels": [
         "*"

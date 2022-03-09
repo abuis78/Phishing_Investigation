@@ -75,7 +75,7 @@ def add_tag_vip_to_email_artifact(action=None, success=None, container=None, res
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/artifact_update", parameters=parameters, name="add_tag_vip_to_email_artifact", callback=join_vip_path)
+    phantom.custom_function(custom_function="Phishing_Investigation/artifact_update", parameters=parameters, name="add_tag_vip_to_email_artifact")
 
     return
 
@@ -92,11 +92,11 @@ def decision_2(action=None, success=None, container=None, results=None, handle=N
 
     # call connected blocks if condition 1 matched
     if found_match_1:
-        add_tag_vip_to_email_artifact(action=action, success=success, container=container, results=results, handle=handle)
         return
 
     # check for 'else' condition 2
     join_vip_path(action=action, success=success, container=container, results=results, handle=handle)
+    update_artifact_2(action=action, success=success, container=container, results=results, handle=handle)
 
     return
 
@@ -137,11 +137,12 @@ def join_vip_path(action=None, success=None, container=None, results=None, handl
     if phantom.get_run_data(key="join_vip_path_called"):
         return
 
-    # save the state that the joined function has now been called
-    phantom.save_run_data(key="join_vip_path_called", value="vip_path")
+    if phantom.completed(action_names=["update_artifact_2"]):
+        # save the state that the joined function has now been called
+        phantom.save_run_data(key="join_vip_path_called", value="vip_path")
 
-    # call connected block "vip_path"
-    vip_path(container=container, handle=handle)
+        # call connected block "vip_path"
+        vip_path(container=container, handle=handle)
 
     return
 
@@ -467,8 +468,8 @@ def update_artifact_1(action=None, success=None, container=None, results=None, h
     for create_email_artefact__result_item in create_email_artefact__result:
         if create_email_artefact__result_item[0] is not None:
             parameters.append({
-                "artifact_id": create_email_artefact__result_item[0],
                 "cef_json": cef_json_formatted_string,
+                "artifact_id": create_email_artefact__result_item[0],
             })
 
     ################################################################################
@@ -575,6 +576,38 @@ def keyword_mention_in_email(action=None, success=None, container=None, results=
     ################################################################################
 
     phantom.custom_function(custom_function="Phishing_Investigation/keyword_search", parameters=parameters, name="keyword_mention_in_email", callback=decision_4)
+
+    return
+
+
+def update_artifact_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("update_artifact_2() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    create_email_artefact__result = phantom.collect2(container=container, datapath=["create_email_artefact:custom_function_result.data.artifact_id"])
+
+    parameters = []
+
+    # build parameters list for 'update_artifact_2' call
+    for create_email_artefact__result_item in create_email_artefact__result:
+        if create_email_artefact__result_item[0] is not None:
+            parameters.append({
+                "artifact_id": create_email_artefact__result_item[0],
+                "tags": "VIP",
+            })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("update artifact", parameters=parameters, name="update_artifact_2", assets=["phantom"], callback=join_vip_path)
 
     return
 
