@@ -1,0 +1,337 @@
+{
+    "blockly": false,
+    "blockly_xml": "<xml></xml>",
+    "category": "Uncategorized",
+    "coa": {
+        "data": {
+            "description": "",
+            "edges": [
+                {
+                    "id": "port_0_to_port_3",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "3",
+                    "targetPort": "3_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_3_to_port_2",
+                    "sourceNode": "3",
+                    "sourcePort": "3_out",
+                    "targetNode": "2",
+                    "targetPort": "2_in"
+                },
+                {
+                    "id": "port_2_to_port_5",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
+                    "targetNode": "5",
+                    "targetPort": "5_in"
+                },
+                {
+                    "id": "port_5_to_port_6",
+                    "sourceNode": "5",
+                    "sourcePort": "5_out",
+                    "targetNode": "6",
+                    "targetPort": "6_in"
+                },
+                {
+                    "id": "port_6_to_port_7",
+                    "sourceNode": "6",
+                    "sourcePort": "6_out",
+                    "targetNode": "7",
+                    "targetPort": "7_in"
+                },
+                {
+                    "id": "port_7_to_port_8",
+                    "sourceNode": "7",
+                    "sourcePort": "7_out",
+                    "targetNode": "8",
+                    "targetPort": "8_in"
+                },
+                {
+                    "id": "port_8_to_port_1",
+                    "sourceNode": "8",
+                    "sourcePort": "8_out",
+                    "targetNode": "1",
+                    "targetPort": "1_in"
+                }
+            ],
+            "hash": "f2afebb729fd9504c123996e27d46a3480b490ae",
+            "nodes": {
+                "0": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionName": "on_start",
+                        "id": "0",
+                        "type": "start"
+                    },
+                    "errors": {},
+                    "id": "0",
+                    "type": "start",
+                    "x": 1000,
+                    "y": 419.9999999999999
+                },
+                "1": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "on_finish",
+                        "id": "1",
+                        "type": "end"
+                    },
+                    "errors": {},
+                    "id": "1",
+                    "type": "end",
+                    "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
+                    "x": 1000,
+                    "y": 1520
+                },
+                "2": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "regex_extract_email",
+                            "repoName": "Phishing_Investigation"
+                        },
+                        "functionId": 1,
+                        "functionName": "regex_extract_email_1",
+                        "id": "2",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "regex_extract_email": {
+                                "description": "Provide a string with one or more email addresses in it to be extracted.\nCan be helpful with strings from the To or CC fields of an email: \"<other_email@domain.com>, 'Name' <e-mail@domain.com>\"",
+                                "fields": [
+                                    {
+                                        "dataTypes": [
+                                            "*"
+                                        ],
+                                        "description": "String containing email addresses",
+                                        "inputType": "item",
+                                        "label": "input_string",
+                                        "name": "input_string",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "regex_extract_email",
+                                "name": "regex_extract_email"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "regex_extract_email": {
+                                "input_string": "filtered-data:filter_1:condition_1:artifact:*.cef.fromEmail"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "2",
+                    "type": "utility",
+                    "x": 980,
+                    "y": 700
+                },
+                "3": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "==",
+                                        "param": "artifact:*.name",
+                                        "value": "Email Artifact"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "customName": "Email Artifact",
+                                "logic": "and"
+                            }
+                        ],
+                        "functionId": 1,
+                        "functionName": "filter_1",
+                        "id": "3",
+                        "type": "filter"
+                    },
+                    "errors": {},
+                    "id": "3",
+                    "type": "filter",
+                    "x": 1040,
+                    "y": 544.5
+                },
+                "5": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "CF_encode_phankey",
+                            "repoName": "Phishing_Investigation"
+                        },
+                        "functionId": 3,
+                        "functionName": "CF_encode_phankey_3",
+                        "id": "5",
+                        "selectMore": false,
+                        "tab": "customFunctions",
+                        "type": "utility",
+                        "utilities": {
+                            "CF_encode_phankey": {
+                                "description": "Creates a new PHANKEY",
+                                "fields": [
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "container_id",
+                                        "name": "container_id",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "user_email",
+                                        "name": "user_email",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "CF_encode_phankey",
+                                "name": "CF_encode_phankey"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "CF_encode_phankey": {
+                                "container_id": "container:id",
+                                "user_email": "regex_extract_email_1:custom_function_result.data.*.email_address"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "5",
+                    "type": "utility",
+                    "x": 980,
+                    "y": 820
+                },
+                "6": {
+                    "data": {
+                        "advanced": {
+                            "customName": "email subject",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "email_subject",
+                        "id": "6",
+                        "parameters": [
+                            ""
+                        ],
+                        "template": "[Case-ID: {0}] The email that you have classified as suspicious is currently being analysed.\n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "6",
+                    "type": "format",
+                    "x": 980,
+                    "y": 944.5
+                },
+                "7": {
+                    "data": {
+                        "advanced": {
+                            "customName": "email body",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 2,
+                        "functionName": "email_body",
+                        "id": "7",
+                        "parameters": [
+                            "container:status"
+                        ],
+                        "template": "We would like to thank you for helping our company to deal safely with suspicious content.\n\nThe email will be analyzed immediately and you will receive a response within the next 5 minutes. \n\nWe ask for your patience.",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "7",
+                    "type": "format",
+                    "x": 980,
+                    "y": 1084.5
+                },
+                "8": {
+                    "data": {
+                        "action": "send email",
+                        "actionType": "generic",
+                        "advanced": {
+                            "join": []
+                        },
+                        "connector": "SMTP",
+                        "connectorConfigs": [
+                            "smtp"
+                        ],
+                        "connectorId": "45bb6f37-4478-499b-b4a3-51ecfa62b78c",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "send_email_1",
+                        "id": "8",
+                        "parameters": {
+                            "body": "email_body:formatted_data",
+                            "from": "it@soar4rookies.com",
+                            "subject": "email_subject:formatted_data",
+                            "to": "regex_extract_email_1:custom_function_result.data.*.email_address"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "to"
+                            },
+                            {
+                                "data_type": "string",
+                                "field": "body"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "8",
+                    "type": "action",
+                    "x": 980,
+                    "y": 1204.5
+                }
+            },
+            "notes": ""
+        },
+        "input_spec": null,
+        "output_spec": null,
+        "playbook_type": "automation",
+        "python_version": "3",
+        "schema": "5.0.5",
+        "version": "5.2.1.78411"
+    },
+    "create_time": "2022-03-09T12:03:34.960989+00:00",
+    "draft_mode": false,
+    "labels": [
+        "*"
+    ],
+    "tags": []
+}
