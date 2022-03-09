@@ -121,16 +121,16 @@ def create_subject_artifact(action=None, success=None, container=None, results=N
     # build parameters list for 'create_subject_artifact' call
     for filtered_artifact_0_item_filter_email_artifact in filtered_artifact_0_data_filter_email_artifact:
         parameters.append({
-            "container": id_value,
             "name": "eMail Subject",
+            "tags": None,
             "label": "artifact",
             "severity": "Low",
             "cef_field": "subject",
             "cef_value": filtered_artifact_0_item_filter_email_artifact[0],
-            "cef_data_type": None,
-            "tags": None,
-            "run_automation": None,
+            "container": id_value,
             "input_json": None,
+            "cef_data_type": None,
+            "run_automation": None,
         })
 
     ################################################################################
@@ -168,9 +168,9 @@ def update_artifact_1(action=None, success=None, container=None, results=None, h
     for create_subject_artifact__result_item in create_subject_artifact__result:
         if create_subject_artifact__result_item[0] is not None:
             parameters.append({
-                "artifact_id": create_subject_artifact__result_item[0],
                 "cef_json": cef_json_formatted_string,
                 "severity": "medium",
+                "artifact_id": create_subject_artifact__result_item[0],
             })
 
     ################################################################################

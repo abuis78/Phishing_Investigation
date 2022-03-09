@@ -14,18 +14,6 @@
                     "targetPort": "2_in"
                 },
                 {
-                    "conditions": [
-                        {
-                            "index": 0
-                        }
-                    ],
-                    "id": "port_2_to_port_3",
-                    "sourceNode": "2",
-                    "sourcePort": "2_out",
-                    "targetNode": "3",
-                    "targetPort": "3_in"
-                },
-                {
                     "id": "port_3_to_port_6",
                     "sourceNode": "3",
                     "sourcePort": "3_out",
@@ -69,9 +57,21 @@
                     "sourcePort": "6_out",
                     "targetNode": "1",
                     "targetPort": "1_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_2_to_port_3",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
+                    "targetNode": "3",
+                    "targetPort": "3_in"
                 }
             ],
-            "hash": "810af5c6fc3b7e426c14ad4bbccde7ba3282d1e7",
+            "hash": "435a37d5c77c57b7fc3520322b17314c0f7450a8",
             "nodes": {
                 "0": {
                     "data": {
@@ -86,7 +86,7 @@
                     "id": "0",
                     "type": "start",
                     "x": 1020,
-                    "y": 320
+                    "y": 220
                 },
                 "1": {
                     "data": {
@@ -135,7 +135,7 @@
                     "id": "2",
                     "type": "filter",
                     "x": 1060,
-                    "y": 540
+                    "y": 360
                 },
                 "3": {
                     "data": {
@@ -303,7 +303,7 @@
                     "id": "6",
                     "type": "decision",
                     "x": 1080,
-                    "y": 964.5
+                    "y": 960
                 },
                 "7": {
                     "data": {
@@ -510,7 +510,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-02T13:11:09.002930+00:00",
+    "create_time": "2022-03-09T11:26:26.152628+00:00",
     "draft_mode": false,
     "labels": [
         "*"
