@@ -641,7 +641,7 @@ def pin_2(action=None, success=None, container=None, results=None, handle=None, 
     ## Custom Code End
     ################################################################################
 
-    phantom.pin(container=container, data=pin_data, message=extract_email_from_emailheaders_data___email_address)
+    phantom.pin(container=container, data=pin_data, message=extract_email_from_emailheaders_data___email_address, pin_style="red", pin_type="card")
 
     return
 

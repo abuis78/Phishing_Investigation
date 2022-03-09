@@ -241,7 +241,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "b066efc9fbe231d1b70ac783a151193c4697fc65",
+            "hash": "5e1397383ea5c557bba4c7ce8cd3e210ce6a6a05",
             "nodes": {
                 "0": {
                     "data": {
@@ -1300,8 +1300,8 @@
                                 "data": "pin_data:formatted_data",
                                 "message": "extract_email_from_emailheaders:custom_function_result.data.*.email_address",
                                 "name": null,
-                                "pin_style": null,
-                                "pin_type": null
+                                "pin_style": "red",
+                                "pin_type": "card"
                             }
                         }
                     },
@@ -1343,7 +1343,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-09T11:36:56.177526+00:00",
+    "create_time": "2022-03-09T11:45:13.188539+00:00",
     "draft_mode": false,
     "labels": [
         "*"
