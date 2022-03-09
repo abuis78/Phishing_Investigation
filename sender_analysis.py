@@ -474,7 +474,7 @@ def email_address_keyword_path(action=None, success=None, container=None, result
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/noop", parameters=parameters, name="email_address_keyword_path")
+    phantom.custom_function(custom_function="Phishing_Investigation/noop", parameters=parameters, name="email_address_keyword_path", callback=lookup_email_from)
 
     return
 
@@ -569,6 +569,106 @@ def update_artifact_3(action=None, success=None, container=None, results=None, h
     ################################################################################
 
     phantom.act("update artifact", parameters=parameters, name="update_artifact_3", assets=["phantom"], callback=join_dkim_path)
+
+    return
+
+
+def lookup_email_from(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("lookup_email_from() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    extract_email_from_emailheaders_data = phantom.collect2(container=container, datapath=["extract_email_from_emailheaders:custom_function_result.data.*.email_address"])
+
+    parameters = []
+
+    # build parameters list for 'lookup_email_from' call
+    for extract_email_from_emailheaders_data_item in extract_email_from_emailheaders_data:
+        if extract_email_from_emailheaders_data_item[0] is not None:
+            parameters.append({
+                "truncate": False,
+                "email": extract_email_from_emailheaders_data_item[0],
+            })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("lookup email", parameters=parameters, name="lookup_email_from", assets=["have i been pwned"], callback=total_breaches_decision)
+
+    return
+
+
+def total_breaches_decision(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("total_breaches_decision() called")
+
+    # check for 'if' condition 1
+    found_match_1 = phantom.decision(
+        container=container,
+        conditions=[
+            ["lookup_email_from:action_result.summary.total_breaches", ">", 0]
+        ])
+
+    # call connected blocks if condition 1 matched
+    if found_match_1:
+        pin_data(action=action, success=success, container=container, results=results, handle=handle)
+        return
+
+    return
+
+
+def pin_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("pin_2() called")
+
+    extract_email_from_emailheaders_data = phantom.collect2(container=container, datapath=["extract_email_from_emailheaders:custom_function_result.data.*.email_address"])
+    pin_data = phantom.get_format_data(name="pin_data")
+
+    extract_email_from_emailheaders_data___email_address = [item[0] for item in extract_email_from_emailheaders_data]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.pin(container=container, data=pin_data, message=extract_email_from_emailheaders_data___email_address)
+
+    return
+
+
+def pin_data(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("pin_data() called")
+
+    template = """{0}\n"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "lookup_email_from:action_result.message"
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="pin_data")
+
+    pin_2(container=container)
 
     return
 
