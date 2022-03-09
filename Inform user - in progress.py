@@ -99,7 +99,7 @@ def email_subject(action=None, success=None, container=None, results=None, handl
 
     # parameter list for template variable replacement
     parameters = [
-        ""
+        "container:id"
     ]
 
     ################################################################################

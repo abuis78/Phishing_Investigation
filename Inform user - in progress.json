@@ -68,7 +68,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "e5b1b38dda2094ab6f49caebb110ed9b65011cd2",
+            "hash": "1d505e564c2e9a8ba79e706b387035a2eebea3b7",
             "nodes": {
                 "0": {
                     "data": {
@@ -252,7 +252,7 @@
                         "functionName": "email_subject",
                         "id": "6",
                         "parameters": [
-                            ""
+                            "container:id"
                         ],
                         "template": "[Case-ID: {0}] The email that you have classified as suspicious is currently being analysed.\n",
                         "type": "format"
@@ -439,7 +439,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-09T12:04:39.679486+00:00",
+    "create_time": "2022-03-09T12:06:11.154598+00:00",
     "draft_mode": false,
     "labels": [
         "*"
