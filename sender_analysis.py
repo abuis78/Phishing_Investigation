@@ -44,42 +44,6 @@ def extract_email_from_emailheaders(action=None, success=None, container=None, r
     return
 
 
-def add_tag_vip_to_email_artifact(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("add_tag_vip_to_email_artifact() called")
-
-    create_email_artefact__result = phantom.collect2(container=container, datapath=["create_email_artefact:custom_function_result.data.artifact_id"])
-
-    parameters = []
-
-    # build parameters list for 'add_tag_vip_to_email_artifact' call
-    for create_email_artefact__result_item in create_email_artefact__result:
-        parameters.append({
-            "name": None,
-            "tags": "VIP",
-            "label": None,
-            "severity": None,
-            "cef_field": None,
-            "cef_value": None,
-            "input_json": None,
-            "artifact_id": create_email_artefact__result_item[0],
-            "cef_data_type": None,
-        })
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.custom_function(custom_function="Phishing_Investigation/artifact_update", parameters=parameters, name="add_tag_vip_to_email_artifact")
-
-    return
-
-
 def decision_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("decision_2() called")
 
@@ -228,43 +192,6 @@ def dkim_check(action=None, success=None, container=None, results=None, handle=N
 
     # check for 'else' condition 2
     join_dkim_path(action=action, success=success, container=container, results=results, handle=handle)
-
-    return
-
-
-def artifact_update_12(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("artifact_update_12() called")
-
-    create_email_artefact__result = phantom.collect2(container=container, datapath=["create_email_artefact:custom_function_result.data.artifact_id"], scope="all")
-    convert_tag_list_into_string__tag_str_list = json.loads(phantom.get_run_data(key="convert_tag_list_into_string:tag_str_list"))
-
-    parameters = []
-
-    # build parameters list for 'artifact_update_12' call
-    for create_email_artefact__result_item in create_email_artefact__result:
-        parameters.append({
-            "name": None,
-            "tags": convert_tag_list_into_string__tag_str_list,
-            "label": None,
-            "severity": None,
-            "cef_field": None,
-            "cef_value": None,
-            "input_json": None,
-            "artifact_id": create_email_artefact__result_item[0],
-            "cef_data_type": None,
-        })
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.custom_function(custom_function="Phishing_Investigation/artifact_update", parameters=parameters, name="artifact_update_12")
 
     return
 
