@@ -241,7 +241,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "54cee06835ea326e448a9d9bd2b86d719660b5fe",
+            "hash": "b066efc9fbe231d1b70ac783a151193c4697fc65",
             "nodes": {
                 "0": {
                     "data": {
@@ -256,7 +256,7 @@
                     "id": "0",
                     "type": "start",
                     "x": 110,
-                    "y": -1.2789769243681803e-13
+                    "y": 0
                 },
                 "1": {
                     "data": {
@@ -272,8 +272,8 @@
                     "id": "1",
                     "type": "end",
                     "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
-                    "x": 120,
-                    "y": 4360
+                    "x": 110,
+                    "y": 4242
                 },
                 "13": {
                     "data": {
@@ -320,7 +320,7 @@
                     "id": "13",
                     "type": "decision",
                     "x": 170,
-                    "y": 1055
+                    "y": 1144
                 },
                 "2": {
                     "data": {
@@ -371,7 +371,7 @@
                     "id": "2",
                     "type": "utility",
                     "x": 90,
-                    "y": 344.9999999999999
+                    "y": 360
                 },
                 "23": {
                     "data": {
@@ -435,7 +435,7 @@
                     "id": "23",
                     "type": "utility",
                     "x": 90,
-                    "y": 865
+                    "y": 932
                 },
                 "24": {
                     "data": {
@@ -475,7 +475,7 @@
                     "id": "24",
                     "type": "utility",
                     "x": 90,
-                    "y": 1721
+                    "y": 1504
                 },
                 "25": {
                     "data": {
@@ -501,7 +501,7 @@
                     "type": "code",
                     "userCode": "\n    # Write your custom code here...\n    import re\n    phantom.debug(container_artifact_cef_item_0)\n    phantom.debug(extract_email_from_emailheaders_data___domain)\n    domain_regex = r'(((?!-))(xn--)?[a-z0-9][a-z0-9-_]{0,61}[a-z0-9]{0,1}\\.(xn--)?([a-z0-9\\-]{1,61}|[a-z0-9-]{1,30}\\.[a-z]{2,}))'\n    for domain in re.findall(domain_regex, str(container_artifact_cef_item_0), re.IGNORECASE):\n        phantom.debug(domain[0])\n        dkim_domain = domain[0]\n        \n    if dkim_domain == extract_email_from_emailheaders_data___domain[0]:\n        phantom.debug('same Domain')\n        extract_domain_from_dkim_signature__dkim_domain_check_result = True\n        \n    else:\n        phantom.debug('not same Domainn')\n        extract_domain_from_dkim_signature__dkim_domain_check_result = False\n    \n",
                     "x": 90,
-                    "y": 1886
+                    "y": 1684
                 },
                 "27": {
                     "data": {
@@ -552,7 +552,7 @@
                     "id": "27",
                     "type": "decision",
                     "x": 170,
-                    "y": 2076
+                    "y": 1896
                 },
                 "32": {
                     "data": {
@@ -592,7 +592,7 @@
                     "id": "32",
                     "type": "utility",
                     "x": 90,
-                    "y": 2611
+                    "y": 2468
                 },
                 "38": {
                     "data": {
@@ -617,8 +617,8 @@
                     "id": "38",
                     "type": "code",
                     "userCode": "\n    # Write your custom code here...\n    phantom.debug(create_email_artefact_data_artifact_id[0])\n    url = phantom.build_phantom_rest_url('artifact', create_email_artefact_data_artifact_id[0], 'tags')\n    response = phantom.requests.get(url,verify=False,)\n    phantom.debug(\"phantom returned status code {} with message {}\".format(response.status_code, response.text))\n    \n    artifatc_tag_list = response.json()['tags']\n    phantom.debug('Tags from Artifakts {}'.format(artifatc_tag_list))\n    \n    # this builds the Tag list\n    #lat_list = [item for sublist in artifatc_tag_list for item in sublist]\n    #phantom.debug(lat_list)\n    \n    tag_list = ','.join(artifatc_tag_list)\n    \n    convert_tag_list_into_string__tag_str_list = tag_list + ', internal'\n\n",
-                    "x": -1.4210854715202004e-14,
-                    "y": 2256
+                    "x": 180,
+                    "y": 2076
                 },
                 "44": {
                     "data": {
@@ -772,7 +772,7 @@
                     "id": "44",
                     "type": "utility",
                     "x": 90,
-                    "y": 700
+                    "y": 752
                 },
                 "45": {
                     "data": {
@@ -794,7 +794,7 @@
                     "id": "45",
                     "type": "format",
                     "x": 90,
-                    "y": 535
+                    "y": 572
                 },
                 "48": {
                     "data": {
@@ -827,7 +827,7 @@
                     "id": "48",
                     "type": "filter",
                     "x": 150,
-                    "y": 165
+                    "y": 180
                 },
                 "50": {
                     "data": {
@@ -875,7 +875,7 @@
                     "id": "50",
                     "type": "decision",
                     "x": 170,
-                    "y": 2936
+                    "y": 2860
                 },
                 "51": {
                     "data": {
@@ -915,8 +915,8 @@
                     "errors": {},
                     "id": "51",
                     "type": "action",
-                    "x": -1.4210854715202004e-14,
-                    "y": 3264
+                    "x": 0,
+                    "y": 3220
                 },
                 "52": {
                     "data": {
@@ -937,8 +937,8 @@
                     "errors": {},
                     "id": "52",
                     "type": "format",
-                    "x": -1.4210854715202004e-14,
-                    "y": 3116
+                    "x": 0,
+                    "y": 3040
                 },
                 "53": {
                     "data": {
@@ -978,7 +978,7 @@
                     "id": "53",
                     "type": "utility",
                     "x": 90,
-                    "y": 3412
+                    "y": 3400
                 },
                 "56": {
                     "data": {
@@ -1038,7 +1038,7 @@
                     "id": "56",
                     "type": "utility",
                     "x": 90,
-                    "y": 2776
+                    "y": 2648
                 },
                 "57": {
                     "data": {
@@ -1071,8 +1071,8 @@
                     "errors": {},
                     "id": "57",
                     "type": "action",
-                    "x": 260,
-                    "y": 1344.5
+                    "x": 180,
+                    "y": 1324
                 },
                 "58": {
                     "data": {
@@ -1105,8 +1105,8 @@
                     "errors": {},
                     "id": "58",
                     "type": "action",
-                    "x": -1.4210854715202004e-14,
-                    "y": 2444.5
+                    "x": 180,
+                    "y": 2288
                 },
                 "59": {
                     "data": {
@@ -1146,8 +1146,8 @@
                     "errors": {},
                     "id": "59",
                     "type": "action",
-                    "x": 100,
-                    "y": 3660
+                    "x": 90,
+                    "y": 3612
                 },
                 "60": {
                     "data": {
@@ -1196,8 +1196,8 @@
                     "errors": {},
                     "id": "60",
                     "type": "decision",
-                    "x": 180,
-                    "y": 3844.5
+                    "x": 170,
+                    "y": 3762
                 },
                 "61": {
                     "data": {
@@ -1308,8 +1308,8 @@
                     "errors": {},
                     "id": "61",
                     "type": "utility",
-                    "x": -140,
-                    "y": 4160
+                    "x": 0,
+                    "y": 4092
                 },
                 "62": {
                     "data": {
@@ -1330,8 +1330,8 @@
                     "errors": {},
                     "id": "62",
                     "type": "format",
-                    "x": -130,
-                    "y": 4044.5
+                    "x": 0,
+                    "y": 3942
                 }
             },
             "notes": ""
