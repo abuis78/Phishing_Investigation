@@ -122,11 +122,11 @@ def email_subject(action=None, success=None, container=None, results=None, handl
 def email_body(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("email_body() called")
 
-    template = """We would like to thank you for helping our company to deal safely with suspicious content.\n\nThe email will be analyzed immediately and you will receive a response within the next 5 minutes. \n\nWe ask for your patience."""
+    template = """We would like to thank you for helping our company to deal safely with suspicious content.\n\nThe email will be analyzed immediately and you will receive a response within the next 5 minutes. \n\nWe ask for your patience.\n\n{0}"""
 
     # parameter list for template variable replacement
     parameters = [
-        "container:status"
+        "cf_encode_phankey_3:custom_function_result.data.PHANKEY_body"
     ]
 
     ################################################################################

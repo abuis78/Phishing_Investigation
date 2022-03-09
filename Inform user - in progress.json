@@ -68,7 +68,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "1d505e564c2e9a8ba79e706b387035a2eebea3b7",
+            "hash": "a8ab2f391b0c10f2213388ac8ce67c4a643ccede",
             "nodes": {
                 "0": {
                     "data": {
@@ -274,9 +274,9 @@
                         "functionName": "email_body",
                         "id": "7",
                         "parameters": [
-                            "container:status"
+                            "cf_encode_phankey_3:custom_function_result.data.PHANKEY_body"
                         ],
-                        "template": "We would like to thank you for helping our company to deal safely with suspicious content.\n\nThe email will be analyzed immediately and you will receive a response within the next 5 minutes. \n\nWe ask for your patience.",
+                        "template": "We would like to thank you for helping our company to deal safely with suspicious content.\n\nThe email will be analyzed immediately and you will receive a response within the next 5 minutes. \n\nWe ask for your patience.\n\n{0}",
                         "type": "format"
                     },
                     "errors": {},
@@ -439,7 +439,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-09T12:06:11.154598+00:00",
+    "create_time": "2022-03-09T12:06:38.946656+00:00",
     "draft_mode": false,
     "labels": [
         "*"
