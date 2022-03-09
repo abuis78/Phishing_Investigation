@@ -264,7 +264,7 @@ def artifact_update_12(action=None, success=None, container=None, results=None, 
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/artifact_update", parameters=parameters, name="artifact_update_12", callback=join_dkim_path)
+    phantom.custom_function(custom_function="Phishing_Investigation/artifact_update", parameters=parameters, name="artifact_update_12")
 
     return
 
@@ -276,11 +276,12 @@ def join_dkim_path(action=None, success=None, container=None, results=None, hand
     if phantom.get_run_data(key="join_dkim_path_called"):
         return
 
-    # save the state that the joined function has now been called
-    phantom.save_run_data(key="join_dkim_path_called", value="dkim_path")
+    if phantom.completed(action_names=["update_artifact_3"]):
+        # save the state that the joined function has now been called
+        phantom.save_run_data(key="join_dkim_path_called", value="dkim_path")
 
-    # call connected block "dkim_path"
-    dkim_path(container=container, handle=handle)
+        # call connected block "dkim_path"
+        dkim_path(container=container, handle=handle)
 
     return
 
@@ -341,7 +342,7 @@ def convert_tag_list_into_string(action=None, success=None, container=None, resu
 
     phantom.save_run_data(key="convert_tag_list_into_string:tag_str_list", value=json.dumps(convert_tag_list_into_string__tag_str_list))
 
-    artifact_update_12(container=container)
+    update_artifact_3(container=container)
 
     return
 
@@ -608,6 +609,39 @@ def update_artifact_2(action=None, success=None, container=None, results=None, h
     ################################################################################
 
     phantom.act("update artifact", parameters=parameters, name="update_artifact_2", assets=["phantom"], callback=join_vip_path)
+
+    return
+
+
+def update_artifact_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("update_artifact_3() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    create_email_artefact__result = phantom.collect2(container=container, datapath=["create_email_artefact:custom_function_result.data.artifact_id"])
+    convert_tag_list_into_string__tag_str_list = json.loads(phantom.get_run_data(key="convert_tag_list_into_string:tag_str_list"))
+
+    parameters = []
+
+    # build parameters list for 'update_artifact_3' call
+    for create_email_artefact__result_item in create_email_artefact__result:
+        if create_email_artefact__result_item[0] is not None:
+            parameters.append({
+                "artifact_id": create_email_artefact__result_item[0],
+                "tags": convert_tag_list_into_string__tag_str_list,
+            })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("update artifact", parameters=parameters, name="update_artifact_3", assets=["phantom"], callback=join_dkim_path)
 
     return
 

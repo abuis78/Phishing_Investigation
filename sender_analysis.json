@@ -45,13 +45,6 @@
                     "targetPort": "32_in"
                 },
                 {
-                    "id": "port_31_to_port_32",
-                    "sourceNode": "31",
-                    "sourcePort": "31_out",
-                    "targetNode": "32",
-                    "targetPort": "32_in"
-                },
-                {
                     "id": "port_44_to_port_23",
                     "sourceNode": "44",
                     "sourcePort": "44_out",
@@ -90,13 +83,6 @@
                     "sourcePort": "48_out",
                     "targetNode": "2",
                     "targetPort": "2_in"
-                },
-                {
-                    "id": "port_38_to_port_31",
-                    "sourceNode": "38",
-                    "sourcePort": "38_out",
-                    "targetNode": "31",
-                    "targetPort": "31_in"
                 },
                 {
                     "conditions": [
@@ -194,9 +180,23 @@
                     "sourcePort": "57_out",
                     "targetNode": "24",
                     "targetPort": "24_in"
+                },
+                {
+                    "id": "port_38_to_port_58",
+                    "sourceNode": "38",
+                    "sourcePort": "38_out",
+                    "targetNode": "58",
+                    "targetPort": "58_in"
+                },
+                {
+                    "id": "port_58_to_port_32",
+                    "sourceNode": "58",
+                    "sourcePort": "58_out",
+                    "targetNode": "32",
+                    "targetPort": "32_in"
                 }
             ],
-            "hash": "cb7026baf9bcddba3a896d84e1cd15052e1e4494",
+            "hash": "ed87f15a28b32555db663524446e99c9e1d02a83",
             "nodes": {
                 "0": {
                     "data": {
@@ -791,8 +791,8 @@
                     "errors": {},
                     "id": "31",
                     "type": "utility",
-                    "x": 0,
-                    "y": 2446
+                    "x": -420,
+                    "y": 2440
                 },
                 "32": {
                     "data": {
@@ -1313,6 +1313,40 @@
                     "type": "action",
                     "x": 260,
                     "y": 1344.5
+                },
+                "58": {
+                    "data": {
+                        "action": "update artifact",
+                        "actionType": "generic",
+                        "advanced": {
+                            "join": []
+                        },
+                        "connector": "Phantom",
+                        "connectorConfigs": [
+                            "phantom"
+                        ],
+                        "connectorId": "deb82aa9-22cc-4675-9cf1-534b8d006eb7",
+                        "connectorVersion": "v1",
+                        "functionId": 3,
+                        "functionName": "update_artifact_3",
+                        "id": "58",
+                        "parameters": {
+                            "artifact_id": "create_email_artefact:custom_function_result.data.artifact_id",
+                            "tags": "convert_tag_list_into_string:custom_function:tag_str_list"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "artifact_id"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "58",
+                    "type": "action",
+                    "x": 0,
+                    "y": 2444.5
                 }
             },
             "notes": ""
@@ -1324,7 +1358,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-09T11:01:00.449819+00:00",
+    "create_time": "2022-03-09T11:02:18.083868+00:00",
     "draft_mode": false,
     "labels": [
         "*"
