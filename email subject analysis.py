@@ -209,12 +209,12 @@ def workbook_task_update_4(action=None, success=None, container=None, results=No
     parameters = []
 
     parameters.append({
+        "owner": "current",
+        "status": "complete",
+        "container": id_value,
         "task_name": "subject",
         "note_title": "[Automated completion] Sender analysis",
         "note_content": " Sender analysis",
-        "status": "complete",
-        "owner": "current",
-        "container": id_value,
     })
 
     ################################################################################
