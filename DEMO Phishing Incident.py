@@ -150,7 +150,26 @@ def playbook_domain_analysis_1(action=None, success=None, container=None, result
     ################################################################################
 
     # call playbook "Phishing_Investigation/domain analysis", returns the playbook_run_id
-    playbook_run_id = phantom.playbook("Phishing_Investigation/domain analysis", container=container, name="playbook_domain_analysis_1")
+    playbook_run_id = phantom.playbook("Phishing_Investigation/domain analysis", container=container, name="playbook_domain_analysis_1", callback=playbook_manual_steps___classification_1)
+
+    return
+
+
+def playbook_manual_steps___classification_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("playbook_manual_steps___classification_1() called")
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    # call playbook "Phishing_Investigation/manual steps - classification", returns the playbook_run_id
+    playbook_run_id = phantom.playbook("Phishing_Investigation/manual steps - classification", container=container, name="playbook_manual_steps___classification_1")
 
     return
 

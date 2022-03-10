@@ -54,9 +54,16 @@
                     "sourcePort": "4_out",
                     "targetNode": "8",
                     "targetPort": "8_in"
+                },
+                {
+                    "id": "port_8_to_port_9",
+                    "sourceNode": "8",
+                    "sourcePort": "8_out",
+                    "targetNode": "9",
+                    "targetPort": "9_in"
                 }
             ],
-            "hash": "cccca906fa15042aafad1172d0fbea0361a08d3b",
+            "hash": "038ca4dd67ebe6b0f3400bc10824b905dca77053",
             "nodes": {
                 "0": {
                     "data": {
@@ -325,6 +332,27 @@
                     "type": "playbook",
                     "x": 0,
                     "y": 1000
+                },
+                "9": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "playbook_manual_steps___classification_1",
+                        "id": "9",
+                        "playbookName": "manual steps - classification",
+                        "playbookRepo": 5,
+                        "playbookRepoName": "Phishing_Investigation",
+                        "playbookType": "automation",
+                        "synchronous": true,
+                        "type": "playbook"
+                    },
+                    "errors": {},
+                    "id": "9",
+                    "type": "playbook",
+                    "x": -1.4210854715202004e-14,
+                    "y": 1144.5
                 }
             },
             "notes": ""
@@ -336,7 +364,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-10T06:19:09.415478+00:00",
+    "create_time": "2022-03-10T07:27:28.765284+00:00",
     "draft_mode": false,
     "labels": [
         "phishing-mailbox"
