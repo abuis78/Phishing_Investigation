@@ -114,7 +114,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "8533846c35cec916357f2abe50fc73bfbe0cfca6",
+            "hash": "85b88238cdef9a86a6cf4865562be85dbb0dca6e",
             "nodes": {
                 "0": {
                     "data": {
@@ -129,7 +129,7 @@
                     "id": "0",
                     "type": "start",
                     "x": 1000,
-                    "y": 419.9999999999999
+                    "y": 419.9999999999998
                 },
                 "1": {
                     "data": {
@@ -149,6 +149,7 @@
                     "y": 2020
                 },
                 "2": {
+                    "customCode": "def manual_step_classification(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):\n    phantom.debug(\"manual_step_classification() called\")\n\n    # set user and message variables for phantom.prompt call\n    effective_user_id = phantom.get_effective_user()\n    url = phantom.build_phantom_rest_url('ph_user', effective_user_id)\n    effective_user = phantom.requests.get(url, verify=False).json()\n    phantom.debug(effective_user['username'])\n\n    user = effective_user['username']\n    message = \"\"\"## I have a question?\\nDo any manual steps need to be taken?\\nPlease select ...\"\"\"\n\n    # parameter list for template variable replacement\n    parameters = []\n\n    # responses\n    response_types = [\n        {\n            \"prompt\": \"DLP checks?\",\n            \"options\": {\n                \"type\": \"list\",\n                \"choices\": [\n                    \"Yes\",\n                    \"No\"\n                ],\n            },\n        },\n        {\n            \"prompt\": \"VIP checks?\",\n            \"options\": {\n                \"type\": \"list\",\n                \"choices\": [\n                    \"Yes\",\n                    \"No\"\n                ],\n            },\n        },\n        {\n            \"prompt\": \"Check attachment before uploading them to cloud sandbox ?\",\n            \"options\": {\n                \"type\": \"list\",\n                \"choices\": [\n                    \"Yes\",\n                    \"No\"\n                ],\n            },\n        }\n    ]\n\n    phantom.prompt2(container=container, user=user, message=message, respond_in_mins=30, name=\"manual_step_classification\", parameters=parameters, response_types=response_types, callback=decision_dlp_checks)\n\n    return",
                     "data": {
                         "advanced": {
                             "customName": "manual step classification",
@@ -618,7 +619,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-09T12:29:47.047766+00:00",
+    "create_time": "2022-03-10T07:31:19.912527+00:00",
     "draft_mode": false,
     "labels": [
         "*"

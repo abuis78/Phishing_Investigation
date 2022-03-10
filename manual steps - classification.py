@@ -20,8 +20,12 @@ def manual_step_classification(action=None, success=None, container=None, result
     phantom.debug("manual_step_classification() called")
 
     # set user and message variables for phantom.prompt call
+    effective_user_id = phantom.get_effective_user()
+    url = phantom.build_phantom_rest_url('ph_user', effective_user_id)
+    effective_user = phantom.requests.get(url, verify=False).json()
+    phantom.debug(effective_user['username'])
 
-    user = "admin"
+    user = effective_user['username']
     message = """## I have a question?\nDo any manual steps need to be taken?\nPlease select ..."""
 
     # parameter list for template variable replacement
@@ -64,7 +68,6 @@ def manual_step_classification(action=None, success=None, container=None, result
     phantom.prompt2(container=container, user=user, message=message, respond_in_mins=30, name="manual_step_classification", parameters=parameters, response_types=response_types, callback=decision_dlp_checks)
 
     return
-
 
 def decision_dlp_checks(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("decision_dlp_checks() called")
@@ -133,10 +136,10 @@ def workbook_add_2(action=None, success=None, container=None, results=None, hand
     parameters = []
 
     parameters.append({
-        "container": id_value,
         "workbook": "Vip checks",
-        "check_for_existing_workbook": True,
+        "container": id_value,
         "start_workbook": False,
+        "check_for_existing_workbook": True,
     })
 
     ################################################################################
@@ -162,10 +165,10 @@ def workbook_add_3(action=None, success=None, container=None, results=None, hand
     parameters = []
 
     parameters.append({
-        "container": id_value,
         "workbook": "DLP checks",
-        "check_for_existing_workbook": True,
+        "container": id_value,
         "start_workbook": False,
+        "check_for_existing_workbook": True,
     })
 
     ################################################################################
@@ -226,10 +229,10 @@ def workbook_add_4(action=None, success=None, container=None, results=None, hand
     parameters = []
 
     parameters.append({
-        "container": id_value,
         "workbook": "Check attachment",
-        "check_for_existing_workbook": True,
+        "container": id_value,
         "start_workbook": False,
+        "check_for_existing_workbook": True,
     })
 
     ################################################################################
