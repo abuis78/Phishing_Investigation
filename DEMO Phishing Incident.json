@@ -63,16 +63,9 @@
                     "targetPort": "9_in"
                 },
                 {
-                    "id": "port_0_to_port_11",
+                    "id": "port_0_to_port_6",
                     "sourceNode": "0",
                     "sourcePort": "0_out",
-                    "targetNode": "11",
-                    "targetPort": "11_in"
-                },
-                {
-                    "id": "port_11_to_port_6",
-                    "sourceNode": "11",
-                    "sourcePort": "11_out",
                     "targetNode": "6",
                     "targetPort": "6_in"
                 }
@@ -131,35 +124,6 @@
                     "type": "playbook",
                     "x": 0,
                     "y": 1124.5
-                },
-                "11": {
-                    "data": {
-                        "advanced": {
-                            "join": []
-                        },
-                        "functionId": 1,
-                        "functionName": "playbook_INPUT_create_Ticket_SNOW_1",
-                        "id": "11",
-                        "inputs": {
-                            "container_id": {
-                                "datapaths": [
-                                    "container:id"
-                                ],
-                                "deduplicate": false
-                            }
-                        },
-                        "playbookName": "INPUT create Ticket SNOW",
-                        "playbookRepo": 8,
-                        "playbookRepoName": "SOAR-DEMO",
-                        "playbookType": "data",
-                        "synchronous": true,
-                        "type": "playbook"
-                    },
-                    "errors": {},
-                    "id": "11",
-                    "type": "playbook",
-                    "x": -1.4210854715202004e-14,
-                    "y": 44.49999999999997
                 },
                 "2": {
                     "data": {
@@ -428,7 +392,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-10T09:40:34.381852+00:00",
+    "create_time": "2022-03-10T09:54:53.514097+00:00",
     "draft_mode": false,
     "labels": [
         "phishing-mailbox"
