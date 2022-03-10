@@ -202,7 +202,7 @@ def update_artifact_2(action=None, success=None, container=None, results=None, h
             "filtered-data:filter_status:condition_2:domain_reputation_1:action_result.message"
         ])
 
-    filtered_result_0_data_filter_status = phantom.collect2(container=container, datapath=["filtered-data:filter_status:condition_2:domain_reputation_2:action_result.parameter.context.artifact_id"])
+    filtered_result_0_data_filter_status = phantom.collect2(container=container, datapath=["filtered-data:filter_status:condition_2:domain_reputation_1:action_result.parameter.context.artifact_id"])
 
     parameters = []
 

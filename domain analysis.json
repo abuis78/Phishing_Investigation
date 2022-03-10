@@ -147,7 +147,7 @@
                     "targetPort": "4_in"
                 }
             ],
-            "hash": "78f638608dd1c5aabec7e5003aa3bb15c2d97c34",
+            "hash": "f9f8c9c7ff61f2bd21f148f143abe0667f22feff",
             "nodes": {
                 "0": {
                     "data": {
@@ -608,7 +608,7 @@
                         "functionName": "update_artifact_2",
                         "id": "8",
                         "parameters": {
-                            "artifact_id": "filtered-data:filter_status:condition_2:domain_reputation_2:action_result.parameter.context.artifact_id",
+                            "artifact_id": "filtered-data:filter_status:condition_2:domain_reputation_1:action_result.parameter.context.artifact_id",
                             "cef_json": {
                                 "functionId": 2,
                                 "parameters": [
@@ -688,7 +688,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-10T06:16:38.244149+00:00",
+    "create_time": "2022-03-10T06:17:46.816842+00:00",
     "draft_mode": false,
     "labels": [
         "*"
