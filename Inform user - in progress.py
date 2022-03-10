@@ -73,8 +73,8 @@ def cf_encode_phankey_3(action=None, success=None, container=None, results=None,
     # build parameters list for 'cf_encode_phankey_3' call
     for regex_extract_email_1_data_item in regex_extract_email_1_data:
         parameters.append({
-            "container_id": id_value,
             "user_email": regex_extract_email_1_data_item[0],
+            "container_id": id_value,
         })
 
     ################################################################################
@@ -163,8 +163,8 @@ def send_email_1(action=None, success=None, container=None, results=None, handle
             parameters.append({
                 "to": regex_extract_email_1_data_item[0],
                 "body": email_body,
-                "subject": email_subject,
                 "from": "it@soar4rookies.com",
+                "subject": email_subject,
             })
 
     ################################################################################
@@ -198,6 +198,39 @@ def add_note_4(action=None, success=None, container=None, results=None, handle=N
     ################################################################################
 
     phantom.add_note(container=container, content=email_body, note_format="markdown", note_type="general", title="Email to the customer")
+
+    workbook_task_update_2(container=container)
+
+    return
+
+
+def workbook_task_update_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("workbook_task_update_2() called")
+
+    id_value = container.get("id", None)
+
+    parameters = []
+
+    parameters.append({
+        "task_name": "Inform user",
+        "note_title": "[Automated completion]",
+        "note_content": "Automated completion",
+        "status": "complete",
+        "owner": "current",
+        "container": id_value,
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="Phishing_Investigation/workbook_task_update", parameters=parameters, name="workbook_task_update_2")
 
     return
 
