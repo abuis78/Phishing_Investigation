@@ -47,9 +47,16 @@
                     "sourcePort": "5_out",
                     "targetNode": "2",
                     "targetPort": "2_in"
+                },
+                {
+                    "id": "port_4_to_port_8",
+                    "sourceNode": "4",
+                    "sourcePort": "4_out",
+                    "targetNode": "8",
+                    "targetPort": "8_in"
                 }
             ],
-            "hash": "002475ac0a51932b19822332b34c1052c4bfde65",
+            "hash": "cccca906fa15042aafad1172d0fbea0361a08d3b",
             "nodes": {
                 "0": {
                     "data": {
@@ -95,7 +102,7 @@
                         "playbookRepo": 5,
                         "playbookRepoName": "Phishing_Investigation",
                         "playbookType": "automation",
-                        "synchronous": false,
+                        "synchronous": true,
                         "type": "playbook"
                     },
                     "errors": {},
@@ -116,7 +123,7 @@
                         "playbookRepo": 5,
                         "playbookRepoName": "Phishing_Investigation",
                         "playbookType": "automation",
-                        "synchronous": false,
+                        "synchronous": true,
                         "type": "playbook"
                     },
                     "errors": {},
@@ -137,7 +144,7 @@
                         "playbookRepo": 5,
                         "playbookRepoName": "Phishing_Investigation",
                         "playbookType": "automation",
-                        "synchronous": false,
+                        "synchronous": true,
                         "type": "playbook"
                     },
                     "errors": {},
@@ -158,7 +165,7 @@
                         "playbookRepo": 5,
                         "playbookRepoName": "Phishing_Investigation",
                         "playbookType": "automation",
-                        "synchronous": false,
+                        "synchronous": true,
                         "type": "playbook"
                     },
                     "errors": {},
@@ -297,6 +304,27 @@
                     "type": "utility",
                     "x": 0,
                     "y": 296
+                },
+                "8": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "playbook_domain_analysis_1",
+                        "id": "8",
+                        "playbookName": "domain analysis",
+                        "playbookRepo": 5,
+                        "playbookRepoName": "Phishing_Investigation",
+                        "playbookType": "automation",
+                        "synchronous": true,
+                        "type": "playbook"
+                    },
+                    "errors": {},
+                    "id": "8",
+                    "type": "playbook",
+                    "x": 0,
+                    "y": 1000
                 }
             },
             "notes": ""
@@ -308,7 +336,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-10T05:54:00.393754+00:00",
+    "create_time": "2022-03-10T06:19:09.415478+00:00",
     "draft_mode": false,
     "labels": [
         "phishing-mailbox"

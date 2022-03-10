@@ -30,9 +30,7 @@ def playbook_sender_analysis_1(action=None, success=None, container=None, result
     ################################################################################
 
     # call playbook "Phishing_Investigation/sender_analysis", returns the playbook_run_id
-    playbook_run_id = phantom.playbook("Phishing_Investigation/sender_analysis", container=container)
-
-    playbook_email_subject_analysis_1(container=container)
+    playbook_run_id = phantom.playbook("Phishing_Investigation/sender_analysis", container=container, name="playbook_sender_analysis_1", callback=playbook_email_subject_analysis_1)
 
     return
 
@@ -51,9 +49,7 @@ def playbook_email_subject_analysis_1(action=None, success=None, container=None,
     ################################################################################
 
     # call playbook "Phishing_Investigation/email subject analysis", returns the playbook_run_id
-    playbook_run_id = phantom.playbook("Phishing_Investigation/email subject analysis", container=container)
-
-    playbook_url_analysis_1(container=container)
+    playbook_run_id = phantom.playbook("Phishing_Investigation/email subject analysis", container=container, name="playbook_email_subject_analysis_1", callback=playbook_url_analysis_1)
 
     return
 
@@ -72,7 +68,7 @@ def playbook_url_analysis_1(action=None, success=None, container=None, results=N
     ################################################################################
 
     # call playbook "Phishing_Investigation/URL analysis", returns the playbook_run_id
-    playbook_run_id = phantom.playbook("Phishing_Investigation/URL analysis", container=container)
+    playbook_run_id = phantom.playbook("Phishing_Investigation/URL analysis", container=container, name="playbook_url_analysis_1", callback=playbook_domain_analysis_1)
 
     return
 
@@ -91,9 +87,7 @@ def playbook_inform_user___in_progress_1(action=None, success=None, container=No
     ################################################################################
 
     # call playbook "Phishing_Investigation/Inform user - in progress", returns the playbook_run_id
-    playbook_run_id = phantom.playbook("Phishing_Investigation/Inform user - in progress", container=container)
-
-    playbook_sender_analysis_1(container=container)
+    playbook_run_id = phantom.playbook("Phishing_Investigation/Inform user - in progress", container=container, name="playbook_inform_user___in_progress_1", callback=playbook_sender_analysis_1)
 
     return
 
@@ -138,6 +132,25 @@ def promote_to_case_2(action=None, success=None, container=None, results=None, h
     container = phantom.get_container(container.get('id', None))
 
     playbook_inform_user___in_progress_1(container=container)
+
+    return
+
+
+def playbook_domain_analysis_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("playbook_domain_analysis_1() called")
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    # call playbook "Phishing_Investigation/domain analysis", returns the playbook_run_id
+    playbook_run_id = phantom.playbook("Phishing_Investigation/domain analysis", container=container, name="playbook_domain_analysis_1")
 
     return
 
