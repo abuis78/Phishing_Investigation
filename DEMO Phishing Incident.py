@@ -11,8 +11,8 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'promote_to_case_2' block
-    promote_to_case_2(container=container)
+    # call 'set_status_1' block
+    set_status_1(container=container)
 
     return
 
@@ -93,7 +93,7 @@ def playbook_inform_user___in_progress_1(action=None, success=None, container=No
     # call playbook "Phishing_Investigation/Inform user - in progress", returns the playbook_run_id
     playbook_run_id = phantom.playbook("Phishing_Investigation/Inform user - in progress", container=container)
 
-    set_status_1(container=container)
+    playbook_sender_analysis_1(container=container)
 
     return
 
@@ -115,7 +115,7 @@ def set_status_1(action=None, success=None, container=None, results=None, handle
 
     container = phantom.get_container(container.get('id', None))
 
-    playbook_sender_analysis_1(container=container)
+    promote_to_case_2(container=container)
 
     return
 
