@@ -107,6 +107,9 @@ def decision_1(action=None, success=None, container=None, results=None, handle=N
         create_subject_artifact(action=action, success=success, container=container, results=results, handle=handle)
         return
 
+    # check for 'else' condition 2
+    join_workbook_task_update_4(action=action, success=success, container=container, results=results, handle=handle)
+
     return
 
 
@@ -183,7 +186,48 @@ def update_artifact_1(action=None, success=None, container=None, results=None, h
     ## Custom Code End
     ################################################################################
 
-    phantom.act("update artifact", parameters=parameters, name="update_artifact_1", assets=["phantom"])
+    phantom.act("update artifact", parameters=parameters, name="update_artifact_1", assets=["phantom"], callback=join_workbook_task_update_4)
+
+    return
+
+
+def join_workbook_task_update_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("join_workbook_task_update_4() called")
+
+    if phantom.completed(custom_function_names=["keyword_search_in_subject"], action_names=["update_artifact_1"]):
+        # call connected block "workbook_task_update_4"
+        workbook_task_update_4(container=container, handle=handle)
+
+    return
+
+
+def workbook_task_update_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("workbook_task_update_4() called")
+
+    id_value = container.get("id", None)
+
+    parameters = []
+
+    parameters.append({
+        "task_name": "subject",
+        "note_title": "[Automated completion] Sender analysis",
+        "note_content": " Sender analysis",
+        "status": "complete",
+        "owner": "current",
+        "container": id_value,
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="Phishing_Investigation/workbook_task_update", parameters=parameters, name="workbook_task_update_4")
 
     return
 
