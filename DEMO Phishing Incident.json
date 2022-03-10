@@ -1,0 +1,317 @@
+{
+    "blockly": false,
+    "blockly_xml": "<xml></xml>",
+    "category": "Uncategorized",
+    "coa": {
+        "data": {
+            "description": "",
+            "edges": [
+                {
+                    "id": "port_2_to_port_3",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
+                    "targetNode": "3",
+                    "targetPort": "3_in"
+                },
+                {
+                    "id": "port_3_to_port_4",
+                    "sourceNode": "3",
+                    "sourcePort": "3_out",
+                    "targetNode": "4",
+                    "targetPort": "4_in"
+                },
+                {
+                    "id": "port_5_to_port_6",
+                    "sourceNode": "5",
+                    "sourcePort": "5_out",
+                    "targetNode": "6",
+                    "targetPort": "6_in"
+                },
+                {
+                    "id": "port_6_to_port_2",
+                    "sourceNode": "6",
+                    "sourcePort": "6_out",
+                    "targetNode": "2",
+                    "targetPort": "2_in"
+                },
+                {
+                    "id": "port_0_to_port_7",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "7",
+                    "targetPort": "7_in"
+                },
+                {
+                    "id": "port_7_to_port_5",
+                    "sourceNode": "7",
+                    "sourcePort": "7_out",
+                    "targetNode": "5",
+                    "targetPort": "5_in"
+                }
+            ],
+            "hash": "badd13c264ba1771ac9bd7ec7a31401bc6d84a71",
+            "nodes": {
+                "0": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionName": "on_start",
+                        "id": "0",
+                        "type": "start"
+                    },
+                    "errors": {},
+                    "id": "0",
+                    "type": "start",
+                    "x": 1000,
+                    "y": 200
+                },
+                "1": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "on_finish",
+                        "id": "1",
+                        "type": "end"
+                    },
+                    "errors": {},
+                    "id": "1",
+                    "type": "end",
+                    "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
+                    "x": 1000,
+                    "y": 1320
+                },
+                "2": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "playbook_sender_analysis_1",
+                        "id": "2",
+                        "playbookName": "sender_analysis",
+                        "playbookRepo": 5,
+                        "playbookRepoName": "Phishing_Investigation",
+                        "playbookType": "automation",
+                        "synchronous": false,
+                        "type": "playbook"
+                    },
+                    "errors": {},
+                    "id": "2",
+                    "type": "playbook",
+                    "x": 980,
+                    "y": 660
+                },
+                "3": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "playbook_email_subject_analysis_1",
+                        "id": "3",
+                        "playbookName": "email subject analysis",
+                        "playbookRepo": 5,
+                        "playbookRepoName": "Phishing_Investigation",
+                        "playbookType": "automation",
+                        "synchronous": false,
+                        "type": "playbook"
+                    },
+                    "errors": {},
+                    "id": "3",
+                    "type": "playbook",
+                    "x": 980,
+                    "y": 780
+                },
+                "4": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "playbook_URL_analysis_1",
+                        "id": "4",
+                        "playbookName": "URL analysis",
+                        "playbookRepo": 5,
+                        "playbookRepoName": "Phishing_Investigation",
+                        "playbookType": "automation",
+                        "synchronous": false,
+                        "type": "playbook"
+                    },
+                    "errors": {},
+                    "id": "4",
+                    "type": "playbook",
+                    "x": 980,
+                    "y": 920
+                },
+                "5": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "playbook_Inform_user___in_progress_1",
+                        "id": "5",
+                        "playbookName": "Inform user - in progress",
+                        "playbookRepo": 5,
+                        "playbookRepoName": "Phishing_Investigation",
+                        "playbookType": "automation",
+                        "synchronous": false,
+                        "type": "playbook"
+                    },
+                    "errors": {},
+                    "id": "5",
+                    "type": "playbook",
+                    "x": 980,
+                    "y": 444.49999999999983
+                },
+                "6": {
+                    "data": {
+                        "advanced": {
+                            "join": [],
+                            "refreshNotableData": true
+                        },
+                        "functionId": 1,
+                        "functionName": "set_status_1",
+                        "id": "6",
+                        "selectMore": false,
+                        "tab": "apis",
+                        "type": "utility",
+                        "utilities": {
+                            "set_status": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "choices": "notableStatus",
+                                        "description": "",
+                                        "label": "status",
+                                        "name": "status",
+                                        "placeholder": "Select status",
+                                        "renderType": "dropdown",
+                                        "required": true
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "container",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "trace",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "set status",
+                                "name": "set_status",
+                                "refreshNotableData": true
+                            }
+                        },
+                        "utilityType": "api",
+                        "values": {
+                            "set_status": {
+                                "_internal": [
+                                    "container",
+                                    "trace"
+                                ],
+                                "status": "in progress"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "6",
+                    "type": "utility",
+                    "x": 980,
+                    "y": 564.5
+                },
+                "7": {
+                    "data": {
+                        "advanced": {
+                            "join": [],
+                            "refreshNotableData": true
+                        },
+                        "functionId": 2,
+                        "functionName": "promote_to_case_2",
+                        "id": "7",
+                        "selectMore": false,
+                        "tab": "apis",
+                        "type": "utility",
+                        "utilities": {
+                            "promote": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "choices": [
+                                            "Self-Replicating Malware",
+                                            "Account Compromise",
+                                            "NIST 800-61",
+                                            "Vulnerability Disclosure",
+                                            "Response Template 1",
+                                            "Risk Investigation",
+                                            "Data Breach",
+                                            "Suspicious Email",
+                                            "Risk Response",
+                                            "Network Indicator Enrichment",
+                                            "DLP checks",
+                                            "Vip checks",
+                                            "Check attachment ",
+                                            "Phishing Incident"
+                                        ],
+                                        "description": "",
+                                        "label": "template",
+                                        "name": "template",
+                                        "placeholder": "Select a template",
+                                        "renderType": "dropdown",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "container",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "trace",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "promote to case",
+                                "name": "promote",
+                                "refreshNotableData": true
+                            }
+                        },
+                        "utilityType": "api",
+                        "values": {
+                            "promote": {
+                                "_internal": [
+                                    "container",
+                                    "trace"
+                                ],
+                                "template": "Phishing Incident"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "7",
+                    "type": "utility",
+                    "x": 980,
+                    "y": 340
+                }
+            },
+            "notes": ""
+        },
+        "input_spec": null,
+        "output_spec": null,
+        "playbook_type": "automation",
+        "python_version": "3",
+        "schema": "5.0.5",
+        "version": "5.2.1.78411"
+    },
+    "create_time": "2022-03-10T05:41:39.182456+00:00",
+    "draft_mode": false,
+    "labels": [
+        "phishing-mailbox"
+    ],
+    "tags": []
+}
