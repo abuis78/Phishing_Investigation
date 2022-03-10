@@ -78,7 +78,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "9e637b4131f6c53d3c1d2d3af4c0df753d26e1f8",
+            "hash": "e76e9713f19e2f249f71baabf3c482d9e7c3aa6f",
             "nodes": {
                 "0": {
                     "data": {
@@ -510,7 +510,11 @@
                 "9": {
                     "data": {
                         "advanced": {
-                            "join": []
+                            "join": [],
+                            "notRequiredJoins": [
+                                "keyword_search_in_subject",
+                                "update_artifact_1"
+                            ]
                         },
                         "customFunction": {
                             "draftMode": false,
@@ -631,7 +635,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-10T06:01:48.597881+00:00",
+    "create_time": "2022-03-10T06:02:34.746620+00:00",
     "draft_mode": false,
     "labels": [
         "*"

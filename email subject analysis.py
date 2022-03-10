@@ -194,9 +194,15 @@ def update_artifact_1(action=None, success=None, container=None, results=None, h
 def join_workbook_task_update_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("join_workbook_task_update_4() called")
 
-    if phantom.completed(custom_function_names=["keyword_search_in_subject"], action_names=["update_artifact_1"]):
-        # call connected block "workbook_task_update_4"
-        workbook_task_update_4(container=container, handle=handle)
+    # if the joined function has already been called, do nothing
+    if phantom.get_run_data(key="join_workbook_task_update_4_called"):
+        return
+
+    # save the state that the joined function has now been called
+    phantom.save_run_data(key="join_workbook_task_update_4_called", value="workbook_task_update_4")
+
+    # call connected block "workbook_task_update_4"
+    workbook_task_update_4(container=container, handle=handle)
 
     return
 
