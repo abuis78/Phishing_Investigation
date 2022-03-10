@@ -60,7 +60,7 @@ def file_reputation_1(action=None, success=None, container=None, results=None, h
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
-    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.fileHash","artifact:*.id"])
+    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.fileHashSha256","artifact:*.id"])
 
     parameters = []
 

@@ -147,7 +147,7 @@
                     "targetPort": "5_in"
                 }
             ],
-            "hash": "171712cc4c658b3b4cea1fa5362d608aae362192",
+            "hash": "559193e7eb033e2dbf891e387c92a01e6b7d18ce",
             "nodes": {
                 "0": {
                     "data": {
@@ -381,7 +381,7 @@
                         "functionName": "file_reputation_1",
                         "id": "4",
                         "parameters": {
-                            "hash": "artifact:*.cef.fileHash"
+                            "hash": "artifact:*.cef.fileHashSha256"
                         },
                         "requiredParameters": [
                             {
@@ -686,7 +686,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-10T07:49:49.819908+00:00",
+    "create_time": "2022-03-10T07:50:34.783336+00:00",
     "draft_mode": false,
     "labels": [
         "*"
