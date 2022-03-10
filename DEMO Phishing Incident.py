@@ -11,8 +11,8 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'set_status_1' block
-    set_status_1(container=container)
+    # call 'playbook_input_create_ticket_snow_1' block
+    playbook_input_create_ticket_snow_1(container=container)
 
     return
 
@@ -189,6 +189,31 @@ def playbook_file_analysis_1(action=None, success=None, container=None, results=
 
     # call playbook "Phishing_Investigation/file analysis", returns the playbook_run_id
     playbook_run_id = phantom.playbook("Phishing_Investigation/file analysis", container=container, name="playbook_file_analysis_1", callback=playbook_manual_steps___classification_1)
+
+    return
+
+
+def playbook_input_create_ticket_snow_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("playbook_input_create_ticket_snow_1() called")
+
+    id_value = container.get("id", None)
+
+    inputs = {
+        "container_id": id_value,
+    }
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    # call playbook "SOAR-DEMO/INPUT create Ticket SNOW", returns the playbook_run_id
+    playbook_run_id = phantom.playbook("SOAR-DEMO/INPUT create Ticket SNOW", container=container, name="playbook_input_create_ticket_snow_1", callback=set_status_1, inputs=inputs)
 
     return
 
