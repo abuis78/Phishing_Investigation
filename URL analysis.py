@@ -11,8 +11,8 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'filter_url_artifact' block
-    filter_url_artifact(container=container)
+    # call 'decision_1' block
+    decision_1(container=container)
 
     return
 
@@ -152,7 +152,7 @@ def update_artifact_add_tag_status_failed(action=None, success=None, container=N
     ## Custom Code End
     ################################################################################
 
-    phantom.act("update artifact", parameters=parameters, name="update_artifact_add_tag_status_failed", assets=["phantom"])
+    phantom.act("update artifact", parameters=parameters, name="update_artifact_add_tag_status_failed", assets=["phantom"], callback=join_workbook_task_update_3)
 
     return
 
@@ -272,8 +272,8 @@ def set_artifact_status_low(action=None, success=None, container=None, results=N
     for filtered_result_0_item_severity_set_based_on_malicious in filtered_result_0_data_severity_set_based_on_malicious:
         if filtered_result_0_item_severity_set_based_on_malicious[0] is not None:
             parameters.append({
-                "artifact_id": filtered_result_0_item_severity_set_based_on_malicious[0],
                 "severity": "low",
+                "artifact_id": filtered_result_0_item_severity_set_based_on_malicious[0],
             })
 
     ################################################################################
@@ -322,31 +322,41 @@ def url_reputation_path(action=None, success=None, container=None, results=None,
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="DB_POC_final/noop", parameters=parameters, name="url_reputation_path", callback=debug_2)
+    phantom.custom_function(custom_function="DB_POC_final/noop", parameters=parameters, name="url_reputation_path", callback=join_workbook_task_update_3)
 
     return
 
 
-def debug_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("debug_2() called")
+def join_workbook_task_update_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("join_workbook_task_update_3() called")
 
-    vt_url_reputation_check_result_data = phantom.collect2(container=container, datapath=["vt_url_reputation_check:action_result.object","vt_url_reputation_check:action_result.parameter.context.artifact_id"], action_results=results)
+    # if the joined function has already been called, do nothing
+    if phantom.get_run_data(key="join_workbook_task_update_3_called"):
+        return
 
-    vt_url_reputation_check_result_item_0 = [item[0] for item in vt_url_reputation_check_result_data]
+    # save the state that the joined function has now been called
+    phantom.save_run_data(key="join_workbook_task_update_3_called", value="workbook_task_update_3")
+
+    # call connected block "workbook_task_update_3"
+    workbook_task_update_3(container=container, handle=handle)
+
+    return
+
+
+def workbook_task_update_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("workbook_task_update_3() called")
+
+    id_value = container.get("id", None)
 
     parameters = []
 
     parameters.append({
-        "input_1": vt_url_reputation_check_result_item_0,
-        "input_2": None,
-        "input_3": None,
-        "input_4": None,
-        "input_5": None,
-        "input_6": None,
-        "input_7": None,
-        "input_8": None,
-        "input_9": None,
-        "input_10": None,
+        "task_name": "email artefacts",
+        "note_title": "[Automated completion] URL Analysis",
+        "note_content": "URL Analysis",
+        "status": "in_progress",
+        "owner": "current",
+        "container": id_value,
     })
 
     ################################################################################
@@ -359,7 +369,28 @@ def debug_2(action=None, success=None, container=None, results=None, handle=None
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_2")
+    phantom.custom_function(custom_function="Phishing_Investigation/workbook_task_update", parameters=parameters, name="workbook_task_update_3")
+
+    return
+
+
+def decision_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("decision_1() called")
+
+    # check for 'if' condition 1
+    found_match_1 = phantom.decision(
+        container=container,
+        conditions=[
+            ["URL Artifact", "in", "artifact:*.name"]
+        ])
+
+    # call connected blocks if condition 1 matched
+    if found_match_1:
+        filter_url_artifact(action=action, success=success, container=container, results=results, handle=handle)
+        return
+
+    # check for 'else' condition 2
+    join_workbook_task_update_3(action=action, success=success, container=container, results=results, handle=handle)
 
     return
 
