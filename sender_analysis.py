@@ -586,8 +586,8 @@ def lookup_email_from(action=None, success=None, container=None, results=None, h
     for extract_email_from_emailheaders_data_item in extract_email_from_emailheaders_data:
         if extract_email_from_emailheaders_data_item[0] is not None:
             parameters.append({
-                "truncate": False,
                 "email": extract_email_from_emailheaders_data_item[0],
+                "truncate": False,
             })
 
     ################################################################################
@@ -620,6 +620,9 @@ def total_breaches_decision(action=None, success=None, container=None, results=N
         pin_data(action=action, success=success, container=container, results=results, handle=handle)
         return
 
+    # check for 'else' condition 2
+    join_workbook_task_update_4(action=action, success=success, container=container, results=results, handle=handle)
+
     return
 
 
@@ -642,6 +645,8 @@ def pin_2(action=None, success=None, container=None, results=None, handle=None, 
     ################################################################################
 
     phantom.pin(container=container, data=pin_data, message=extract_email_from_emailheaders_data___email_address, pin_style="red", pin_type="card")
+
+    join_workbook_task_update_4(container=container)
 
     return
 
@@ -669,6 +674,47 @@ def pin_data(action=None, success=None, container=None, results=None, handle=Non
     phantom.format(container=container, template=template, parameters=parameters, name="pin_data")
 
     pin_2(container=container)
+
+    return
+
+
+def join_workbook_task_update_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("join_workbook_task_update_4() called")
+
+    if phantom.completed(action_names=["lookup_email_from"]):
+        # call connected block "workbook_task_update_4"
+        workbook_task_update_4(container=container, handle=handle)
+
+    return
+
+
+def workbook_task_update_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("workbook_task_update_4() called")
+
+    id_value = container.get("id", None)
+
+    parameters = []
+
+    parameters.append({
+        "task_name": "sende email",
+        "note_title": "[Automated completion] Analysis of the sende email",
+        "note_content": "Analysis of the sende email",
+        "status": "complete",
+        "owner": "current",
+        "container": id_value,
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="Phishing_Investigation/workbook_task_update", parameters=parameters, name="workbook_task_update_4")
 
     return
 
