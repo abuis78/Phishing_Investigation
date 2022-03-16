@@ -23,9 +23,12 @@ def container_list_various_conditions(status=None, filter_condition_1=None, filt
     response = phantom.requests.get(u,verify=False)    
     container_data = response.json()["data"]
     #filterd_list = [ c["id"] for c in container_data if c["status"] == "new" and c["label"] == "phishing-mailbox"]
+    filterd_list = []
     for c in container_data:
         if c["status"] == "new" and c["label"] == "phishing-mailbox":
-            filterd_list = c["id"]
+            id_list = c["id"]
+            filterd_list.append(id_list)
+            
     phantom.debug(filterd_list)
     # Return a JSON-serializable object
     assert json.dumps(outputs)  # Will raise an exception if the :outputs: object is not JSON-serializable
