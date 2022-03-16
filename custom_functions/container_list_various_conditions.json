@@ -1,0 +1,52 @@
+{
+    "create_time": "2022-03-16T19:11:39.548620+00:00",
+    "custom_function_id": "31d2b1f9c8ce9d5449e8a6d9a300dc8cb00555cf",
+    "description": "Collecting of existing containers on the basis of different parameters. To create a list of container ID from them. Here time plays a role. e.g. show me all containers <filter> that are not older than x hours.",
+    "draft_mode": false,
+    "inputs": [
+        {
+            "contains_type": [],
+            "description": "Status new, closed ... etc. case sensitive",
+            "input_type": "item",
+            "name": "status",
+            "placeholder": ""
+        },
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "item",
+            "name": "filter_condition_1",
+            "placeholder": ""
+        },
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "item",
+            "name": "filter_condition_2",
+            "placeholder": ""
+        },
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "item",
+            "name": "filter_condition_3",
+            "placeholder": ""
+        },
+        {
+            "contains_type": [],
+            "description": "in hours",
+            "input_type": "item",
+            "name": "time_span",
+            "placeholder": ""
+        }
+    ],
+    "outputs": [
+        {
+            "contains_type": [],
+            "data_path": "container_id_list",
+            "description": ""
+        }
+    ],
+    "platform_version": "5.2.1.78411",
+    "python_version": "3"
+}
