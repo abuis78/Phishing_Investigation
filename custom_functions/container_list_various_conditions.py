@@ -12,18 +12,20 @@ def container_list_various_conditions(filter_condition=None, time_span=None, **k
     ############################ Custom Code Goes Below This Line #################################
     import json
     import phantom.rules as phantom
+    from datetime import datetime, timedelta
     
     outputs = {}
     
     # Write your custom code here...
     u = phantom.build_phantom_rest_url('container') + '?' + filter_condition
-    phantom.debug(u)
     response = phantom.requests.get(u,verify=False)    
     container_data = response.json()["data"]
-    phantom.debug(container_data)
-    #filterd_list = [ c["id"] for c in container_data if c["status"] == "new" and c["label"] == "phishing-mailbox"]
+    #filterd_list = [ c["id"] for c in container_data if c["status"] == "new" and c["label"] == "phishing-mailbox"
+    
     filterd_list = []
     for c in container_data:
+        create_time = datetime.strptime(c["create_time"], "%Y-%m-%dT%H:%M:%S.%fZ")
+        phantom.debug(create_time)
         id_list = c["id"]
         filterd_list.append(id_list)
             
