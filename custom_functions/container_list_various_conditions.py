@@ -18,6 +18,9 @@ def container_list_various_conditions(filter_condition=None, time_span=None, cur
     outputs = {}
     
     # Write your custom code here...
+    current_time = datetime.strptime(current_time, "%Y-%m-%dT%H:%M:%S.%fZ")
+    phantom.debug(current_time)    
+    
     u = phantom.build_phantom_rest_url('container') + '?' + filter_condition
     response = phantom.requests.get(u,verify=False)    
     container_data = response.json()["data"]
@@ -27,8 +30,7 @@ def container_list_various_conditions(filter_condition=None, time_span=None, cur
     for c in container_data:
         create_time = datetime.strptime(c["create_time"], "%Y-%m-%dT%H:%M:%S.%fZ")
         phantom.debug(create_time)
-        current_time = datetime.strptime(current_time, "%Y-%m-%dT%H:%M:%S.%fZ")
-        phantom.debug(current_time)
+
         id_list = c["id"]
         filterd_list.append(id_list)
             
