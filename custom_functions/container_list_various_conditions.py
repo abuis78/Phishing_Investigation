@@ -19,7 +19,7 @@ def container_list_various_conditions(filter_condition=None, time_span=None, cur
     
     # Write your custom code here...
     current_time = current_time.split("+")[0]
-    current_time = datetime.strptime(current_time, "%Y-%m-%dT%H:%M:%S.%fZ")
+    current_time = datetime.strptime(current_time, "%Y-%m-%d %H:%M:%S.%fZ")
     
     u = phantom.build_phantom_rest_url('container') + '?' + filter_condition
     response = phantom.requests.get(u,verify=False)    
