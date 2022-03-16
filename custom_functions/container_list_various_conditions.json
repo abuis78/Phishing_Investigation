@@ -1,16 +1,9 @@
 {
-    "create_time": "2022-03-16T19:36:00.328930+00:00",
+    "create_time": "2022-03-16T19:38:48.343077+00:00",
     "custom_function_id": "31d2b1f9c8ce9d5449e8a6d9a300dc8cb00555cf",
     "description": "Collecting of existing containers on the basis of different parameters. To create a list of container ID from them. Here time plays a role. e.g. show me all containers <filter> that are not older than x hours.",
     "draft_mode": false,
     "inputs": [
-        {
-            "contains_type": [],
-            "description": "Status new, closed ... etc. case sensitive",
-            "input_type": "item",
-            "name": "status",
-            "placeholder": ""
-        },
         {
             "contains_type": [],
             "description": "example: _filter_status=\"new\"&_filter_label=\"phishing-mailbox",
