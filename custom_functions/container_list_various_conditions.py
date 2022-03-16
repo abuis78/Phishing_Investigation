@@ -18,7 +18,7 @@ def container_list_various_conditions(filter_condition=None, time_span=None, cur
     outputs = {}
     
     # Write your custom code here...
-
+    current_time = current_time.split("+")
     phantom.debug(current_time)    
     
     u = phantom.build_phantom_rest_url('container') + '?' + filter_condition
