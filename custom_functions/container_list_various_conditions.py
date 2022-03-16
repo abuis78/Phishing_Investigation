@@ -20,6 +20,7 @@ def container_list_various_conditions(filter_condition=None, time_span=None, cur
     
     # Write your custom code here...
     u1 = phantom.build_phantom_rest_url('container',container_id)
+    phantom.debug(u1)
     r1 = phantom.requests.get(u1,verify=False)  
     c1 = r1.json()["data"]
     t2 = datetime.strptime(c1["create_time"], "%Y-%m-%dT%H:%M:%S.%fZ")
