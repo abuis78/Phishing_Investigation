@@ -1,13 +1,11 @@
-def container_list_various_conditions(status=None, filter_condition_1=None, filter_condition_2=None, filter_condition_3=None, time_span=None, **kwargs):
+def container_list_various_conditions(status=None, filter_condition=None, time_span=None, **kwargs):
     """
     Collecting of existing containers on the basis of different parameters. To create a list of container ID from them. Here time plays a role. e.g. show me all containers <filter> that are not older than x hours.
     
     Args:
         status: Status new, closed ... etc. case sensitive
-        filter_condition_1
-        filter_condition_2
-        filter_condition_3
-        time_span: in hours
+        filter_condition: example: _filter_status="new"&_filter_label="phishing-mailbox
+        time_span
     
     Returns a JSON-serializable object that implements the configured data paths:
         container_id_list
