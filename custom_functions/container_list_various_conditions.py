@@ -19,7 +19,7 @@ def container_list_various_conditions(status=None, filter_condition_1=None, filt
     outputs = {}
     
     # Write your custom code here...
-    u = phantom.build_phantom_rest_url('container')
+    u = phantom.build_phantom_rest_url('container') + '?_filter_status="new"&_filter_label="phishing-mailbox"'
     response = phantom.requests.get(u,verify=False)    
     container_data = response.json()
     phantom.debug(container_data["count"])
