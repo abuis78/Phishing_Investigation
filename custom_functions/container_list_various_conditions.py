@@ -25,7 +25,7 @@ def container_list_various_conditions(status=None, filter_condition_1=None, filt
     #filterd_list = [ c["id"] for c in container_data if c["status"] == "new" and c["label"] == "phishing-mailbox"]
     filterd_list = []
     for c in container_data:
-        if c["status"] == "new" and c["label"] == "phishing-mailbox":
+        if c["status"] == "new":
             id_list = c["id"]
             filterd_list.append(id_list)
             
