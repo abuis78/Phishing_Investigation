@@ -34,9 +34,9 @@ def container_list_various_conditions(filter_condition=None, time_span=None, con
         t2 = datetime.strptime(c["create_time"], "%Y-%m-%dT%H:%M:%S.%fZ")
         diff = t1 - t2
         phantom.debug(diff)
-
-        id_list = c["id"]
-        filterd_list.append(id_list)
+        if diff > timedelta(hours=time_span):
+            id_list = c["id"]
+            filterd_list.append(id_list)
             
     phantom.debug(filterd_list)
     # Return a JSON-serializable object
