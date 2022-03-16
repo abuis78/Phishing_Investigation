@@ -22,6 +22,7 @@ def container_list_various_conditions(status=None, filter_condition_1=None, filt
     u = phantom.build_phantom_rest_url('container')
     response = phantom.requests.get(u,verify=False)    
     container_data = response.json()["data"]
+    phantom.debug(container_data)
     #filterd_list = [ c["id"] for c in container_data if c["status"] == "new" and c["label"] == "phishing-mailbox"]
     filterd_list = []
     for c in container_data:
