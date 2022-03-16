@@ -1,11 +1,10 @@
-def container_list_various_conditions(filter_condition=None, time_span=None, current_time=None, container_id=None, **kwargs):
+def container_list_various_conditions(filter_condition=None, time_span=None, container_id=None, **kwargs):
     """
     Collecting of existing containers on the basis of different parameters. To create a list of container ID from them. Here time plays a role. e.g. show me all containers <filter> that are not older than x hours.
     
     Args:
         filter_condition: example: _filter_status="new"&_filter_label="phishing-mailbox
         time_span
-        current_time
         container_id
     
     Returns a JSON-serializable object that implements the configured data paths:
@@ -23,6 +22,7 @@ def container_list_various_conditions(filter_condition=None, time_span=None, cur
     phantom.debug(u1)
     r1 = phantom.requests.get(u1,verify=False)  
     c1 = r1.json()["data"]
+    phantom.debug(c1)
     t2 = datetime.strptime(c1["create_time"], "%Y-%m-%dT%H:%M:%S.%fZ")
     phantom.debug(t2)
     
