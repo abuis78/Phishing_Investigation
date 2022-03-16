@@ -17,7 +17,7 @@ def container_list_various_conditions(status=None, filter_condition=None, time_s
     outputs = {}
     
     # Write your custom code here...
-    u = phantom.build_phantom_rest_url('container') + '?_filter_status="new"&_filter_label="phishing-mailbox"'
+    u = phantom.build_phantom_rest_url('container') + '?' + filter_condition
     response = phantom.requests.get(u,verify=False)    
     container_data = response.json()["data"]
     #filterd_list = [ c["id"] for c in container_data if c["status"] == "new" and c["label"] == "phishing-mailbox"]
