@@ -39,6 +39,7 @@ def container_list_various_conditions(filter_condition=None, time_span=None, con
             filterd_list.append(id_list)
             
     phantom.debug(filterd_list)
+    outputs["container_id_list"] = filterd_list
     # Return a JSON-serializable object
     assert json.dumps(outputs)  # Will raise an exception if the :outputs: object is not JSON-serializable
     return outputs
