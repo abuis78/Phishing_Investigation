@@ -28,29 +28,32 @@ def detect_language(action=None, success=None, container=None, results=None, han
     ################################################################################
 
     # Write your custom code here...
-    phantom.debug("---------")
-    u = 'https://google-translate1.p.rapidapi.com/language/translate/v2/detect'
-    headers =  {
+    phantom.debug("---- DETECT Language-----")
+    u1 = 'https://google-translate1.p.rapidapi.com/language/translate/v2/detect'
+    headers1 =  {
         'content-type': 'application/x-www-form-urlencoded',
         'Accept-Encoding': 'application/gzip',
         'X-RapidAPI-Host': 'google-translate1.p.rapidapi.com',
         'X-RapidAPI-Key': '44aaaeef79msh75169124fb09b39p153dedjsnab8c1122a6a5'
       }
     
-    payload = "q=English is hard, but detectably so"
+    payload1 = "q=English is hard, but detectably so"
     
     response = phantom.requests.post(
-        u,
-        data=payload, 
-        headers=headers,
+        u1,
+        data=payload1, 
+        headers=headers1,
         verify=False,
     )
 
-    phantom.debug("phantom returned status with message {}".format(response.text))
+    # phantom.debug("phantom returned status with message {}".format(response.text))
     
     data = response.json()
     phantom.debug(data["data"]["detections"][0][0]["language"])
     
+    phantom.debug("---- Translate -----")
+    
+    u2 = "https://google-translate1.p.rapidapi.com/language/translate/v2"
     
     ################################################################################
     ## Custom Code End
