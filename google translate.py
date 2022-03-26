@@ -48,7 +48,7 @@ def detect_language(action=None, success=None, container=None, results=None, han
 
     phantom.debug("phantom returned status with message {}".format(response.text))
     
-    detect_language__language = response.json()[0]
+    detect_language__language = response.json()
     phantom.debug(detect_language__language)
     
     
