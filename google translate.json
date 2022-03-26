@@ -14,7 +14,7 @@
                     "targetPort": "2_in"
                 }
             ],
-            "hash": "b51d7f743636635d61f2f3dc0eb24cc86171224b",
+            "hash": "d31b841621673539a6f0b87886672bf68f12db74",
             "nodes": {
                 "0": {
                     "data": {
@@ -69,7 +69,7 @@
                     "errors": {},
                     "id": "2",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(\"---------\")\n    u = 'https://google-translate1.p.rapidapi.com/language/translate/v2/detect'\n    headers =  {\n        'content-type': 'application/x-www-form-urlencoded',\n        'Accept-Encoding': 'application/gzip',\n        'X-RapidAPI-Host': 'google-translate1.p.rapidapi.com',\n        'X-RapidAPI-Key': '44aaaeef79msh75169124fb09b39p153dedjsnab8c1122a6a5'\n      }\n    \n    payload = \"q=English is hard, but detectably so\"\n    \n    response = phantom.requests.post(\n        u,\n        data=payload, \n        headers=headers,\n        verify=False,\n    )\n\n    phantom.debug(\"phantom returned status code {} with message {}\".format(response.status_code, response.text))\n    \n    detect_language__language = response.json()\n    phantom.debug(detect_language__language[0])\n    \n    \n",
+                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(\"---------\")\n    u = 'https://google-translate1.p.rapidapi.com/language/translate/v2/detect'\n    headers =  {\n        'content-type': 'application/x-www-form-urlencoded',\n        'Accept-Encoding': 'application/gzip',\n        'X-RapidAPI-Host': 'google-translate1.p.rapidapi.com',\n        'X-RapidAPI-Key': '44aaaeef79msh75169124fb09b39p153dedjsnab8c1122a6a5'\n      }\n    \n    payload = \"q=English is hard, but detectably so\"\n    \n    response = phantom.requests.post(\n        u,\n        data=payload, \n        headers=headers,\n        verify=False,\n    )\n\n    phantom.debug(\"phantom returned status with message {}\".format(response.text))\n    \n    detect_language__language = response.json()\n    phantom.debug(detect_language__language[0])\n    \n    \n",
                     "x": 980,
                     "y": 560
                 }
@@ -98,7 +98,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-26T15:05:54.833874+00:00",
+    "create_time": "2022-03-26T15:06:37.243902+00:00",
     "draft_mode": false,
     "labels": [
         "*"
