@@ -48,9 +48,9 @@ def detect_language(action=None, success=None, container=None, results=None, han
 
     # phantom.debug("phantom returned status with message {}".format(response.text))
     
-    data = response1.json()
-    phantom.debug(data["data"]["detections"][0][0]["language"])
-    lang = data["data"]["detections"][0][0]["language"]
+    data1 = response1.json()
+    phantom.debug(data1["data"]["detections"][0][0]["language"])
+    lang = data1["data"]["detections"][0][0]["language"]
     
     phantom.debug("---- Translate -----")
     
@@ -66,6 +66,9 @@ def detect_language(action=None, success=None, container=None, results=None, han
     )  
     
     phantom.debug("phantom returned status with message {}".format(response2.text))
+    
+    data2 = response2.json()
+    phantom.debug(data2["data"]["detections"][0][0]["language"])   
     
     ################################################################################
     ## Custom Code End
