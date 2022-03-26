@@ -28,6 +28,7 @@ def detect_language(action=None, success=None, container=None, results=None, han
     ################################################################################
 
     # Write your custom code here...
+    phantom.debug("---------")
     u = 'https://google-translate1.p.rapidapi.com/language/translate/v2/detect'
     headers: {
         'content-type': 'application/x-www-form-urlencoded',
