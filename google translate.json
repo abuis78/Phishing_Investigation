@@ -14,7 +14,7 @@
                     "targetPort": "2_in"
                 }
             ],
-            "hash": "a251671c808c6f52bb47f1734788014bf619d278",
+            "hash": "a7a3a6d212db09216576d13d32895a6d98f6193d",
             "nodes": {
                 "0": {
                     "data": {
@@ -69,7 +69,7 @@
                     "errors": {},
                     "id": "2",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(\"---- DETECT Language-----\")\n    u1 = 'https://google-translate1.p.rapidapi.com/language/translate/v2/detect'\n    headers =  {\n        'content-type': 'application/x-www-form-urlencoded',\n        'Accept-Encoding': 'application/gzip',\n        'X-RapidAPI-Host': 'google-translate1.p.rapidapi.com',\n        'X-RapidAPI-Key': '44aaaeef79msh75169124fb09b39p153dedjsnab8c1122a6a5'\n      }\n    \n    payload1 = \"q=English is hard, but detectably so\"\n    \n    response1 = phantom.requests.post(\n        u1,\n        data=payload1, \n        headers=headers,\n        verify=False,\n    )\n\n    # phantom.debug(\"phantom returned status with message {}\".format(response.text))\n    \n    data1 = response1.json()\n    phantom.debug(data1[\"data\"][\"detections\"][0][0][\"language\"])\n    lang = data1[\"data\"][\"detections\"][0][0][\"language\"]\n    \n    phantom.debug(\"---- Translate -----\")\n    \n    u2 = \"https://google-translate1.p.rapidapi.com/language/translate/v2\"\n    \n    payload2 = \"q=Hello%2C%20world!&target=de&source=\" + lang\n    \n    response2 = phantom.requests.post(\n        u2,\n        data=payload2, \n        headers=headers,\n        verify=False,\n    )  \n    \n    phantom.debug(\"phantom returned status with message {}\".format(response2.text))\n    \n    data2 = response2.json()\n    phantom.debug(data2[\"data\"][\"detections\"][0][0][\"language\"])   \n    \n",
+                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(\"---- DETECT Language-----\")\n    u1 = 'https://google-translate1.p.rapidapi.com/language/translate/v2/detect'\n    headers =  {\n        'content-type': 'application/x-www-form-urlencoded',\n        'Accept-Encoding': 'application/gzip',\n        'X-RapidAPI-Host': 'google-translate1.p.rapidapi.com',\n        'X-RapidAPI-Key': '44aaaeef79msh75169124fb09b39p153dedjsnab8c1122a6a5'\n      }\n    \n    payload1 = \"q=English is hard, but detectably so\"\n    \n    response1 = phantom.requests.post(\n        u1,\n        data=payload1, \n        headers=headers,\n        verify=False,\n    )\n\n    # phantom.debug(\"phantom returned status with message {}\".format(response.text))\n    \n    data1 = response1.json()\n    phantom.debug(data1[\"data\"][\"detections\"][0][0][\"language\"])\n    lang = data1[\"data\"][\"detections\"][0][0][\"language\"]\n    \n    phantom.debug(\"---- Translate -----\")\n    \n    u2 = \"https://google-translate1.p.rapidapi.com/language/translate/v2\"\n    \n    payload2 = \"q=Hello%2C%20world!&target=de&source=\" + lang\n    \n    response2 = phantom.requests.post(\n        u2,\n        data=payload2, \n        headers=headers,\n        verify=False,\n    )  \n    \n    phantom.debug(\"phantom returned status with message {}\".format(response2.text))\n    \n    data2 = response2.json()\n    phantom.debug(data2[\"data\"][\"translatedText\"])   \n    \n",
                     "x": 980,
                     "y": 560
                 }
@@ -98,7 +98,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-26T15:34:30.360341+00:00",
+    "create_time": "2022-03-26T15:35:16.806695+00:00",
     "draft_mode": false,
     "labels": [
         "*"
