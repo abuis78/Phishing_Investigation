@@ -37,7 +37,7 @@ def detect_language(action=None, success=None, container=None, results=None, han
         'X-RapidAPI-Key': '44aaaeef79msh75169124fb09b39p153dedjsnab8c1122a6a5'
       }
     
-    payload1 = "q=English is hard, but detectably so"
+    payload1 = "q=" + input_parameter_0+ ""
     
     response1 = phantom.requests.post(
         u1,
@@ -56,7 +56,7 @@ def detect_language(action=None, success=None, container=None, results=None, han
     
     u2 = "https://google-translate1.p.rapidapi.com/language/translate/v2"
     
-    payload2 = "q=Hello%2C%20world!&target=de&source=" + lang
+    payload2 = "q=" + input_parameter_0 + "&target=de&source=" + lang
     
     response2 = phantom.requests.post(
         u2,
