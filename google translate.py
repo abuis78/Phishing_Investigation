@@ -32,7 +32,7 @@ def detect_language(action=None, success=None, container=None, results=None, han
     
     phantom.debug("---- CONVERT string -----")
     
-    text_string = urllib.parse.quote(input_parameter_0, safe='')
+    text_string = urllib.parse.quote(input_parameter_0)
     phantom.debug(text_string)
     
     
