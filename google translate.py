@@ -31,10 +31,19 @@ def detect_language(action=None, success=None, container=None, results=None, han
 
     # Write your custom code here...
     import urllib
-    phantom.debug(playbook_input_text_string_values[0])
-    phantom.debug("---- CONVERT string -----")
-
+    import re
+    from bs4 import BeautifulSoup
     
+    def remove_html_tags(text):
+        """Remove html tags from a string"""
+        clean = re.compile('<.*?>')
+        return re.sub(clean, '', text)
+    
+    phantom.debug(playbook_input_text_string_values[0])
+    
+    phantom.debug("---- CONVERT string -----")
+    check_html = bool(BeautifulSoup(playbook_input_text_string_values[0], "html.parser").find())
+    phantom.debug(check_html)
     
     phantom.debug("---- DETECT Language-----")
     u1 = 'https://google-translate1.p.rapidapi.com/language/translate/v2/detect'
