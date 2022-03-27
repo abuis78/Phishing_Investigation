@@ -28,6 +28,14 @@ def detect_language(action=None, success=None, container=None, results=None, han
     ################################################################################
 
     # Write your custom code here...
+    import urllib
+    
+    phantom.debug("---- CONVERT string -----")
+    
+    text_string = urllib.parse.quote(input_parameter_0, safe='')
+    phantom.debug(text_string)
+    
+    
     phantom.debug("---- DETECT Language-----")
     u1 = 'https://google-translate1.p.rapidapi.com/language/translate/v2/detect'
     headers =  {
