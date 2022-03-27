@@ -44,6 +44,11 @@ def detect_language(action=None, success=None, container=None, results=None, han
     phantom.debug("---- CONVERT string -----")
     check_html = bool(BeautifulSoup(playbook_input_text_string_values[0], "html.parser").find())
     phantom.debug(check_html)
+    clean = ''
+    if check_html == True:
+        remove_html_tags(playbook_input_text_string_values[0])
+        
+    phantom.debug(clean)
     
     phantom.debug("---- DETECT Language-----")
     u1 = 'https://google-translate1.p.rapidapi.com/language/translate/v2/detect'
