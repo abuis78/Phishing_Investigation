@@ -34,21 +34,18 @@ def detect_language(action=None, success=None, container=None, results=None, han
     import re
     from bs4 import BeautifulSoup
     
-    def remove_html_tags(text):
-        """Remove html tags from a string"""
-        clean = re.compile('<.*?>')
-        return re.sub(clean, '', text)
-    
     phantom.debug(playbook_input_text_string_values[0])
     
     phantom.debug("---- CONVERT string -----")
     check_html = bool(BeautifulSoup(playbook_input_text_string_values[0], "html.parser").find())
     phantom.debug(check_html)
-    clean = ''
+    
     if check_html == True:
-        remove_html_tags(playbook_input_text_string_values[0])
-        
-    phantom.debug(clean)
+        CLEANR = re.compile('<.*?>') 
+        cleantext = re.sub(CLEANR, '', playbook_input_text_string_values[0])
+        phantom.debug(cleantext)
+                                  
+
     
     phantom.debug("---- DETECT Language-----")
     u1 = 'https://google-translate1.p.rapidapi.com/language/translate/v2/detect'
