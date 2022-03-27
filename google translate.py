@@ -75,7 +75,7 @@ def detect_language(action=None, success=None, container=None, results=None, han
     
     u2 = "https://google-translate1.p.rapidapi.com/language/translate/v2"
     
-    payload2 = "q='" + cleantext + "'&target=de&source=" + lang
+    payload2 = "q=" + cleantext + "&target=de&source=" + lang
     
     response2 = phantom.requests.post(
         u2,
