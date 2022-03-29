@@ -1,0 +1,24 @@
+{
+    "create_time": "2022-03-29T16:51:59.747979+00:00",
+    "custom_function_id": "8183699f7ca3593583171e1a9226d3828fea599f",
+    "description": "",
+    "draft_mode": false,
+    "inputs": [
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "item",
+            "name": "string",
+            "placeholder": ""
+        }
+    ],
+    "outputs": [
+        {
+            "contains_type": [],
+            "data_path": "new_string",
+            "description": ""
+        }
+    ],
+    "platform_version": "5.2.1.78411",
+    "python_version": "3"
+}
