@@ -20,8 +20,8 @@ def define_source_identifier(container_id=None, pattern_1=None, pattern_2=None, 
     # Write your custom code here...
     outputs["source_identifier_key"] = base64.b64encode("{}|{}|{}".format(container_id, pattern_1, pattern_2).encode()).decode()
     phantom.debug(outputs["source_identifier_key"])
-    outputs["source_identifier_prefix_key"] = "[{}: {}]".format(outputs["source_identifier_prefix"], outputs["source_identifier_key"])
-    phantom.debug(outputs["source_identifier_prefix_key"])
+    outputs["source_identifier_prefix"] = "[{}: {}]".format(source_identifier_prefix, outputs["source_identifier_key"])
+    phantom.debug(outputs["source_identifier_prefix"])
     
     # Return a JSON-serializable object
     assert json.dumps(outputs)  # Will raise an exception if the :outputs: object is not JSON-serializable
