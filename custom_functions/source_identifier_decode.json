@@ -1,0 +1,34 @@
+{
+    "create_time": "2022-03-30T14:00:38.925444+00:00",
+    "custom_function_id": "a622b37ee956d6c257c2e3f458b4011af71faeae",
+    "description": "",
+    "draft_mode": false,
+    "inputs": [
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "item",
+            "name": "source_identifier",
+            "placeholder": ""
+        }
+    ],
+    "outputs": [
+        {
+            "contains_type": [],
+            "data_path": "container_id",
+            "description": ""
+        },
+        {
+            "contains_type": [],
+            "data_path": "pattern_1",
+            "description": ""
+        },
+        {
+            "contains_type": [],
+            "data_path": "pattern_2",
+            "description": ""
+        }
+    ],
+    "platform_version": "5.2.1.78411",
+    "python_version": "3"
+}
