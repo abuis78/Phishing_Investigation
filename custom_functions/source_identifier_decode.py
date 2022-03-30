@@ -22,7 +22,7 @@ def source_identifier_decode(source_identifier=None, **kwargs):
     container_id = info[0]
     outputs["container_id"] = info[0]
     outputs["pattern_1"] = info[1]
-    outputs["pattern_1"] = info[2]
+    outputs["pattern_2"] = info[2]
     phantom.debug('Container-ID decoded: container_id {}'.format(container_id))    
     
     # Return a JSON-serializable object
