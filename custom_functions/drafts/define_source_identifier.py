@@ -18,7 +18,7 @@ def define_source_identifier(container_id=None, pattern_1=None, pattern_2=None, 
     outputs = {}
     
     # Write your custom code here...
-    outputs["source_identifier_key"] = base64.b64encode("{}|{}".format(container_id, user_email).encode()).decode()
+    outputs["source_identifier_key"] = base64.b64encode("{}|{}|{}".format(container_id, pattern_1, pattern_2).encode()).decode()
     phantom.debug(outputs["source_identifier_key"])
     outputs["source_identifier_prefix_key"] = "[{}: {}]".format(outputs["source_identifier_prefix"], outputs["PHANKEY"])
     phantom.debug(outputs["source_identifier_prefix_key"])
