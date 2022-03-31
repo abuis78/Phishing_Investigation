@@ -24,10 +24,11 @@ def extract_source_identifier(email_subject=None, email_body=None, source_identi
     result = pattern.search(email_body)
     
     if result:
-        outputs["PHANKEY"] = result.group(1)
-        outputs["PHANKEY_detected"] = True
+        outputs["container_id"] = result.group(1)
+        outputs["container_id"] = True
+        phantom.debug(outputs["container_id"])
     else:
-        outputs["PHANKEY_detected"] = False
+        outputs["container_id"] = False
 
     # Return a JSON-serializable object
     assert json.dumps(outputs)  # Will raise an exception if the :outputs: object is not JSON-serializable
