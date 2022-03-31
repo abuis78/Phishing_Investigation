@@ -71,7 +71,7 @@
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "2dbaf156ea089ea642c4342ac16f864885350496",
+            "hash": "29fa02ee7f0160c92e5b93abb249b6f5519d9245",
             "nodes": {
                 "0": {
                     "data": {
@@ -315,7 +315,7 @@
                         "values": {
                             "add_email_to_corresponding_contaiiner": {
                                 "body": "filtered-data:filter_artifact_for_email_artifact:condition_1:artifact:*.cef.bodyPart1",
-                                "container_id": "extract_source_identifier_1:custom_function_result.data.container_id",
+                                "container_id": "source_identifier_decode_4:custom_function_result.data.container_id",
                                 "subject": "filtered-data:filter_artifact_for_email_artifact:condition_1:artifact:*.cef.emailHeaders.decodedSubject"
                             }
                         }
@@ -549,7 +549,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-31T09:38:06.197890+00:00",
+    "create_time": "2022-03-31T09:41:31.810965+00:00",
     "draft_mode": false,
     "labels": [
         "*"
