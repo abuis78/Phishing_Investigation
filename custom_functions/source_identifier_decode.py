@@ -19,11 +19,11 @@ def source_identifier_decode(source_identifier=None, **kwargs):
     decoded = base64.b64decode(source_identifier).decode()
     info = decoded.split("|")
     
-    container_id = info[0]
+    phantom.debug(info[0])
     outputs["container_id"] = info[0]
     outputs["pattern_1"] = info[1]
     outputs["pattern_2"] = info[2]
-    phantom.debug('Container-ID decoded: container_id {}'.format(container_id))    
+    phantom.debug('Container-ID decoded: container_id {}'.format(info[0]))    
     
     # Return a JSON-serializable object
     assert json.dumps(outputs)  # Will raise an exception if the :outputs: object is not JSON-serializable
