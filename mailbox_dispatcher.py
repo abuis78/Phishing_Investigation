@@ -73,7 +73,39 @@ def extract_source_identifier_1(action=None, success=None, container=None, resul
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/extract_source_identifier", parameters=parameters, name="extract_source_identifier_1")
+    phantom.custom_function(custom_function="Phishing_Investigation/extract_source_identifier", parameters=parameters, name="extract_source_identifier_1", callback=add_email_to_corresponding_contaiiner_2)
+
+    return
+
+
+def add_email_to_corresponding_contaiiner_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("add_email_to_corresponding_contaiiner_2() called")
+
+    extract_source_identifier_1__result = phantom.collect2(container=container, datapath=["extract_source_identifier_1:custom_function_result.data.container_id"])
+    filtered_artifact_0_data_filter_artifact_for_email_artifact = phantom.collect2(container=container, datapath=["filtered-data:filter_artifact_for_email_artifact:condition_1:artifact:*.cef.emailHeaders.decodedSubject","filtered-data:filter_artifact_for_email_artifact:condition_1:artifact:*.cef.bodyPart1","filtered-data:filter_artifact_for_email_artifact:condition_1:artifact:*.id"])
+
+    parameters = []
+
+    # build parameters list for 'add_email_to_corresponding_contaiiner_2' call
+    for extract_source_identifier_1__result_item in extract_source_identifier_1__result:
+        for filtered_artifact_0_item_filter_artifact_for_email_artifact in filtered_artifact_0_data_filter_artifact_for_email_artifact:
+            parameters.append({
+                "container_id": extract_source_identifier_1__result_item[0],
+                "subject": filtered_artifact_0_item_filter_artifact_for_email_artifact[0],
+                "body": filtered_artifact_0_item_filter_artifact_for_email_artifact[1],
+            })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="Phishing_Investigation/add_email_to_corresponding_contaiiner", parameters=parameters, name="add_email_to_corresponding_contaiiner_2")
 
     return
 

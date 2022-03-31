@@ -48,9 +48,23 @@
                     "sourcePort": "2_out",
                     "targetNode": "4",
                     "targetPort": "4_in"
+                },
+                {
+                    "id": "port_4_to_port_6",
+                    "sourceNode": "4",
+                    "sourcePort": "4_out",
+                    "targetNode": "6",
+                    "targetPort": "6_in"
+                },
+                {
+                    "id": "port_6_to_port_1",
+                    "sourceNode": "6",
+                    "sourcePort": "6_out",
+                    "targetNode": "1",
+                    "targetPort": "1_in"
                 }
             ],
-            "hash": "1ed559a5c2ecbf6c56dae61f84fea94a4557a3d3",
+            "hash": "b341ae0f7bd8c01dce7bc4f76df7314a6749b4ed",
             "nodes": {
                 "0": {
                     "data": {
@@ -81,8 +95,8 @@
                     "id": "1",
                     "type": "end",
                     "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
-                    "x": 1380,
-                    "y": 1480
+                    "x": 1180,
+                    "y": 1280
                 },
                 "2": {
                     "data": {
@@ -232,8 +246,77 @@
                     "errors": {},
                     "id": "4",
                     "type": "utility",
-                    "x": 1000,
-                    "y": 904.5
+                    "x": 980,
+                    "y": 940
+                },
+                "6": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "add_email_to_corresponding_contaiiner",
+                            "repoName": "Phishing_Investigation"
+                        },
+                        "functionId": 2,
+                        "functionName": "add_email_to_corresponding_contaiiner_2",
+                        "id": "6",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "add_email_to_corresponding_contaiiner": {
+                                "description": "Adding email as note to the corresponding container",
+                                "fields": [
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "container_id",
+                                        "name": "container_id",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "subject",
+                                        "name": "subject",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "body",
+                                        "name": "body",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "add_email_to_corresponding_contaiiner",
+                                "name": "add_email_to_corresponding_contaiiner"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "add_email_to_corresponding_contaiiner": {
+                                "body": "filtered-data:filter_artifact_for_email_artifact:condition_1:artifact:*.cef.bodyPart1",
+                                "container_id": "extract_source_identifier_1:custom_function_result.data.container_id",
+                                "subject": "filtered-data:filter_artifact_for_email_artifact:condition_1:artifact:*.cef.emailHeaders.decodedSubject"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "6",
+                    "type": "utility",
+                    "x": 980,
+                    "y": 1120
                 }
             },
             "notes": ""
@@ -245,7 +328,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-31T05:54:11.670526+00:00",
+    "create_time": "2022-03-31T06:14:38.695473+00:00",
     "draft_mode": false,
     "labels": [
         "*"
