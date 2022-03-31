@@ -19,7 +19,7 @@ def source_identifier_decode(source_identifier=None, **kwargs):
     decoded = base64.b64decode(source_identifier).decode()
     info = decoded.split("|")
     
-    phantom.debug(info[0])
+    phantom.debug(info)
     #outputs["container_id"] = info[0]
     #outputs["pattern_1"] = info[1]
     #outputs["pattern_2"] = info[2]
