@@ -26,7 +26,8 @@ def extract_source_identifier(email_subject=None, email_body=None, source_identi
     if result:
         outputs["container_id"] = result.group(1)
         outputs["container_id"] = True
-        phantom.debug(outputs["container_id"])
+        phantom.debug(result.group(0))
+        phantom.debug(result.group(1))
     else:
         outputs["container_id"] = False
 
