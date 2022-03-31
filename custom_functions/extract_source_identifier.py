@@ -19,7 +19,7 @@ def extract_source_identifier(email_subject=None, email_body=None, source_identi
     
     # Write your custom code here...
     phantom.debug(email_body)
-    pattern = re.compile("\[" + source_identifier_prefix + ":(.*?)\]")
+    pattern = re.compile("\[PMI:(.*?)\]")
     phantom.debug(pattern)
     result = pattern.search(email_body)
     
