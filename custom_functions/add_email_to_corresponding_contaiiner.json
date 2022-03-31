@@ -1,0 +1,48 @@
+{
+    "create_time": "2022-03-31T06:02:59.813263+00:00",
+    "custom_function_id": "251072b39d55ab024893cce5cc42ff1868c8f866",
+    "description": "Adding email as note to the corresponding container",
+    "draft_mode": false,
+    "inputs": [
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "item",
+            "name": "container_id",
+            "placeholder": ""
+        },
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "item",
+            "name": "subject",
+            "placeholder": ""
+        },
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "item",
+            "name": "body",
+            "placeholder": ""
+        }
+    ],
+    "outputs": [
+        {
+            "contains_type": [],
+            "data_path": "success",
+            "description": ""
+        },
+        {
+            "contains_type": [],
+            "data_path": "message",
+            "description": ""
+        },
+        {
+            "contains_type": [],
+            "data_path": "note_id",
+            "description": ""
+        }
+    ],
+    "platform_version": "5.2.1.78411",
+    "python_version": "3"
+}
