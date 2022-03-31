@@ -64,7 +64,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "b341ae0f7bd8c01dce7bc4f76df7314a6749b4ed",
+            "hash": "343c7170c1dbbe48c8ab61fdecf755239b4d90a9",
             "nodes": {
                 "0": {
                     "data": {
@@ -157,6 +157,7 @@
                             {
                                 "comparisons": [
                                     {
+                                        "conditionIndex": 1,
                                         "op": "==",
                                         "param": "",
                                         "value": ""
@@ -237,9 +238,9 @@
                         "utilityType": "custom_function",
                         "values": {
                             "extract_source_identifier": {
-                                "email_body": null,
-                                "email_subject": null,
-                                "source_identifier_prefix": null
+                                "email_body": "filtered-data:filter_artifact_for_email_artifact:condition_1:artifact:*.cef.bodyPart1",
+                                "email_subject": "filtered-data:filter_artifact_for_email_artifact:condition_1:artifact:*.cef.emailHeaders.decodedSubject",
+                                "source_identifier_prefix": "PMI"
                             }
                         }
                     },
@@ -328,7 +329,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-31T06:14:38.695473+00:00",
+    "create_time": "2022-03-31T09:18:23.390957+00:00",
     "draft_mode": false,
     "labels": [
         "*"

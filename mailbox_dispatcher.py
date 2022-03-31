@@ -55,13 +55,17 @@ def decision_if_email_artifact(action=None, success=None, container=None, result
 def extract_source_identifier_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("extract_source_identifier_1() called")
 
+    filtered_artifact_0_data_filter_artifact_for_email_artifact = phantom.collect2(container=container, datapath=["filtered-data:filter_artifact_for_email_artifact:condition_1:artifact:*.cef.emailHeaders.decodedSubject","filtered-data:filter_artifact_for_email_artifact:condition_1:artifact:*.cef.bodyPart1","filtered-data:filter_artifact_for_email_artifact:condition_1:artifact:*.id"])
+
     parameters = []
 
-    parameters.append({
-        "email_subject": None,
-        "email_body": None,
-        "source_identifier_prefix": None,
-    })
+    # build parameters list for 'extract_source_identifier_1' call
+    for filtered_artifact_0_item_filter_artifact_for_email_artifact in filtered_artifact_0_data_filter_artifact_for_email_artifact:
+        parameters.append({
+            "email_subject": filtered_artifact_0_item_filter_artifact_for_email_artifact[0],
+            "email_body": filtered_artifact_0_item_filter_artifact_for_email_artifact[1],
+            "source_identifier_prefix": "PMI",
+        })
 
     ################################################################################
     ## Custom Code Start
