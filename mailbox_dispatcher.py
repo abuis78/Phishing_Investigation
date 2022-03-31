@@ -77,7 +77,7 @@ def extract_source_identifier_1(action=None, success=None, container=None, resul
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/extract_source_identifier", parameters=parameters, name="extract_source_identifier_1", callback=debug_5)
+    phantom.custom_function(custom_function="Phishing_Investigation/extract_source_identifier", parameters=parameters, name="extract_source_identifier_1", callback=source_identifier_decode_4)
 
     return
 
@@ -117,7 +117,7 @@ def add_email_to_corresponding_contaiiner_2(action=None, success=None, container
 def source_identifier_decode_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("source_identifier_decode_4() called")
 
-    extract_source_identifier_1__result = phantom.collect2(container=container, datapath=["extract_source_identifier_1:custom_function_result.data.container_id"])
+    extract_source_identifier_1__result = phantom.collect2(container=container, datapath=["extract_source_identifier_1:custom_function_result.data.source_identifier"])
 
     parameters = []
 
@@ -137,7 +137,7 @@ def source_identifier_decode_4(action=None, success=None, container=None, result
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/source_identifier_decode", parameters=parameters, name="source_identifier_decode_4")
+    phantom.custom_function(custom_function="Phishing_Investigation/source_identifier_decode", parameters=parameters, name="source_identifier_decode_4", callback=debug_5)
 
     return
 
@@ -146,16 +146,20 @@ def debug_5(action=None, success=None, container=None, results=None, handle=None
     phantom.debug("debug_5() called")
 
     extract_source_identifier_1__result = phantom.collect2(container=container, datapath=["extract_source_identifier_1:custom_function_result.data.source_identifier"])
+    source_identifier_decode_4__result = phantom.collect2(container=container, datapath=["source_identifier_decode_4:custom_function_result.data.container_id","source_identifier_decode_4:custom_function_result.data.pattern_1","source_identifier_decode_4:custom_function_result.data.pattern_2"])
 
     extract_source_identifier_1_data_source_identifier = [item[0] for item in extract_source_identifier_1__result]
+    source_identifier_decode_4_data_container_id = [item[0] for item in source_identifier_decode_4__result]
+    source_identifier_decode_4_data_pattern_1 = [item[1] for item in source_identifier_decode_4__result]
+    source_identifier_decode_4_data_pattern_2 = [item[2] for item in source_identifier_decode_4__result]
 
     parameters = []
 
     parameters.append({
         "input_1": extract_source_identifier_1_data_source_identifier,
-        "input_2": None,
-        "input_3": None,
-        "input_4": None,
+        "input_2": source_identifier_decode_4_data_container_id,
+        "input_3": source_identifier_decode_4_data_pattern_1,
+        "input_4": source_identifier_decode_4_data_pattern_2,
         "input_5": None,
         "input_6": None,
         "input_7": None,

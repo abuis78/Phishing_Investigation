@@ -57,14 +57,21 @@
                     "targetPort": "1_in"
                 },
                 {
-                    "id": "port_4_to_port_9",
+                    "id": "port_4_to_port_8",
                     "sourceNode": "4",
                     "sourcePort": "4_out",
+                    "targetNode": "8",
+                    "targetPort": "8_in"
+                },
+                {
+                    "id": "port_8_to_port_9",
+                    "sourceNode": "8",
+                    "sourcePort": "8_out",
                     "targetNode": "9",
                     "targetPort": "9_in"
                 }
             ],
-            "hash": "2bdb31f3c2e39d45b13d68aaf424688b85e640b7",
+            "hash": "acf42e3cb9ad41e32210635a0c4fa89c02af963e",
             "nodes": {
                 "0": {
                     "data": {
@@ -356,7 +363,7 @@
                         "utilityType": "custom_function",
                         "values": {
                             "source_identifier_decode": {
-                                "source_identifier": "extract_source_identifier_1:custom_function_result.data.container_id"
+                                "source_identifier": "extract_source_identifier_1:custom_function_result.data.source_identifier"
                             }
                         }
                     },
@@ -515,9 +522,9 @@
                             "debug": {
                                 "input_1": "extract_source_identifier_1:custom_function_result.data.source_identifier",
                                 "input_10": null,
-                                "input_2": "",
-                                "input_3": "",
-                                "input_4": null,
+                                "input_2": "source_identifier_decode_4:custom_function_result.data.container_id",
+                                "input_3": "source_identifier_decode_4:custom_function_result.data.pattern_1",
+                                "input_4": "source_identifier_decode_4:custom_function_result.data.pattern_2",
                                 "input_5": null,
                                 "input_6": null,
                                 "input_7": null,
@@ -530,7 +537,7 @@
                     "id": "9",
                     "type": "utility",
                     "x": 720,
-                    "y": 1184.5
+                    "y": 1180
                 }
             },
             "notes": ""
@@ -542,7 +549,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-31T09:29:49.628985+00:00",
+    "create_time": "2022-03-31T09:32:04.037014+00:00",
     "draft_mode": false,
     "labels": [
         "*"
