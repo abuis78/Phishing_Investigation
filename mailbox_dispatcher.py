@@ -77,7 +77,7 @@ def extract_source_identifier_1(action=None, success=None, container=None, resul
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/extract_source_identifier", parameters=parameters, name="extract_source_identifier_1", callback=add_email_to_corresponding_contaiiner_2)
+    phantom.custom_function(custom_function="Phishing_Investigation/extract_source_identifier", parameters=parameters, name="extract_source_identifier_1", callback=debug_3)
 
     return
 
@@ -110,6 +110,45 @@ def add_email_to_corresponding_contaiiner_2(action=None, success=None, container
     ################################################################################
 
     phantom.custom_function(custom_function="Phishing_Investigation/add_email_to_corresponding_contaiiner", parameters=parameters, name="add_email_to_corresponding_contaiiner_2")
+
+    return
+
+
+def debug_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("debug_3() called")
+
+    extract_source_identifier_1__result = phantom.collect2(container=container, datapath=["extract_source_identifier_1:custom_function_result.data.container_id","extract_source_identifier_1:custom_function_result.data.pattern_1","extract_source_identifier_1:custom_function_result.data.pattern_2"])
+
+    extract_source_identifier_1_data_container_id = [item[0] for item in extract_source_identifier_1__result]
+    extract_source_identifier_1_data_pattern_1 = [item[1] for item in extract_source_identifier_1__result]
+    extract_source_identifier_1_data_pattern_2 = [item[2] for item in extract_source_identifier_1__result]
+
+    parameters = []
+
+    parameters.append({
+        "input_1": extract_source_identifier_1_data_container_id,
+        "input_2": extract_source_identifier_1_data_pattern_1,
+        "input_3": extract_source_identifier_1_data_pattern_2,
+        "input_4": None,
+        "input_5": None,
+        "input_6": None,
+        "input_7": None,
+        "input_8": None,
+        "input_9": None,
+        "input_10": None,
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_3")
 
     return
 
