@@ -16,6 +16,8 @@ def source_identifier_decode(source_identifier=None, **kwargs):
     outputs = {}
     
     # Write your custom code here...
+    phantom.debug(source_identifier)
+    phantom.debug(type(source_identifier))
     decoded = base64.b64decode(source_identifier).decode()
     info = decoded.split("|")
     
