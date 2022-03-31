@@ -23,7 +23,7 @@ def extract_source_identifier(email_subject=None, email_body=None, source_identi
     
     if result:
         outputs["source_identifier"] = result.group(1)
-        outputs["source_identifier"] = True
+        #outputs["source_identifier"] = True
         phantom.debug(result.group(1))
     else:
         outputs["source_identifier"] = False
