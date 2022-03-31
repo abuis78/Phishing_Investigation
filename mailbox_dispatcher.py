@@ -137,7 +137,7 @@ def source_identifier_decode_4(action=None, success=None, container=None, result
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/source_identifier_decode", parameters=parameters, name="source_identifier_decode_4", callback=debug_5)
+    phantom.custom_function(custom_function="Phishing_Investigation/source_identifier_decode", parameters=parameters, name="source_identifier_decode_4", callback=add_email_to_corresponding_contaiiner_2)
 
     return
 
