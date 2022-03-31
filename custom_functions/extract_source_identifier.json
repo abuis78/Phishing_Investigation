@@ -1,5 +1,5 @@
 {
-    "create_time": "2022-03-31T09:26:19.559995+00:00",
+    "create_time": "2022-03-31T09:29:22.428508+00:00",
     "custom_function_id": "310e89a227c85a6e4b0483210e5011ea7e867d1a",
     "description": "",
     "draft_mode": false,
@@ -29,17 +29,7 @@
     "outputs": [
         {
             "contains_type": [],
-            "data_path": "container_id",
-            "description": ""
-        },
-        {
-            "contains_type": [],
-            "data_path": "pattern_1",
-            "description": ""
-        },
-        {
-            "contains_type": [],
-            "data_path": "pattern_2",
+            "data_path": "source_identifier",
             "description": ""
         }
     ],
