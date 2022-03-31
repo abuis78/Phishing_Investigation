@@ -57,14 +57,21 @@
                     "targetPort": "1_in"
                 },
                 {
-                    "id": "port_4_to_port_7",
+                    "id": "port_4_to_port_8",
                     "sourceNode": "4",
                     "sourcePort": "4_out",
-                    "targetNode": "7",
-                    "targetPort": "7_in"
+                    "targetNode": "8",
+                    "targetPort": "8_in"
+                },
+                {
+                    "id": "port_8_to_port_9",
+                    "sourceNode": "8",
+                    "sourcePort": "8_out",
+                    "targetNode": "9",
+                    "targetPort": "9_in"
                 }
             ],
-            "hash": "33a0c677669f8d4b6ff030583fc0791b1971c699",
+            "hash": "d18c79d8b7d7d8b31762f074b041b0013f3b93ec",
             "nodes": {
                 "0": {
                     "data": {
@@ -317,9 +324,56 @@
                     "id": "6",
                     "type": "utility",
                     "x": 980,
-                    "y": 1120
+                    "y": 1160
                 },
-                "7": {
+                "8": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "source_identifier_decode",
+                            "repoName": "Phishing_Investigation"
+                        },
+                        "functionId": 4,
+                        "functionName": "source_identifier_decode_4",
+                        "id": "8",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "source_identifier_decode": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "source_identifier",
+                                        "name": "source_identifier",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "source_identifier_decode",
+                                "name": "source_identifier_decode"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "source_identifier_decode": {
+                                "source_identifier": "extract_source_identifier_1:custom_function_result.data.container_id"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "8",
+                    "type": "utility",
+                    "x": 980,
+                    "y": 1040
+                },
+                "9": {
                     "data": {
                         "advanced": {
                             "join": []
@@ -329,9 +383,9 @@
                             "name": "debug",
                             "repoName": "community"
                         },
-                        "functionId": 3,
-                        "functionName": "debug_3",
-                        "id": "7",
+                        "functionId": 5,
+                        "functionName": "debug_5",
+                        "id": "9",
                         "selectMore": false,
                         "type": "utility",
                         "utilities": {
@@ -466,10 +520,10 @@
                         "utilityType": "custom_function",
                         "values": {
                             "debug": {
-                                "input_1": "extract_source_identifier_1:custom_function_result.data.container_id",
+                                "input_1": "source_identifier_decode_4:custom_function_result.data.container_id",
                                 "input_10": null,
-                                "input_2": "extract_source_identifier_1:custom_function_result.data.pattern_1",
-                                "input_3": "extract_source_identifier_1:custom_function_result.data.pattern_2",
+                                "input_2": "source_identifier_decode_4:custom_function_result.data.pattern_1",
+                                "input_3": "source_identifier_decode_4:custom_function_result.data.pattern_2",
                                 "input_4": null,
                                 "input_5": null,
                                 "input_6": null,
@@ -480,10 +534,10 @@
                         }
                     },
                     "errors": {},
-                    "id": "7",
+                    "id": "9",
                     "type": "utility",
-                    "x": 640,
-                    "y": 1104.5
+                    "x": 720,
+                    "y": 1184.5
                 }
             },
             "notes": ""
@@ -495,7 +549,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-03-31T09:19:57.854497+00:00",
+    "create_time": "2022-03-31T09:27:47.594816+00:00",
     "draft_mode": false,
     "labels": [
         "*"
