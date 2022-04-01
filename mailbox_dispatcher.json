@@ -73,18 +73,6 @@
                 {
                     "conditions": [
                         {
-                            "index": 1
-                        }
-                    ],
-                    "id": "port_10_to_port_8",
-                    "sourceNode": "10",
-                    "sourcePort": "10_out",
-                    "targetNode": "8",
-                    "targetPort": "8_in"
-                },
-                {
-                    "conditions": [
-                        {
                             "index": 0
                         }
                     ],
@@ -100,9 +88,28 @@
                     "sourcePort": "11_out",
                     "targetNode": "1",
                     "targetPort": "1_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 1
+                        }
+                    ],
+                    "id": "port_10_to_port_12",
+                    "sourceNode": "10",
+                    "sourcePort": "10_out",
+                    "targetNode": "12",
+                    "targetPort": "12_in"
+                },
+                {
+                    "id": "port_12_to_port_8",
+                    "sourceNode": "12",
+                    "sourcePort": "12_out",
+                    "targetNode": "8",
+                    "targetPort": "8_in"
                 }
             ],
-            "hash": "f6faae951a3c0addfbac095991ee949f171cc765",
+            "hash": "71c952b5bbdf8a2ab5545108a1d0a20198013499",
             "nodes": {
                 "0": {
                     "data": {
@@ -116,8 +123,8 @@
                     "errors": {},
                     "id": "0",
                     "type": "start",
-                    "x": 1000,
-                    "y": 419.99999999999966
+                    "x": 280,
+                    "y": 0
                 },
                 "1": {
                     "data": {
@@ -133,8 +140,8 @@
                     "id": "1",
                     "type": "end",
                     "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
-                    "x": 1280,
-                    "y": 1460
+                    "x": 360,
+                    "y": 1328
                 },
                 "10": {
                     "data": {
@@ -180,8 +187,8 @@
                     "errors": {},
                     "id": "10",
                     "type": "decision",
-                    "x": 1060,
-                    "y": 1004.5
+                    "x": 250,
+                    "y": 672
                 },
                 "11": {
                     "data": {
@@ -241,8 +248,69 @@
                     "errors": {},
                     "id": "11",
                     "type": "utility",
-                    "x": 1260,
-                    "y": 1180
+                    "x": 340,
+                    "y": 1172
+                },
+                "12": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 6,
+                        "functionName": "add_comment_6",
+                        "id": "12",
+                        "selectMore": false,
+                        "tab": "apis",
+                        "type": "utility",
+                        "utilities": {
+                            "comment": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "description": "",
+                                        "label": "comment",
+                                        "name": "comment",
+                                        "placeholder": "Enter a comment",
+                                        "renderType": "datapath",
+                                        "required": true
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "container",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "author",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "trace",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "add comment",
+                                "name": "comment"
+                            }
+                        },
+                        "utilityType": "api",
+                        "values": {
+                            "comment": {
+                                "_internal": [
+                                    "container",
+                                    "author",
+                                    "trace"
+                                ],
+                                "comment": "source identifier found"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "12",
+                    "type": "utility",
+                    "x": 0,
+                    "y": 852
                 },
                 "2": {
                     "data": {
@@ -274,8 +342,8 @@
                     "errors": {},
                     "id": "2",
                     "type": "filter",
-                    "x": 1040,
-                    "y": 720
+                    "x": 230,
+                    "y": 328
                 },
                 "3": {
                     "data": {
@@ -324,8 +392,8 @@
                     "errors": {},
                     "id": "3",
                     "type": "decision",
-                    "x": 1060,
-                    "y": 560
+                    "x": 340,
+                    "y": 148
                 },
                 "4": {
                     "data": {
@@ -393,8 +461,8 @@
                     "errors": {},
                     "id": "4",
                     "type": "utility",
-                    "x": 980,
-                    "y": 880
+                    "x": 170,
+                    "y": 508
                 },
                 "6": {
                     "data": {
@@ -462,8 +530,8 @@
                     "errors": {},
                     "id": "6",
                     "type": "utility",
-                    "x": 980,
-                    "y": 1300
+                    "x": 0,
+                    "y": 1164
                 },
                 "8": {
                     "data": {
@@ -509,174 +577,8 @@
                     "errors": {},
                     "id": "8",
                     "type": "utility",
-                    "x": 980,
-                    "y": 1180
-                },
-                "9": {
-                    "data": {
-                        "advanced": {
-                            "join": []
-                        },
-                        "customFunction": {
-                            "draftMode": false,
-                            "name": "debug",
-                            "repoName": "community"
-                        },
-                        "functionId": 5,
-                        "functionName": "debug_5",
-                        "id": "9",
-                        "selectMore": false,
-                        "type": "utility",
-                        "utilities": {
-                            "debug": {
-                                "description": "Print debug messages with the type and value of 0-10 different inputs. This is useful for checking the values of input data or the outputs of other playbook blocks.",
-                                "fields": [
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_1",
-                                        "name": "input_1",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_2",
-                                        "name": "input_2",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_3",
-                                        "name": "input_3",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_4",
-                                        "name": "input_4",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_5",
-                                        "name": "input_5",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_6",
-                                        "name": "input_6",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_7",
-                                        "name": "input_7",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_8",
-                                        "name": "input_8",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_9",
-                                        "name": "input_9",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_10",
-                                        "name": "input_10",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    }
-                                ],
-                                "label": "debug",
-                                "name": "debug"
-                            }
-                        },
-                        "utilityType": "custom_function",
-                        "values": {
-                            "debug": {
-                                "input_1": "extract_source_identifier_1:custom_function_result.data.source_identifier",
-                                "input_10": null,
-                                "input_2": "source_identifier_decode_4:custom_function_result.data.container_id",
-                                "input_3": "source_identifier_decode_4:custom_function_result.data.pattern_1",
-                                "input_4": "source_identifier_decode_4:custom_function_result.data.pattern_2",
-                                "input_5": null,
-                                "input_6": null,
-                                "input_7": null,
-                                "input_8": null,
-                                "input_9": null
-                            }
-                        }
-                    },
-                    "errors": {},
-                    "id": "9",
-                    "type": "utility",
-                    "x": 720,
-                    "y": 1180
+                    "x": 0,
+                    "y": 1000
                 }
             },
             "notes": ""
@@ -688,7 +590,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-04-01T06:29:22.696321+00:00",
+    "create_time": "2022-04-01T06:31:12.053908+00:00",
     "draft_mode": false,
     "labels": [
         "*"

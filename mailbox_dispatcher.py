@@ -142,47 +142,6 @@ def source_identifier_decode_4(action=None, success=None, container=None, result
     return
 
 
-def debug_5(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("debug_5() called")
-
-    extract_source_identifier_1__result = phantom.collect2(container=container, datapath=["extract_source_identifier_1:custom_function_result.data.source_identifier"])
-    source_identifier_decode_4__result = phantom.collect2(container=container, datapath=["source_identifier_decode_4:custom_function_result.data.container_id","source_identifier_decode_4:custom_function_result.data.pattern_1","source_identifier_decode_4:custom_function_result.data.pattern_2"])
-
-    extract_source_identifier_1_data_source_identifier = [item[0] for item in extract_source_identifier_1__result]
-    source_identifier_decode_4_data_container_id = [item[0] for item in source_identifier_decode_4__result]
-    source_identifier_decode_4_data_pattern_1 = [item[1] for item in source_identifier_decode_4__result]
-    source_identifier_decode_4_data_pattern_2 = [item[2] for item in source_identifier_decode_4__result]
-
-    parameters = []
-
-    parameters.append({
-        "input_1": extract_source_identifier_1_data_source_identifier,
-        "input_2": source_identifier_decode_4_data_container_id,
-        "input_3": source_identifier_decode_4_data_pattern_1,
-        "input_4": source_identifier_decode_4_data_pattern_2,
-        "input_5": None,
-        "input_6": None,
-        "input_7": None,
-        "input_8": None,
-        "input_9": None,
-        "input_10": None,
-    })
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_5")
-
-    return
-
-
 def decision_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("decision_2() called")
 
@@ -199,7 +158,7 @@ def decision_2(action=None, success=None, container=None, results=None, handle=N
         return
 
     # check for 'else' condition 2
-    source_identifier_decode_4(action=action, success=success, container=container, results=results, handle=handle)
+    add_comment_6(action=action, success=success, container=container, results=results, handle=handle)
 
     return
 
@@ -218,6 +177,26 @@ def add_comment_3(action=None, success=None, container=None, results=None, handl
     ################################################################################
 
     phantom.comment(container=container, comment="no source identifier found")
+
+    return
+
+
+def add_comment_6(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("add_comment_6() called")
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.comment(container=container, comment="source identifier found")
+
+    source_identifier_decode_4(container=container)
 
     return
 
