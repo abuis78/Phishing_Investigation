@@ -75,32 +75,33 @@ def extract_the_case_id_1(action=None, success=None, container=None, results=Non
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/Extract_the_case_id", parameters=parameters, name="extract_the_case_id_1", callback=debug_2)
+    phantom.custom_function(custom_function="Phishing_Investigation/Extract_the_case_id", parameters=parameters, name="extract_the_case_id_1", callback=decision_2)
 
     return
 
 
-def debug_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("debug_2() called")
+def decision_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("decision_2() called")
 
-    extract_the_case_id_1__result = phantom.collect2(container=container, datapath=["extract_the_case_id_1:custom_function_result.data.case_id"])
+    # check for 'if' condition 1
+    found_match_1 = phantom.decision(
+        container=container,
+        conditions=[
+            ["extract_the_case_id_1:custom_function_result.data.case_id", "==", False]
+        ])
 
-    extract_the_case_id_1_data_case_id = [item[0] for item in extract_the_case_id_1__result]
+    # call connected blocks if condition 1 matched
+    if found_match_1:
+        return
 
-    parameters = []
+    # check for 'else' condition 2
+    add_comment_3(action=action, success=success, container=container, results=results, handle=handle)
 
-    parameters.append({
-        "input_1": extract_the_case_id_1_data_case_id,
-        "input_2": None,
-        "input_3": None,
-        "input_4": None,
-        "input_5": None,
-        "input_6": None,
-        "input_7": None,
-        "input_8": None,
-        "input_9": None,
-        "input_10": None,
-    })
+    return
+
+
+def add_comment_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("add_comment_3() called")
 
     ################################################################################
     ## Custom Code Start
@@ -112,7 +113,7 @@ def debug_2(action=None, success=None, container=None, results=None, handle=None
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_2")
+    phantom.comment(container=container, comment="Case ID was found")
 
     return
 
