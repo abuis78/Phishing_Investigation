@@ -81,14 +81,14 @@
                     "targetPort": "7_in"
                 },
                 {
-                    "id": "port_7_to_port_1",
+                    "id": "port_7_to_port_8",
                     "sourceNode": "7",
                     "sourcePort": "7_out",
-                    "targetNode": "1",
-                    "targetPort": "1_in"
+                    "targetNode": "8",
+                    "targetPort": "8_in"
                 }
             ],
-            "hash": "6ab87260b802b668262ef91f99848a100b23ddc8",
+            "hash": "40eded945f10f5b4d119b041b5999e0f8201d6a5",
             "nodes": {
                 "0": {
                     "data": {
@@ -356,6 +356,75 @@
                     "type": "utility",
                     "x": 160,
                     "y": 836
+                },
+                "8": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "add_email_to_corresponding_contaiiner",
+                            "repoName": "Phishing_Investigation"
+                        },
+                        "functionId": 4,
+                        "functionName": "add_email_to_corresponding_contaiiner_4",
+                        "id": "8",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "add_email_to_corresponding_contaiiner": {
+                                "description": "Adding email as note to the corresponding container",
+                                "fields": [
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "container_id",
+                                        "name": "container_id",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "subject",
+                                        "name": "subject",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "body",
+                                        "name": "body",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "add_email_to_corresponding_contaiiner",
+                                "name": "add_email_to_corresponding_contaiiner"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "add_email_to_corresponding_contaiiner": {
+                                "body": "filtered-data:filter_email_artifact:condition_1:artifact:*.cef.bodyPart1",
+                                "container_id": "extract_the_case_id_1:custom_function_result.data.case_id",
+                                "subject": "filtered-data:filter_email_artifact:condition_1:artifact:*.cef.emailHeaders.Subject"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "8",
+                    "type": "utility",
+                    "x": 160,
+                    "y": 964.5
                 }
             },
             "notes": ""
@@ -367,7 +436,7 @@
         "schema": "5.0.5",
         "version": "5.2.1.78411"
     },
-    "create_time": "2022-04-01T09:12:25.220131+00:00",
+    "create_time": "2022-04-01T09:21:11.436698+00:00",
     "draft_mode": false,
     "labels": [
         "*"

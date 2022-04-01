@@ -115,6 +115,40 @@ def add_comment_3(action=None, success=None, container=None, results=None, handl
 
     phantom.comment(container=container, comment="Case ID was found")
 
+    add_email_to_corresponding_contaiiner_4(container=container)
+
+    return
+
+
+def add_email_to_corresponding_contaiiner_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("add_email_to_corresponding_contaiiner_4() called")
+
+    extract_the_case_id_1__result = phantom.collect2(container=container, datapath=["extract_the_case_id_1:custom_function_result.data.case_id"])
+    filtered_artifact_0_data_filter_email_artifact = phantom.collect2(container=container, datapath=["filtered-data:filter_email_artifact:condition_1:artifact:*.cef.emailHeaders.Subject","filtered-data:filter_email_artifact:condition_1:artifact:*.cef.bodyPart1","filtered-data:filter_email_artifact:condition_1:artifact:*.id"])
+
+    parameters = []
+
+    # build parameters list for 'add_email_to_corresponding_contaiiner_4' call
+    for extract_the_case_id_1__result_item in extract_the_case_id_1__result:
+        for filtered_artifact_0_item_filter_email_artifact in filtered_artifact_0_data_filter_email_artifact:
+            parameters.append({
+                "container_id": extract_the_case_id_1__result_item[0],
+                "subject": filtered_artifact_0_item_filter_email_artifact[0],
+                "body": filtered_artifact_0_item_filter_email_artifact[1],
+            })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="Phishing_Investigation/add_email_to_corresponding_contaiiner", parameters=parameters, name="add_email_to_corresponding_contaiiner_4")
+
     return
 
 
