@@ -1,0 +1,24 @@
+{
+    "create_time": "2022-04-01T07:18:51.023607+00:00",
+    "custom_function_id": "136dba07d56be57c624c556ea78fb6f0f60bbe50",
+    "description": "This CF extracts the case ID from the subject. It is returned in the subject after the following combination \"[1234]\" ... the case id is returned to use this for further processing.",
+    "draft_mode": false,
+    "inputs": [
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "item",
+            "name": "subject",
+            "placeholder": ""
+        }
+    ],
+    "outputs": [
+        {
+            "contains_type": [],
+            "data_path": "case_id",
+            "description": ""
+        }
+    ],
+    "platform_version": "5.2.1.78411",
+    "python_version": "3"
+}
