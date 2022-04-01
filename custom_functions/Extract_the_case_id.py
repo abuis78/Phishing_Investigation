@@ -21,9 +21,9 @@ def Extract_the_case_id(subject=None, **kwargs):
     result = pattern.search(subject)
     
     if result:
-        outputs["case_id"] = result.group(0)
+        outputs["case_id"] = result.group(1)
         #outputs["source_identifier"] = True
-        phantom.debug(result.group(0))
+        phantom.debug(result.group(1))
     else:
         outputs["case_id"] = False    
     
