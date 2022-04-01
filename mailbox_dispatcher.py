@@ -55,15 +55,15 @@ def decision_if_email_artifact(action=None, success=None, container=None, result
 def extract_source_identifier_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("extract_source_identifier_1() called")
 
-    filtered_artifact_0_data_filter_artifact_for_email_artifact = phantom.collect2(container=container, datapath=["filtered-data:filter_artifact_for_email_artifact:condition_1:artifact:*.cef.emailHeaders.decodedSubject","filtered-data:filter_artifact_for_email_artifact:condition_1:artifact:*.cef.bodyPart1","filtered-data:filter_artifact_for_email_artifact:condition_1:artifact:*.id"])
+    filtered_artifact_0_data_filter_artifact_for_email_artifact = phantom.collect2(container=container, datapath=["filtered-data:filter_artifact_for_email_artifact:condition_1:artifact:*.cef.bodyPart1","filtered-data:filter_artifact_for_email_artifact:condition_1:artifact:*.cef.emailHeaders.decodedSubject","filtered-data:filter_artifact_for_email_artifact:condition_1:artifact:*.id"])
 
     parameters = []
 
     # build parameters list for 'extract_source_identifier_1' call
     for filtered_artifact_0_item_filter_artifact_for_email_artifact in filtered_artifact_0_data_filter_artifact_for_email_artifact:
         parameters.append({
-            "email_subject": filtered_artifact_0_item_filter_artifact_for_email_artifact[0],
-            "email_body": filtered_artifact_0_item_filter_artifact_for_email_artifact[1],
+            "email_body": filtered_artifact_0_item_filter_artifact_for_email_artifact[0],
+            "email_subject": filtered_artifact_0_item_filter_artifact_for_email_artifact[1],
             "source_identifier_prefix": "PMI",
         })
 
@@ -77,7 +77,7 @@ def extract_source_identifier_1(action=None, success=None, container=None, resul
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="Phishing_Investigation/extract_source_identifier", parameters=parameters, name="extract_source_identifier_1", callback=source_identifier_decode_4)
+    phantom.custom_function(custom_function="Phishing_Investigation/extract_source_identifier", parameters=parameters, name="extract_source_identifier_1", callback=decision_2)
 
     return
 
@@ -85,18 +85,18 @@ def extract_source_identifier_1(action=None, success=None, container=None, resul
 def add_email_to_corresponding_contaiiner_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("add_email_to_corresponding_contaiiner_2() called")
 
+    filtered_artifact_0_data_filter_artifact_for_email_artifact = phantom.collect2(container=container, datapath=["filtered-data:filter_artifact_for_email_artifact:condition_1:artifact:*.cef.bodyPart1","filtered-data:filter_artifact_for_email_artifact:condition_1:artifact:*.cef.emailHeaders.decodedSubject","filtered-data:filter_artifact_for_email_artifact:condition_1:artifact:*.id"])
     source_identifier_decode_4__result = phantom.collect2(container=container, datapath=["source_identifier_decode_4:custom_function_result.data.container_id"])
-    filtered_artifact_0_data_filter_artifact_for_email_artifact = phantom.collect2(container=container, datapath=["filtered-data:filter_artifact_for_email_artifact:condition_1:artifact:*.cef.emailHeaders.decodedSubject","filtered-data:filter_artifact_for_email_artifact:condition_1:artifact:*.cef.bodyPart1","filtered-data:filter_artifact_for_email_artifact:condition_1:artifact:*.id"])
 
     parameters = []
 
     # build parameters list for 'add_email_to_corresponding_contaiiner_2' call
-    for source_identifier_decode_4__result_item in source_identifier_decode_4__result:
-        for filtered_artifact_0_item_filter_artifact_for_email_artifact in filtered_artifact_0_data_filter_artifact_for_email_artifact:
+    for filtered_artifact_0_item_filter_artifact_for_email_artifact in filtered_artifact_0_data_filter_artifact_for_email_artifact:
+        for source_identifier_decode_4__result_item in source_identifier_decode_4__result:
             parameters.append({
+                "body": filtered_artifact_0_item_filter_artifact_for_email_artifact[0],
+                "subject": filtered_artifact_0_item_filter_artifact_for_email_artifact[1],
                 "container_id": source_identifier_decode_4__result_item[0],
-                "subject": filtered_artifact_0_item_filter_artifact_for_email_artifact[0],
-                "body": filtered_artifact_0_item_filter_artifact_for_email_artifact[1],
             })
 
     ################################################################################
@@ -179,6 +179,26 @@ def debug_5(action=None, success=None, container=None, results=None, handle=None
     ################################################################################
 
     phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_5")
+
+    return
+
+
+def decision_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("decision_2() called")
+
+    # check for 'if' condition 1
+    found_match_1 = phantom.decision(
+        container=container,
+        conditions=[
+            ["extract_source_identifier_1:custom_function_result.data.source_identifier", "==", False]
+        ])
+
+    # call connected blocks if condition 1 matched
+    if found_match_1:
+        return
+
+    # check for 'else' condition 2
+    source_identifier_decode_4(action=action, success=success, container=container, results=results, handle=handle)
 
     return
 
