@@ -147,7 +147,7 @@
                     "targetPort": "5_in"
                 }
             ],
-            "hash": "559193e7eb033e2dbf891e387c92a01e6b7d18ce",
+            "hash": "c2472e73e94dc4cbfa7619e4ba8a1a863f50dbd3",
             "nodes": {
                 "0": {
                     "data": {
@@ -162,7 +162,7 @@
                     "id": "0",
                     "type": "start",
                     "x": 1000,
-                    "y": 419.9999999999999
+                    "y": 419.9999999999998
                 },
                 "1": {
                     "data": {
@@ -190,7 +190,7 @@
                         },
                         "connector": "Phantom",
                         "connectorConfigs": [
-                            "phantom"
+                            "phantom app asset"
                         ],
                         "connectorId": "deb82aa9-22cc-4675-9cf1-534b8d006eb7",
                         "connectorVersion": "v1",
@@ -204,6 +204,7 @@
                         "requiredParameters": [
                             {
                                 "data_type": "string",
+                                "default": "",
                                 "field": "artifact_id"
                             }
                         ],
@@ -224,7 +225,7 @@
                         },
                         "connector": "Phantom",
                         "connectorConfigs": [
-                            "phantom"
+                            "phantom app asset"
                         ],
                         "connectorId": "deb82aa9-22cc-4675-9cf1-534b8d006eb7",
                         "connectorVersion": "v1",
@@ -238,6 +239,7 @@
                         "requiredParameters": [
                             {
                                 "data_type": "string",
+                                "default": "",
                                 "field": "artifact_id"
                             }
                         ],
@@ -386,6 +388,7 @@
                         "requiredParameters": [
                             {
                                 "data_type": "string",
+                                "default": "",
                                 "field": "hash"
                             }
                         ],
@@ -564,7 +567,7 @@
                         },
                         "connector": "Phantom",
                         "connectorConfigs": [
-                            "phantom"
+                            "phantom app asset"
                         ],
                         "connectorId": "deb82aa9-22cc-4675-9cf1-534b8d006eb7",
                         "connectorVersion": "v1",
@@ -578,6 +581,7 @@
                         "requiredParameters": [
                             {
                                 "data_type": "string",
+                                "default": "",
                                 "field": "artifact_id"
                             }
                         ],
@@ -598,7 +602,7 @@
                         },
                         "connector": "Phantom",
                         "connectorConfigs": [
-                            "phantom"
+                            "phantom app asset"
                         ],
                         "connectorId": "deb82aa9-22cc-4675-9cf1-534b8d006eb7",
                         "connectorVersion": "v1",
@@ -619,6 +623,7 @@
                         "requiredParameters": [
                             {
                                 "data_type": "string",
+                                "default": "",
                                 "field": "artifact_id"
                             }
                         ],
@@ -683,10 +688,10 @@
         "output_spec": null,
         "playbook_type": "automation",
         "python_version": "3",
-        "schema": "5.0.5",
-        "version": "5.2.1.78411"
+        "schema": "5.0.8",
+        "version": "5.4.0.101028"
     },
-    "create_time": "2022-03-10T07:50:34.783336+00:00",
+    "create_time": "2022-11-15T11:47:00.200825+00:00",
     "draft_mode": false,
     "labels": [
         "*"

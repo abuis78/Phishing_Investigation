@@ -8,6 +8,7 @@ import json
 from datetime import datetime, timedelta
 
 
+@phantom.playbook_block()
 def on_start(container):
     phantom.debug('on_start() called')
 
@@ -16,6 +17,7 @@ def on_start(container):
 
     return
 
+@phantom.playbook_block()
 def decision_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("decision_1() called")
 
@@ -37,6 +39,7 @@ def decision_1(action=None, success=None, container=None, results=None, handle=N
     return
 
 
+@phantom.playbook_block()
 def filter_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("filter_1() called")
 
@@ -55,6 +58,7 @@ def filter_1(action=None, success=None, container=None, results=None, handle=Non
     return
 
 
+@phantom.playbook_block()
 def file_reputation_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("file_reputation_1() called")
 
@@ -87,6 +91,7 @@ def file_reputation_1(action=None, success=None, container=None, results=None, h
     return
 
 
+@phantom.playbook_block()
 def join_workbook_task_update_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("join_workbook_task_update_1() called")
 
@@ -97,6 +102,7 @@ def join_workbook_task_update_1(action=None, success=None, container=None, resul
     return
 
 
+@phantom.playbook_block()
 def workbook_task_update_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("workbook_task_update_1() called")
 
@@ -105,12 +111,12 @@ def workbook_task_update_1(action=None, success=None, container=None, results=No
     parameters = []
 
     parameters.append({
+        "owner": "current",
+        "status": "complete",
+        "container": id_value,
         "task_name": "email artefacts",
         "note_title": "[Automated completion] file analysis",
         "note_content": "file analysis",
-        "status": "complete",
-        "owner": "current",
-        "container": id_value,
     })
 
     ################################################################################
@@ -128,6 +134,7 @@ def workbook_task_update_1(action=None, success=None, container=None, results=No
     return
 
 
+@phantom.playbook_block()
 def filter_status(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("filter_status() called")
 
@@ -158,6 +165,7 @@ def filter_status(action=None, success=None, container=None, results=None, handl
     return
 
 
+@phantom.playbook_block()
 def update_artifact_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("update_artifact_1() called")
 
@@ -171,8 +179,8 @@ def update_artifact_1(action=None, success=None, container=None, results=None, h
     for filtered_result_0_item_filter_status in filtered_result_0_data_filter_status:
         if filtered_result_0_item_filter_status[0] is not None:
             parameters.append({
-                "artifact_id": filtered_result_0_item_filter_status[0],
                 "tags": "status_failed",
+                "artifact_id": filtered_result_0_item_filter_status[0],
             })
 
     ################################################################################
@@ -185,11 +193,12 @@ def update_artifact_1(action=None, success=None, container=None, results=None, h
     ## Custom Code End
     ################################################################################
 
-    phantom.act("update artifact", parameters=parameters, name="update_artifact_1", assets=["phantom"], callback=join_noop_2)
+    phantom.act("update artifact", parameters=parameters, name="update_artifact_1", assets=["phantom app asset"], callback=join_noop_2)
 
     return
 
 
+@phantom.playbook_block()
 def update_artifact_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("update_artifact_2() called")
 
@@ -210,9 +219,9 @@ def update_artifact_2(action=None, success=None, container=None, results=None, h
     for filtered_result_0_item_filter_status in filtered_result_0_data_filter_status:
         if filtered_result_0_item_filter_status[0] is not None:
             parameters.append({
-                "artifact_id": filtered_result_0_item_filter_status[0],
                 "tags": "status_success",
                 "cef_json": cef_json_formatted_string,
+                "artifact_id": filtered_result_0_item_filter_status[0],
             })
 
     ################################################################################
@@ -225,11 +234,12 @@ def update_artifact_2(action=None, success=None, container=None, results=None, h
     ## Custom Code End
     ################################################################################
 
-    phantom.act("update artifact", parameters=parameters, name="update_artifact_2", assets=["phantom"], callback=severity_set_based_on_malicious)
+    phantom.act("update artifact", parameters=parameters, name="update_artifact_2", assets=["phantom app asset"], callback=severity_set_based_on_malicious)
 
     return
 
 
+@phantom.playbook_block()
 def severity_set_based_on_malicious(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("severity_set_based_on_malicious() called")
 
@@ -260,6 +270,7 @@ def severity_set_based_on_malicious(action=None, success=None, container=None, r
     return
 
 
+@phantom.playbook_block()
 def update_artifact_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("update_artifact_3() called")
 
@@ -273,8 +284,8 @@ def update_artifact_3(action=None, success=None, container=None, results=None, h
     for filtered_result_0_item_severity_set_based_on_malicious in filtered_result_0_data_severity_set_based_on_malicious:
         if filtered_result_0_item_severity_set_based_on_malicious[0] is not None:
             parameters.append({
-                "artifact_id": filtered_result_0_item_severity_set_based_on_malicious[0],
                 "severity": "high",
+                "artifact_id": filtered_result_0_item_severity_set_based_on_malicious[0],
             })
 
     ################################################################################
@@ -287,11 +298,12 @@ def update_artifact_3(action=None, success=None, container=None, results=None, h
     ## Custom Code End
     ################################################################################
 
-    phantom.act("update artifact", parameters=parameters, name="update_artifact_3", assets=["phantom"], callback=join_noop_2)
+    phantom.act("update artifact", parameters=parameters, name="update_artifact_3", assets=["phantom app asset"], callback=join_noop_2)
 
     return
 
 
+@phantom.playbook_block()
 def update_artifact_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("update_artifact_4() called")
 
@@ -305,8 +317,8 @@ def update_artifact_4(action=None, success=None, container=None, results=None, h
     for filtered_result_0_item_severity_set_based_on_malicious in filtered_result_0_data_severity_set_based_on_malicious:
         if filtered_result_0_item_severity_set_based_on_malicious[0] is not None:
             parameters.append({
-                "artifact_id": filtered_result_0_item_severity_set_based_on_malicious[0],
                 "severity": "low",
+                "artifact_id": filtered_result_0_item_severity_set_based_on_malicious[0],
             })
 
     ################################################################################
@@ -319,11 +331,12 @@ def update_artifact_4(action=None, success=None, container=None, results=None, h
     ## Custom Code End
     ################################################################################
 
-    phantom.act("update artifact", parameters=parameters, name="update_artifact_4", assets=["phantom"], callback=join_noop_2)
+    phantom.act("update artifact", parameters=parameters, name="update_artifact_4", assets=["phantom app asset"], callback=join_noop_2)
 
     return
 
 
+@phantom.playbook_block()
 def join_noop_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("join_noop_2() called")
 
@@ -340,6 +353,7 @@ def join_noop_2(action=None, success=None, container=None, results=None, handle=
     return
 
 
+@phantom.playbook_block()
 def noop_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("noop_2() called")
 
@@ -360,6 +374,7 @@ def noop_2(action=None, success=None, container=None, results=None, handle=None,
     return
 
 
+@phantom.playbook_block()
 def on_finish(container, summary):
     phantom.debug("on_finish() called")
 
