@@ -78,7 +78,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "e76e9713f19e2f249f71baabf3c482d9e7c3aa6f",
+            "hash": "919c2523816fb6489c9eb4e993a0d6370e60a1b6",
             "nodes": {
                 "0": {
                     "data": {
@@ -93,7 +93,7 @@
                     "id": "0",
                     "type": "start",
                     "x": 1020,
-                    "y": 219.9999999999999
+                    "y": 219.99999999999983
                 },
                 "1": {
                     "data": {
@@ -475,7 +475,7 @@
                         },
                         "connector": "Phantom",
                         "connectorConfigs": [
-                            "phantom"
+                            "phantom app asset"
                         ],
                         "connectorId": "deb82aa9-22cc-4675-9cf1-534b8d006eb7",
                         "connectorVersion": "v1",
@@ -496,6 +496,7 @@
                         "requiredParameters": [
                             {
                                 "data_type": "string",
+                                "default": "",
                                 "field": "artifact_id"
                             }
                         ],
@@ -632,10 +633,10 @@
         "output_spec": null,
         "playbook_type": "automation",
         "python_version": "3",
-        "schema": "5.0.5",
-        "version": "5.2.1.78411"
+        "schema": "5.0.8",
+        "version": "5.4.0.101028"
     },
-    "create_time": "2022-03-10T06:02:34.746620+00:00",
+    "create_time": "2022-11-15T11:45:42.931328+00:00",
     "draft_mode": false,
     "labels": [
         "*"

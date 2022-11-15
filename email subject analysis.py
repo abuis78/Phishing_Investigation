@@ -8,6 +8,7 @@ import json
 from datetime import datetime, timedelta
 
 
+@phantom.playbook_block()
 def on_start(container):
     phantom.debug('on_start() called')
 
@@ -16,6 +17,7 @@ def on_start(container):
 
     return
 
+@phantom.playbook_block()
 def filter_email_artifact(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("filter_email_artifact() called")
 
@@ -34,6 +36,7 @@ def filter_email_artifact(action=None, success=None, container=None, results=Non
     return
 
 
+@phantom.playbook_block()
 def keyword_search_in_subject(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("keyword_search_in_subject() called")
 
@@ -63,6 +66,7 @@ def keyword_search_in_subject(action=None, success=None, container=None, results
     return
 
 
+@phantom.playbook_block()
 def keyword_search_in_decodedsubject(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("keyword_search_in_decodedsubject() called")
 
@@ -92,6 +96,7 @@ def keyword_search_in_decodedsubject(action=None, success=None, container=None, 
     return
 
 
+@phantom.playbook_block()
 def decision_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("decision_1() called")
 
@@ -113,6 +118,7 @@ def decision_1(action=None, success=None, container=None, results=None, handle=N
     return
 
 
+@phantom.playbook_block()
 def create_subject_artifact(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("create_subject_artifact() called")
 
@@ -151,6 +157,7 @@ def create_subject_artifact(action=None, success=None, container=None, results=N
     return
 
 
+@phantom.playbook_block()
 def update_artifact_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("update_artifact_1() called")
 
@@ -186,11 +193,12 @@ def update_artifact_1(action=None, success=None, container=None, results=None, h
     ## Custom Code End
     ################################################################################
 
-    phantom.act("update artifact", parameters=parameters, name="update_artifact_1", assets=["phantom"], callback=join_workbook_task_update_4)
+    phantom.act("update artifact", parameters=parameters, name="update_artifact_1", assets=["phantom app asset"], callback=join_workbook_task_update_4)
 
     return
 
 
+@phantom.playbook_block()
 def join_workbook_task_update_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("join_workbook_task_update_4() called")
 
@@ -207,6 +215,7 @@ def join_workbook_task_update_4(action=None, success=None, container=None, resul
     return
 
 
+@phantom.playbook_block()
 def workbook_task_update_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("workbook_task_update_4() called")
 
@@ -238,6 +247,7 @@ def workbook_task_update_4(action=None, success=None, container=None, results=No
     return
 
 
+@phantom.playbook_block()
 def on_finish(container, summary):
     phantom.debug("on_finish() called")
 
