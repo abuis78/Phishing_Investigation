@@ -75,7 +75,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "437f37356091bd61f96e9e6d402712fd2ea04e26",
+            "hash": "b2671a1be001c022b8d3dc73a61645f4b821706d",
             "nodes": {
                 "0": {
                     "data": {
@@ -90,7 +90,7 @@
                     "id": "0",
                     "type": "start",
                     "x": 1000,
-                    "y": 419.9999999999998
+                    "y": 419.99999999999966
                 },
                 "1": {
                     "data": {
@@ -415,7 +415,7 @@
                         },
                         "connector": "SMTP",
                         "connectorConfigs": [
-                            "smtp"
+                            "smtp soc@soar4rookies.com"
                         ],
                         "connectorId": "45bb6f37-4478-499b-b4a3-51ecfa62b78c",
                         "connectorVersion": "v1",
@@ -431,10 +431,12 @@
                         "requiredParameters": [
                             {
                                 "data_type": "string",
+                                "default": "",
                                 "field": "to"
                             },
                             {
                                 "data_type": "string",
+                                "default": "",
                                 "field": "body"
                             }
                         ],
@@ -557,10 +559,10 @@
         "output_spec": null,
         "playbook_type": "automation",
         "python_version": "3",
-        "schema": "5.0.5",
-        "version": "5.2.1.78411"
+        "schema": "5.0.8",
+        "version": "5.4.0.101028"
     },
-    "create_time": "2022-03-10T05:45:08.209888+00:00",
+    "create_time": "2022-11-15T11:47:37.862221+00:00",
     "draft_mode": false,
     "labels": [
         "*"

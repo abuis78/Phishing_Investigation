@@ -8,6 +8,7 @@ import json
 from datetime import datetime, timedelta
 
 
+@phantom.playbook_block()
 def on_start(container):
     phantom.debug('on_start() called')
 
@@ -16,6 +17,7 @@ def on_start(container):
 
     return
 
+@phantom.playbook_block()
 def regex_extract_email_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("regex_extract_email_1() called")
 
@@ -44,6 +46,7 @@ def regex_extract_email_1(action=None, success=None, container=None, results=Non
     return
 
 
+@phantom.playbook_block()
 def filter_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("filter_1() called")
 
@@ -62,6 +65,7 @@ def filter_1(action=None, success=None, container=None, results=None, handle=Non
     return
 
 
+@phantom.playbook_block()
 def cf_encode_phankey_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("cf_encode_phankey_3() called")
 
@@ -92,6 +96,7 @@ def cf_encode_phankey_3(action=None, success=None, container=None, results=None,
     return
 
 
+@phantom.playbook_block()
 def email_subject(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("email_subject() called")
 
@@ -119,6 +124,7 @@ def email_subject(action=None, success=None, container=None, results=None, handl
     return
 
 
+@phantom.playbook_block()
 def email_body(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("email_body() called")
 
@@ -146,6 +152,7 @@ def email_body(action=None, success=None, container=None, results=None, handle=N
     return
 
 
+@phantom.playbook_block()
 def send_email_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("send_email_1() called")
 
@@ -177,11 +184,12 @@ def send_email_1(action=None, success=None, container=None, results=None, handle
     ## Custom Code End
     ################################################################################
 
-    phantom.act("send email", parameters=parameters, name="send_email_1", assets=["smtp"], callback=add_note_4)
+    phantom.act("send email", parameters=parameters, name="send_email_1", assets=["smtp soc@soar4rookies.com"], callback=add_note_4)
 
     return
 
 
+@phantom.playbook_block()
 def add_note_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("add_note_4() called")
 
@@ -204,6 +212,7 @@ def add_note_4(action=None, success=None, container=None, results=None, handle=N
     return
 
 
+@phantom.playbook_block()
 def workbook_task_update_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("workbook_task_update_2() called")
 
@@ -212,12 +221,12 @@ def workbook_task_update_2(action=None, success=None, container=None, results=No
     parameters = []
 
     parameters.append({
+        "owner": "current",
+        "status": "complete",
+        "container": id_value,
         "task_name": "Inform user",
         "note_title": "[Automated completion]",
         "note_content": "Automated completion",
-        "status": "complete",
-        "owner": "current",
-        "container": id_value,
     })
 
     ################################################################################
@@ -235,6 +244,7 @@ def workbook_task_update_2(action=None, success=None, container=None, results=No
     return
 
 
+@phantom.playbook_block()
 def on_finish(container, summary):
     phantom.debug("on_finish() called")
 
