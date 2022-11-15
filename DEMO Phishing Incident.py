@@ -8,6 +8,7 @@ import json
 from datetime import datetime, timedelta
 
 
+@phantom.playbook_block()
 def on_start(container):
     phantom.debug('on_start() called')
 
@@ -16,6 +17,7 @@ def on_start(container):
 
     return
 
+@phantom.playbook_block()
 def playbook_sender_analysis_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("playbook_sender_analysis_1() called")
 
@@ -35,6 +37,7 @@ def playbook_sender_analysis_1(action=None, success=None, container=None, result
     return
 
 
+@phantom.playbook_block()
 def playbook_email_subject_analysis_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("playbook_email_subject_analysis_1() called")
 
@@ -54,6 +57,7 @@ def playbook_email_subject_analysis_1(action=None, success=None, container=None,
     return
 
 
+@phantom.playbook_block()
 def playbook_url_analysis_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("playbook_url_analysis_1() called")
 
@@ -73,6 +77,7 @@ def playbook_url_analysis_1(action=None, success=None, container=None, results=N
     return
 
 
+@phantom.playbook_block()
 def playbook_inform_user___in_progress_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("playbook_inform_user___in_progress_1() called")
 
@@ -92,6 +97,7 @@ def playbook_inform_user___in_progress_1(action=None, success=None, container=No
     return
 
 
+@phantom.playbook_block()
 def set_status_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("set_status_1() called")
 
@@ -114,6 +120,7 @@ def set_status_1(action=None, success=None, container=None, results=None, handle
     return
 
 
+@phantom.playbook_block()
 def promote_to_case_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("promote_to_case_2() called")
 
@@ -136,6 +143,7 @@ def promote_to_case_2(action=None, success=None, container=None, results=None, h
     return
 
 
+@phantom.playbook_block()
 def playbook_domain_analysis_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("playbook_domain_analysis_1() called")
 
@@ -155,6 +163,7 @@ def playbook_domain_analysis_1(action=None, success=None, container=None, result
     return
 
 
+@phantom.playbook_block()
 def playbook_manual_steps___classification_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("playbook_manual_steps___classification_1() called")
 
@@ -174,6 +183,7 @@ def playbook_manual_steps___classification_1(action=None, success=None, containe
     return
 
 
+@phantom.playbook_block()
 def playbook_file_analysis_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("playbook_file_analysis_1() called")
 
@@ -193,6 +203,7 @@ def playbook_file_analysis_1(action=None, success=None, container=None, results=
     return
 
 
+@phantom.playbook_block()
 def on_finish(container, summary):
     phantom.debug("on_finish() called")
 

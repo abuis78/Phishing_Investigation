@@ -70,7 +70,7 @@
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "cd9cd928736a2904f512991b4f4cede5faf2f0ca",
+            "hash": "b61a4893d7a44e880e3ccbe8e81363972161701d",
             "nodes": {
                 "0": {
                     "data": {
@@ -84,8 +84,8 @@
                     "errors": {},
                     "id": "0",
                     "type": "start",
-                    "x": 20,
-                    "y": -80
+                    "x": 19.999999999999986,
+                    "y": -80.00000000000006
                 },
                 "1": {
                     "data": {
@@ -102,7 +102,7 @@
                     "type": "end",
                     "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
                     "x": 320,
-                    "y": -6.394884621840902e-14
+                    "y": -1.2789769243681803e-13
                 },
                 "10": {
                     "data": {
@@ -207,7 +207,7 @@
                     "id": "5",
                     "type": "playbook",
                     "x": -1.4210854715202004e-14,
-                    "y": 443.99999999999994
+                    "y": 443.9999999999999
                 },
                 "6": {
                     "data": {
@@ -389,13 +389,13 @@
         "output_spec": null,
         "playbook_type": "automation",
         "python_version": "3",
-        "schema": "5.0.5",
-        "version": "5.2.1.78411"
+        "schema": "5.0.8",
+        "version": "5.4.0.101028"
     },
-    "create_time": "2022-03-10T09:54:53.514097+00:00",
+    "create_time": "2022-11-15T11:50:18.270286+00:00",
     "draft_mode": false,
     "labels": [
-        "phishing-mailbox"
+        "spam"
     ],
     "tags": []
 }
