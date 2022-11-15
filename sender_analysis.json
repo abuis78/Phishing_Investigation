@@ -241,7 +241,7 @@
                     "targetPort": "63_in"
                 }
             ],
-            "hash": "242570208552a1806bf885ce4f695d56ca77de5f",
+            "hash": "f72abb8b846dee0149b10265198ca74b1b360f2c",
             "nodes": {
                 "0": {
                     "data": {
@@ -256,7 +256,7 @@
                     "id": "0",
                     "type": "start",
                     "x": 110,
-                    "y": -4.263256414560601e-14
+                    "y": -1.0658141036401503e-13
                 },
                 "1": {
                     "data": {
@@ -371,7 +371,7 @@
                     "id": "2",
                     "type": "utility",
                     "x": 90,
-                    "y": 359.99999999999994
+                    "y": 359.9999999999999
                 },
                 "23": {
                     "data": {
@@ -886,7 +886,7 @@
                         },
                         "connector": "Phantom",
                         "connectorConfigs": [
-                            "phantom"
+                            "phantom app asset"
                         ],
                         "connectorId": "deb82aa9-22cc-4675-9cf1-534b8d006eb7",
                         "connectorVersion": "v1",
@@ -906,6 +906,7 @@
                         "requiredParameters": [
                             {
                                 "data_type": "string",
+                                "default": "",
                                 "field": "artifact_id"
                             }
                         ],
@@ -915,7 +916,7 @@
                     "errors": {},
                     "id": "51",
                     "type": "action",
-                    "x": -1.4210854715202004e-14,
+                    "x": 0,
                     "y": 3220
                 },
                 "52": {
@@ -937,7 +938,7 @@
                     "errors": {},
                     "id": "52",
                     "type": "format",
-                    "x": -1.4210854715202004e-14,
+                    "x": 0,
                     "y": 3040
                 },
                 "53": {
@@ -1049,7 +1050,7 @@
                         },
                         "connector": "Phantom",
                         "connectorConfigs": [
-                            "phantom"
+                            "phantom app asset"
                         ],
                         "connectorId": "deb82aa9-22cc-4675-9cf1-534b8d006eb7",
                         "connectorVersion": "v1",
@@ -1063,6 +1064,7 @@
                         "requiredParameters": [
                             {
                                 "data_type": "string",
+                                "default": "",
                                 "field": "artifact_id"
                             }
                         ],
@@ -1083,7 +1085,7 @@
                         },
                         "connector": "Phantom",
                         "connectorConfigs": [
-                            "phantom"
+                            "phantom app asset"
                         ],
                         "connectorId": "deb82aa9-22cc-4675-9cf1-534b8d006eb7",
                         "connectorVersion": "v1",
@@ -1097,6 +1099,7 @@
                         "requiredParameters": [
                             {
                                 "data_type": "string",
+                                "default": "",
                                 "field": "artifact_id"
                             }
                         ],
@@ -1133,6 +1136,7 @@
                         "requiredParameters": [
                             {
                                 "data_type": "string",
+                                "default": "",
                                 "field": "email"
                             },
                             {
@@ -1308,7 +1312,7 @@
                     "errors": {},
                     "id": "61",
                     "type": "utility",
-                    "x": -1.4210854715202004e-14,
+                    "x": 0,
                     "y": 4092
                 },
                 "62": {
@@ -1330,7 +1334,7 @@
                     "errors": {},
                     "id": "62",
                     "type": "format",
-                    "x": -1.4210854715202004e-14,
+                    "x": 0,
                     "y": 3942
                 },
                 "63": {
@@ -1454,10 +1458,10 @@
         "output_spec": null,
         "playbook_type": "automation",
         "python_version": "3",
-        "schema": "5.0.5",
-        "version": "5.2.1.78411"
+        "schema": "5.0.8",
+        "version": "5.4.0.101028"
     },
-    "create_time": "2022-03-10T05:47:42.599346+00:00",
+    "create_time": "2022-11-15T11:49:10.660934+00:00",
     "draft_mode": false,
     "labels": [
         "*"

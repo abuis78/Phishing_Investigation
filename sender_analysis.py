@@ -8,6 +8,7 @@ import json
 from datetime import datetime, timedelta
 
 
+@phantom.playbook_block()
 def on_start(container):
     phantom.debug('on_start() called')
 
@@ -16,6 +17,7 @@ def on_start(container):
 
     return
 
+@phantom.playbook_block()
 def extract_email_from_emailheaders(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("extract_email_from_emailheaders() called")
 
@@ -44,6 +46,7 @@ def extract_email_from_emailheaders(action=None, success=None, container=None, r
     return
 
 
+@phantom.playbook_block()
 def decision_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("decision_2() called")
 
@@ -65,6 +68,7 @@ def decision_2(action=None, success=None, container=None, results=None, handle=N
     return
 
 
+@phantom.playbook_block()
 def matching_email_with_list(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("matching_email_with_list() called")
 
@@ -94,6 +98,7 @@ def matching_email_with_list(action=None, success=None, container=None, results=
     return
 
 
+@phantom.playbook_block()
 def join_vip_path(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("join_vip_path() called")
 
@@ -111,6 +116,7 @@ def join_vip_path(action=None, success=None, container=None, results=None, handl
     return
 
 
+@phantom.playbook_block()
 def vip_path(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("vip_path() called")
 
@@ -131,6 +137,7 @@ def vip_path(action=None, success=None, container=None, results=None, handle=Non
     return
 
 
+@phantom.playbook_block()
 def extract_domain_from_dkim_signature(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("extract_domain_from_dkim_signature() called")
 
@@ -174,6 +181,7 @@ def extract_domain_from_dkim_signature(action=None, success=None, container=None
     return
 
 
+@phantom.playbook_block()
 def dkim_check(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("dkim_check() called")
 
@@ -196,6 +204,7 @@ def dkim_check(action=None, success=None, container=None, results=None, handle=N
     return
 
 
+@phantom.playbook_block()
 def join_dkim_path(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("join_dkim_path() called")
 
@@ -213,6 +222,7 @@ def join_dkim_path(action=None, success=None, container=None, results=None, hand
     return
 
 
+@phantom.playbook_block()
 def dkim_path(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("dkim_path() called")
 
@@ -233,6 +243,7 @@ def dkim_path(action=None, success=None, container=None, results=None, handle=No
     return
 
 
+@phantom.playbook_block()
 def convert_tag_list_into_string(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("convert_tag_list_into_string() called")
 
@@ -274,6 +285,7 @@ def convert_tag_list_into_string(action=None, success=None, container=None, resu
     return
 
 
+@phantom.playbook_block()
 def create_email_artefact(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("create_email_artefact() called")
 
@@ -310,6 +322,7 @@ def create_email_artefact(action=None, success=None, container=None, results=Non
     return
 
 
+@phantom.playbook_block()
 def format_email_in_str(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("format_email_in_str() called")
 
@@ -337,6 +350,7 @@ def format_email_in_str(action=None, success=None, container=None, results=None,
     return
 
 
+@phantom.playbook_block()
 def filter_email_artifact(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("filter_email_artifact() called")
 
@@ -355,6 +369,7 @@ def filter_email_artifact(action=None, success=None, container=None, results=Non
     return
 
 
+@phantom.playbook_block()
 def decision_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("decision_4() called")
 
@@ -376,6 +391,7 @@ def decision_4(action=None, success=None, container=None, results=None, handle=N
     return
 
 
+@phantom.playbook_block()
 def update_artifact_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("update_artifact_1() called")
 
@@ -410,11 +426,12 @@ def update_artifact_1(action=None, success=None, container=None, results=None, h
     ## Custom Code End
     ################################################################################
 
-    phantom.act("update artifact", parameters=parameters, name="update_artifact_1", assets=["phantom"], callback=join_email_address_keyword_path)
+    phantom.act("update artifact", parameters=parameters, name="update_artifact_1", assets=["phantom app asset"], callback=join_email_address_keyword_path)
 
     return
 
 
+@phantom.playbook_block()
 def format_keywoard_list(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("format_keywoard_list() called")
 
@@ -442,6 +459,7 @@ def format_keywoard_list(action=None, success=None, container=None, results=None
     return
 
 
+@phantom.playbook_block()
 def join_email_address_keyword_path(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("join_email_address_keyword_path() called")
 
@@ -459,6 +477,7 @@ def join_email_address_keyword_path(action=None, success=None, container=None, r
     return
 
 
+@phantom.playbook_block()
 def email_address_keyword_path(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("email_address_keyword_path() called")
 
@@ -479,6 +498,7 @@ def email_address_keyword_path(action=None, success=None, container=None, result
     return
 
 
+@phantom.playbook_block()
 def keyword_mention_in_email(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("keyword_mention_in_email() called")
 
@@ -508,6 +528,7 @@ def keyword_mention_in_email(action=None, success=None, container=None, results=
     return
 
 
+@phantom.playbook_block()
 def update_artifact_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("update_artifact_2() called")
 
@@ -535,11 +556,12 @@ def update_artifact_2(action=None, success=None, container=None, results=None, h
     ## Custom Code End
     ################################################################################
 
-    phantom.act("update artifact", parameters=parameters, name="update_artifact_2", assets=["phantom"], callback=join_vip_path)
+    phantom.act("update artifact", parameters=parameters, name="update_artifact_2", assets=["phantom app asset"], callback=join_vip_path)
 
     return
 
 
+@phantom.playbook_block()
 def update_artifact_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("update_artifact_3() called")
 
@@ -568,11 +590,12 @@ def update_artifact_3(action=None, success=None, container=None, results=None, h
     ## Custom Code End
     ################################################################################
 
-    phantom.act("update artifact", parameters=parameters, name="update_artifact_3", assets=["phantom"], callback=join_dkim_path)
+    phantom.act("update artifact", parameters=parameters, name="update_artifact_3", assets=["phantom app asset"], callback=join_dkim_path)
 
     return
 
 
+@phantom.playbook_block()
 def lookup_email_from(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("lookup_email_from() called")
 
@@ -605,6 +628,7 @@ def lookup_email_from(action=None, success=None, container=None, results=None, h
     return
 
 
+@phantom.playbook_block()
 def total_breaches_decision(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("total_breaches_decision() called")
 
@@ -626,6 +650,7 @@ def total_breaches_decision(action=None, success=None, container=None, results=N
     return
 
 
+@phantom.playbook_block()
 def pin_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("pin_2() called")
 
@@ -651,6 +676,7 @@ def pin_2(action=None, success=None, container=None, results=None, handle=None, 
     return
 
 
+@phantom.playbook_block()
 def pin_data(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("pin_data() called")
 
@@ -678,6 +704,7 @@ def pin_data(action=None, success=None, container=None, results=None, handle=Non
     return
 
 
+@phantom.playbook_block()
 def join_workbook_task_update_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("join_workbook_task_update_4() called")
 
@@ -688,6 +715,7 @@ def join_workbook_task_update_4(action=None, success=None, container=None, resul
     return
 
 
+@phantom.playbook_block()
 def workbook_task_update_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("workbook_task_update_4() called")
 
@@ -696,12 +724,12 @@ def workbook_task_update_4(action=None, success=None, container=None, results=No
     parameters = []
 
     parameters.append({
+        "owner": "current",
+        "status": "complete",
+        "container": id_value,
         "task_name": "sende email",
         "note_title": "[Automated completion] Analysis of the sende email",
         "note_content": "Analysis of the sende email",
-        "status": "complete",
-        "owner": "current",
-        "container": id_value,
     })
 
     ################################################################################
@@ -719,6 +747,7 @@ def workbook_task_update_4(action=None, success=None, container=None, results=No
     return
 
 
+@phantom.playbook_block()
 def on_finish(container, summary):
     phantom.debug("on_finish() called")
 
