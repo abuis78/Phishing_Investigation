@@ -147,7 +147,7 @@
                     "targetPort": "4_in"
                 }
             ],
-            "hash": "f9f8c9c7ff61f2bd21f148f143abe0667f22feff",
+            "hash": "03454f6093e3e157cae2cf34ff14ae44bd118dca",
             "nodes": {
                 "0": {
                     "data": {
@@ -162,7 +162,7 @@
                     "id": "0",
                     "type": "start",
                     "x": 1000,
-                    "y": 419.9999999999999
+                    "y": 419.9999999999998
                 },
                 "1": {
                     "data": {
@@ -190,7 +190,7 @@
                         },
                         "connector": "Phantom",
                         "connectorConfigs": [
-                            "phantom"
+                            "phantom app asset"
                         ],
                         "connectorId": "deb82aa9-22cc-4675-9cf1-534b8d006eb7",
                         "connectorVersion": "v1",
@@ -204,6 +204,7 @@
                         "requiredParameters": [
                             {
                                 "data_type": "string",
+                                "default": "",
                                 "field": "artifact_id"
                             }
                         ],
@@ -224,7 +225,7 @@
                         },
                         "connector": "Phantom",
                         "connectorConfigs": [
-                            "phantom"
+                            "phantom app asset"
                         ],
                         "connectorId": "deb82aa9-22cc-4675-9cf1-534b8d006eb7",
                         "connectorVersion": "v1",
@@ -238,6 +239,7 @@
                         "requiredParameters": [
                             {
                                 "data_type": "string",
+                                "default": "",
                                 "field": "artifact_id"
                             }
                         ],
@@ -501,6 +503,7 @@
                         "requiredParameters": [
                             {
                                 "data_type": "string",
+                                "default": "",
                                 "field": "domain"
                             }
                         ],
@@ -566,7 +569,7 @@
                         },
                         "connector": "Phantom",
                         "connectorConfigs": [
-                            "phantom"
+                            "phantom app asset"
                         ],
                         "connectorId": "deb82aa9-22cc-4675-9cf1-534b8d006eb7",
                         "connectorVersion": "v1",
@@ -580,6 +583,7 @@
                         "requiredParameters": [
                             {
                                 "data_type": "string",
+                                "default": "",
                                 "field": "artifact_id"
                             }
                         ],
@@ -600,7 +604,7 @@
                         },
                         "connector": "Phantom",
                         "connectorConfigs": [
-                            "phantom"
+                            "phantom app asset"
                         ],
                         "connectorId": "deb82aa9-22cc-4675-9cf1-534b8d006eb7",
                         "connectorVersion": "v1",
@@ -621,6 +625,7 @@
                         "requiredParameters": [
                             {
                                 "data_type": "string",
+                                "default": "",
                                 "field": "artifact_id"
                             }
                         ],
@@ -685,10 +690,10 @@
         "output_spec": null,
         "playbook_type": "automation",
         "python_version": "3",
-        "schema": "5.0.5",
-        "version": "5.2.1.78411"
+        "schema": "5.0.8",
+        "version": "5.4.0.101028"
     },
-    "create_time": "2022-03-10T06:17:46.816842+00:00",
+    "create_time": "2022-11-15T11:46:12.298764+00:00",
     "draft_mode": false,
     "labels": [
         "*"
